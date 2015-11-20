@@ -23,6 +23,7 @@ namespace Flats.Controllers
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
+            ViewBag.some = "some";
 
             return View();
         }
