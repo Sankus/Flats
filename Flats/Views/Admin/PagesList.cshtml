@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Flats.Views.Manage.Pages>
+
+@{
+    ViewBag.Title = "Страницы";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Список страниц</h2>
+
+<p>
+    @Html.ActionLink("Создать страницу", "CreatePage")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Наименование
+        </th>
+        <th>
+            Алиас
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Naim)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Alias)
+        </td>
+        <td>
+            @Html.ActionLink("Редактировать", "EditPage", new { id=item.id }) |
+            @Html.ActionLink("Удалить", "DeletePage", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

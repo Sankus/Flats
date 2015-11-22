@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Flats.Views.Manage.Settings>
+
+@{
+    ViewBag.Title = "Общие настройки";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    @Html.ActionLink("Создать", "CreateSetting")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Настройка
+        </th>
+        <th>
+            Значение
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.setting_key)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.setting_value)
+        </td>
+        <td>
+            @Html.ActionLink("Изменить", "EditSetting", new { id=item.id }) |
+            @Html.ActionLink("Удалить", "DeleteSetting", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>
