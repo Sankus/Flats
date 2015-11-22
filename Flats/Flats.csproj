@@ -431,6 +431,10 @@
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\readme.md" />
     <Content Include="Scripts\tinymce\langs\readme.md" />
     <Content Include="Views\Admin\EditPage.cshtml" />
+    <Content Include="Views\Admin\Objects.cshtml" />
+    <Content Include="Views\Admin\LiveConditionsList.cshtml" />
+    <Content Include="Views\Admin\CreateLiveCondition.cshtml" />
+    <Content Include="Views\Admin\EditLiveCondition.cshtml" />
     <None Include="Views\Manage\db.dbml.layout">
       <DependentUpon>db.dbml</DependentUpon>
     </None>

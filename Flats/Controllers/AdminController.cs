@@ -149,5 +149,77 @@ namespace Flats.Controllers
             db.SubmitChanges();
             return RedirectToAction("PagesList");
         }
+
+        public ActionResult Objects()
+        {
+            return View();
+        }
+
+        public ActionResult LiveConditionsList()
+        {
+            dbDataContext db = new dbDataContext();
+            List<LiveConditions> lst = db.LiveConditions.Select(c => c).OrderBy(c => c.lc_key).ToList();
+
+            return View(lst);
+        }
+
+        [HttpGet]
+        public ActionResult CreateLiveCondition()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult CreateLiveCondition(LiveConditions model)
+        {
+            dbDataContext db = new dbDataContext();
+
+            db.LiveConditions.InsertOnSubmit(model);
+            db.SubmitChanges();
+
+            return RedirectToAction("LiveConditionsList");
+        }
+        public ActionResult DeleteLiveCondition(int id)
+        {
+            dbDataContext db = new dbDataContext();
+            LiveConditions lc = db.LiveConditions.SingleOrDefault(c => c.id == id);
+            if (lc != null)
+            {
+                db.LiveConditions.DeleteOnSubmit(lc);
+                db.SubmitChanges();
+            }
+            return RedirectToAction("LiveConditionsList");
+        }
+
+        [HttpGet]
+        public ActionResult EditLiveCondition(int id = 0)
+        {
+            if (id == 0)
+                return RedirectToAction("LiveConditionsList");
+            dbDataContext db = new dbDataContext();
+            LiveConditions lc = db.LiveConditions.SingleOrDefault(c => c.id == id);
+            if (lc == null)
+            {
+                return RedirectToAction("LiveConditionsList");
+            }
+            return View(lc);
+        }
+        [HttpPost]
+        public ActionResult EditLiveCondition(LiveConditions model)
+        {
+            dbDataContext db = new dbDataContext();
+            LiveConditions lc = db.LiveConditions.SingleOrDefault(c => c.id == model.id);
+            if (lc == null)
+            {
+                return RedirectToAction("LiveConditionsList");
+            }
+
+            lc.lc_key = model.lc_key;
+            lc.lc_value = model.lc_value;
+
+            db.SubmitChanges();
+            return RedirectToAction("LiveConditionsList");
+        }
     }
 }
