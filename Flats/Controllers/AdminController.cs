@@ -96,6 +96,7 @@ namespace Flats.Controllers
         }
 
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult CreatePage(Pages model)
         {
             dbDataContext db = new dbDataContext();
@@ -103,6 +104,49 @@ namespace Flats.Controllers
             db.Pages.InsertOnSubmit(model);
             db.SubmitChanges();
 
+            return RedirectToAction("PagesList");
+        }
+        public ActionResult DeletePage(int id)
+        {
+            dbDataContext db = new dbDataContext();
+            Pages sett = db.Pages.SingleOrDefault(c => c.id == id);
+            if (sett != null)
+            {
+                db.Pages.DeleteOnSubmit(sett);
+                db.SubmitChanges();
+            }
+            return RedirectToAction("PagesList");
+        }
+
+        [HttpGet]
+        public ActionResult EditPage(int id = 0)
+        {
+            if (id == 0)
+                return RedirectToAction("PagesList");
+            dbDataContext db = new dbDataContext();
+            Pages page = db.Pages.SingleOrDefault(c => c.id == id);
+            if (page == null)
+            {
+                return RedirectToAction("PagesList");
+            }
+            return View(page);
+        }
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult EditPage(Pages model)
+        {
+            dbDataContext db = new dbDataContext();
+            Pages page = db.Pages.SingleOrDefault(c => c.id == model.id);
+            if (page == null)
+            {
+                return RedirectToAction("PagesList");
+            }
+
+            page.Alias = model.Alias;
+            page.Naim = model.Naim;
+            page.Text = model.Text;
+
+            db.SubmitChanges();
             return RedirectToAction("PagesList");
         }
     }
