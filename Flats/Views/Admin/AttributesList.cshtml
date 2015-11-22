@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Flats.Views.Manage.Attributes>
+
+@{
+    ViewBag.Title = "Список атрибутов";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Список атрибутов</h2>
+
+<p>
+    @Html.ActionLink("Создать", "CreateAttribute")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Наименование
+        </th>
+        <th>
+            Картинка
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.attr_key)
+        </td>
+        <td>
+            <img src="@Html.Raw(item.picture)" alt="" />
+        </td>
+        <td>
+            @Html.ActionLink("Редактировать", "EditAttribute", new { id = item.id }) |
+            @Html.ActionLink("Удалить", "DeleteAttribute", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

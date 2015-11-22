@@ -221,5 +221,29 @@ namespace Flats.Controllers
             db.SubmitChanges();
             return RedirectToAction("LiveConditionsList");
         }
+        public ActionResult AttributesList()
+        {
+            dbDataContext db = new dbDataContext();
+            List<Attributes> lst = db.Attributes.Select(c => c).OrderBy(c => c.attr_key).ToList();
+
+            return View(lst);
+        }
+        [HttpGet]
+        public ActionResult CreateAttribute()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult CreateAttribute(Attributes model)
+        {
+            dbDataContext db = new dbDataContext();
+
+            db.Attributes.InsertOnSubmit(model);
+            db.SubmitChanges();
+
+            return RedirectToAction("AttributesList");
+        }
     }
 }
