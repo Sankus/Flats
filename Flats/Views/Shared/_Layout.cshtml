@@ -7,10 +7,45 @@
     <title>@ViewBag.Title – приложение ASP.NET</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
+    <link href="../Content/slider.css" rel="stylesheet">
+    <script type="text/javascript" src="~/Scripts/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/jqgalscroll.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#one').jqGalScroll();
+           
+        });
+    </script>
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="header-info_conteiner">
+        
+            <div class="logo">
+                <a href="/"> <img src="/../img/logo.png" alt="Логотип"></a>
+            </div>
+            <div class="site_title">
+                <p>аренда квартир посуточно</p>
+            </div>
+            <div class="phone-block">
+            <p class="phone_1">+38 063 864 68 96</p>
+            <p class="phone_2">+38 063 511 13 82</p>
+            <p class="mail">info@stay-in-odessa.com</p>
+            </div>
+            <div class="lang">
+            NL 
+            TU
+            DE
+            EN
+            RU
+            </div>   
+        
+        </div>
+        <div class="information">
+            <div class="info-inner">
+                Custom code this
+            </div>
+        </div>
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -26,9 +61,12 @@
                     <li>@Html.ActionLink("О программе", "About", "Home")</li>
                     <li>@Html.ActionLink("Контакт", "Contact", "Home")</li>
                 </ul>
-                @Html.Partial("_LoginPartial")
+              
             </div>
         </div>
+    </div>
+    <div class="left-plashka">
+    Custom test
     </div>
     <div class="container body-content">
         @RenderBody()
@@ -38,7 +76,7 @@
         </footer>
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
+    
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>

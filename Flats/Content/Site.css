@@ -3,10 +3,55 @@
     padding-bottom: 20px;
 }
 
+@font-face {
+    font-family: NautilusPompilius; /* Гарнитура шрифта */
+    src: url(/../fonts/Nautilus.otf); /* Путь к файлу со шрифтом */
+   }
+@font-face {
+    font-family: Roboto Light; /* Гарнитура шрифта */
+    src: url(/../fonts/3962.ttf); /* Путь к файлу со шрифтом */
+   }
+
+.logo {
+    float: left;
+}
+
+.site_title {
+   
+    font-size: 24px;
+    width: 200px;
+    text-align: center;
+    font-family: "NautilusPompilius";
+    float: left;
+    margin-left: 50px;
+    margin-top: 6px;
+
+}
+.phone-block {
+      margin-left: 50px;
+    width: 190px;
+    float: left;
+    margin-top: 14px;
+    margin-bottom: 5px;
+    font-family: "Roboto Light";
+}
+.lang {
+    width: 126px;
+    float: left;
+    height: 74px;
+    font-size: 20px;
+
+}
+.information {
+    width: 100%;
+   
+}
+
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+    margin:200px
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -21,4 +66,36 @@ input,
 select,
 textarea {
 width:100%;
+}
+.logo>a>img {
+    width: 220px;
+}
+.header-info_conteiner {
+   width: 65%;
+    height: 88px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 6px;
+    margin-bottom: 0px;
+}
+p.phone_1,p.phone_2 {
+    margin: 0 0 0 0;
+}
+
+.info-inner {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.information {
+    width: 100%;
+    background: #fafafc;
+    border-bottom: 1px solid #e3e3e3;
+    border-top: 1px solid #e3e3e3;
+}
+.left-plashka {
+    width: 180px;
+    height: 100%;
+    background: #F4F4F4;
+    position: fixed;
 }
