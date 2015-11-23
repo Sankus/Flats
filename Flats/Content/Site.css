@@ -130,3 +130,8 @@ p.phone_1,p.phone_2 {
     border-bottom: 20px solid #F4F4F4;
     border-top: -19px solid green;
 }
+ul.nav.navbar-nav>li {
+    margin-right: 46px;
+    font-size: 17px;
+        font-family: "Roboto Light";
+}
