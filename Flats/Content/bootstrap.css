@@ -4637,8 +4637,8 @@ fieldset[disabled] .navbar-default .btn-link:focus {
   color: #ccc;
 }
 .navbar-inverse {
-  background-color: #f4f4f4;
- 
+  background-color: #f4f4f4!important;
+  border:none!important;
 }
 .navbar-inverse .navbar-brand {
   color: #9d9d9d;
