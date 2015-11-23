@@ -10,6 +10,35 @@ namespace Flats.Controllers
 {
     public class HomeController : Controller
     {
+        public ActionResult Premium()
+        {
+            InitSettings();
+            return View();
+        }
+
+        public ActionResult Standart()
+        {
+            InitSettings();
+            return View();
+        }
+
+        public ActionResult Econom()
+        {
+            InitSettings();
+            return View();
+        }
+
+        public ActionResult ReViews()
+        {
+            InitSettings();
+            return View();
+        }
+
+        public ActionResult Contacts()
+        {
+            InitSettings();
+            return View();
+        }
         public ActionResult Index()
         {
             InitSettings();
