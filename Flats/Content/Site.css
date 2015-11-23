@@ -109,3 +109,24 @@ p.phone_1,p.phone_2 {
     width: 80%;
     float: right;
 }
+.navbar-collapse.collapse {
+    margin-left: 20%;
+}
+
+.searchbox {
+    width: 800px;
+    height: 100px;
+    position: absolute;
+    margin: 88px 0 0 00px;
+    background: #F4F4F4;
+   display: none;
+}
+.searchbox:before {
+    content: '';
+    position: absolute;
+    left: 18px;
+    top: -40px;
+    border: 20px solid transparent;
+    border-bottom: 20px solid #F4F4F4;
+    border-top: -19px solid green;
+}

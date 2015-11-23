@@ -8,6 +8,7 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <link href="../Content/slider.css" rel="stylesheet">
+   
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -45,17 +46,27 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Имя приложения", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+               
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Домашняя страница", "Index", "Home")</li>
-                    <li>@Html.ActionLink("О программе", "About", "Home")</li>
-                    <li>@Html.ActionLink("Контакт", "Contact", "Home")</li>
-                </ul>
-              
+                   
+                        <li><a class="hide-show" href="#">Поиск</a></li>
+                        <li>@Html.ActionLink("Премиум", "Premium", "Home")</li>
+                        <li>@Html.ActionLink("Стандарт", "Standart", "Home")</li>
+                        <li>@Html.ActionLink("Эконом", "Econom", "Home")</li>
+                        <li>@Html.ActionLink("Отзывы", "ReViews", "Home")</li>
+                        <li>@Html.ActionLink("Контакты", "Contacts", "Home")</li>
+</ul>
+                <div class="searchbox">
+                   Select_1
+                </div>
             </div>
-        </div>
+       
+            
+
+         </div>
+       
     </div>
     <div class="left-plashka">
     Custom test
@@ -64,7 +75,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year – приложение ASP.NET</p>
+            <p>&copy; @DateTime.Now.Year – Спасибо</p>
         </footer>
     </div>
 
@@ -83,6 +94,14 @@
                     interval: 4000,
                     swap: true
                 }
+            });
+        });
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("a.hide-show").click(function () {
+                $(".searchbox").toggle(100);
             });
         });
     </script>
