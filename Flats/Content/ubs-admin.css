@@ -1,2 +1,51 @@
 ﻿body {
+    padding-top:0;
+        background-image: url("/../img/admin-back.jpg");
+}
+
+.body-content {
+margin-left:180px;
+}
+
+/*Меню*/
+.left-nav_admin {
+    width: 180px;
+    height: 100%;
+    background: #3A3A3A;
+    position: fixed;
+}
+
+ul.admin-nav {
+ 
+    list-style-type: none;
+}
+
+.admin-menu {
+   
+}
+
+ul.admin-nav>li>a {
+    font-size: 14px;
+    color: white;
+    font-size: 15px;
+}
+ul.admin-nav>li {
+        margin: 0 -3px 0 -5px;
+    padding: 7px 0px 8px 10px;
+}
+
+ul.admin-nav_hallo {
+    background: white;
+    border-right: 1px dotted gray;
+    list-style-type: none;
+    margin-left: -15px;
+    
+}
+
+ul.admin-nav {
+    padding: 5px;
+}
+
+ul.admin-nav>li:hover {
+    background: black;
 }
