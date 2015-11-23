@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<h3>@ViewBag.id</h3>
+<h3>@ViewBag.name</h3>
+<h3>@ViewBag.alias</h3>
+<div>
+    @Html.Raw(ViewBag.html)
+
+</div>

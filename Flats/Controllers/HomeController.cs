@@ -54,6 +54,9 @@ namespace Flats.Controllers
             foreach (Settings item in Sett)
                 arr.Add(item.setting_key, item.setting_value);
             ViewBag.settings = arr;
+
+            List<Pages> pages_list = db.Pages.Select(c => c).OrderBy(c => c.Naim).ToList<Pages>();
+            ViewBag.pages_list = pages_list;
         }
 
         public ActionResult About()

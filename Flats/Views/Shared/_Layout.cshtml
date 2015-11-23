@@ -69,7 +69,14 @@
        
     </div>
     <div class="left-plashka">
-    Custom test
+    <ul>
+        @{
+            foreach (var item in ViewBag.pages_list)
+            { 
+                <li><a href="/Pages/Index/@item.Alias">@item.Naim</a></li>
+            }
+        }
+    </ul>
     </div>
     <div class="inneer-content">
         @RenderBody()
