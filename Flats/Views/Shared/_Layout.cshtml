@@ -4,18 +4,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title – приложение ASP.NET</title>
+    <title>@ViewBag.Title – Аренда квартир посуточно</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <link href="../Content/slider.css" rel="stylesheet">
-    <script type="text/javascript" src="~/Scripts/jquery-2.1.4.min.js"></script>
-    <script type="text/javascript" src="~/Scripts/jqgalscroll.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('#one').jqGalScroll();
-           
-        });
-    </script>
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -68,7 +60,7 @@
     <div class="left-plashka">
     Custom test
     </div>
-    <div class="container body-content">
+    <div class="inneer-content">
         @RenderBody()
         <hr />
         <footer>
@@ -78,6 +70,22 @@
 
     
     @Scripts.Render("~/bundles/bootstrap")
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="~/Scripts/jquery.slides.min.js"></script>
+    <script>
+        $(function () {
+            $('#slides').slidesjs({
+                width: 940,
+                height: 528,
+                play: {
+                    active: true,
+                    auto: true,
+                    interval: 4000,
+                    swap: true
+                }
+            });
+        });
+    </script>
     @RenderSection("scripts", required: false)
 </body>
 </html>
