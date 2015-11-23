@@ -1,6 +1,7 @@
 ﻿body {
     padding-top:0;
         background-image: url("/../img/admin-back.jpg");
+            background-size: cover;
 }
 
 .body-content {
