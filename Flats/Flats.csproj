@@ -452,6 +452,11 @@
     <Content Include="Views\Admin\EditLiveCondition.cshtml" />
     <Content Include="Views\Admin\AttributesList.cshtml" />
     <Content Include="Views\Admin\CreateAttribute.cshtml" />
+    <Content Include="Views\Home\Premium.cshtml" />
+    <Content Include="Views\Home\Standart.cshtml" />
+    <Content Include="Views\Home\Econom.cshtml" />
+    <Content Include="Views\Home\ReViews.cshtml" />
+    <Content Include="Views\Home\Contacts.cshtml" />
     <None Include="Views\Manage\db.dbml.layout">
       <DependentUpon>db.dbml</DependentUpon>
     </None>
