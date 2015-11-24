@@ -99,6 +99,7 @@ p.phone_1,p.phone_2 {
     height: 100%;
     background: #F4F4F4;
     position: fixed;
+    padding-top: 150px;
 }
 .container.body-content {
     position: fixed;
@@ -108,6 +109,8 @@ p.phone_1,p.phone_2 {
 .inneer-content {
     width: 80%;
     float: right;
+        position: fixed;
+    right: 0;
 }
 .navbar-collapse.collapse {
     margin-left: 20%;
