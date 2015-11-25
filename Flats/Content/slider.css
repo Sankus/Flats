@@ -56,14 +56,14 @@
       background-position: -41px -18px;
     }
 
-    .slidesjs-pagination {
-     list-style: none;
-    margin: 122px 0 0 0;
+   .slidesjs-pagination {
+    list-style: none;
+    /* margin: 122px 0 0 0; */
     position: absolute;
-    bottom: 10px;
+    bottom: 80px;
     left: 50%;
-    z-index: 999;
-    }
+    z-index: 9999;
+}
 
 
 

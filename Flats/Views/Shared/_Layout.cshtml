@@ -23,7 +23,7 @@
             <div class="phone-block">
                 <p class="phone_1">+38 063 864 68 96</p>
                 <p class="phone_2">+38 063 511 13 82</p>
-                <p class="mail">info@stay-in-odessa.com</p>
+                <p class="mail">@ViewBag.settings["email"]</p>
             </div>
             <div class="lang">
                 NL
@@ -51,13 +51,17 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
 
-                    <li><a class="hide-show" href="#">Поиск</a></li>
-                    <li>@Html.ActionLink("Премиум", "Premium", "Home")</li>
-                    <li>@Html.ActionLink("Стандарт", "Standart", "Home")</li>
-                    <li>@Html.ActionLink("Эконом", "Econom", "Home")</li>
-                    <li>@Html.ActionLink("Отзывы", "ReViews", "Home")</li>
-                    <li>@Html.ActionLink("Контакты", "Contacts", "Home")</li>
-                </ul>
+                   
+                        <li><a class="hide-show" href="#">Поиск<img src="/../img/loop.png" width="25"></a></li>
+                        <li>@Html.ActionLink("Премиум", "Premium", "Home")</li>
+                        <li>@Html.ActionLink("Стандарт", "Standart", "Home")</li>
+                        <li>@Html.ActionLink("Эконом", "Econom", "Home")</li>
+                        <li>@Html.ActionLink("Отзывы", "ReViews", "Home")</li>
+                        <li>@Html.ActionLink("Контакты", "Contacts", "Home")</li>
+</ul>
+
+
+                
                 <div class="searchbox">
                     Select_1
                 </div>
