@@ -71,9 +71,11 @@
     <div class="left-plashka">
     <ul>
         @{
-            foreach (var item in ViewBag.pages_list)
-            { 
-                <li><a href="/Pages/Index/@item.Alias">@item.Naim</a></li>
+            if (ViewBag.pages_list != null) { 
+                foreach (var item in ViewBag.pages_list)
+                { 
+                    <li><a href="/Pages/Index/@item.Alias">@item.Naim</a></li>
+                }
             }
         }
     </ul>
