@@ -9,6 +9,9 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Flats.Models;
+using Flats.Views.Manage;
+using System.Collections.Generic;
+using System.Collections;
 
 namespace Flats.Controllers
 {
@@ -18,8 +21,23 @@ namespace Flats.Controllers
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
+        private void InitSettings()
+        {
+            dbDataContext db = new dbDataContext();
+            List<Settings> Sett = db.Settings.Select(c => c).OrderBy(c => c.setting_key).ToList();
+            Hashtable arr = new Hashtable();
+
+            foreach (Settings item in Sett)
+                arr.Add(item.setting_key, item.setting_value);
+            ViewBag.settings = arr;
+
+            List<Pages> pages_list = db.Pages.Select(c => c).OrderBy(c => c.Naim).ToList<Pages>();
+            ViewBag.pages_list = pages_list;
+        }
+
         public AccountController()
         {
+            InitSettings();
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
@@ -57,6 +75,7 @@ namespace Flats.Controllers
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
+            InitSettings();
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
@@ -68,6 +87,7 @@ namespace Flats.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
+            InitSettings();
             if (!ModelState.IsValid)
             {
                 return View(model);
@@ -96,6 +116,7 @@ namespace Flats.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> VerifyCode(string provider, string returnUrl, bool rememberMe)
         {
+            InitSettings();
             // Требовать предварительный вход пользователя с помощью имени пользователя и пароля или внешнего имени входа
             if (!await SignInManager.HasBeenVerifiedAsync())
             {
@@ -111,6 +132,7 @@ namespace Flats.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> VerifyCode(VerifyCodeViewModel model)
         {
+            InitSettings();
             if (!ModelState.IsValid)
             {
                 return View(model);
@@ -139,6 +161,7 @@ namespace Flats.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+            InitSettings();
             return View();
         }
 
@@ -149,6 +172,7 @@ namespace Flats.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
+            InitSettings();
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
@@ -177,6 +201,7 @@ namespace Flats.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> ConfirmEmail(string userId, string code)
         {
+            InitSettings();
             if (userId == null || code == null)
             {
                 return View("Error");
@@ -190,6 +215,7 @@ namespace Flats.Controllers
         [AllowAnonymous]
         public ActionResult ForgotPassword()
         {
+            InitSettings();
             return View();
         }
 
@@ -200,6 +226,7 @@ namespace Flats.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> ForgotPassword(ForgotPasswordViewModel model)
         {
+            InitSettings();
             if (ModelState.IsValid)
             {
                 var user = await UserManager.FindByNameAsync(model.Email);
@@ -226,6 +253,7 @@ namespace Flats.Controllers
         [AllowAnonymous]
         public ActionResult ForgotPasswordConfirmation()
         {
+            InitSettings();
             return View();
         }
 
@@ -234,6 +262,7 @@ namespace Flats.Controllers
         [AllowAnonymous]
         public ActionResult ResetPassword(string code)
         {
+            InitSettings();
             return code == null ? View("Error") : View();
         }
 
@@ -244,6 +273,7 @@ namespace Flats.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> ResetPassword(ResetPasswordViewModel model)
         {
+            InitSettings();
             if (!ModelState.IsValid)
             {
                 return View(model);
@@ -268,6 +298,7 @@ namespace Flats.Controllers
         [AllowAnonymous]
         public ActionResult ResetPasswordConfirmation()
         {
+            InitSettings();
             return View();
         }
 
@@ -278,6 +309,7 @@ namespace Flats.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult ExternalLogin(string provider, string returnUrl)
         {
+            InitSettings();
             // Запрос перенаправления к внешнему поставщику входа
             return new ChallengeResult(provider, Url.Action("ExternalLoginCallback", "Account", new { ReturnUrl = returnUrl }));
         }
@@ -287,6 +319,7 @@ namespace Flats.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> SendCode(string returnUrl, bool rememberMe)
         {
+            InitSettings();
             var userId = await SignInManager.GetVerifiedUserIdAsync();
             if (userId == null)
             {
@@ -304,6 +337,7 @@ namespace Flats.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> SendCode(SendCodeViewModel model)
         {
+            InitSettings();
             if (!ModelState.IsValid)
             {
                 return View();
@@ -322,6 +356,7 @@ namespace Flats.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> ExternalLoginCallback(string returnUrl)
         {
+            InitSettings();
             var loginInfo = await AuthenticationManager.GetExternalLoginInfoAsync();
             if (loginInfo == null)
             {
@@ -354,6 +389,7 @@ namespace Flats.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> ExternalLoginConfirmation(ExternalLoginConfirmationViewModel model, string returnUrl)
         {
+            InitSettings();
             if (User.Identity.IsAuthenticated)
             {
                 return RedirectToAction("Index", "Manage");
@@ -391,6 +427,7 @@ namespace Flats.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
+            InitSettings();
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
             return RedirectToAction("Index", "Home");
         }
@@ -400,11 +437,13 @@ namespace Flats.Controllers
         [AllowAnonymous]
         public ActionResult ExternalLoginFailure()
         {
+            InitSettings();
             return View();
         }
 
         protected override void Dispose(bool disposing)
         {
+            InitSettings();
             if (disposing)
             {
                 if (_userManager != null)

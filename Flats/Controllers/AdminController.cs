@@ -8,6 +8,9 @@ using Flats.Views;
 using System.Web;
 using System.Drawing;
 using Flats.Views.Manage;
+using System.IO;
+using System.Data.Linq;
+using System.Collections;
 
 namespace Flats.Controllers
 {
@@ -223,9 +226,14 @@ namespace Flats.Controllers
         }
         public ActionResult AttributesList()
         {
+            List<String> lst_pics = new List<string>();
             dbDataContext db = new dbDataContext();
             List<Attributes> lst = db.Attributes.Select(c => c).OrderBy(c => c.attr_key).ToList();
-
+            foreach (Attributes attrs in lst)
+            {
+                lst_pics.Add("data:image/jpeg;base64," + attrs.picture.ToString().Replace("\"", ""));
+            }
+            ViewBag.pics = lst_pics;
             return View(lst);
         }
         [HttpGet]
@@ -236,14 +244,146 @@ namespace Flats.Controllers
 
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult CreateAttribute(Attributes model)
+        public ActionResult CreateAttribute(FormCollection coll)
         {
             dbDataContext db = new dbDataContext();
 
-            db.Attributes.InsertOnSubmit(model);
+            Attributes attr = new Attributes();
+            attr.attr_key = Request["attr_key"];
+            
+            HttpPostedFileBase file = Request.Files[0];
+            MemoryStream ms = new MemoryStream();
+            Image img = Image.FromStream(file.InputStream);
+            img.Save(ms, img.RawFormat);
+            Binary bin = new Binary(ms.ToArray());
+            attr.picture = bin;
+
+            db.Attributes.InsertOnSubmit(attr);
             db.SubmitChanges();
 
             return RedirectToAction("AttributesList");
+        }
+
+        public ActionResult DeleteAttribute(int id)
+        {
+            dbDataContext db = new dbDataContext();
+            Attributes item = db.Attributes.SingleOrDefault(c => c.id == id);
+            if (item != null)
+            {
+                db.Attributes.DeleteOnSubmit(item);
+                db.SubmitChanges();
+            }
+            return RedirectToAction("AttributesList");
+        }
+
+        [HttpGet]
+        public ActionResult EditAttribute(int id = 0)
+        {
+            if (id == 0)
+                return RedirectToAction("AttributesList");
+            dbDataContext db = new dbDataContext();
+            Attributes attr = db.Attributes.SingleOrDefault(c => c.id == id);
+            if (attr == null)
+            {
+                return RedirectToAction("AttributesList");
+            }
+            ViewBag.pic = "data:image/jpeg;base64," + attr.picture.ToString().Replace("\"", "");
+            return View(attr);
+        }
+        [HttpPost]
+        public ActionResult EditAttribute(FormCollection coll)
+        {
+            int id;
+            try
+            {
+                id = Int32.Parse(coll["id"]);
+            }
+            catch
+            {
+                return RedirectToAction("AttributesList");
+            }
+            dbDataContext db = new dbDataContext();
+
+            Attributes attr = db.Attributes.SingleOrDefault(c => c.id == id);
+            attr.attr_key = Request["attr_key"];
+
+            HttpPostedFileBase file = Request.Files[0];
+            MemoryStream ms = new MemoryStream();
+            Image img = Image.FromStream(file.InputStream);
+            img.Save(ms, img.RawFormat);
+            Binary bin = new Binary(ms.ToArray());
+            attr.picture = bin;
+
+            db.SubmitChanges();
+
+            return RedirectToAction("AttributesList");
+        }
+
+        public ActionResult RegionList()
+        {
+            dbDataContext db = new dbDataContext();
+            List<Flats.Views.Manage.Region> lst = db.Region.Select(c => c).OrderBy(c => c.ID).ToList();
+
+            return View(lst);
+        }
+
+        [HttpGet]
+        public ActionResult CreateRegion()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult CreateRegion(Flats.Views.Manage.Region model)
+        {
+            dbDataContext db = new dbDataContext();
+
+            db.Region.InsertOnSubmit(model);
+            db.SubmitChanges();
+
+            return RedirectToAction("RegionList");
+        }
+        public ActionResult DeleteRegion(int id)
+        {
+            dbDataContext db = new dbDataContext();
+            Flats.Views.Manage.Region ft = db.Region.SingleOrDefault(c => c.ID == id);
+            if (ft != null)
+            {
+                db.Region.DeleteOnSubmit(ft);
+                db.SubmitChanges();
+            }
+            return RedirectToAction("RegionList");
+        }
+
+        [HttpGet]
+        public ActionResult EditRegion(int id = 0)
+        {
+            if (id == 0)
+                return RedirectToAction("RegionList");
+            dbDataContext db = new dbDataContext();
+            Flats.Views.Manage.Region ft = db.Region.SingleOrDefault(c => c.ID == id);
+            if (ft == null)
+            {
+                return RedirectToAction("RegionList");
+            }
+            return View(ft);
+        }
+        [HttpPost]
+        public ActionResult EditRegion(Flats.Views.Manage.Region model)
+        {
+            dbDataContext db = new dbDataContext();
+            Flats.Views.Manage.Region ft = db.Region.SingleOrDefault(c => c.ID == model.ID);
+            if (ft == null)
+            {
+                return RedirectToAction("RegionList");
+            }
+
+            ft.Naim = model.Naim;
+
+
+            db.SubmitChanges();
+            return RedirectToAction("RegionList");
         }
     }
 }

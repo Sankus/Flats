@@ -1,4 +1,7 @@
-﻿@model IEnumerable<Flats.Views.Manage.Attributes>
+﻿<assemblies>
+    <add assembly="system.data.linq, version=4.0.0.0, culture=neutral, publickeytoken=b77a5c561934e089" />
+</assemblies>
+@model IEnumerable<Flats.Views.Manage.Attributes>
 
 @{
     ViewBag.Title = "Список атрибутов";
@@ -20,20 +23,24 @@
         </th>
         <th></th>
     </tr>
-
-@foreach (var item in Model) {
+@{int i = 0;}
+@foreach (var item in Model)
+{
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.attr_key)
         </td>
         <td>
-            <img src="@Html.Raw(item.picture)" alt="" />
+            @{ 
+                <img src="@ViewBag.pics[i]" alt="" />
+            }
         </td>
         <td>
             @Html.ActionLink("Редактировать", "EditAttribute", new { id = item.id }) |
-            @Html.ActionLink("Удалить", "DeleteAttribute", new { id=item.id })
+            @Html.ActionLink("Удалить", "DeleteAttribute", new { id = item.id })
         </td>
     </tr>
+    { i++; }
 }
 
 </table>

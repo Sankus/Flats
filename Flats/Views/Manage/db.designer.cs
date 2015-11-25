@@ -33,18 +33,12 @@ namespace Flats.Views.Manage
     partial void InsertSettings(Settings instance);
     partial void UpdateSettings(Settings instance);
     partial void DeleteSettings(Settings instance);
-    partial void InsertAttributes(Attributes instance);
-    partial void UpdateAttributes(Attributes instance);
-    partial void DeleteAttributes(Attributes instance);
     partial void Insertlanguages(languages instance);
     partial void Updatelanguages(languages instance);
     partial void Deletelanguages(languages instance);
     partial void InsertLiveConditions(LiveConditions instance);
     partial void UpdateLiveConditions(LiveConditions instance);
     partial void DeleteLiveConditions(LiveConditions instance);
-    partial void InsertObjects(Objects instance);
-    partial void UpdateObjects(Objects instance);
-    partial void DeleteObjects(Objects instance);
     partial void InsertObjects_Attributes(Objects_Attributes instance);
     partial void UpdateObjects_Attributes(Objects_Attributes instance);
     partial void DeleteObjects_Attributes(Objects_Attributes instance);
@@ -60,6 +54,15 @@ namespace Flats.Views.Manage
     partial void Insertreviews(reviews instance);
     partial void Updatereviews(reviews instance);
     partial void Deletereviews(reviews instance);
+    partial void InsertAttributes(Attributes instance);
+    partial void UpdateAttributes(Attributes instance);
+    partial void DeleteAttributes(Attributes instance);
+    partial void InsertObjects(Objects instance);
+    partial void UpdateObjects(Objects instance);
+    partial void DeleteObjects(Objects instance);
+    partial void InsertRegion(Region instance);
+    partial void UpdateRegion(Region instance);
+    partial void DeleteRegion(Region instance);
     #endregion
 		
 		public dbDataContext() : 
@@ -148,14 +151,6 @@ namespace Flats.Views.Manage
 			}
 		}
 		
-		public System.Data.Linq.Table<Attributes> Attributes
-		{
-			get
-			{
-				return this.GetTable<Attributes>();
-			}
-		}
-		
 		public System.Data.Linq.Table<languages> languages
 		{
 			get
@@ -169,14 +164,6 @@ namespace Flats.Views.Manage
 			get
 			{
 				return this.GetTable<LiveConditions>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Objects> Objects
-		{
-			get
-			{
-				return this.GetTable<Objects>();
 			}
 		}
 		
@@ -225,6 +212,30 @@ namespace Flats.Views.Manage
 			get
 			{
 				return this.GetTable<reviews>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Attributes> Attributes
+		{
+			get
+			{
+				return this.GetTable<Attributes>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Objects> Objects
+		{
+			get
+			{
+				return this.GetTable<Objects>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Region> Region
+		{
+			get
+			{
+				return this.GetTable<Region>();
 			}
 		}
 	}
@@ -879,116 +890,6 @@ namespace Flats.Views.Manage
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Attributes")]
-	public partial class Attributes : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _id;
-		
-		private string _attr_key;
-		
-		private string _picture;
-		
-    #region Определения метода расширяемости
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidChanging(int value);
-    partial void OnidChanged();
-    partial void Onattr_keyChanging(string value);
-    partial void Onattr_keyChanged();
-    partial void OnpictureChanging(string value);
-    partial void OnpictureChanged();
-    #endregion
-		
-		public Attributes()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int id
-		{
-			get
-			{
-				return this._id;
-			}
-			set
-			{
-				if ((this._id != value))
-				{
-					this.OnidChanging(value);
-					this.SendPropertyChanging();
-					this._id = value;
-					this.SendPropertyChanged("id");
-					this.OnidChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_attr_key", DbType="NVarChar(250)")]
-		public string attr_key
-		{
-			get
-			{
-				return this._attr_key;
-			}
-			set
-			{
-				if ((this._attr_key != value))
-				{
-					this.Onattr_keyChanging(value);
-					this.SendPropertyChanging();
-					this._attr_key = value;
-					this.SendPropertyChanged("attr_key");
-					this.Onattr_keyChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_picture", DbType="NVarChar(MAX)")]
-		public string picture
-		{
-			get
-			{
-				return this._picture;
-			}
-			set
-			{
-				if ((this._picture != value))
-				{
-					this.OnpictureChanging(value);
-					this.SendPropertyChanging();
-					this._picture = value;
-					this.SendPropertyChanged("picture");
-					this.OnpictureChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.languages")]
 	public partial class languages : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -1160,476 +1061,6 @@ namespace Flats.Views.Manage
 					this._lc_value = value;
 					this.SendPropertyChanged("lc_value");
 					this.Onlc_valueChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Objects")]
-	public partial class Objects : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _ID;
-		
-		private System.Nullable<int> _type;
-		
-		private string _header;
-		
-		private string _address;
-		
-		private System.Nullable<decimal> _price1;
-		
-		private System.Nullable<decimal> _price2;
-		
-		private System.Nullable<decimal> _price5;
-		
-		private System.Nullable<decimal> _price14;
-		
-		private System.Nullable<System.DateTime> _indate;
-		
-		private System.Nullable<System.DateTime> _outdate;
-		
-		private System.Nullable<decimal> _rate;
-		
-		private string _desc_body;
-		
-		private string _pic1large;
-		
-		private string _pic2large;
-		
-		private string _pic1;
-		
-		private string _pic2;
-		
-		private string _pic3;
-		
-		private string _pic4;
-		
-    #region Определения метода расширяемости
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIDChanging(int value);
-    partial void OnIDChanged();
-    partial void OntypeChanging(System.Nullable<int> value);
-    partial void OntypeChanged();
-    partial void OnheaderChanging(string value);
-    partial void OnheaderChanged();
-    partial void OnaddressChanging(string value);
-    partial void OnaddressChanged();
-    partial void Onprice1Changing(System.Nullable<decimal> value);
-    partial void Onprice1Changed();
-    partial void Onprice2Changing(System.Nullable<decimal> value);
-    partial void Onprice2Changed();
-    partial void Onprice5Changing(System.Nullable<decimal> value);
-    partial void Onprice5Changed();
-    partial void Onprice14Changing(System.Nullable<decimal> value);
-    partial void Onprice14Changed();
-    partial void OnindateChanging(System.Nullable<System.DateTime> value);
-    partial void OnindateChanged();
-    partial void OnoutdateChanging(System.Nullable<System.DateTime> value);
-    partial void OnoutdateChanged();
-    partial void OnrateChanging(System.Nullable<decimal> value);
-    partial void OnrateChanged();
-    partial void Ondesc_bodyChanging(string value);
-    partial void Ondesc_bodyChanged();
-    partial void Onpic1largeChanging(string value);
-    partial void Onpic1largeChanged();
-    partial void Onpic2largeChanging(string value);
-    partial void Onpic2largeChanged();
-    partial void Onpic1Changing(string value);
-    partial void Onpic1Changed();
-    partial void Onpic2Changing(string value);
-    partial void Onpic2Changed();
-    partial void Onpic3Changing(string value);
-    partial void Onpic3Changed();
-    partial void Onpic4Changing(string value);
-    partial void Onpic4Changed();
-    #endregion
-		
-		public Objects()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int ID
-		{
-			get
-			{
-				return this._ID;
-			}
-			set
-			{
-				if ((this._ID != value))
-				{
-					this.OnIDChanging(value);
-					this.SendPropertyChanging();
-					this._ID = value;
-					this.SendPropertyChanged("ID");
-					this.OnIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_type", DbType="Int")]
-		public System.Nullable<int> type
-		{
-			get
-			{
-				return this._type;
-			}
-			set
-			{
-				if ((this._type != value))
-				{
-					this.OntypeChanging(value);
-					this.SendPropertyChanging();
-					this._type = value;
-					this.SendPropertyChanged("type");
-					this.OntypeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_header", DbType="NVarChar(150)")]
-		public string header
-		{
-			get
-			{
-				return this._header;
-			}
-			set
-			{
-				if ((this._header != value))
-				{
-					this.OnheaderChanging(value);
-					this.SendPropertyChanging();
-					this._header = value;
-					this.SendPropertyChanged("header");
-					this.OnheaderChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_address", DbType="NVarChar(250)")]
-		public string address
-		{
-			get
-			{
-				return this._address;
-			}
-			set
-			{
-				if ((this._address != value))
-				{
-					this.OnaddressChanging(value);
-					this.SendPropertyChanging();
-					this._address = value;
-					this.SendPropertyChanged("address");
-					this.OnaddressChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_price1", DbType="Decimal(18,2)")]
-		public System.Nullable<decimal> price1
-		{
-			get
-			{
-				return this._price1;
-			}
-			set
-			{
-				if ((this._price1 != value))
-				{
-					this.Onprice1Changing(value);
-					this.SendPropertyChanging();
-					this._price1 = value;
-					this.SendPropertyChanged("price1");
-					this.Onprice1Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_price2", DbType="Decimal(18,2)")]
-		public System.Nullable<decimal> price2
-		{
-			get
-			{
-				return this._price2;
-			}
-			set
-			{
-				if ((this._price2 != value))
-				{
-					this.Onprice2Changing(value);
-					this.SendPropertyChanging();
-					this._price2 = value;
-					this.SendPropertyChanged("price2");
-					this.Onprice2Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_price5", DbType="Decimal(18,2)")]
-		public System.Nullable<decimal> price5
-		{
-			get
-			{
-				return this._price5;
-			}
-			set
-			{
-				if ((this._price5 != value))
-				{
-					this.Onprice5Changing(value);
-					this.SendPropertyChanging();
-					this._price5 = value;
-					this.SendPropertyChanged("price5");
-					this.Onprice5Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_price14", DbType="Decimal(18,2)")]
-		public System.Nullable<decimal> price14
-		{
-			get
-			{
-				return this._price14;
-			}
-			set
-			{
-				if ((this._price14 != value))
-				{
-					this.Onprice14Changing(value);
-					this.SendPropertyChanging();
-					this._price14 = value;
-					this.SendPropertyChanged("price14");
-					this.Onprice14Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_indate", DbType="Date")]
-		public System.Nullable<System.DateTime> indate
-		{
-			get
-			{
-				return this._indate;
-			}
-			set
-			{
-				if ((this._indate != value))
-				{
-					this.OnindateChanging(value);
-					this.SendPropertyChanging();
-					this._indate = value;
-					this.SendPropertyChanged("indate");
-					this.OnindateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_outdate", DbType="Date")]
-		public System.Nullable<System.DateTime> outdate
-		{
-			get
-			{
-				return this._outdate;
-			}
-			set
-			{
-				if ((this._outdate != value))
-				{
-					this.OnoutdateChanging(value);
-					this.SendPropertyChanging();
-					this._outdate = value;
-					this.SendPropertyChanged("outdate");
-					this.OnoutdateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_rate", DbType="Decimal(18,1)")]
-		public System.Nullable<decimal> rate
-		{
-			get
-			{
-				return this._rate;
-			}
-			set
-			{
-				if ((this._rate != value))
-				{
-					this.OnrateChanging(value);
-					this.SendPropertyChanging();
-					this._rate = value;
-					this.SendPropertyChanged("rate");
-					this.OnrateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_desc_body", DbType="NVarChar(MAX)")]
-		public string desc_body
-		{
-			get
-			{
-				return this._desc_body;
-			}
-			set
-			{
-				if ((this._desc_body != value))
-				{
-					this.Ondesc_bodyChanging(value);
-					this.SendPropertyChanging();
-					this._desc_body = value;
-					this.SendPropertyChanged("desc_body");
-					this.Ondesc_bodyChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pic1large", DbType="NVarChar(MAX)")]
-		public string pic1large
-		{
-			get
-			{
-				return this._pic1large;
-			}
-			set
-			{
-				if ((this._pic1large != value))
-				{
-					this.Onpic1largeChanging(value);
-					this.SendPropertyChanging();
-					this._pic1large = value;
-					this.SendPropertyChanged("pic1large");
-					this.Onpic1largeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pic2large", DbType="NVarChar(MAX)")]
-		public string pic2large
-		{
-			get
-			{
-				return this._pic2large;
-			}
-			set
-			{
-				if ((this._pic2large != value))
-				{
-					this.Onpic2largeChanging(value);
-					this.SendPropertyChanging();
-					this._pic2large = value;
-					this.SendPropertyChanged("pic2large");
-					this.Onpic2largeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pic1", DbType="NVarChar(MAX)")]
-		public string pic1
-		{
-			get
-			{
-				return this._pic1;
-			}
-			set
-			{
-				if ((this._pic1 != value))
-				{
-					this.Onpic1Changing(value);
-					this.SendPropertyChanging();
-					this._pic1 = value;
-					this.SendPropertyChanged("pic1");
-					this.Onpic1Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pic2", DbType="NVarChar(MAX)")]
-		public string pic2
-		{
-			get
-			{
-				return this._pic2;
-			}
-			set
-			{
-				if ((this._pic2 != value))
-				{
-					this.Onpic2Changing(value);
-					this.SendPropertyChanging();
-					this._pic2 = value;
-					this.SendPropertyChanged("pic2");
-					this.Onpic2Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pic3", DbType="NVarChar(MAX)")]
-		public string pic3
-		{
-			get
-			{
-				return this._pic3;
-			}
-			set
-			{
-				if ((this._pic3 != value))
-				{
-					this.Onpic3Changing(value);
-					this.SendPropertyChanging();
-					this._pic3 = value;
-					this.SendPropertyChanged("pic3");
-					this.Onpic3Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pic4", DbType="NVarChar(MAX)")]
-		public string pic4
-		{
-			get
-			{
-				return this._pic4;
-			}
-			set
-			{
-				if ((this._pic4 != value))
-				{
-					this.Onpic4Changing(value);
-					this.SendPropertyChanging();
-					this._pic4 = value;
-					this.SendPropertyChanged("pic4");
-					this.Onpic4Changed();
 				}
 			}
 		}
@@ -2387,6 +1818,696 @@ namespace Flats.Views.Manage
 					this._body = value;
 					this.SendPropertyChanged("body");
 					this.OnbodyChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Attributes")]
+	public partial class Attributes : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id;
+		
+		private string _attr_key;
+		
+		private System.Data.Linq.Binary _picture;
+		
+    #region Определения метода расширяемости
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void Onattr_keyChanging(string value);
+    partial void Onattr_keyChanged();
+    partial void OnpictureChanging(System.Data.Linq.Binary value);
+    partial void OnpictureChanged();
+    #endregion
+		
+		public Attributes()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_attr_key", DbType="NVarChar(250)")]
+		public string attr_key
+		{
+			get
+			{
+				return this._attr_key;
+			}
+			set
+			{
+				if ((this._attr_key != value))
+				{
+					this.Onattr_keyChanging(value);
+					this.SendPropertyChanging();
+					this._attr_key = value;
+					this.SendPropertyChanged("attr_key");
+					this.Onattr_keyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_picture", DbType="Image", UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary picture
+		{
+			get
+			{
+				return this._picture;
+			}
+			set
+			{
+				if ((this._picture != value))
+				{
+					this.OnpictureChanging(value);
+					this.SendPropertyChanging();
+					this._picture = value;
+					this.SendPropertyChanged("picture");
+					this.OnpictureChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Objects")]
+	public partial class Objects : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private System.Nullable<int> _type;
+		
+		private System.Nullable<int> _region_id;
+		
+		private string _header;
+		
+		private string _address;
+		
+		private System.Nullable<int> _rooms_count;
+		
+		private System.Nullable<int> _guests_count;
+		
+		private System.Nullable<decimal> _price1;
+		
+		private System.Nullable<decimal> _price2;
+		
+		private System.Nullable<decimal> _price5;
+		
+		private System.Nullable<decimal> _price14;
+		
+		private System.Nullable<decimal> _rate;
+		
+		private string _desc_body;
+		
+		private string _pic1large;
+		
+		private string _pic2large;
+		
+		private string _pic1;
+		
+		private string _pic2;
+		
+		private string _pic3;
+		
+		private string _pic4;
+		
+    #region Определения метода расширяемости
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OntypeChanging(System.Nullable<int> value);
+    partial void OntypeChanged();
+    partial void Onregion_idChanging(System.Nullable<int> value);
+    partial void Onregion_idChanged();
+    partial void OnheaderChanging(string value);
+    partial void OnheaderChanged();
+    partial void OnaddressChanging(string value);
+    partial void OnaddressChanged();
+    partial void Onrooms_countChanging(System.Nullable<int> value);
+    partial void Onrooms_countChanged();
+    partial void Onguests_countChanging(System.Nullable<int> value);
+    partial void Onguests_countChanged();
+    partial void Onprice1Changing(System.Nullable<decimal> value);
+    partial void Onprice1Changed();
+    partial void Onprice2Changing(System.Nullable<decimal> value);
+    partial void Onprice2Changed();
+    partial void Onprice5Changing(System.Nullable<decimal> value);
+    partial void Onprice5Changed();
+    partial void Onprice14Changing(System.Nullable<decimal> value);
+    partial void Onprice14Changed();
+    partial void OnrateChanging(System.Nullable<decimal> value);
+    partial void OnrateChanged();
+    partial void Ondesc_bodyChanging(string value);
+    partial void Ondesc_bodyChanged();
+    partial void Onpic1largeChanging(string value);
+    partial void Onpic1largeChanged();
+    partial void Onpic2largeChanging(string value);
+    partial void Onpic2largeChanged();
+    partial void Onpic1Changing(string value);
+    partial void Onpic1Changed();
+    partial void Onpic2Changing(string value);
+    partial void Onpic2Changed();
+    partial void Onpic3Changing(string value);
+    partial void Onpic3Changed();
+    partial void Onpic4Changing(string value);
+    partial void Onpic4Changed();
+    #endregion
+		
+		public Objects()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_type", DbType="Int")]
+		public System.Nullable<int> type
+		{
+			get
+			{
+				return this._type;
+			}
+			set
+			{
+				if ((this._type != value))
+				{
+					this.OntypeChanging(value);
+					this.SendPropertyChanging();
+					this._type = value;
+					this.SendPropertyChanged("type");
+					this.OntypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_region_id", DbType="Int")]
+		public System.Nullable<int> region_id
+		{
+			get
+			{
+				return this._region_id;
+			}
+			set
+			{
+				if ((this._region_id != value))
+				{
+					this.Onregion_idChanging(value);
+					this.SendPropertyChanging();
+					this._region_id = value;
+					this.SendPropertyChanged("region_id");
+					this.Onregion_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_header", DbType="NVarChar(150)")]
+		public string header
+		{
+			get
+			{
+				return this._header;
+			}
+			set
+			{
+				if ((this._header != value))
+				{
+					this.OnheaderChanging(value);
+					this.SendPropertyChanging();
+					this._header = value;
+					this.SendPropertyChanged("header");
+					this.OnheaderChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_address", DbType="NVarChar(250)")]
+		public string address
+		{
+			get
+			{
+				return this._address;
+			}
+			set
+			{
+				if ((this._address != value))
+				{
+					this.OnaddressChanging(value);
+					this.SendPropertyChanging();
+					this._address = value;
+					this.SendPropertyChanged("address");
+					this.OnaddressChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_rooms_count", DbType="Int")]
+		public System.Nullable<int> rooms_count
+		{
+			get
+			{
+				return this._rooms_count;
+			}
+			set
+			{
+				if ((this._rooms_count != value))
+				{
+					this.Onrooms_countChanging(value);
+					this.SendPropertyChanging();
+					this._rooms_count = value;
+					this.SendPropertyChanged("rooms_count");
+					this.Onrooms_countChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_guests_count", DbType="Int")]
+		public System.Nullable<int> guests_count
+		{
+			get
+			{
+				return this._guests_count;
+			}
+			set
+			{
+				if ((this._guests_count != value))
+				{
+					this.Onguests_countChanging(value);
+					this.SendPropertyChanging();
+					this._guests_count = value;
+					this.SendPropertyChanged("guests_count");
+					this.Onguests_countChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_price1", DbType="Decimal(18,2)")]
+		public System.Nullable<decimal> price1
+		{
+			get
+			{
+				return this._price1;
+			}
+			set
+			{
+				if ((this._price1 != value))
+				{
+					this.Onprice1Changing(value);
+					this.SendPropertyChanging();
+					this._price1 = value;
+					this.SendPropertyChanged("price1");
+					this.Onprice1Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_price2", DbType="Decimal(18,2)")]
+		public System.Nullable<decimal> price2
+		{
+			get
+			{
+				return this._price2;
+			}
+			set
+			{
+				if ((this._price2 != value))
+				{
+					this.Onprice2Changing(value);
+					this.SendPropertyChanging();
+					this._price2 = value;
+					this.SendPropertyChanged("price2");
+					this.Onprice2Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_price5", DbType="Decimal(18,2)")]
+		public System.Nullable<decimal> price5
+		{
+			get
+			{
+				return this._price5;
+			}
+			set
+			{
+				if ((this._price5 != value))
+				{
+					this.Onprice5Changing(value);
+					this.SendPropertyChanging();
+					this._price5 = value;
+					this.SendPropertyChanged("price5");
+					this.Onprice5Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_price14", DbType="Decimal(18,2)")]
+		public System.Nullable<decimal> price14
+		{
+			get
+			{
+				return this._price14;
+			}
+			set
+			{
+				if ((this._price14 != value))
+				{
+					this.Onprice14Changing(value);
+					this.SendPropertyChanging();
+					this._price14 = value;
+					this.SendPropertyChanged("price14");
+					this.Onprice14Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_rate", DbType="Decimal(18,1)")]
+		public System.Nullable<decimal> rate
+		{
+			get
+			{
+				return this._rate;
+			}
+			set
+			{
+				if ((this._rate != value))
+				{
+					this.OnrateChanging(value);
+					this.SendPropertyChanging();
+					this._rate = value;
+					this.SendPropertyChanged("rate");
+					this.OnrateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_desc_body", DbType="NVarChar(MAX)")]
+		public string desc_body
+		{
+			get
+			{
+				return this._desc_body;
+			}
+			set
+			{
+				if ((this._desc_body != value))
+				{
+					this.Ondesc_bodyChanging(value);
+					this.SendPropertyChanging();
+					this._desc_body = value;
+					this.SendPropertyChanged("desc_body");
+					this.Ondesc_bodyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pic1large", DbType="NVarChar(MAX)")]
+		public string pic1large
+		{
+			get
+			{
+				return this._pic1large;
+			}
+			set
+			{
+				if ((this._pic1large != value))
+				{
+					this.Onpic1largeChanging(value);
+					this.SendPropertyChanging();
+					this._pic1large = value;
+					this.SendPropertyChanged("pic1large");
+					this.Onpic1largeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pic2large", DbType="NVarChar(MAX)")]
+		public string pic2large
+		{
+			get
+			{
+				return this._pic2large;
+			}
+			set
+			{
+				if ((this._pic2large != value))
+				{
+					this.Onpic2largeChanging(value);
+					this.SendPropertyChanging();
+					this._pic2large = value;
+					this.SendPropertyChanged("pic2large");
+					this.Onpic2largeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pic1", DbType="NVarChar(MAX)")]
+		public string pic1
+		{
+			get
+			{
+				return this._pic1;
+			}
+			set
+			{
+				if ((this._pic1 != value))
+				{
+					this.Onpic1Changing(value);
+					this.SendPropertyChanging();
+					this._pic1 = value;
+					this.SendPropertyChanged("pic1");
+					this.Onpic1Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pic2", DbType="NVarChar(MAX)")]
+		public string pic2
+		{
+			get
+			{
+				return this._pic2;
+			}
+			set
+			{
+				if ((this._pic2 != value))
+				{
+					this.Onpic2Changing(value);
+					this.SendPropertyChanging();
+					this._pic2 = value;
+					this.SendPropertyChanged("pic2");
+					this.Onpic2Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pic3", DbType="NVarChar(MAX)")]
+		public string pic3
+		{
+			get
+			{
+				return this._pic3;
+			}
+			set
+			{
+				if ((this._pic3 != value))
+				{
+					this.Onpic3Changing(value);
+					this.SendPropertyChanging();
+					this._pic3 = value;
+					this.SendPropertyChanged("pic3");
+					this.Onpic3Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pic4", DbType="NVarChar(MAX)")]
+		public string pic4
+		{
+			get
+			{
+				return this._pic4;
+			}
+			set
+			{
+				if ((this._pic4 != value))
+				{
+					this.Onpic4Changing(value);
+					this.SendPropertyChanging();
+					this._pic4 = value;
+					this.SendPropertyChanged("pic4");
+					this.Onpic4Changed();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Region")]
+	public partial class Region : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private string _Naim;
+		
+    #region Определения метода расширяемости
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnNaimChanging(string value);
+    partial void OnNaimChanged();
+    #endregion
+		
+		public Region()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Naim", DbType="NVarChar(150)")]
+		public string Naim
+		{
+			get
+			{
+				return this._Naim;
+			}
+			set
+			{
+				if ((this._Naim != value))
+				{
+					this.OnNaimChanging(value);
+					this.SendPropertyChanging();
+					this._Naim = value;
+					this.SendPropertyChanged("Naim");
+					this.OnNaimChanged();
 				}
 			}
 		}

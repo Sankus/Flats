@@ -58,13 +58,6 @@
       <Column Name="UserName" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
-  <Table Name="dbo.Attributes" Member="Attributes">
-    <Type Name="Attributes">
-      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="attr_key" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
-      <Column Name="picture" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.languages" Member="languages">
     <Type Name="languages">
       <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -76,28 +69,6 @@
       <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="lc_key" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="lc_value" Type="System.String" DbType="NVarChar(350)" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Objects" Member="Objects">
-    <Type Name="Objects">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="type" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="header" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
-      <Column Name="address" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
-      <Column Name="price1" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
-      <Column Name="price2" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
-      <Column Name="price5" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
-      <Column Name="price14" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
-      <Column Name="indate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="outdate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="rate" Type="System.Decimal" DbType="Decimal(18,1)" CanBeNull="true" />
-      <Column Name="desc_body" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="pic1large" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="pic2large" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="pic1" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="pic2" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="pic3" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="pic4" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.Objects_Attributes" Member="Objects_Attributes">
@@ -146,6 +117,42 @@
       <Column Name="object_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="header" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
       <Column Name="body" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Attributes" Member="Attributes">
+    <Type Name="Attributes">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="attr_key" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="picture" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Objects" Member="Objects">
+    <Type Name="Objects">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="type" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="region_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="header" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="address" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="rooms_count" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="guests_count" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="price1" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="price2" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="price5" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="price14" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="rate" Type="System.Decimal" DbType="Decimal(18,1)" CanBeNull="true" />
+      <Column Name="desc_body" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="pic1large" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="pic2large" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="pic1" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="pic2" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="pic3" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="pic4" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Region" Member="Region">
+    <Type Name="Region">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Naim" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
     </Type>
   </Table>
 </Database>

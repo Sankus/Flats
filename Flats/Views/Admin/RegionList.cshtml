@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Flats.Views.Manage.Region>
+
+@{
+    ViewBag.Title = "Список регионов";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    @Html.ActionLink("Create New", "CreateRegion")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Naim)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Naim)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "EditRegion", new { id = item.ID }) |
+            @Html.ActionLink("Delete", "DeleteRegion", new { id = item.ID })
+        </td>
+    </tr>
+}
+</table>

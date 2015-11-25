@@ -162,6 +162,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\HelpFunctions.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PagesController.cs" />
@@ -460,6 +461,10 @@
     <Content Include="Views\Home\Econom.cshtml" />
     <Content Include="Views\Home\ReViews.cshtml" />
     <Content Include="Views\Home\Contacts.cshtml" />
+    <Content Include="Views\Admin\EditAttribute.cshtml" />
+    <Content Include="Views\Admin\RegionList.cshtml" />
+    <Content Include="Views\Admin\CreateRegion.cshtml" />
+    <Content Include="Views\Admin\EditRegion.cshtml" />
     <None Include="Views\Manage\db.dbml.layout">
       <DependentUpon>db.dbml</DependentUpon>
     </None>
