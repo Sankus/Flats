@@ -22,6 +22,9 @@ namespace Flats.Controllers
 
             List<Pages> pages_list = db.Pages.Select(c => c).OrderBy(c => c.Naim).ToList<Pages>();
             ViewBag.pages_list = pages_list;
+
+            List<Region> list_region = db.Region.Select(c => c).OrderBy(c => c.Naim).ToList<Region>();
+            ViewBag.regions = list_region;
         }
         // GET: Pages
         public ActionResult Index(string id="")
