@@ -109,8 +109,10 @@ p.phone_1,p.phone_2 {
 .inneer-content {
     width: 80%;
     float: right;
-        position: fixed;
+    position: fixed;
     right: 0;
+    overflow:scroll;
+        height: 100%;
 }
 .navbar-collapse.collapse {
     margin-left: 20%;
@@ -137,4 +139,16 @@ ul.nav.navbar-nav>li {
     margin-right: 46px;
     font-size: 17px;
         font-family: "Roboto Light";
+}
+
+.page_content {
+    margin: 78px 10px 0 10px;
+    
+   
+}
+.fixed_slider {
+   
+}
+footer {
+    display: none;
 }
