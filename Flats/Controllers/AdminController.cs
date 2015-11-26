@@ -385,5 +385,24 @@ namespace Flats.Controllers
             db.SubmitChanges();
             return RedirectToAction("RegionList");
         }
+
+        public ActionResult ObjectsList() 
+        {
+            dbDataContext db = new dbDataContext();
+            List<Objects> lst = db.Objects.Select(c => c).OrderBy(c => c.header).ToList();
+
+            return View(lst);
+        }
+        [HttpGet]
+        public ActionResult CreateObjects()
+        {
+            return View();
+        }
+
+        public ActionResult EditObjects(int id)
+        {
+            return View();
+        }
+
     }
 }
