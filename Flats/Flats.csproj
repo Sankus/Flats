@@ -465,6 +465,7 @@
     <Content Include="Views\Admin\RegionList.cshtml" />
     <Content Include="Views\Admin\CreateRegion.cshtml" />
     <Content Include="Views\Admin\EditRegion.cshtml" />
+    <Content Include="Views\Admin\ObjectsList.cshtml" />
     <None Include="Views\Manage\db.dbml.layout">
       <DependentUpon>db.dbml</DependentUpon>
     </None>

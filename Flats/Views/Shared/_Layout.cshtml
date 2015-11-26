@@ -65,16 +65,14 @@
                 <div class="searchbox">
                     <form id="search_form" method="post">
                         @{
-                            List<SelectListItem> list = new List<SelectListItem>();
-                            if (list != null)
-                            {
+                           
                                 foreach (var region in ViewBag.regions)
                                 {
-                                    list.Add(new SelectListItem() { Text = region.Naim, Value = region.ID.ToString() });//Заполняем его
+                                    <li>@region.Naim</li>
                                 }
-                            }
+                            
                         }
-                        @Html.DropDownList("Regions", list, new { placeholder = "Регион" })
+                      
 
                        
                     </form>

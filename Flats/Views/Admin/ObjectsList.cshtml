@@ -1,0 +1,67 @@
+﻿@model IEnumerable<Flats.Views.Manage.Objects>
+
+@{
+    ViewBag.Title = "Список объектов";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>
+    Список объектов
+</h2>
+
+<p>
+    @Html.ActionLink("Создать объект", "CreateObject")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Тип объекта
+        </th>
+        <th>
+            Район
+        </th>
+        <th>
+            Заголовок
+        </th>
+        <th>
+            Адрес
+        </th>
+        <th>
+            Кол-во комнат
+        </th>
+        <th>
+            Кол-во спальных мест
+        </th>
+
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.type)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.region_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.header)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.rooms_count)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.guests_count)
+        </td>
+
+        <td>
+            @Html.ActionLink("Редактировать", "EditObject", new { id=item.ID }) |
+            @Html.ActionLink("Удалить", "DeleteObject", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>
