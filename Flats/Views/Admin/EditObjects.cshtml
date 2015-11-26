@@ -4,5 +4,59 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>EditObjects</h2>
+<h2>Редактировать объект</h2>
+<ul class="tabs">
+    <li><a href="#">Общие</a></li>
+    <li><a href="#">Жизненные условия</a></li>
+    <li><a href="#">Атрибуты</a></li>
+    <li><a href="#">Медиа</a></li>
+</ul>
+
+<!-- tab "panes" -->
+<div class="panes">
+    <div>
+        <h2>Общие</h2>
+        <p>
+            Содержимое первой вкладки.
+        </p>
+
+    </div>
+
+    <div class="les">
+        <h2>Жизненные условия</h2>
+        <p>
+            Содержимое второй вкладки.
+        </p>
+
+    </div>
+    <div class="les">
+        <h2>Атрибуты</h2>
+        <p>
+            Содержимое третьей вкладки.
+        </p>
+
+    </div>
+
+    <div class="les">
+        <h2>Медиа</h2>
+        <p>
+        <p>
+            Содержимое четвертой вкладки.
+        </p>
+
+    </div>
+
+
+</div>
+
+
+<script>
+
+
+
+$(function() {
+
+	$("ul.tabs").tabs("div.panes > div");
+});
+</script>
 
