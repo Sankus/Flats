@@ -10,7 +10,7 @@
 </h2>
 
 <p>
-    @Html.ActionLink("Создать объект", "CreateObject")
+    @Html.ActionLink("Создать объект", "CreateObjects")
 </p>
 <table class="table">
     <tr>
@@ -58,8 +58,8 @@
         </td>
 
         <td>
-            @Html.ActionLink("Редактировать", "EditObject", new { id=item.ID }) |
-            @Html.ActionLink("Удалить", "DeleteObject", new { id=item.ID })
+            @Html.ActionLink("Редактировать", "EditObjects", new { id=item.ID }) |
+            @Html.ActionLink("Удалить", "DeleteObjects", new { id=item.ID })
         </td>
     </tr>
 }

@@ -399,5 +399,10 @@ namespace Flats.Controllers
             return View();
         }
 
+        public ActionResult EditObjects(int id)
+        {
+            return View();
+        }
+
     }
 }
