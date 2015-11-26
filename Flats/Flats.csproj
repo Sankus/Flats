@@ -205,6 +205,7 @@
     <Content Include="img\pagination.png" />
     <Content Include="img\slider-img_1.jpg" />
     <Content Include="img\slider-img_2.jpg" />
+    <Content Include="Scripts\form-scripts.js" />
     <Content Include="Scripts\jquery-1.4.1.min.js" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="img\admin-back.jpg" />
@@ -227,6 +228,7 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\slider.js" />
     <Content Include="Scripts\tinymce\form-script.js" />
+    <Content Include="Scripts\tinymce\form-scripts.js" />
     <Content Include="Scripts\tinymce\license.txt" />
     <Content Include="Scripts\tinymce\plugins\advlist\plugin.js" />
     <Content Include="Scripts\tinymce\plugins\advlist\plugin.min.js" />
