@@ -51,31 +51,44 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
 
-                   
-                        <li><a class="hide-show" href="#">Поиск<img src="/../img/loop.png" width="25"></a></li>
-                        <li>@Html.ActionLink("Премиум", "Premium", "Home")</li>
-                        <li>@Html.ActionLink("Стандарт", "Standart", "Home")</li>
-                        <li>@Html.ActionLink("Эконом", "Econom", "Home")</li>
-                        <li>@Html.ActionLink("Отзывы", "ReViews", "Home")</li>
-                        <li>@Html.ActionLink("Контакты", "Contacts", "Home")</li>
-</ul>
+
+                    <li><a class="hide-show" href="#">Поиск<img src="/../img/loop.png" width="25"></a></li>
+                    <li>@Html.ActionLink("Премиум", "Premium", "Home")</li>
+                    <li>@Html.ActionLink("Стандарт", "Standart", "Home")</li>
+                    <li>@Html.ActionLink("Эконом", "Econom", "Home")</li>
+                    <li>@Html.ActionLink("Отзывы", "ReViews", "Home")</li>
+                    <li>@Html.ActionLink("Контакты", "Contacts", "Home")</li>
+                </ul>
 
 
-                
+
                 <div class="searchbox">
-                    <form id="search_form" method="post">
-                        @{
-                           
-                                foreach (var region in ViewBag.regions)
-                                {
-                                    <li>@region.Naim</li>
-                                }
-                            
-                        }
-                      
 
-                       
-                    </form>
+
+
+
+                    <div class="select">
+                        <a href="#" class="slct">Регион</a>
+                        <ul class="drop">
+
+                            <form id="search_form" method="post" class="customForm">
+                                @{
+
+                                    foreach (var region in ViewBag.regions)
+                                    {
+                                        <li>@region.Naim</li>
+                                    }
+
+                                }
+
+
+
+                            </form>
+                        </ul>
+                        <input type="hidden" id="select" />
+                    </div>
+
+
                 </div>
             </div>
 
@@ -107,8 +120,10 @@
     
     @Scripts.Render("~/bundles/bootstrap")
     
-    <script src="~/Scripts/form-script.js"></script>
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="~/Scripts/form-scripts.js"></script>
+   
+    
     <script src="~/Scripts/jquery.slides.min.js"></script>
     <script>
         $(function () {
