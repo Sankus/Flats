@@ -57,12 +57,15 @@ namespace Flats.Views.Manage
     partial void InsertAttributes(Attributes instance);
     partial void UpdateAttributes(Attributes instance);
     partial void DeleteAttributes(Attributes instance);
-    partial void InsertObjects(Objects instance);
-    partial void UpdateObjects(Objects instance);
-    partial void DeleteObjects(Objects instance);
     partial void InsertRegion(Region instance);
     partial void UpdateRegion(Region instance);
     partial void DeleteRegion(Region instance);
+    partial void InsertObjects(Objects instance);
+    partial void UpdateObjects(Objects instance);
+    partial void DeleteObjects(Objects instance);
+    partial void InsertObjects_LiveConditions(Objects_LiveConditions instance);
+    partial void UpdateObjects_LiveConditions(Objects_LiveConditions instance);
+    partial void DeleteObjects_LiveConditions(Objects_LiveConditions instance);
     #endregion
 		
 		public dbDataContext() : 
@@ -175,14 +178,6 @@ namespace Flats.Views.Manage
 			}
 		}
 		
-		public System.Data.Linq.Table<Objects_LiveConditions> Objects_LiveConditions
-		{
-			get
-			{
-				return this.GetTable<Objects_LiveConditions>();
-			}
-		}
-		
 		public System.Data.Linq.Table<Pages> Pages
 		{
 			get
@@ -223,6 +218,14 @@ namespace Flats.Views.Manage
 			}
 		}
 		
+		public System.Data.Linq.Table<Region> Region
+		{
+			get
+			{
+				return this.GetTable<Region>();
+			}
+		}
+		
 		public System.Data.Linq.Table<Objects> Objects
 		{
 			get
@@ -231,11 +234,11 @@ namespace Flats.Views.Manage
 			}
 		}
 		
-		public System.Data.Linq.Table<Region> Region
+		public System.Data.Linq.Table<Objects_LiveConditions> Objects_LiveConditions
 		{
 			get
 			{
-				return this.GetTable<Region>();
+				return this.GetTable<Objects_LiveConditions>();
 			}
 		}
 	}
@@ -1098,6 +1101,8 @@ namespace Flats.Views.Manage
 		
 		private int _attribute_id;
 		
+		private EntityRef<Attributes> _Attributes;
+		
     #region Определения метода расширяемости
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -1112,6 +1117,7 @@ namespace Flats.Views.Manage
 		
 		public Objects_Attributes()
 		{
+			this._Attributes = default(EntityRef<Attributes>);
 			OnCreated();
 		}
 		
@@ -1166,11 +1172,49 @@ namespace Flats.Views.Manage
 			{
 				if ((this._attribute_id != value))
 				{
+					if (this._Attributes.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.Onattribute_idChanging(value);
 					this.SendPropertyChanging();
 					this._attribute_id = value;
 					this.SendPropertyChanged("attribute_id");
 					this.Onattribute_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Attributes_Objects_Attributes", Storage="_Attributes", ThisKey="attribute_id", OtherKey="id", IsForeignKey=true)]
+		public Attributes Attributes
+		{
+			get
+			{
+				return this._Attributes.Entity;
+			}
+			set
+			{
+				Attributes previousValue = this._Attributes.Entity;
+				if (((previousValue != value) 
+							|| (this._Attributes.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Attributes.Entity = null;
+						previousValue.Objects_Attributes.Remove(this);
+					}
+					this._Attributes.Entity = value;
+					if ((value != null))
+					{
+						value.Objects_Attributes.Add(this);
+						this._attribute_id = value.id;
+					}
+					else
+					{
+						this._attribute_id = default(int);
+					}
+					this.SendPropertyChanged("Attributes");
 				}
 			}
 		}
@@ -1192,69 +1236,6 @@ namespace Flats.Views.Manage
 			if ((this.PropertyChanged != null))
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Objects_LiveConditions")]
-	public partial class Objects_LiveConditions
-	{
-		
-		private int _id;
-		
-		private int _object_id;
-		
-		private int _lc_id;
-		
-		public Objects_LiveConditions()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.Always, DbType="Int NOT NULL IDENTITY", IsDbGenerated=true)]
-		public int id
-		{
-			get
-			{
-				return this._id;
-			}
-			set
-			{
-				if ((this._id != value))
-				{
-					this._id = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_object_id", DbType="Int NOT NULL")]
-		public int object_id
-		{
-			get
-			{
-				return this._object_id;
-			}
-			set
-			{
-				if ((this._object_id != value))
-				{
-					this._object_id = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_lc_id", DbType="Int NOT NULL")]
-		public int lc_id
-		{
-			get
-			{
-				return this._lc_id;
-			}
-			set
-			{
-				if ((this._lc_id != value))
-				{
-					this._lc_id = value;
-				}
 			}
 		}
 	}
@@ -1855,6 +1836,8 @@ namespace Flats.Views.Manage
 		
 		private System.Data.Linq.Binary _picture;
 		
+		private EntitySet<Objects_Attributes> _Objects_Attributes;
+		
     #region Определения метода расширяемости
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -1869,6 +1852,7 @@ namespace Flats.Views.Manage
 		
 		public Attributes()
 		{
+			this._Objects_Attributes = new EntitySet<Objects_Attributes>(new Action<Objects_Attributes>(this.attach_Objects_Attributes), new Action<Objects_Attributes>(this.detach_Objects_Attributes));
 			OnCreated();
 		}
 		
@@ -1932,6 +1916,19 @@ namespace Flats.Views.Manage
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Attributes_Objects_Attributes", Storage="_Objects_Attributes", ThisKey="id", OtherKey="attribute_id")]
+		public EntitySet<Objects_Attributes> Objects_Attributes
+		{
+			get
+			{
+				return this._Objects_Attributes;
+			}
+			set
+			{
+				this._Objects_Attributes.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -1951,6 +1948,132 @@ namespace Flats.Views.Manage
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
+		
+		private void attach_Objects_Attributes(Objects_Attributes entity)
+		{
+			this.SendPropertyChanging();
+			entity.Attributes = this;
+		}
+		
+		private void detach_Objects_Attributes(Objects_Attributes entity)
+		{
+			this.SendPropertyChanging();
+			entity.Attributes = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Region")]
+	public partial class Region : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private string _Naim;
+		
+		private EntitySet<Objects> _Objects;
+		
+    #region Определения метода расширяемости
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnNaimChanging(string value);
+    partial void OnNaimChanged();
+    #endregion
+		
+		public Region()
+		{
+			this._Objects = new EntitySet<Objects>(new Action<Objects>(this.attach_Objects), new Action<Objects>(this.detach_Objects));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Naim", DbType="NVarChar(150)")]
+		public string Naim
+		{
+			get
+			{
+				return this._Naim;
+			}
+			set
+			{
+				if ((this._Naim != value))
+				{
+					this.OnNaimChanging(value);
+					this.SendPropertyChanging();
+					this._Naim = value;
+					this.SendPropertyChanged("Naim");
+					this.OnNaimChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Region_Objects", Storage="_Objects", ThisKey="ID", OtherKey="region_id")]
+		public EntitySet<Objects> Objects
+		{
+			get
+			{
+				return this._Objects;
+			}
+			set
+			{
+				this._Objects.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Objects(Objects entity)
+		{
+			this.SendPropertyChanging();
+			entity.Region = this;
+		}
+		
+		private void detach_Objects(Objects entity)
+		{
+			this.SendPropertyChanging();
+			entity.Region = null;
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Objects")]
@@ -1963,7 +2086,7 @@ namespace Flats.Views.Manage
 		
 		private System.Nullable<int> _type;
 		
-		private System.Nullable<int> _region_id;
+		private int _region_id;
 		
 		private string _header;
 		
@@ -1985,17 +2108,19 @@ namespace Flats.Views.Manage
 		
 		private string _desc_body;
 		
-		private string _pic1large;
+		private System.Data.Linq.Binary _pic1large;
 		
-		private string _pic2large;
+		private System.Data.Linq.Binary _pic2large;
 		
-		private string _pic1;
+		private System.Data.Linq.Binary _pic1;
 		
-		private string _pic2;
+		private System.Data.Linq.Binary _pic2;
 		
-		private string _pic3;
+		private System.Data.Linq.Binary _pic3;
 		
-		private string _pic4;
+		private System.Data.Linq.Binary _pic4;
+		
+		private EntityRef<Region> _Region;
 		
     #region Определения метода расширяемости
     partial void OnLoaded();
@@ -2005,7 +2130,7 @@ namespace Flats.Views.Manage
     partial void OnIDChanged();
     partial void OntypeChanging(System.Nullable<int> value);
     partial void OntypeChanged();
-    partial void Onregion_idChanging(System.Nullable<int> value);
+    partial void Onregion_idChanging(int value);
     partial void Onregion_idChanged();
     partial void OnheaderChanging(string value);
     partial void OnheaderChanged();
@@ -2027,22 +2152,23 @@ namespace Flats.Views.Manage
     partial void OnrateChanged();
     partial void Ondesc_bodyChanging(string value);
     partial void Ondesc_bodyChanged();
-    partial void Onpic1largeChanging(string value);
+    partial void Onpic1largeChanging(System.Data.Linq.Binary value);
     partial void Onpic1largeChanged();
-    partial void Onpic2largeChanging(string value);
+    partial void Onpic2largeChanging(System.Data.Linq.Binary value);
     partial void Onpic2largeChanged();
-    partial void Onpic1Changing(string value);
+    partial void Onpic1Changing(System.Data.Linq.Binary value);
     partial void Onpic1Changed();
-    partial void Onpic2Changing(string value);
+    partial void Onpic2Changing(System.Data.Linq.Binary value);
     partial void Onpic2Changed();
-    partial void Onpic3Changing(string value);
+    partial void Onpic3Changing(System.Data.Linq.Binary value);
     partial void Onpic3Changed();
-    partial void Onpic4Changing(string value);
+    partial void Onpic4Changing(System.Data.Linq.Binary value);
     partial void Onpic4Changed();
     #endregion
 		
 		public Objects()
 		{
+			this._Region = default(EntityRef<Region>);
 			OnCreated();
 		}
 		
@@ -2086,8 +2212,8 @@ namespace Flats.Views.Manage
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_region_id", DbType="Int")]
-		public System.Nullable<int> region_id
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_region_id", DbType="Int NOT NULL")]
+		public int region_id
 		{
 			get
 			{
@@ -2097,6 +2223,10 @@ namespace Flats.Views.Manage
 			{
 				if ((this._region_id != value))
 				{
+					if (this._Region.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.Onregion_idChanging(value);
 					this.SendPropertyChanging();
 					this._region_id = value;
@@ -2306,8 +2436,8 @@ namespace Flats.Views.Manage
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pic1large", DbType="NVarChar(MAX)")]
-		public string pic1large
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pic1large", DbType="Image", UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary pic1large
 		{
 			get
 			{
@@ -2326,8 +2456,8 @@ namespace Flats.Views.Manage
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pic2large", DbType="NVarChar(MAX)")]
-		public string pic2large
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pic2large", DbType="Image", UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary pic2large
 		{
 			get
 			{
@@ -2346,8 +2476,8 @@ namespace Flats.Views.Manage
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pic1", DbType="NVarChar(MAX)")]
-		public string pic1
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pic1", DbType="Image", UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary pic1
 		{
 			get
 			{
@@ -2366,8 +2496,8 @@ namespace Flats.Views.Manage
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pic2", DbType="NVarChar(MAX)")]
-		public string pic2
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pic2", DbType="Image", UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary pic2
 		{
 			get
 			{
@@ -2386,8 +2516,8 @@ namespace Flats.Views.Manage
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pic3", DbType="NVarChar(MAX)")]
-		public string pic3
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pic3", DbType="Image", UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary pic3
 		{
 			get
 			{
@@ -2406,8 +2536,8 @@ namespace Flats.Views.Manage
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pic4", DbType="NVarChar(MAX)")]
-		public string pic4
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pic4", DbType="Image", UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary pic4
 		{
 			get
 			{
@@ -2422,6 +2552,40 @@ namespace Flats.Views.Manage
 					this._pic4 = value;
 					this.SendPropertyChanged("pic4");
 					this.Onpic4Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Region_Objects", Storage="_Region", ThisKey="region_id", OtherKey="ID", IsForeignKey=true)]
+		public Region Region
+		{
+			get
+			{
+				return this._Region.Entity;
+			}
+			set
+			{
+				Region previousValue = this._Region.Entity;
+				if (((previousValue != value) 
+							|| (this._Region.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Region.Entity = null;
+						previousValue.Objects.Remove(this);
+					}
+					this._Region.Entity = value;
+					if ((value != null))
+					{
+						value.Objects.Add(this);
+						this._region_id = value.ID;
+					}
+					else
+					{
+						this._region_id = default(int);
+					}
+					this.SendPropertyChanged("Region");
 				}
 			}
 		}
@@ -2447,67 +2611,115 @@ namespace Flats.Views.Manage
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Region")]
-	public partial class Region : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Objects_LiveConditions")]
+	public partial class Objects_LiveConditions : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _ID;
+		private int _id;
 		
-		private string _Naim;
+		private int _object_id;
+		
+		private int _lc_id;
+		
+		private string @__value;
 		
     #region Определения метода расширяемости
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnIDChanging(int value);
-    partial void OnIDChanged();
-    partial void OnNaimChanging(string value);
-    partial void OnNaimChanged();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void Onobject_idChanging(int value);
+    partial void Onobject_idChanged();
+    partial void Onlc_idChanging(int value);
+    partial void Onlc_idChanged();
+    partial void On_valueChanging(string value);
+    partial void On_valueChanged();
     #endregion
 		
-		public Region()
+		public Objects_LiveConditions()
 		{
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int ID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id
 		{
 			get
 			{
-				return this._ID;
+				return this._id;
 			}
 			set
 			{
-				if ((this._ID != value))
+				if ((this._id != value))
 				{
-					this.OnIDChanging(value);
+					this.OnidChanging(value);
 					this.SendPropertyChanging();
-					this._ID = value;
-					this.SendPropertyChanged("ID");
-					this.OnIDChanged();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Naim", DbType="NVarChar(150)")]
-		public string Naim
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_object_id", DbType="Int NOT NULL")]
+		public int object_id
 		{
 			get
 			{
-				return this._Naim;
+				return this._object_id;
 			}
 			set
 			{
-				if ((this._Naim != value))
+				if ((this._object_id != value))
 				{
-					this.OnNaimChanging(value);
+					this.Onobject_idChanging(value);
 					this.SendPropertyChanging();
-					this._Naim = value;
-					this.SendPropertyChanged("Naim");
-					this.OnNaimChanged();
+					this._object_id = value;
+					this.SendPropertyChanged("object_id");
+					this.Onobject_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_lc_id", DbType="Int NOT NULL")]
+		public int lc_id
+		{
+			get
+			{
+				return this._lc_id;
+			}
+			set
+			{
+				if ((this._lc_id != value))
+				{
+					this.Onlc_idChanging(value);
+					this.SendPropertyChanging();
+					this._lc_id = value;
+					this.SendPropertyChanged("lc_id");
+					this.Onlc_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[_value]", Storage="__value", DbType="NVarChar(300)")]
+		public string _value
+		{
+			get
+			{
+				return this.@__value;
+			}
+			set
+			{
+				if ((this.@__value != value))
+				{
+					this.On_valueChanging(value);
+					this.SendPropertyChanging();
+					this.@__value = value;
+					this.SendPropertyChanged("_value");
+					this.On_valueChanged();
 				}
 			}
 		}

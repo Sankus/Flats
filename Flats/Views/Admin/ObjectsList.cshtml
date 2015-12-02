@@ -39,10 +39,21 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.type)
+            @if (item.type == 1)
+            { 
+                <span>Премиум</span>
+            }
+            @if (item.type == 2)
+            {
+                <span>Стандарт</span>
+            }
+            @if (item.type == 3)
+            {
+                <span>Эконом</span>
+            }
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.region_id)
+            @item.Region.Naim
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.header)
@@ -59,7 +70,7 @@
 
         <td>
             @Html.ActionLink("Редактировать", "EditObjects", new { id=item.ID }) |
-            @Html.ActionLink("Удалить", "DeleteObjects", new { id=item.ID })
+            @Html.ActionLink("Удалить", "DeleteObject", new { id=item.ID })
         </td>
     </tr>
 }

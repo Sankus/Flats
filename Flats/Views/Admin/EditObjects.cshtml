@@ -1,62 +1,240 @@
-﻿
+﻿@model Flats.Views.Manage.Objects
+
 @{
-    ViewBag.Title = "EditObjects";
+    ViewBag.Title = "Редактировать объект";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
+
 <h2>Редактировать объект</h2>
-<ul class="tabs">
-    <li><a href="#">Общие</a></li>
-    <li><a href="#">Жизненные условия</a></li>
-    <li><a href="#">Атрибуты</a></li>
-    <li><a href="#">Медиа</a></li>
-</ul>
+<form method="post" action="/Admin/EditObjects" enctype="multipart/form-data">
+    <input type="hidden" value="@Model.ID" name="obj_id" />
+    <input type="submit" value="Записать" />
+    <ul class="tabs">
+        <li><a href="#">Общие</a></li>
+        <li><a href="#">Жизненные условия</a></li>
+        <li><a href="#">Атрибуты</a></li>
+        <li><a href="#">Медиа</a></li>
+        <li><a href="#">Описание</a></li>
+    </ul>
 
-<!-- tab "panes" -->
-<div class="panes">
-    <div>
-        <h2>Общие</h2>
-        <p>
-            Содержимое первой вкладки.
-        </p>
+    <!-- tab "panes" -->
+    <div class="panes">
+        <div>
+            <h2>Общие</h2>
+            <p>
+                Заголовок
+                <input type="text" name="header" value="@Model.header" />
+                Адрес
+                <input type="text" name="address" value="@Model.address" />
+                Район
+
+                <select id="regions" name="Region">
+                    @foreach (var region in ViewBag.regions)
+                    {
+                        if (region.ID == Model.region_id) 
+                        { 
+                            <option value="@region.ID" selected>@region.Naim</option>
+                        }
+                        else
+                        {
+                            <option value="@region.ID">@region.Naim</option>
+                        }
+                    }
+                </select>               
+                ТипКвартиры
+                <select id="flat_type" name="FlatType">
+                    @if (Model.type == 1)
+                    {
+                        <option value="1" selected>Премиум</option>
+                    }
+                    else
+                    {
+                        <option value="1">Премиум</option>
+                    }
+                    @if (Model.type == 2)
+                    {
+                        <option value="2" selected>Стандарт</option>
+                    }
+                    else
+                    {
+                        <option value="2">Стандарт</option>
+                    }
+                    @if (Model.type == 3)
+                    {
+                        <option value="3" selected>Эконом</option>
+                    }
+                    else
+                    {
+                        <option value="3">Эконом</option>
+                    }
+                </select>
+                
+                Количество  комнат
+                <input type="number" name="rooms_count" value="@Model.rooms_count" />
+                Количество  спальных мест
+                <input type="number" name="guests_count" value="@Model.guests_count" />
+                Цена (1 сутки)
+                <input type="number" name="price1" value="@((int)(Model.price1))" step="1"/>
+                Цена (2-4 суток)
+                <input type="number" name="price2" value="@((int)(Model.price2))" />
+                Цена (5+ суток)
+                <input type="number" name="price5" value="@((int)(Model.price5))" />
+                Цена (14+ суток)
+                <input type="number" name="price14" value="@((int)(Model.price14))" />
+            </p>
+
+        </div>
+
+        <div class="les">
+            <h2>Жизненные условия</h2>
+            <div>
+                @{
+                    if (ViewBag.lc_lst != null)
+                    {
+                        foreach (var lc in ViewBag.lc_lst)
+                        {
+                            bool found = false;
+                            string _value = "";
+                            foreach (var olc in ViewBag.used_lc_list)
+                            {
+                                if (olc.lc_id == lc.id)
+                                {
+                                    found = true;
+                                    _value = olc._value;
+                                    break;
+                                }
+                            }
+                            if (found)
+                            {
+                                <input type="checkbox" value="" name="lc_@lc.id" checked/>
+                                <label for="lc_@lc.id">@lc.lc_value</label>
+                                <input type="text" value="@_value" name="lc_val_@lc.id" />
+                            }
+                            else
+                            {
+                                <input type="checkbox" value="" name="lc_@lc.id" />
+                                <label for="lc_@lc.id">@lc.lc_value</label>
+                                <input type="text" value="" name="lc_val_@lc.id" />
+                            }
+
+                        }
+                    }
+}
+            </div>
+
+        </div>
+        <div class="les">
+            <h2>Атрибуты</h2>
+            <div>
+                @{
+                    int i = 0;
+                    if (ViewBag.attrs != null)
+                    {
+                        foreach (var attr in ViewBag.attrs)
+                        {
+                            if (ViewBag.ua_list.Contains(attr.id))
+                            {
+                                <input type="checkbox" value="" name="attr_@attr.id" checked/>
+                            }
+                            else
+                            { 
+                               <input type="checkbox" value="" name="attr_@attr.id" />
+                            }
+                            <label for="attr_@attr.id">@attr.attr_key</label>
+                            <div><img src="@ViewBag.pics[i]" alt="" /></div>
+                            i++;
+                        }
+                    }
+                }
+            </div>
+
+        </div>
+
+        <div class="les">
+            <h2>Медиа</h2>
+            <h3>Большие фото</h3>
+            <input type="file" name="large_foto1" id="large_foto1" />
+            <img id="large_foto1_pic" style="max-width:200px; max-height:100px;" src="/Admin/GetPictureFL1?id=@Model.ID">
+            <button onclick="clear_pic('#large_foto1_pic', '#large_foto1', event);">[x]</button>
+            <input type="file" name="large_foto2" id="large_foto2" />
+            <img id="large_foto2_pic" style="max-width:200px; max-height:100px;" src="/Admin/GetPictureFL2?id=@Model.ID" />
+            <button onclick="clear_pic('#large_foto2_pic', '#large_foto2', event);">[x]</button>
+
+            <h3>Маленькие фото</h3>
+            <input type="file" name="foto1" id="foto1" />
+            <img id="foto1_pic" style="max-width:200px; max-height:100px;" src="/Admin/GetPictureF1?id=@Model.ID" />
+            <button onclick="clear_pic('#foto1_pic', '#foto1', event);">[x]</button>
+            <input type="file" name="foto2" id="foto2" />
+            <img id="foto2_pic" style="max-width:200px; max-height:100px;" src="/Admin/GetPictureF2?id=@Model.ID" />
+            <button onclick="clear_pic('#foto2_pic', '#foto2', event);">[x]</button>
+            <input type="file" name="foto3" id="foto3" />
+            <img id="foto3_pic" style="max-width:200px; max-height:100px;" src="/Admin/GetPictureF3?id=@Model.ID" />
+            <button onclick="clear_pic('#foto3_pic', '#foto3', event);">[x]</button>
+            <input type="file" name="foto4" id="foto4" />
+            <img id="foto4_pic" style="max-width:200px; max-height:100px;" src="/Admin/GetPictureF4?id=@Model.ID" />
+            <button onclick="clear_pic('#foto4_pic', '#foto4', event);">[x]</button>
+        </div>
+
+        <div class="les">
+            <h2>Описание</h2>
+            <textarea name="desc" style="height:300px;">@Model.desc_body</textarea>
+
+        </div>
 
     </div>
 
-    <div class="les">
-        <h2>Жизненные условия</h2>
-        <p>
-            Содержимое второй вкладки.
-        </p>
 
-    </div>
-    <div class="les">
-        <h2>Атрибуты</h2>
-        <p>
-            Содержимое третьей вкладки.
-        </p>
-
-    </div>
-
-    <div class="les">
-        <h2>Медиа</h2>
-        <p>
-        <p>
-            Содержимое четвертой вкладки.
-        </p>
-
-    </div>
-
-
-</div>
-
+</form>
 
 <script>
 
 
 
-$(function() {
+    $(function () {
 
-	$("ul.tabs").tabs("div.panes > div");
-});
+        $("ul.tabs").tabs("div.panes > div");
+    });
 </script>
 
+@section Scripts{
+    <script type="text/javascript" src="~/Scripts/tinymce/tinymce.min.js"></script>
+    <script type="text/javascript">
+        function readURL(input, pic_id) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $(pic_id).attr('src', e.target.result);
+                    // $(pic_id + "_show").attr('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        function clear_pic(pic_id, inpit_id, e) {
+            e.preventDefault();
+            $(pic_id).attr('src', '');
+            $(inpit_id).val(null);
+        }
+        $(document).ready(function () {
+            $("#large_foto1").change(function () {
+                readURL(this, "#large_foto1_pic");
+            });
+            $("#large_foto2").change(function () {
+                readURL(this, "#large_foto2_pic");
+            });
+            $("#foto1").change(function () {
+                readURL(this, "#foto1_pic");
+            });
+            $("#foto2").change(function () {
+                readURL(this, "#foto2_pic");
+            });
+            $("#foto3").change(function () {
+                readURL(this, "#foto3_pic");
+            });
+            $("#foto4").change(function () {
+                readURL(this, "#foto4_pic");
+            });
+        });
+    </script>
+}

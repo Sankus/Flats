@@ -390,19 +390,432 @@ namespace Flats.Controllers
         {
             dbDataContext db = new dbDataContext();
             List<Objects> lst = db.Objects.Select(c => c).OrderBy(c => c.header).ToList();
-
+            var recs = from p in db.Objects select new { 
+                id=p.ID,
+                type=p.type,
+                region_id = p.region_id,
+                region_name = p.Region.Naim
+            };
             return View(lst);
         }
         [HttpGet]
         public ActionResult CreateObjects()
         {
+            dbDataContext db = new dbDataContext();
+            List<Flats.Views.Manage.Region> lst = db.Region.Select(c => c).OrderBy(c => c.Naim).ToList<Flats.Views.Manage.Region>();
+            ViewBag.regions = lst;
+            List<LiveConditions> lc_lst = db.LiveConditions.Select(c => c).OrderBy(c => c.lc_key).ToList<LiveConditions>();
+            ViewBag.lc_lst = lc_lst;
+            List<Attributes> attrs = db.Attributes.Select(c => c).OrderBy(c => c.attr_key).ToList<Attributes>();
+            ViewBag.attrs = attrs;
+            List<String> lst_pics = new List<string>();
+            foreach (Attributes attr in attrs)
+            {
+                lst_pics.Add("data:image/jpeg;base64," + attr.picture.ToString().Replace("\"", ""));
+            }
+            ViewBag.pics = lst_pics;
+
             return View();
         }
 
         public ActionResult EditObjects(int id)
         {
-            return View();
+            if (id == 0)
+                return RedirectToAction("ObjectsList");
+            dbDataContext db = new dbDataContext();
+            Objects ft = db.Objects.SingleOrDefault(c => c.ID == id);
+            if (ft == null)
+            {
+                return RedirectToAction("ObjectsList");
+            }
+            List<Flats.Views.Manage.Region> lst = db.Region.Select(c => c).OrderBy(c => c.Naim).ToList<Flats.Views.Manage.Region>();
+            ViewBag.regions = lst;
+
+
+            List<LiveConditions> lc_lst = db.LiveConditions.Select(c => c).OrderBy(c => c.lc_key).ToList<LiveConditions>();
+            ViewBag.lc_lst = lc_lst;
+            List<Objects_LiveConditions> used_lc_list = db.Objects_LiveConditions.Select(c => c).Where(c => c.object_id == id).ToList<Objects_LiveConditions>();
+            ViewBag.used_lc_list = used_lc_list;
+
+            List<Attributes> attrs = db.Attributes.Select(c => c).OrderBy(c => c.attr_key).ToList<Attributes>();
+            ViewBag.attrs = attrs;
+
+            List<Objects_Attributes> used_attr = db.Objects_Attributes.Select(c => c).Where(c => c.object_id == id).ToList<Objects_Attributes>();
+            List<int> ua = new List<int>();
+            foreach (Objects_Attributes oa in used_attr)
+            {
+                ua.Add(oa.attribute_id);
+            }
+            ViewBag.ua_list = ua;
+
+            List<String> lst_pics = new List<string>();
+            foreach (Attributes attr in attrs)
+            {
+                lst_pics.Add("data:image/jpeg;base64," + attr.picture.ToString().Replace("\"", ""));
+            }
+            ViewBag.pics = lst_pics;
+            return View(ft);
         }
 
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult CreateObjects(FormCollection coll)
+        {
+            dbDataContext db = new dbDataContext();
+            Objects obj = new Objects();
+            obj.type = Int32.Parse(coll["FlatType"]);
+            obj.region_id = Int32.Parse(coll["Region"]);
+            obj.header = coll["header"];
+            obj.address = coll["address"];
+            if (coll["rooms_count"] != String.Empty)
+                obj.rooms_count = Int32.Parse(coll["rooms_count"]);
+            else
+                obj.rooms_count = 0;
+            if (coll["guests_count"] != String.Empty)
+                obj.guests_count = Int32.Parse(coll["guests_count"]);
+            else
+                obj.guests_count = 0;
+
+            if (coll["price1"] != String.Empty)
+                obj.price1 = Decimal.Parse(coll["price1"]);
+            else obj.price1 = 0;
+
+            if (coll["price2"] != String.Empty)
+                obj.price2 = Decimal.Parse(coll["price2"]);
+            else
+                obj.price2 = 0;
+
+            if (coll["price5"] != String.Empty)
+                obj.price5 = Decimal.Parse(coll["price5"]);
+            else obj.price5 = 0;
+            if (coll["price14"] != String.Empty)
+                obj.price14 = Decimal.Parse(coll["price14"]);
+            else
+                obj.price14 = 0;
+
+            obj.desc_body = coll["desc"];
+
+            //Записываем картинки
+
+            HttpPostedFileBase file = Request.Files["large_foto1"];
+            MemoryStream ms = new MemoryStream();
+            Image img = Image.FromStream(file.InputStream);
+            img.Save(ms, img.RawFormat);
+            Binary bin = new Binary(ms.ToArray());
+            obj.pic1large = bin;
+
+            file = Request.Files["large_foto2"];
+            ms = new MemoryStream();
+            img = Image.FromStream(file.InputStream);
+            img.Save(ms, img.RawFormat);
+            bin = new Binary(ms.ToArray());
+            obj.pic2large = bin;
+
+            file = Request.Files["foto1"];
+            ms = new MemoryStream();
+            img = Image.FromStream(file.InputStream);
+            img.Save(ms, img.RawFormat);
+            bin = new Binary(ms.ToArray());
+            obj.pic1 = bin;
+
+            file = Request.Files["foto2"];
+            ms = new MemoryStream();
+            img = Image.FromStream(file.InputStream);
+            img.Save(ms, img.RawFormat);
+            bin = new Binary(ms.ToArray());
+            obj.pic2 = bin;
+
+            file = Request.Files["foto3"];
+            ms = new MemoryStream();
+            img = Image.FromStream(file.InputStream);
+            img.Save(ms, img.RawFormat);
+            bin = new Binary(ms.ToArray());
+            obj.pic3 = bin;
+
+            file = Request.Files["foto4"];
+            ms = new MemoryStream();
+            img = Image.FromStream(file.InputStream);
+            img.Save(ms, img.RawFormat);
+            bin = new Binary(ms.ToArray());
+            obj.pic4 = bin;
+            //--Записываем картинки
+
+            db.Objects.InsertOnSubmit(obj);
+            db.SubmitChanges();
+
+            //Записываем жизненные условия
+            var lcs = coll.AllKeys.Where(c => (c.StartsWith("lc_")&(!c.Contains("val"))));
+
+            foreach (var attr in lcs)
+            {
+                string temp_key = attr.Replace("lc_","lc_val_"); 
+                string temp_value = coll[temp_key];
+                Objects_LiveConditions olc = new Objects_LiveConditions();
+                olc.lc_id = Int32.Parse(attr.Replace("lc_", ""));
+                olc.object_id = obj.ID;
+                olc._value = temp_value;
+                db.Objects_LiveConditions.InsertOnSubmit(olc);
+            }
+
+
+            //Записываем атрибуты
+            var attrs = coll.AllKeys.Where(c => (c.StartsWith("attr_")));
+
+            foreach (var attr in attrs)
+            {
+                string temp_id = attr.Replace("attr_", "");
+                Objects_Attributes oattr = new Objects_Attributes();
+                oattr.attribute_id = Int32.Parse(temp_id);
+                oattr.object_id = obj.ID;
+                db.Objects_Attributes.InsertOnSubmit(oattr);
+            }
+
+            db.SubmitChanges();
+
+            return RedirectToAction("ObjectsList");
+        }
+
+        public ActionResult DeleteObject(int id)
+        {
+            dbDataContext db = new dbDataContext();
+            Objects ft = db.Objects.SingleOrDefault(c => c.ID == id);
+            if (ft != null)
+            {
+                db.Objects.DeleteOnSubmit(ft);
+
+                List<Objects_LiveConditions> olc_list = db.Objects_LiveConditions.Select(p => p).Where(p => p.object_id == id).ToList<Objects_LiveConditions>();
+                foreach (Objects_LiveConditions olc in olc_list)
+                {
+                    db.Objects_LiveConditions.DeleteOnSubmit(olc);
+                }
+
+                List<Objects_Attributes> oattr_list = db.Objects_Attributes.Select(p => p).Where(p => p.object_id == id).ToList<Objects_Attributes>();
+                foreach (Objects_Attributes olc in oattr_list)
+                {
+                    db.Objects_Attributes.DeleteOnSubmit(olc);
+                }
+
+                db.SubmitChanges();
+            }
+            return RedirectToAction("ObjectsList");
+        }
+
+        public ActionResult GetPictureFL1(String id)
+        {
+            id = id.Replace(".jpg", "");
+            dbDataContext db = new dbDataContext();
+            Objects rec = db.Objects.Where(c => c.ID == Int32.Parse(id)).Single();
+
+            return File(rec.pic1large.ToArray(), "image/jpeg");
+        }
+
+        public ActionResult GetPictureFL2(String id)
+        {
+            id = id.Replace(".jpg", "");
+            dbDataContext db = new dbDataContext();
+            Objects rec = db.Objects.Where(c => c.ID == Int32.Parse(id)).Single();
+
+            return File(rec.pic2large.ToArray(), "image/jpeg");
+        }
+        public ActionResult GetPictureF1(String id)
+        {
+            id = id.Replace(".jpg", "");
+            dbDataContext db = new dbDataContext();
+            Objects rec = db.Objects.Where(c => c.ID == Int32.Parse(id)).Single();
+
+            return File(rec.pic1.ToArray(), "image/jpeg");
+        }
+
+        public ActionResult GetPictureF2(String id)
+        {
+            id = id.Replace(".jpg", "");
+            dbDataContext db = new dbDataContext();
+            Objects rec = db.Objects.Where(c => c.ID == Int32.Parse(id)).Single();
+
+            return File(rec.pic2.ToArray(), "image/jpeg");
+        }
+        public ActionResult GetPictureF3(String id)
+        {
+            id = id.Replace(".jpg", "");
+            dbDataContext db = new dbDataContext();
+            Objects rec = db.Objects.Where(c => c.ID == Int32.Parse(id)).Single();
+
+            return File(rec.pic3.ToArray(), "image/jpeg");
+        }
+        public ActionResult GetPictureF4(String id)
+        {
+            id = id.Replace(".jpg", "");
+            dbDataContext db = new dbDataContext();
+            Objects rec = db.Objects.Where(c => c.ID == Int32.Parse(id)).Single();
+
+            return File(rec.pic4.ToArray(), "image/jpeg");
+        }
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult EditObjects(FormCollection coll)
+        {
+            dbDataContext db = new dbDataContext();
+            int obj_id;
+            try
+            {
+                obj_id = Int32.Parse(coll["obj_id"]);
+            }
+            catch
+            {
+                return RedirectToAction("ObjectsList");
+            }
+
+            Objects obj = db.Objects.SingleOrDefault(c=>c.ID==obj_id);
+            if (obj == null)
+            {
+                return RedirectToAction("ObjectsList");
+            }
+
+            obj.type = Int32.Parse(coll["FlatType"]);
+            obj.region_id = Int32.Parse(coll["Region"]);
+            obj.header = coll["header"];
+            obj.address = coll["address"];
+            if (coll["rooms_count"] != String.Empty)
+                obj.rooms_count = Int32.Parse(coll["rooms_count"]);
+            else
+                obj.rooms_count = 0;
+            if (coll["guests_count"] != String.Empty)
+                obj.guests_count = Int32.Parse(coll["guests_count"]);
+            else
+                obj.guests_count = 0;
+
+            if (coll["price1"] != String.Empty)
+                obj.price1 = Decimal.Parse(coll["price1"]);
+            else obj.price1 = 0;
+
+            if (coll["price2"] != String.Empty)
+                obj.price2 = Decimal.Parse(coll["price2"]);
+            else
+                obj.price2 = 0;
+
+            if (coll["price5"] != String.Empty)
+                obj.price5 = Decimal.Parse(coll["price5"]);
+            else obj.price5 = 0;
+            if (coll["price14"] != String.Empty)
+                obj.price14 = Decimal.Parse(coll["price14"]);
+            else
+                obj.price14 = 0;
+
+            obj.desc_body = coll["desc"];
+
+            //Записываем картинки
+
+            HttpPostedFileBase file = Request.Files["large_foto1"];
+            MemoryStream ms;
+            Image img;
+            Binary bin;
+
+            if (file.ContentLength != 0)
+            {
+                ms = new MemoryStream();
+                img = Image.FromStream(file.InputStream);
+                img.Save(ms, img.RawFormat);
+                bin = new Binary(ms.ToArray());
+                obj.pic1large = bin;
+            }
+
+            file = Request.Files["large_foto2"];
+            if (file.ContentLength != 0)
+            {
+                ms = new MemoryStream();
+                img = Image.FromStream(file.InputStream);
+                img.Save(ms, img.RawFormat);
+                bin = new Binary(ms.ToArray());
+                obj.pic2large = bin;
+            }
+
+            file = Request.Files["foto1"];
+            if (file.ContentLength != 0)
+            {
+                ms = new MemoryStream();
+                img = Image.FromStream(file.InputStream);
+                img.Save(ms, img.RawFormat);
+                bin = new Binary(ms.ToArray());
+                obj.pic1 = bin;
+            }
+
+            file = Request.Files["foto2"];
+            if (file.ContentLength != 0)
+            {
+                ms = new MemoryStream();
+                img = Image.FromStream(file.InputStream);
+                img.Save(ms, img.RawFormat);
+                bin = new Binary(ms.ToArray());
+                obj.pic2 = bin;
+            }
+            
+            file = Request.Files["foto3"];
+            if (file.ContentLength != 0)
+            {
+                ms = new MemoryStream();
+                img = Image.FromStream(file.InputStream);
+                img.Save(ms, img.RawFormat);
+                bin = new Binary(ms.ToArray());
+                obj.pic3 = bin;
+            }
+
+            file = Request.Files["foto4"];
+            if (file.ContentLength != 0)
+            {
+                ms = new MemoryStream();
+                img = Image.FromStream(file.InputStream);
+                img.Save(ms, img.RawFormat);
+                bin = new Binary(ms.ToArray());
+                obj.pic4 = bin;
+            }//--Записываем картинки
+
+            db.SubmitChanges();
+
+            //Чистим таблицы- связки
+            List<Objects_LiveConditions> olc_list = db.Objects_LiveConditions.Select(p => p).Where(p => p.object_id == obj.ID).ToList<Objects_LiveConditions>();
+            foreach (Objects_LiveConditions olc in olc_list)
+            {
+                db.Objects_LiveConditions.DeleteOnSubmit(olc);
+            }
+            List<Objects_Attributes> oattr_list = db.Objects_Attributes.Select(p => p).Where(p => p.object_id == obj.ID).ToList<Objects_Attributes>();
+            foreach (Objects_Attributes olc in oattr_list)
+            {
+                db.Objects_Attributes.DeleteOnSubmit(olc);
+            }
+
+
+            db.SubmitChanges();
+
+            //Записываем жизненные условия
+            var lcs = coll.AllKeys.Where(c => (c.StartsWith("lc_") & (!c.Contains("val"))));
+
+            foreach (var attr in lcs)
+            {
+                string temp_key = attr.Replace("lc_", "lc_val_");
+                string temp_value = coll[temp_key];
+                Objects_LiveConditions olc = new Objects_LiveConditions();
+                olc.lc_id = Int32.Parse(attr.Replace("lc_", ""));
+                olc.object_id = obj.ID;
+                olc._value = temp_value;
+                db.Objects_LiveConditions.InsertOnSubmit(olc);
+            }
+            
+            
+            var attrs = coll.AllKeys.Where(c => (c.StartsWith("attr_")));
+
+            foreach (var attr in attrs)
+            {
+                string temp_id = attr.Replace("attr_", "");
+                Objects_Attributes oattr = new Objects_Attributes();
+                oattr.attribute_id = Int32.Parse(temp_id);
+                oattr.object_id = obj.ID;
+                db.Objects_Attributes.InsertOnSubmit(oattr);
+            }
+
+            
+            db.SubmitChanges();
+
+            return RedirectToAction("ObjectsList");
+        }
     }
 }
