@@ -10,9 +10,21 @@ namespace Flats.Controllers
 {
     public class HomeController : Controller
     {
+        public ActionResult GetPictureFL1(String id)
+        {
+            id = id.Replace(".jpg", "");
+            dbDataContext db = new dbDataContext();
+            Objects rec = db.Objects.Where(c => c.ID == Int32.Parse(id)).Single();
+
+            return File(rec.pic1large.ToArray(), "image/jpeg");
+        }
+
         public ActionResult Premium()
         {
             InitSettings();
+            dbDataContext db = new dbDataContext();
+            List<Objects> lst_obj = db.Objects.Select(c => c).Where(c=>c.type == 1).ToList<Objects>();
+            ViewBag.list = lst_obj;
             return View();
         }
 

@@ -6,3 +6,17 @@
 
 <h2>Premium</h2>
 
+@foreach (var obj in ViewBag.list) 
+{ 
+    <div id="obj_@obj.ID">
+        <div>@obj.header</div>
+        <div>@obj.address</div>
+        <div>@obj.price1</div>
+        <div>@obj.price2</div>
+        <div>@obj.price5</div>
+        <div>@obj.price14</div>
+        <div>@obj.desc_body</div>
+        <div>@obj.desc_body</div>
+        <div><img id="large_foto1_pic" style="max-width:200px; max-height:100px;" src="/Home/GetPictureFL1?id=@obj.ID"></div>
+    </div>
+}
