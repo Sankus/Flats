@@ -115,15 +115,16 @@
         }
     </ul>
     </div>
+    @{String div_class = "";} 
     @if (ViewBag.isMainPage) 
-    { 
-        <div> Это главная страница</div>
+    {
+        div_class = "inneer-content";
     }
     else
     {
-        <div> Это не главная страница</div>
+        div_class = "inneer-content_sec";
     }
-    <div class="inneer-content">
+    <div class="@div_class">
         @RenderBody()
         <hr />
         <footer>
