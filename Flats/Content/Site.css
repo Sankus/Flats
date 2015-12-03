@@ -100,7 +100,7 @@ p.phone_1,p.phone_2 {
     height: 100%;
     background: #F4F4F4;
     position: fixed;
-    padding-top: 150px;
+    padding-top: 128px;
         border-right: 1px solid #e4e4e4;
 }
 .container.body-content {
@@ -526,4 +526,28 @@ div#faqindex {
     height: 35px;
     margin-bottom: 5px;
     margin-top: 5px;
+}
+
+.temp>span {
+    font-size: 43px;
+    position: absolute;
+    margin-left: 33px;
+        margin-top: 29px;
+}
+.temp {
+    height: 107px;
+   
+    margin-left: 27px;
+}
+.seperator {
+height:1px;
+border-bottom:1px dotted #E4E4E4;
+}
+.value_usd {
+    float: left;
+    margin-right: 16px;
+}
+.kyrsi {
+    margin: 10px 0 5px 24px;
+  
 }

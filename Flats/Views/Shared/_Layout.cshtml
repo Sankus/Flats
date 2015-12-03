@@ -96,15 +96,19 @@
 
 
         </div>
-
+        <div class="seperator"></div>
     </div>
     <div class="left-plashka">
-        <div>
+        <div class="temp">
             <img src="@ViewBag.temperature_pic" width="48" height="48" />
-            <span style="color:#@ViewBag.temperature_color">@ViewBag.temperature_value</span>
+            <span>@ViewBag.temperature_value&deg;C </span>
         </div>
-        <div>USD:@ViewBag.UsdRate @ViewBag.UsdDir</div>
-        <div>EUR:@ViewBag.EurRate @ViewBag.EurDir</div>
+        <div class="seperator"></div>
+        <div class="kyrsi">
+        <div class="value_usd">USD:@ViewBag.UsdRate @ViewBag.UsdDir</div>
+        <div class="value_eur">EUR:@ViewBag.EurRate @ViewBag.EurDir</div>
+            </div>
+        <div class="seperator"></div>
     <ul>
         @{
             if (ViewBag.pages_list != null) { 
