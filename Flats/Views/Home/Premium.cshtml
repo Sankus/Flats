@@ -8,7 +8,7 @@
 
 @foreach (var obj in ViewBag.list) 
 { 
-    <div id="obj_@obj.ID">
+    <div id="obj_ @obj.ID">
         <div class="img_prew">
         <div><img id="large_foto1_pic"  src="/Home/GetPictureFL1?id=@obj.ID"></div>
         </div>
@@ -21,7 +21,9 @@
         <div>@obj.price14</div>
             </div>
         <div>@obj.desc_body</div>
-        <div>@obj.desc_body</div>
+
+       
         
+
     </div>
 }
