@@ -12,6 +12,9 @@ using Flats.Models;
 using Flats.Views.Manage;
 using System.Collections.Generic;
 using System.Collections;
+using System.Net;
+using System.IO;
+using System.Xml;
 
 namespace Flats.Controllers
 {
@@ -36,6 +39,50 @@ namespace Flats.Controllers
 
             List<Region> list_region = db.Region.Select(c => c).OrderBy(c => c.Naim).ToList<Region>();
             ViewBag.regions = list_region;
+
+            //Подтягиваем курсы валют
+            HttpWebRequest req = (HttpWebRequest)HttpWebRequest.Create("http://bank-ua.com/export/currrate.xml");
+            HttpWebResponse resp = (HttpWebResponse)req.GetResponse();
+            StreamReader reader = new StreamReader(resp.GetResponseStream(), Encoding.GetEncoding(1251));
+            String doc = reader.ReadToEnd();
+            XmlDocument xDoc = new XmlDocument();
+            xDoc.LoadXml(doc);
+            XmlElement xRoot = xDoc.DocumentElement;
+            //доллары
+            XmlNode xnode = xRoot.SelectSingleNode(".//code[text()='840']");
+            String UsdRate = (xnode.ParentNode).ChildNodes[5].InnerText.Split('.')[0];
+            ViewBag.UsdRate = UsdRate.Substring(0, 2) + "," + UsdRate.Substring(2, 2);
+            if ((xnode.ParentNode).ChildNodes[6].InnerText.Substring(0, 1) == "-")
+                ViewBag.UsdDir = "-";
+            else
+                ViewBag.UsdDir = "+";
+
+            //евро
+            xnode = xRoot.SelectSingleNode(".//code[text()='978']");
+            String EurRate = (xnode.ParentNode).ChildNodes[5].InnerText.Split('.')[0];
+            ViewBag.EurRate = EurRate.Substring(0, 2) + "," + EurRate.Substring(2, 2);
+            if ((xnode.ParentNode).ChildNodes[6].InnerText.Substring(0, 1) == "-")
+                ViewBag.EurDir = "-";
+            else
+                ViewBag.EurDir = "+";
+
+            //Подтягиваем погоду
+            req = (HttpWebRequest)HttpWebRequest.Create("https://export.yandex.ru/weather-ng/forecasts/33837.xml");
+            resp = (HttpWebResponse)req.GetResponse();
+            reader = new StreamReader(resp.GetResponseStream(), Encoding.UTF8);
+            doc = reader.ReadToEnd();
+            xDoc = new XmlDocument();
+            xDoc.LoadXml(doc);
+            xRoot = xDoc.DocumentElement;
+
+            ViewBag.temperature_value = xRoot.ChildNodes[0].ChildNodes[4].InnerText;
+            ViewBag.temperature_color = xRoot.ChildNodes[0].ChildNodes[4].Attributes[0].Value;
+
+            xnode = xRoot.ChildNodes[0].ChildNodes[8];
+            ViewBag.temperature_pic = "http://yandex.st/weather/1.1.78/i/icons/48x48/" + xnode.InnerText + ".png";
+
+            xRoot = xDoc.DocumentElement;
+            ViewBag.isMainPage = false;
         }
 
         public AccountController()
