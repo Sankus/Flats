@@ -1,6 +1,7 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background: #F4F4F4;
 }
 
 @font-face {
@@ -100,6 +101,7 @@ p.phone_1,p.phone_2 {
     background: #F4F4F4;
     position: fixed;
     padding-top: 150px;
+        border-right: 1px solid #e4e4e4;
 }
 .container.body-content {
     position: fixed;
@@ -416,4 +418,67 @@ img#large_foto1_pic {
     font-size: 13px;
     margin-top: -5px;
     margin-bottom: 10px;
+}
+.inneer-content_sec {
+    width: 82%;
+    float: right;
+    margin-top: 8%;
+        height: 80%;
+}
+h2.prew_head_name {
+    display: none;
+}
+
+.obj_price_in {
+       float: left;
+    border: 1px solid #c32361;
+    margin-right: 5px;
+    background:white;
+}
+.before_price_prew {
+    border-bottom: 1px solid #C32361;
+    margin: 2px 6px 12px 5px;
+    color: gray;
+}
+.price_prew {
+    width: 100%;
+    height: 81px;
+}
+.inner_price_prew {
+    margin: 0 10px 10px 4px;
+    color: #C32361;
+}
+.left_cont_prew {
+    float: left;
+    margin-right: 25px;
+}
+
+a.bottom_ac_prew {
+    font-size: 19px;
+    background: white;
+    border: 2px solid #C32361;
+    color: #C32361;
+    padding: 5px 25px 5px 25px;
+    font-weight: 700;
+    text-decoration: none;
+    transition-duration: 1s;
+}
+
+a.bottom_ac_prew:hover {
+    background: #CE2361;
+    color: white;
+    transition-duration: 1s;
+}
+
+.right_cont_prew {
+    width: 250px;
+    height: 180px;
+    float: left;
+}
+.bottom_prew_1 {
+    height: 38px;
+    width: 130px;
+}
+a.bottom_ac_prew._ac_prew2 {
+    padding: 5px 45px 5px 47px;
 }
