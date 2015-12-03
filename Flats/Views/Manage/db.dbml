@@ -77,6 +77,7 @@
       <Column Name="object_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="attribute_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="Attributes_Objects_Attributes" Member="Attributes" ThisKey="attribute_id" OtherKey="id" Type="Attributes" IsForeignKey="true" />
+      <Association Name="Objects_Objects_Attributes" Member="Objects" ThisKey="object_id" OtherKey="ID" Type="Objects" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Pages" Member="Pages">
@@ -149,6 +150,7 @@
       <Column Name="pic2" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
       <Column Name="pic3" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
       <Column Name="pic4" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="Objects_Objects_Attributes" Member="Objects_Attributes" ThisKey="ID" OtherKey="object_id" Type="Objects_Attributes" />
       <Association Name="Region_Objects" Member="Region" ThisKey="region_id" OtherKey="ID" Type="Region" IsForeignKey="true" />
     </Type>
   </Table>

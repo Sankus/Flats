@@ -23,12 +23,25 @@ namespace Flats.Controllers
             return File(rec.pic1large.ToArray(), "image/jpeg");
         }
 
+        public ActionResult GetAttrPic(String id)
+        {
+            id = id.Replace(".jpg", "");
+            dbDataContext db = new dbDataContext();
+            Attributes rec = db.Attributes.Where(c => c.id == Int32.Parse(id)).Single();
+
+            return File(rec.picture.ToArray(), "image/jpeg");
+        }
+
         public ActionResult Premium()
         {
             InitSettings();
             dbDataContext db = new dbDataContext();
             List<Objects> lst_obj = db.Objects.Select(c => c).Where(c=>c.type == 1).ToList<Objects>();
             ViewBag.list = lst_obj;
+
+            List<Objects_Attributes> obj_attr_list = db.Objects_Attributes.Select(c => c).Where(c => c.Objects.type == 1).ToList<Objects_Attributes>();
+            ViewBag.obj_attr_list = obj_attr_list;
+            
             return View();
         }
 

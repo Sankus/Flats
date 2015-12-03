@@ -104,7 +104,7 @@
         <elementListCompartment Id="8b9fd203-167a-48d4-8a6e-ab9905b8f927" absoluteBounds="10.015, 3.96, 1.9700000000000002, 3.903116861979167" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(12.75 : 5.09699625651042); (12 : 5.09699625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(12.75 : 5.09699625651042); (12 : 5.09699625651042)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/dbDataContext/Region/Region_Objects" />
       <nodes>
         <classShapeMoniker Id="d2fe0d20-900b-49bf-8738-06c019aae742" />
@@ -117,10 +117,17 @@
         <elementListCompartment Id="64170812-31fc-4fb8-926c-6ae208e40ff9" absoluteBounds="12.89, 6.71, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(4.25 : 8.8862939453125); (4.25 : 10.1931469726562); (6.625 : 10.1931469726562)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(4.25 : 8.8862939453125); (4.25 : 10.1931469726562); (6.625 : 10.1931469726562)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/dbDataContext/Attributes/Attributes_Objects_Attributes" />
       <nodes>
         <classShapeMoniker Id="a049b46f-aad4-4bcb-9136-03112de57b4a" />
+        <classShapeMoniker Id="656a51f9-ee34-4035-a081-85f20c2ad439" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11 : 7.96311686197917); (11 : 10.1931469726562); (8.625 : 10.1931469726562)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/dbDataContext/Objects/Objects_Objects_Attributes" />
+      <nodes>
+        <classShapeMoniker Id="925e1f41-85df-48b1-ab68-ec72f0de64c4" />
         <classShapeMoniker Id="656a51f9-ee34-4035-a081-85f20c2ad439" />
       </nodes>
     </associationConnector>

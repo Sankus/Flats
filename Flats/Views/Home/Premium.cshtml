@@ -16,10 +16,10 @@
             <div class="name_obj_prew"><h2>@obj.header</h2></div>
             <div class="street_prew">@obj.address</div>
        <div class="price_prew">
-           <div class="obj_price_in price_prew_1"><div class="before_price_prew">1 Сутки</div><div class="inner_price_prew">@obj.price1 грн</div></div>
-           <div class="obj_price_in price_prew_2"><div class="before_price_prew">2-4 Суток</div><div class="inner_price_prew">@obj.price2 грн</div></div>
-           <div class="obj_price_in price_prew_3"><div class="before_price_prew">5+ Суток</div><div class="inner_price_prew">@obj.price5 грн</div></div>
-        <div class="obj_price_in price_prew_4"><div class="before_price_prew">14+ Суток</div><div class="inner_price_prew">@obj.price14 грн</div></div>
+           <div class="obj_price_in price_prew_1"><div class="before_price_prew">1 Сутки</div><div class="inner_price_prew">@((int)(obj.price1)) грн</div></div>
+           <div class="obj_price_in price_prew_2"><div class="before_price_prew">2-4 Суток</div><div class="inner_price_prew">@((int)(obj.price2)) грн</div></div>
+           <div class="obj_price_in price_prew_3"><div class="before_price_prew">5+ Суток</div><div class="inner_price_prew">@((int)(obj.price5)) грн</div></div>
+        <div class="obj_price_in price_prew_4"><div class="before_price_prew">14+ Суток</div><div class="inner_price_prew">@((int)(obj.price14)) грн</div></div>
        </div>
             </div>
         <div class="right_cont_prew">
@@ -51,7 +51,23 @@
             <div>@obj.desc_body</div>
 
 
-
+        <span class="obj_attr">
+            @{
+                int i = 0;
+                foreach(var oa in ViewBag.obj_attr_list)
+                {
+                    if (oa.object_id == obj.ID)
+                    { 
+                        <img src="/Home/GetAttrPic?id=@oa.attribute_id" />     
+                        i++;
+                        if (i == 5) 
+                        {
+                            break; 
+                        }   
+                    }
+                }
+             }
+        </span>
 
         </div>
 }

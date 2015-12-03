@@ -1103,6 +1103,8 @@ namespace Flats.Views.Manage
 		
 		private EntityRef<Attributes> _Attributes;
 		
+		private EntityRef<Objects> _Objects;
+		
     #region Определения метода расширяемости
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -1118,6 +1120,7 @@ namespace Flats.Views.Manage
 		public Objects_Attributes()
 		{
 			this._Attributes = default(EntityRef<Attributes>);
+			this._Objects = default(EntityRef<Objects>);
 			OnCreated();
 		}
 		
@@ -1152,6 +1155,10 @@ namespace Flats.Views.Manage
 			{
 				if ((this._object_id != value))
 				{
+					if (this._Objects.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.Onobject_idChanging(value);
 					this.SendPropertyChanging();
 					this._object_id = value;
@@ -1215,6 +1222,40 @@ namespace Flats.Views.Manage
 						this._attribute_id = default(int);
 					}
 					this.SendPropertyChanged("Attributes");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Objects_Objects_Attributes", Storage="_Objects", ThisKey="object_id", OtherKey="ID", IsForeignKey=true)]
+		public Objects Objects
+		{
+			get
+			{
+				return this._Objects.Entity;
+			}
+			set
+			{
+				Objects previousValue = this._Objects.Entity;
+				if (((previousValue != value) 
+							|| (this._Objects.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Objects.Entity = null;
+						previousValue.Objects_Attributes.Remove(this);
+					}
+					this._Objects.Entity = value;
+					if ((value != null))
+					{
+						value.Objects_Attributes.Add(this);
+						this._object_id = value.ID;
+					}
+					else
+					{
+						this._object_id = default(int);
+					}
+					this.SendPropertyChanged("Objects");
 				}
 			}
 		}
@@ -2120,6 +2161,8 @@ namespace Flats.Views.Manage
 		
 		private System.Data.Linq.Binary _pic4;
 		
+		private EntitySet<Objects_Attributes> _Objects_Attributes;
+		
 		private EntityRef<Region> _Region;
 		
     #region Определения метода расширяемости
@@ -2168,6 +2211,7 @@ namespace Flats.Views.Manage
 		
 		public Objects()
 		{
+			this._Objects_Attributes = new EntitySet<Objects_Attributes>(new Action<Objects_Attributes>(this.attach_Objects_Attributes), new Action<Objects_Attributes>(this.detach_Objects_Attributes));
 			this._Region = default(EntityRef<Region>);
 			OnCreated();
 		}
@@ -2556,6 +2600,19 @@ namespace Flats.Views.Manage
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Objects_Objects_Attributes", Storage="_Objects_Attributes", ThisKey="ID", OtherKey="object_id")]
+		public EntitySet<Objects_Attributes> Objects_Attributes
+		{
+			get
+			{
+				return this._Objects_Attributes;
+			}
+			set
+			{
+				this._Objects_Attributes.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Region_Objects", Storage="_Region", ThisKey="region_id", OtherKey="ID", IsForeignKey=true)]
 		public Region Region
 		{
@@ -2608,6 +2665,18 @@ namespace Flats.Views.Manage
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+		
+		private void attach_Objects_Attributes(Objects_Attributes entity)
+		{
+			this.SendPropertyChanging();
+			entity.Objects = this;
+		}
+		
+		private void detach_Objects_Attributes(Objects_Attributes entity)
+		{
+			this.SendPropertyChanging();
+			entity.Objects = null;
 		}
 	}
 	
