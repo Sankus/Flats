@@ -8,7 +8,8 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <link href="../Content/slider.css" rel="stylesheet">
-   
+  
+
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top" style="background-color: #f4f4f4;border-color: #f4f4f4;">
@@ -136,6 +137,16 @@
     @Scripts.Render("~/bundles/bootstrap")
     
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="~/Scripts/spoiler.js"></script>
+    <script type="text/javascript">
+        $().ready(function () {
+            $('#faq').makeFAQ({
+                indexTitle: "Содержание",
+                displayIndex: true,
+                faqHeader: "h2"
+            });
+        });
+    </script>
     <script src="~/Scripts/form-scripts.js"></script>
    
     

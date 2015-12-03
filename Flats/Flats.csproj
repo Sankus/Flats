@@ -227,6 +227,7 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\slider.js" />
+    <Content Include="Scripts\spoiler.js" />
     <Content Include="Scripts\tinymce\form-script.js" />
     <Content Include="Scripts\tinymce\form-scripts.js" />
     <Content Include="Scripts\tinymce\license.txt" />
