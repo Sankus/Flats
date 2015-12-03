@@ -48,12 +48,26 @@ namespace Flats.Controllers
         public ActionResult Standart()
         {
             InitSettings();
+            dbDataContext db = new dbDataContext();
+            List<Objects> lst_obj = db.Objects.Select(c => c).Where(c => c.type == 2).ToList<Objects>();
+            ViewBag.list = lst_obj;
+
+            List<Objects_Attributes> obj_attr_list = db.Objects_Attributes.Select(c => c).Where(c => c.Objects.type == 2).ToList<Objects_Attributes>();
+            ViewBag.obj_attr_list = obj_attr_list;
+
             return View();
         }
 
         public ActionResult Econom()
         {
             InitSettings();
+            dbDataContext db = new dbDataContext();
+            List<Objects> lst_obj = db.Objects.Select(c => c).Where(c => c.type == 3).ToList<Objects>();
+            ViewBag.list = lst_obj;
+
+            List<Objects_Attributes> obj_attr_list = db.Objects_Attributes.Select(c => c).Where(c => c.Objects.type == 3).ToList<Objects_Attributes>();
+            ViewBag.obj_attr_list = obj_attr_list;
+
             return View();
         }
 
