@@ -98,6 +98,12 @@
 
     </div>
     <div class="left-plashka">
+        <div>
+            <img src="@ViewBag.temperature_pic" width="48" height="48" />
+            <span style="color:#@ViewBag.temperature_color">@ViewBag.temperature_value</span>
+        </div>
+        <div>USD:@ViewBag.UsdRate @ViewBag.UsdDir</div>
+        <div>EUR:@ViewBag.EurRate @ViewBag.EurDir</div>
     <ul>
         @{
             if (ViewBag.pages_list != null) { 
@@ -109,6 +115,14 @@
         }
     </ul>
     </div>
+    @if (ViewBag.isMainPage) 
+    { 
+        <div> Это главная страница</div>
+    }
+    else
+    {
+        <div> Это не главная страница</div>
+    }
     <div class="inneer-content">
         @RenderBody()
         <hr />

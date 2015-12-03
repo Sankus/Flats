@@ -80,16 +80,16 @@
         </div>
         <div class="les">
             <h2>Атрибуты</h2>
-            <div>
+            <div style="height:100px; display:block;">
                 @{
                     int i = 0;
                     if (ViewBag.attrs != null)
                     {
                         foreach (var attr in ViewBag.attrs)
                         {
-                            <input type="checkbox" value="" name="attr_@attr.id" />
+                            <input type="checkbox" value="" name="attr_@attr.id" style="width:30px;"/>
                             <label for="attr_@attr.id">@attr.attr_key</label>
-                            <div><img src="@ViewBag.pics[i]" alt=""/></div>                            
+                            <img src="@ViewBag.pics[i]" alt=""/>                            
                             i++;
                         }                        
                     }
