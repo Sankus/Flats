@@ -447,6 +447,7 @@ h2.prew_head_name {
 .inner_price_prew {
     margin: 0 10px 10px 4px;
     color: #C32361;
+    text-align:center;
 }
 .left_cont_prew {
     float: left;
@@ -475,6 +476,7 @@ a.bottom_ac_prew:hover {
     height: 180px;
     float: left;
         margin-top: 20px;
+        margin-bottom:-50px;
 }
 .bottom_prew_1 {
     height: 38px;
@@ -496,9 +498,32 @@ a.bottom_ac_prew._ac_prew2 {
 #faq {float:left;width: 600px;margin: 0 auto; font-family: consolas,verdana,helvetica,sans-serif;}
 #faq {margin-bottom: 25px;}
 #faq .faqcontent {margin: 0 10px 0 10px;font-size: 95%;}
-#faq h2.faqopened, #faq h2.faqclosed {cursor: pointer;padding: 0 0 0 15px;border-bottom: dotted 1px #ccc;margin-bottom: 0;}
-#faq h2.faqclosed:hover {color: black;}
-#faq h2.faqclosed {color: #666666;background: transparent url(collapsed.png) no-repeat scroll 0 10px;}
-#faq h2.faqopened {color: black;background: transparent url(expanded.png) no-repeat scroll 0 10px;}
+#faq h2.faqopened, #faq h2.faqclosed {
+    cursor: pointer;padding: 0 0 0 15px;border-bottom: dotted 1px #ccc;margin-bottom: 0;font-size:13px;
 
+}
+#faq h2.faqclosed:hover {color: black;}
+#faq h2.faqclosed {
+    color: #666666;
+    background: transparent url(../img/pluss.png) no-repeat scroll 0 0px;
+    background-size: contain;
+
+}
+
+#faq h2.faqopened {
+    color: black;
+    background: transparent url(../img/minus.png) no-repeat scroll 0 -1px;
+    background-size: contain;
+}
+
+div#faqindex {
+    display: none;
+}
 /*END SPOILER*/
+
+
+.in_flat_prew {
+    height: 35px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}

@@ -15,6 +15,7 @@ using System.Collections;
 using System.Net;
 using System.IO;
 using System.Xml;
+using System.Text;
 
 namespace Flats.Controllers
 {

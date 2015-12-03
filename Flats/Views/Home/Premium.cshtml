@@ -24,7 +24,26 @@
             </div>
         <div class="right_cont_prew">
             <div class="star_prew">Тут выводим звезды</div>
-            <div class="in_flat_prew">Тут выводим данные квартиры</div>
+            <div class="in_flat_prew">
+                <span class="obj_attr">
+                    @{
+    int i = 0;
+    foreach (var oa in ViewBag.obj_attr_list)
+    {
+        if (oa.object_id == obj.ID)
+        {
+            <img src="/Home/GetAttrPic?id=@oa.attribute_id" />
+            i++;
+            if (i == 5)
+            {
+                break;
+            }
+        }
+    }
+                    }
+                </span>
+
+            </div>
             <div class="bottom_prew">
                 <div class="bottom_prew_1">
                     <a class="bottom_ac_prew" href="#">Забронировать</a>
@@ -35,39 +54,17 @@
                 </div>
         </div>
         <div id="faq">
-            <h2>Вопрос №1</h2>
+            <h2>Показать подробнее</h2>
             <div>
-                <p>Ответ на вопрос №1</p>
+                <div>@obj.desc_body</div>
             </div>
-            <h2>Вопрос №2</h2>
-            <div>
-                <p>Ответ на вопрос №2</p>
-            </div>
-            <h2>Вопрос №3</h2>
-            <div>
-                <p>Ответ на вопрос №3</p>
-            </div>
+           
+          
         </div>
-            <div>@obj.desc_body</div>
+           
 
 
-        <span class="obj_attr">
-            @{
-                int i = 0;
-                foreach(var oa in ViewBag.obj_attr_list)
-                {
-                    if (oa.object_id == obj.ID)
-                    { 
-                        <img src="/Home/GetAttrPic?id=@oa.attribute_id" />     
-                        i++;
-                        if (i == 5) 
-                        {
-                            break; 
-                        }   
-                    }
-                }
-             }
-        </span>
+       
 
         </div>
 }
