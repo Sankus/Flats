@@ -95,7 +95,7 @@ p.phone_1,p.phone_2 {
     border-top: 1px solid #e3e3e3;
 }
 .left-plashka {
-    width: 20%;
+    width: 16%;
     height: 100%;
     background: #F4F4F4;
     position: fixed;
@@ -169,7 +169,7 @@ footer {
 /* Form */
 .customForm {
 	color: #444444;
-	width: 320px;
+	width: 282px;
 	margin: 2em auto;
 	font: 13px/1.8 Helvetica;
 }
@@ -238,9 +238,9 @@ footer {
 /*	=	Select */
 .slct {
 	display: block;
-	border-radius: 5px;
+	
 	border: 1px solid #cecece;
-	background-color: #F6F6f6;
+	background-color: #FFFFFF;
 	width: 285px;
 	padding: 4px 15px 4px 10px;
 	color: #444;
@@ -263,7 +263,7 @@ footer {
 .drop {
 	margin: 0;
 	padding: 0;
-	width: 310px;
+	width: 285px;
 	border: 1px solid #cecece;
 	border-top: none;
 	display: none;
@@ -380,4 +380,40 @@ footer {
 	zoom: 1;
 }
 
+.left-plashka>ul {
+    list-style-type: none;
+    margin-left: -18px;
+}
+.left-plashka>ul>li {
+    margin-bottom: 15px;
+}
+.left-plashka>ul>li>a {
+    color: #999;
+    font-size: 17px;
+ 
+}
+.select>a {
+    color: gray;
+    text-decoration: none;
+}
 
+img#large_foto1_pic {
+    width: 238px;
+}
+.img_prew {
+    width: 250px;
+    height: 142px;
+    overflow: hidden;
+    float: left;
+}
+.name_obj_prew>h2 {
+    color: #c32361;
+    font-size: 20px;
+    font-weight: 700;
+}
+.street_prew {
+    color: gray;
+    font-size: 13px;
+    margin-top: -5px;
+    margin-bottom: 10px;
+}

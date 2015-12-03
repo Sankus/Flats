@@ -9,14 +9,19 @@
 @foreach (var obj in ViewBag.list) 
 { 
     <div id="obj_@obj.ID">
-        <div>@obj.header</div>
-        <div>@obj.address</div>
+        <div class="img_prew">
+        <div><img id="large_foto1_pic"  src="/Home/GetPictureFL1?id=@obj.ID"></div>
+        </div>
+            <div class="name_obj_prew"><h2>@obj.header</h2></div>
+        <div class="street_prew">@obj.address</div>
+        <div class="price_prew">
         <div>@obj.price1</div>
         <div>@obj.price2</div>
         <div>@obj.price5</div>
         <div>@obj.price14</div>
+            </div>
         <div>@obj.desc_body</div>
         <div>@obj.desc_body</div>
-        <div><img id="large_foto1_pic" style="max-width:200px; max-height:100px;" src="/Home/GetPictureFL1?id=@obj.ID"></div>
+        
     </div>
 }
