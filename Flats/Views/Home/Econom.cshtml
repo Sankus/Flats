@@ -1,12 +1,11 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Econom";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 @foreach (var obj in ViewBag.list)
 {
-    <div id="obj_prew obj_@obj.ID">
+    <div id="obj_prew">
         <div class="img_prew">
             <div><img id="large_foto1_pic" src="/Home/GetPictureFL1?id=@obj.ID"></div>
         </div>
@@ -51,12 +50,10 @@
                 </div>
             </div>
         </div>
-        <div id="faq">
-            <h2>Показать подробнее</h2>
-            <div>
-                <div>@obj.desc_body</div>
-            </div>
 
+        <div id="faq">
+            <h2 name="@obj.ID" id="@obj.ID">Показать подробнее</h2>
+            <div>@obj.desc_body</div>
 
         </div>
 
@@ -66,4 +63,3 @@
 
     </div>
 }
-

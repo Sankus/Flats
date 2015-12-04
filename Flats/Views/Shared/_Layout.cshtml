@@ -8,8 +8,6 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <link href="../Content/slider.css" rel="stylesheet">
-  
-
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top" style="background-color: #f4f4f4;border-color: #f4f4f4;">
@@ -81,15 +79,60 @@
                                     }
 
                                 }
-
-
-
                             </form>
                         </ul>
                         <input type="hidden" id="select" />
                     </div>
+                    @{
+                        List<SelectListItem> list_rooms = new List<SelectListItem>();
+                        list_rooms.Add(new SelectListItem() { Text = "1 комната", Value = "1" });
+                        list_rooms.Add(new SelectListItem() { Text = "2 комнаты", Value = "2" });
+                        list_rooms.Add(new SelectListItem() { Text = "3 комнаты", Value = "3" });
+                        list_rooms.Add(new SelectListItem() { Text = "4 комнаты", Value = "4" });
+                        list_rooms.Add(new SelectListItem() { Text = "5 комнат", Value = "5" });
+                    }
+                    @Html.DropDownList("RoomsCount", list_rooms, new { id = "rooms_count", placeholder = "Количество комнат" })
 
+                    @{
+                        List<SelectListItem> list_guests = new List<SelectListItem>();
+                        list_guests.Add(new SelectListItem() { Text = "1 человек", Value = "1" });
+                        list_guests.Add(new SelectListItem() { Text = "2 человека", Value = "2" });
+                        list_guests.Add(new SelectListItem() { Text = "3 человека", Value = "3" });
+                        list_guests.Add(new SelectListItem() { Text = "4 человека", Value = "4" });
+                        list_guests.Add(new SelectListItem() { Text = "5 человек", Value = "5" });
+                        list_guests.Add(new SelectListItem() { Text = "6 человек", Value = "6" });
+                        list_guests.Add(new SelectListItem() { Text = "7 человек", Value = "7" });
+                        list_guests.Add(new SelectListItem() { Text = "8 человек", Value = "8" });
+                    }
+                    @Html.DropDownList("GuestsCount", list_guests, new { id = "guests_count", placeholder = "Количество гостей" })
 
+                    <input type="date" id="zaezd" placeholder="Заезд" />
+                    <input type="date" id="viezd" placeholder="Выезд" />
+
+                    <script src="~/Scripts/jquery-ui-1.11.4.min.js"></script>
+                    <script>
+                        $(function () {
+                            $("#slider-range").slider({
+                                range: true,
+                                min: 0,
+                                max: 500,
+                                values: [75, 300],
+                                slide: function (event, ui) {
+                                    $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+                                }
+                            });
+                            $("#amount").val("$" + $("#slider-range").slider("values", 0) +
+                              " - $" + $("#slider-range").slider("values", 1));
+                        });
+                    </script>
+                    <p>
+                        <label for="amount">Цена:</label>
+                        <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+                    </p>
+
+                    <div id="slider-range"></div>
+
+                    <button>Найти</button>
                 </div>
             </div>
 
