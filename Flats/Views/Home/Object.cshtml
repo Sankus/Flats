@@ -1,0 +1,119 @@
+﻿@model Flats.Views.Manage.Objects
+
+@{
+    ViewBag.Title = "Object";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Object</h2>
+
+<div>
+    <h4>Objects</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.type)
+        </dt>
+
+        <dd>
+            @if (Model.type == 1)
+            {
+                <span>Премиум</span>
+            }
+            @if (Model.type == 2)
+            {
+                <span>Стандарт</span>
+            }
+            @if (Model.type == 3)
+            {
+                <span>Эконом</span>
+            }
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.region_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Region.Naim)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.header)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.header)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.rooms_count)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.rooms_count)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.guests_count)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.guests_count)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.price1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.price1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.price2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.price2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.price5)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.price5)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.price14)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.price14)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.desc_body)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.desc_body)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

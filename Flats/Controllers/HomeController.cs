@@ -157,12 +157,15 @@ namespace Flats.Controllers
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult Object(int id)
         {
-            ViewBag.Message = "Your contact page.";
-            ViewBag.some = "some";
+            InitSettings();
+            dbDataContext db = new dbDataContext();
+            Objects obj = db.Objects.SingleOrDefault(c=>c.ID==id);
+            if (obj == null)
+                return RedirectToAction("Index");
 
-            return View();
+            return View(obj);
         }
     }
 }

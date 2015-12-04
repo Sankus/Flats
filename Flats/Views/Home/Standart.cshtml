@@ -4,5 +4,66 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Standart</h2>
+@foreach (var obj in ViewBag.list)
+{
+    <div id="obj_prew obj_@obj.ID">
+        <div class="img_prew">
+            <div><img id="large_foto1_pic" src="/Home/GetPictureFL1?id=@obj.ID"></div>
+        </div>
+        <div class="left_cont_prew">
+            <div class="name_obj_prew"><h2>@obj.header</h2></div>
+            <div class="street_prew">@obj.address</div>
+            <div class="price_prew">
+                <div class="obj_price_in price_prew_1"><div class="before_price_prew">1 Сутки</div><div class="inner_price_prew">@((int)(obj.price1)) грн</div></div>
+                <div class="obj_price_in price_prew_2"><div class="before_price_prew">2-4 Суток</div><div class="inner_price_prew">@((int)(obj.price2)) грн</div></div>
+                <div class="obj_price_in price_prew_3"><div class="before_price_prew">5+ Суток</div><div class="inner_price_prew">@((int)(obj.price5)) грн</div></div>
+                <div class="obj_price_in price_prew_4"><div class="before_price_prew">14+ Суток</div><div class="inner_price_prew">@((int)(obj.price14)) грн</div></div>
+            </div>
+        </div>
+        <div class="right_cont_prew">
+            <div class="star_prew">Тут выводим звезды</div>
+            <div class="in_flat_prew">
+                <span class="obj_attr">
+                    @{
+    int i = 0;
+    foreach (var oa in ViewBag.obj_attr_list)
+    {
+        if (oa.object_id == obj.ID)
+        {
+            <img src="/Home/GetAttrPic?id=@oa.attribute_id" />
+            i++;
+            if (i == 5)
+            {
+                break;
+            }
+        }
+    }
+                    }
+                </span>
+
+            </div>
+            <div class="bottom_prew">
+                <div class="bottom_prew_1">
+                    <a class="bottom_ac_prew" href="#">Забронировать</a>
+                </div>
+                <div class="bottom_prew_1">
+                    <a class="bottom_ac_prew _ac_prew2" href="/Home/Object?id=@obj.ID">Подробнее</a>
+                </div>
+            </div>
+        </div>
+        <div id="faq">
+            <h2>Показать подробнее</h2>
+            <div>
+                <div>@obj.desc_body</div>
+            </div>
+
+
+        </div>
+
+
+
+
+
+    </div>
+}
 

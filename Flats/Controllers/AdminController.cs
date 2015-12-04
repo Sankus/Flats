@@ -498,46 +498,69 @@ namespace Flats.Controllers
             //Записываем картинки
 
             HttpPostedFileBase file = Request.Files["large_foto1"];
-            MemoryStream ms = new MemoryStream();
-            Image img = Image.FromStream(file.InputStream);
-            img.Save(ms, img.RawFormat);
-            Binary bin = new Binary(ms.ToArray());
-            obj.pic1large = bin;
+            MemoryStream ms;
+            Image img;
+            Binary bin;
+
+            if (file.ContentLength != 0)
+            {
+                ms = new MemoryStream();
+                img = Image.FromStream(file.InputStream);
+                img.Save(ms, img.RawFormat);
+                bin = new Binary(ms.ToArray());
+                obj.pic1large = bin;
+            }
 
             file = Request.Files["large_foto2"];
-            ms = new MemoryStream();
-            img = Image.FromStream(file.InputStream);
-            img.Save(ms, img.RawFormat);
-            bin = new Binary(ms.ToArray());
-            obj.pic2large = bin;
+            if (file.ContentLength != 0)
+            {
+                ms = new MemoryStream();
+                img = Image.FromStream(file.InputStream);
+                img.Save(ms, img.RawFormat);
+                bin = new Binary(ms.ToArray());
+                obj.pic2large = bin;
+            }
 
             file = Request.Files["foto1"];
-            ms = new MemoryStream();
-            img = Image.FromStream(file.InputStream);
-            img.Save(ms, img.RawFormat);
-            bin = new Binary(ms.ToArray());
-            obj.pic1 = bin;
+            if (file.ContentLength != 0)
+            {
+                ms = new MemoryStream();
+                img = Image.FromStream(file.InputStream);
+                img.Save(ms, img.RawFormat);
+                bin = new Binary(ms.ToArray());
+                obj.pic1 = bin;
+            }
 
             file = Request.Files["foto2"];
-            ms = new MemoryStream();
-            img = Image.FromStream(file.InputStream);
-            img.Save(ms, img.RawFormat);
-            bin = new Binary(ms.ToArray());
-            obj.pic2 = bin;
+            if (file.ContentLength != 0)
+            {
+                ms = new MemoryStream();
+                img = Image.FromStream(file.InputStream);
+                img.Save(ms, img.RawFormat);
+                bin = new Binary(ms.ToArray());
+                obj.pic2 = bin;
+            }
+
 
             file = Request.Files["foto3"];
-            ms = new MemoryStream();
-            img = Image.FromStream(file.InputStream);
-            img.Save(ms, img.RawFormat);
-            bin = new Binary(ms.ToArray());
-            obj.pic3 = bin;
+            if (file.ContentLength != 0)
+            {
+                ms = new MemoryStream();
+                img = Image.FromStream(file.InputStream);
+                img.Save(ms, img.RawFormat);
+                bin = new Binary(ms.ToArray());
+                obj.pic3 = bin;
+            }
 
             file = Request.Files["foto4"];
-            ms = new MemoryStream();
-            img = Image.FromStream(file.InputStream);
-            img.Save(ms, img.RawFormat);
-            bin = new Binary(ms.ToArray());
-            obj.pic4 = bin;
+            if (file.ContentLength != 0)
+            {
+                ms = new MemoryStream();
+                img = Image.FromStream(file.InputStream);
+                img.Save(ms, img.RawFormat);
+                bin = new Binary(ms.ToArray());
+                obj.pic4 = bin;
+            }
             //--Записываем картинки
 
             db.Objects.InsertOnSubmit(obj);

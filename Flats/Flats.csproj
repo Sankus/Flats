@@ -474,6 +474,7 @@
     <Content Include="Views\Admin\ObjectsList.cshtml" />
     <Content Include="Views\Admin\CreateObjects.cshtml" />
     <Content Include="Views\Admin\EditObjects.cshtml" />
+    <Content Include="Views\Home\Object.cshtml" />
     <None Include="Views\Manage\db.dbml.layout">
       <DependentUpon>db.dbml</DependentUpon>
     </None>
