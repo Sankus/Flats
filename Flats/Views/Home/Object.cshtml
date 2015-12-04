@@ -110,8 +110,28 @@
         <dd>
             @Html.DisplayFor(model => model.desc_body)
         </dd>
-
     </dl>
+    Картинки большие
+    <img id="large_foto1_pic" src="/Home/GetPictureFL1?id=@Model.ID" style="max-height:50px; max-width:50px;">
+    <img id="large_foto2_pic" src="/Home/GetPictureFL2?id=@Model.ID" style="max-height:50px; max-width:50px;">
+    Картинки малые
+    <img id="foto1_pic" src="/Home/GetPictureF1?id=@Model.ID" style="max-height:50px; max-width:50px;">
+    <img id="foto2_pic" src="/Home/GetPictureF2?id=@Model.ID" style="max-height:50px; max-width:50px;">
+    <img id="foto3_pic" src="/Home/GetPictureF3?id=@Model.ID" style="max-height:50px; max-width:50px;">
+    <img id="foto4_pic" src="/Home/GetPictureF4?id=@Model.ID" style="max-height:50px; max-width:50px;">
+    Атрибуты
+    @foreach (var oa in ViewBag.obj_attr_list)
+    {
+        <img src="/Home/GetAttrPic?id=@oa.attribute_id" />
+    }
+    Жизненные условия
+    @foreach (var olc in ViewBag.obj_lc_list)
+    {
+        <span>@olc.LiveConditions.lc_value</span> 
+        
+        <span>@olc._value</span>
+    }
+
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |

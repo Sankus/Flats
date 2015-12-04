@@ -627,8 +627,12 @@ namespace Flats.Controllers
         {
             id = id.Replace(".jpg", "");
             dbDataContext db = new dbDataContext();
-            Objects rec = db.Objects.Where(c => c.ID == Int32.Parse(id)).Single();
-
+            Objects rec = db.Objects.SingleOrDefault(c => c.ID == Int32.Parse(id));
+            if (rec.pic1large == null)
+            {
+                byte[] arr = new byte[0];
+                return File(arr, "image/jpeg");
+            }
             return File(rec.pic1large.ToArray(), "image/jpeg");
         }
 
@@ -636,7 +640,12 @@ namespace Flats.Controllers
         {
             id = id.Replace(".jpg", "");
             dbDataContext db = new dbDataContext();
-            Objects rec = db.Objects.Where(c => c.ID == Int32.Parse(id)).Single();
+            Objects rec = db.Objects.SingleOrDefault(c => c.ID == Int32.Parse(id));
+            if (rec.pic2large == null)
+            {
+                byte[] arr = new byte[0];
+                return File(arr, "image/jpeg");
+            }
 
             return File(rec.pic2large.ToArray(), "image/jpeg");
         }
@@ -644,7 +653,12 @@ namespace Flats.Controllers
         {
             id = id.Replace(".jpg", "");
             dbDataContext db = new dbDataContext();
-            Objects rec = db.Objects.Where(c => c.ID == Int32.Parse(id)).Single();
+            Objects rec = db.Objects.SingleOrDefault(c => c.ID == Int32.Parse(id));
+            if (rec.pic1 == null)
+            {
+                byte[] arr = new byte[0];
+                return File(arr, "image/jpeg");
+            }
 
             return File(rec.pic1.ToArray(), "image/jpeg");
         }
@@ -653,7 +667,12 @@ namespace Flats.Controllers
         {
             id = id.Replace(".jpg", "");
             dbDataContext db = new dbDataContext();
-            Objects rec = db.Objects.Where(c => c.ID == Int32.Parse(id)).Single();
+            Objects rec = db.Objects.SingleOrDefault(c => c.ID == Int32.Parse(id));
+            if (rec.pic2 == null)
+            {
+                byte[] arr = new byte[0];
+                return File(arr, "image/jpeg");
+            }
 
             return File(rec.pic2.ToArray(), "image/jpeg");
         }
@@ -661,7 +680,12 @@ namespace Flats.Controllers
         {
             id = id.Replace(".jpg", "");
             dbDataContext db = new dbDataContext();
-            Objects rec = db.Objects.Where(c => c.ID == Int32.Parse(id)).Single();
+            Objects rec = db.Objects.SingleOrDefault(c => c.ID == Int32.Parse(id));
+            if (rec.pic3 == null)
+            {
+                byte[] arr = new byte[0];
+                return File(arr, "image/jpeg");
+            }
 
             return File(rec.pic3.ToArray(), "image/jpeg");
         }
@@ -669,7 +693,12 @@ namespace Flats.Controllers
         {
             id = id.Replace(".jpg", "");
             dbDataContext db = new dbDataContext();
-            Objects rec = db.Objects.Where(c => c.ID == Int32.Parse(id)).Single();
+            Objects rec = db.Objects.SingleOrDefault(c => c.ID == Int32.Parse(id));
+            if (rec.pic4 == null)
+            {
+                byte[] arr = new byte[0];
+                return File(arr, "image/jpeg");
+            }
 
             return File(rec.pic4.ToArray(), "image/jpeg");
         }

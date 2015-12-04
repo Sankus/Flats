@@ -991,6 +991,8 @@ namespace Flats.Views.Manage
 		
 		private string _lc_value;
 		
+		private EntitySet<Objects_LiveConditions> _Objects_LiveConditions;
+		
     #region Определения метода расширяемости
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -1005,6 +1007,7 @@ namespace Flats.Views.Manage
 		
 		public LiveConditions()
 		{
+			this._Objects_LiveConditions = new EntitySet<Objects_LiveConditions>(new Action<Objects_LiveConditions>(this.attach_Objects_LiveConditions), new Action<Objects_LiveConditions>(this.detach_Objects_LiveConditions));
 			OnCreated();
 		}
 		
@@ -1068,6 +1071,19 @@ namespace Flats.Views.Manage
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="LiveConditions_Objects_LiveConditions", Storage="_Objects_LiveConditions", ThisKey="id", OtherKey="lc_id")]
+		public EntitySet<Objects_LiveConditions> Objects_LiveConditions
+		{
+			get
+			{
+				return this._Objects_LiveConditions;
+			}
+			set
+			{
+				this._Objects_LiveConditions.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -1086,6 +1102,18 @@ namespace Flats.Views.Manage
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+		
+		private void attach_Objects_LiveConditions(Objects_LiveConditions entity)
+		{
+			this.SendPropertyChanging();
+			entity.LiveConditions = this;
+		}
+		
+		private void detach_Objects_LiveConditions(Objects_LiveConditions entity)
+		{
+			this.SendPropertyChanging();
+			entity.LiveConditions = null;
 		}
 	}
 	
@@ -2163,6 +2191,8 @@ namespace Flats.Views.Manage
 		
 		private EntitySet<Objects_Attributes> _Objects_Attributes;
 		
+		private EntitySet<Objects_LiveConditions> _Objects_LiveConditions;
+		
 		private EntityRef<Region> _Region;
 		
     #region Определения метода расширяемости
@@ -2212,6 +2242,7 @@ namespace Flats.Views.Manage
 		public Objects()
 		{
 			this._Objects_Attributes = new EntitySet<Objects_Attributes>(new Action<Objects_Attributes>(this.attach_Objects_Attributes), new Action<Objects_Attributes>(this.detach_Objects_Attributes));
+			this._Objects_LiveConditions = new EntitySet<Objects_LiveConditions>(new Action<Objects_LiveConditions>(this.attach_Objects_LiveConditions), new Action<Objects_LiveConditions>(this.detach_Objects_LiveConditions));
 			this._Region = default(EntityRef<Region>);
 			OnCreated();
 		}
@@ -2613,6 +2644,19 @@ namespace Flats.Views.Manage
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Objects_Objects_LiveConditions", Storage="_Objects_LiveConditions", ThisKey="ID", OtherKey="object_id")]
+		public EntitySet<Objects_LiveConditions> Objects_LiveConditions
+		{
+			get
+			{
+				return this._Objects_LiveConditions;
+			}
+			set
+			{
+				this._Objects_LiveConditions.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Region_Objects", Storage="_Region", ThisKey="region_id", OtherKey="ID", IsForeignKey=true)]
 		public Region Region
 		{
@@ -2678,6 +2722,18 @@ namespace Flats.Views.Manage
 			this.SendPropertyChanging();
 			entity.Objects = null;
 		}
+		
+		private void attach_Objects_LiveConditions(Objects_LiveConditions entity)
+		{
+			this.SendPropertyChanging();
+			entity.Objects = this;
+		}
+		
+		private void detach_Objects_LiveConditions(Objects_LiveConditions entity)
+		{
+			this.SendPropertyChanging();
+			entity.Objects = null;
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Objects_LiveConditions")]
@@ -2693,6 +2749,10 @@ namespace Flats.Views.Manage
 		private int _lc_id;
 		
 		private string @__value;
+		
+		private EntityRef<Objects> _Objects;
+		
+		private EntityRef<LiveConditions> _LiveConditions;
 		
     #region Определения метода расширяемости
     partial void OnLoaded();
@@ -2710,6 +2770,8 @@ namespace Flats.Views.Manage
 		
 		public Objects_LiveConditions()
 		{
+			this._Objects = default(EntityRef<Objects>);
+			this._LiveConditions = default(EntityRef<LiveConditions>);
 			OnCreated();
 		}
 		
@@ -2744,6 +2806,10 @@ namespace Flats.Views.Manage
 			{
 				if ((this._object_id != value))
 				{
+					if (this._Objects.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.Onobject_idChanging(value);
 					this.SendPropertyChanging();
 					this._object_id = value;
@@ -2764,6 +2830,10 @@ namespace Flats.Views.Manage
 			{
 				if ((this._lc_id != value))
 				{
+					if (this._LiveConditions.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.Onlc_idChanging(value);
 					this.SendPropertyChanging();
 					this._lc_id = value;
@@ -2789,6 +2859,74 @@ namespace Flats.Views.Manage
 					this.@__value = value;
 					this.SendPropertyChanged("_value");
 					this.On_valueChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Objects_Objects_LiveConditions", Storage="_Objects", ThisKey="object_id", OtherKey="ID", IsForeignKey=true)]
+		public Objects Objects
+		{
+			get
+			{
+				return this._Objects.Entity;
+			}
+			set
+			{
+				Objects previousValue = this._Objects.Entity;
+				if (((previousValue != value) 
+							|| (this._Objects.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Objects.Entity = null;
+						previousValue.Objects_LiveConditions.Remove(this);
+					}
+					this._Objects.Entity = value;
+					if ((value != null))
+					{
+						value.Objects_LiveConditions.Add(this);
+						this._object_id = value.ID;
+					}
+					else
+					{
+						this._object_id = default(int);
+					}
+					this.SendPropertyChanged("Objects");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="LiveConditions_Objects_LiveConditions", Storage="_LiveConditions", ThisKey="lc_id", OtherKey="id", IsForeignKey=true)]
+		public LiveConditions LiveConditions
+		{
+			get
+			{
+				return this._LiveConditions.Entity;
+			}
+			set
+			{
+				LiveConditions previousValue = this._LiveConditions.Entity;
+				if (((previousValue != value) 
+							|| (this._LiveConditions.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._LiveConditions.Entity = null;
+						previousValue.Objects_LiveConditions.Remove(this);
+					}
+					this._LiveConditions.Entity = value;
+					if ((value != null))
+					{
+						value.Objects_LiveConditions.Add(this);
+						this._lc_id = value.id;
+					}
+					else
+					{
+						this._lc_id = default(int);
+					}
+					this.SendPropertyChanged("LiveConditions");
 				}
 			}
 		}

@@ -18,9 +18,80 @@ namespace Flats.Controllers
         {
             id = id.Replace(".jpg", "");
             dbDataContext db = new dbDataContext();
-            Objects rec = db.Objects.Where(c => c.ID == Int32.Parse(id)).Single();
-
+            Objects rec = db.Objects.SingleOrDefault(c => c.ID == Int32.Parse(id));
+            if (rec.pic1large == null)
+            {
+                byte[] arr = new byte[0];
+                return File( arr, "image/jpeg");
+            }
             return File(rec.pic1large.ToArray(), "image/jpeg");
+        }
+
+        public ActionResult GetPictureFL2(String id)
+        {
+            id = id.Replace(".jpg", "");
+            dbDataContext db = new dbDataContext();
+            Objects rec = db.Objects.SingleOrDefault(c => c.ID == Int32.Parse(id));
+            if (rec.pic2large == null)
+            {
+                byte[] arr = new byte[0];
+                return File(arr, "image/jpeg");
+            }
+
+            return File(rec.pic2large.ToArray(), "image/jpeg");
+        }
+        public ActionResult GetPictureF1(String id)
+        {
+            id = id.Replace(".jpg", "");
+            dbDataContext db = new dbDataContext();
+            Objects rec = db.Objects.SingleOrDefault(c => c.ID == Int32.Parse(id));
+            if (rec.pic1 == null)
+            {
+                byte[] arr = new byte[0];
+                return File(arr, "image/jpeg");
+            }
+
+            return File(rec.pic1.ToArray(), "image/jpeg");
+        }
+
+        public ActionResult GetPictureF2(String id)
+        {
+            id = id.Replace(".jpg", "");
+            dbDataContext db = new dbDataContext();
+            Objects rec = db.Objects.SingleOrDefault(c => c.ID == Int32.Parse(id));
+            if (rec.pic2 == null)
+            {
+                byte[] arr = new byte[0];
+                return File(arr, "image/jpeg");
+            }
+
+            return File(rec.pic2.ToArray(), "image/jpeg");
+        }
+        public ActionResult GetPictureF3(String id)
+        {
+            id = id.Replace(".jpg", "");
+            dbDataContext db = new dbDataContext();
+            Objects rec = db.Objects.SingleOrDefault(c => c.ID == Int32.Parse(id));
+            if (rec.pic3 == null)
+            {
+                byte[] arr = new byte[0];
+                return File(arr, "image/jpeg");
+            }
+
+            return File(rec.pic3.ToArray(), "image/jpeg");
+        }
+        public ActionResult GetPictureF4(String id)
+        {
+            id = id.Replace(".jpg", "");
+            dbDataContext db = new dbDataContext();
+            Objects rec = db.Objects.SingleOrDefault(c => c.ID == Int32.Parse(id));
+            if (rec.pic4 == null)
+            {
+                byte[] arr = new byte[0];
+                return File(arr, "image/jpeg");
+            }
+
+            return File(rec.pic4.ToArray(), "image/jpeg");
         }
 
         public ActionResult GetAttrPic(String id)
@@ -164,6 +235,11 @@ namespace Flats.Controllers
             Objects obj = db.Objects.SingleOrDefault(c=>c.ID==id);
             if (obj == null)
                 return RedirectToAction("Index");
+
+            List<Objects_Attributes> obj_attr_list = db.Objects_Attributes.Select(c => c).Where(c => c.Objects.ID == id).ToList<Objects_Attributes>();
+            ViewBag.obj_attr_list = obj_attr_list;
+            List<Objects_LiveConditions> obj_lc_list = db.Objects_LiveConditions.Select(c => c).Where(c => c.object_id == id).ToList<Objects_LiveConditions>();
+            ViewBag.obj_lc_list = obj_lc_list;
 
             return View(obj);
         }

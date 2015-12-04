@@ -69,6 +69,7 @@
       <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="lc_key" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="lc_value" Type="System.String" DbType="NVarChar(350)" CanBeNull="true" />
+      <Association Name="LiveConditions_Objects_LiveConditions" Member="Objects_LiveConditions" ThisKey="id" OtherKey="lc_id" Type="Objects_LiveConditions" />
     </Type>
   </Table>
   <Table Name="dbo.Objects_Attributes" Member="Objects_Attributes">
@@ -151,6 +152,7 @@
       <Column Name="pic3" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
       <Column Name="pic4" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
       <Association Name="Objects_Objects_Attributes" Member="Objects_Attributes" ThisKey="ID" OtherKey="object_id" Type="Objects_Attributes" />
+      <Association Name="Objects_Objects_LiveConditions" Member="Objects_LiveConditions" ThisKey="ID" OtherKey="object_id" Type="Objects_LiveConditions" />
       <Association Name="Region_Objects" Member="Region" ThisKey="region_id" OtherKey="ID" Type="Region" IsForeignKey="true" />
     </Type>
   </Table>
@@ -160,6 +162,8 @@
       <Column Name="object_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="lc_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="[_value]" Member="_value" Type="System.String" DbType="NVarChar(300)" CanBeNull="true" />
+      <Association Name="Objects_Objects_LiveConditions" Member="Objects" ThisKey="object_id" OtherKey="ID" Type="Objects" IsForeignKey="true" />
+      <Association Name="LiveConditions_Objects_LiveConditions" Member="LiveConditions" ThisKey="lc_id" OtherKey="id" Type="LiveConditions" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>
