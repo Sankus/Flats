@@ -109,7 +109,7 @@ p.phone_1,p.phone_2 {
    
 }
 .inneer-content {
-    width: 80%;
+    width: 84%;
     float: right;
     position: fixed;
     right: 0;
@@ -495,7 +495,7 @@ a.bottom_ac_prew._ac_prew2 {
 #faqindex ul {list-style-type: square;list-style-image: none;list-style-position: outside;padding-left:25px;line-height: 18px;margin-top: 5px;font-size:80%;}
 #faqindex ul li {color:#666666;white-space:nowrap;}
 #faqindex h2 {padding: 0;margin-bottom: 0;border-bottom: dotted 1px #ccc;color: #666666;}
-#faq {float:left;width: 600px;margin: 0 auto; font-family: consolas,verdana,helvetica,sans-serif;}
+#faq {float:left;width: 900px;margin: 0 auto; font-family: consolas,verdana,helvetica,sans-serif;}
 #faq {margin-bottom: 25px;}
 #faq .faqcontent {margin: 0 10px 0 10px;font-size: 95%;}
 #faq h2.faqopened, #faq h2.faqclosed {
@@ -550,4 +550,75 @@ border-bottom:1px dotted #E4E4E4;
 .kyrsi {
     margin: 10px 0 5px 24px;
   
+}
+#obj_prew {
+    width: 906px;
+    height: 225px;
+}
+.page_block {
+    margin-top: 33px;
+}
+.titel_page>h2 {
+    color: #c32361;
+    font-family: "Roboto Regular";
+}
+
+.firs_img_page {
+    float: left;
+    width: 245px;
+    overflow: hidden;
+    height: 138px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+.firs_img_page>img {
+    width: 245px;
+}
+.top_sec_img {
+    width: 500px;
+    height: 140px;
+}
+.down_sec_img {
+    width: 500px;
+}
+.second_img_page>img {
+    width: 116px;
+    margin-right: 6px;
+}
+
+.opisanie_page>h2 {
+    font-size: 19px;
+    font-weight: 600;
+}
+.jile_page>h2 {
+    font-size: 19px;
+    font-weight: 600;
+}
+.atribute_page>h2 {
+    font-size: 19px;
+    font-weight: 600;
+}
+
+.detail_page_2>span {
+    font-weight: 700;
+}
+.detail_page_1 {
+    float: left;
+    margin-right: 6px;
+}
+.detail_page_2 {
+    /* float: left; */
+    margin-right: 5px;
+}
+.jile_page {
+    width: 595px;
+}
+.detail_page_0 {
+    width: 275px;
+    float: left;
+}
+.jile_page {
+    width: 595px;
+    height: 80px;
+    border-bottom: 1px dotted #E4E4E4;
 }

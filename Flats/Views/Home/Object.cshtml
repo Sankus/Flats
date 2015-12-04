@@ -5,133 +5,170 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Object</h2>
+
 
 <div>
-    <h4>Objects</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.type)
-        </dt>
-
-        <dd>
-            @if (Model.type == 1)
-            {
-                <span>Премиум</span>
-            }
-            @if (Model.type == 2)
-            {
-                <span>Стандарт</span>
-            }
-            @if (Model.type == 3)
-            {
-                <span>Эконом</span>
-            }
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.region_id)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Region.Naim)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.header)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.header)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.address)
-        </dt>
-
-        <dd>
+    <div class="page_block">
+    <div class="titel_page">
+      <h2>  @Html.DisplayFor(model => model.header) </h2>
+    </div>
+        <div class="page_adress">
             @Html.DisplayFor(model => model.address)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.rooms_count)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.rooms_count)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.guests_count)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.guests_count)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.price1)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.price1)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.price2)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.price2)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.price5)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.price5)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.price14)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.price14)
-        </dd>
-
-
-        <dt>
-            @Html.DisplayNameFor(model => model.desc_body)
-        </dt>
-
-        <dd>
+        </div>
+        <div class="section_page">
+            <div class="block_img_page">
+                <div class="top_sec_img">
+                    <div class="firs_img_page">
+                        <img id="large_foto1_pic" src="/Home/GetPictureFL1?id=@Model.ID">
+                    </div>
+                    <div class="firs_img_page">
+                        <img id="large_foto2_pic" src="/Home/GetPictureFL2?id=@Model.ID">
+                    </div>
+                </div>
+                <div class="down_sec_img">
+                    <div class="second_img_page">
+                        <img id="foto1_pic" src="/Home/GetPictureF1?id=@Model.ID">
+                        <img id="foto2_pic" src="/Home/GetPictureF2?id=@Model.ID">
+                        <img id="foto3_pic" src="/Home/GetPictureF3?id=@Model.ID">
+                        <img id="foto4_pic" src="/Home/GetPictureF4?id=@Model.ID">
+                    </div>
+                    </div>
+            </div>
+        </div>
+        <div class="opisanie_page">
+            <h2>Описание и комплектация</h2>
             @Html.DisplayFor(model => model.desc_body)
-        </dd>
-    </dl>
-    Картинки большие
-    <img id="large_foto1_pic" src="/Home/GetPictureFL1?id=@Model.ID" style="max-height:50px; max-width:50px;">
-    <img id="large_foto2_pic" src="/Home/GetPictureFL2?id=@Model.ID" style="max-height:50px; max-width:50px;">
-    Картинки малые
-    <img id="foto1_pic" src="/Home/GetPictureF1?id=@Model.ID" style="max-height:50px; max-width:50px;">
-    <img id="foto2_pic" src="/Home/GetPictureF2?id=@Model.ID" style="max-height:50px; max-width:50px;">
-    <img id="foto3_pic" src="/Home/GetPictureF3?id=@Model.ID" style="max-height:50px; max-width:50px;">
-    <img id="foto4_pic" src="/Home/GetPictureF4?id=@Model.ID" style="max-height:50px; max-width:50px;">
-    Атрибуты
-    @foreach (var oa in ViewBag.obj_attr_list)
-    {
-        <img src="/Home/GetAttrPic?id=@oa.attribute_id" />
-    }
-    Жизненные условия
-    @foreach (var olc in ViewBag.obj_lc_list)
-    {
-        <span>@olc.LiveConditions.lc_value</span> 
-        
-        <span>@olc._value</span>
-    }
+            </div>
 
+
+
+        <div class="jile_page">
+            <h2>Жилье</h2>
+            @foreach (var olc in ViewBag.obj_lc_list)
+            {
+                <div class="detail_page_0">
+                    <div class="detail_page_1"><span>@olc.LiveConditions.lc_value</span></div>
+
+                    <div class="detail_page_2">
+                        <span>@olc._value</span>
+                    </div>
+                </div>
+            }
+
+    </div>
+
+        <div class="atribute_page">
+            <h2>Атрибуты</h2>
+            @foreach (var oa in ViewBag.obj_attr_list)
+            {
+                <img src="/Home/GetAttrPic?id=@oa.attribute_id" />
+            }
+        </div>
+
+
+        
+    <hr />
+        <dl class="dl-horizontal" style='display:none'>
+            <dt>
+                @Html.DisplayNameFor(model => model.type)
+            </dt>
+
+            <dd>
+                @if (Model.type == 1)
+                {
+                    <span>Премиум</span>
+                }
+                @if (Model.type == 2)
+                {
+                    <span>Стандарт</span>
+                }
+                @if (Model.type == 3)
+                {
+                    <span>Эконом</span>
+                }
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.region_id)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Region.Naim)
+            </dd>
+
+
+
+            <dd>
+                @Html.DisplayFor(model => model.header)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.address)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.address)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.rooms_count)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.rooms_count)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.guests_count)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.guests_count)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.price1)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.price1)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.price2)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.price2)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.price5)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.price5)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.price14)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.price14)
+            </dd>
+
+
+            <dt>
+                @Html.DisplayNameFor(model => model.desc_body)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.desc_body)
+            </dd>
+        </dl>
+    
+    
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
