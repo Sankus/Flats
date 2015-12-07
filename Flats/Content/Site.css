@@ -786,3 +786,15 @@ button.search_btn {
 	/** Unhide lightbox **/
 	display: block;
 }
+
+
+
+.firs_img_page:hover::after {
+       background: rgba(0, 0, 0, 0.38);
+    content: '+';
+    font-size: 26px;
+    width: 238px;
+    height: 138px;
+    position: absolute;
+    margin: 0 0 0 -238px;
+}
