@@ -8,6 +8,12 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <link href="../Content/slider.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+
+
+
+
+
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top" style="background-color: #f4f4f4;border-color: #f4f4f4;">
@@ -59,18 +65,14 @@
                     <li>@Html.ActionLink("Контакты", "Contacts", "Home")</li>
                 </ul>
 
+                <form action="#" method="post" class="customForm">
+
+                    <div class="searchbox">
+                        <div class="select">
+                            <a href="#" class="slct">Регион</a>
+                            <ul class="drop">
 
 
-                <div class="searchbox">
-
-
-
-
-                    <div class="select">
-                        <a href="#" class="slct">Регион</a>
-                        <ul class="drop">
-
-                            <form id="search_form" method="post" class="customForm">
                                 @{
 
                                     foreach (var region in ViewBag.regions)
@@ -79,62 +81,56 @@
                                     }
 
                                 }
-                            </form>
-                        </ul>
-                        <input type="hidden" id="select" />
-                    </div>
 
-                    @{
-                        List<SelectListItem> list_rooms = new List<SelectListItem>();
-                        list_rooms.Add(new SelectListItem() { Text = "1 комната", Value = "1" });
-                        list_rooms.Add(new SelectListItem() { Text = "2 комнаты", Value = "2" });
-                        list_rooms.Add(new SelectListItem() { Text = "3 комнаты", Value = "3" });
-                        list_rooms.Add(new SelectListItem() { Text = "4 комнаты", Value = "4" });
-                        list_rooms.Add(new SelectListItem() { Text = "5 комнат", Value = "5" });
-                    }
-                    @Html.DropDownList("RoomsCount", list_rooms, new { id = "rooms_count", placeholder = "Количество комнат" })
+                            </ul>
+                            <input type="hidden" id="select" />
+                        </div>
 
-                    @{
-                        List<SelectListItem> list_guests = new List<SelectListItem>();
-                        list_guests.Add(new SelectListItem() { Text = "1 человек", Value = "1" });
-                        list_guests.Add(new SelectListItem() { Text = "2 человека", Value = "2" });
-                        list_guests.Add(new SelectListItem() { Text = "3 человека", Value = "3" });
-                        list_guests.Add(new SelectListItem() { Text = "4 человека", Value = "4" });
-                        list_guests.Add(new SelectListItem() { Text = "5 человек", Value = "5" });
-                        list_guests.Add(new SelectListItem() { Text = "6 человек", Value = "6" });
-                        list_guests.Add(new SelectListItem() { Text = "7 человек", Value = "7" });
-                        list_guests.Add(new SelectListItem() { Text = "8 человек", Value = "8" });
-                    }
-                    @Html.DropDownList("GuestsCount", list_guests, new { id = "guests_count", placeholder = "Количество гостей" })
 
-                    <input type="date" id="zaezd" placeholder="Заезд" />
-                    <input type="date" id="viezd" placeholder="Выезд" />
+                        <div class="select">
+                            <a href="#" class="slct_2">Количество комнат</a>
+                            <ul class="drop_2">
 
-                    <script src="~/Scripts/jquery-ui-1.11.4.min.js"></script>
-                    <script>
-                        $(function () {
-                            $("#slider-range").slider({
-                                range: true,
-                                min: 0,
-                                max: 500,
-                                values: [75, 300],
-                                slide: function (event, ui) {
-                                    $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
-                                }
-                            });
-                            $("#amount").val("$" + $("#slider-range").slider("values", 0) +
-                              " - $" + $("#slider-range").slider("values", 1));
-                        });
-                    </script>
-                    <p>
-                        <label for="amount">Цена:</label>
-                        <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
-                    </p>
+                                <li>1 комната</li>
+                                <li>2 комната</li>
+                                <li>3 комната</li>
+                                <li>4 комната</li>
+                                <li>5 комната</li>
 
-                    <div id="slider-range"></div>
+                            </ul>
+                            <input type="hidden" id="select_2 " />
+                        </div>
+                        <div class="select">
+                            <a href="#" class="slct_3">Количество гостей</a>
+                            <ul class="drop_3">
 
-                    <button>Найти</button>
-                </div>
+                                <li>1 человек</li>
+                                <li>2 человека</li>
+                                <li>3 человека</li>
+                                <li>4 человека</li>
+                                <li>5 человек</li>
+                                <li>6 человек</li>
+                                <li>7 человек</li>
+                                <li>8 человек</li>
+
+                            </ul>
+                            <input type="hidden" id="select_3 " />
+                        </div>
+               
+                        <input type="date" id="zaezd" placeholder="Заезд" />
+                        <input type="date" id="viezd" placeholder="Выезд" />
+                        
+                        
+                         </form>
+                <div class="my_slider">
+                <p> 
+                    <input type="text" id="amount" readonly style="border:0; color:#C32361; font-weight:bold;">
+                </p>
+       
+                <div id="slider-range"></div>
+                 </div>
+                        <button class="search_btn">Найти</button>
+</div>
             </div>
 
 
@@ -163,6 +159,7 @@
             }
         }
     </ul>
+         
     </div>
     @{String div_class = "";} 
     @if (ViewBag.isMainPage) 
@@ -185,6 +182,23 @@
     @Scripts.Render("~/bundles/bootstrap")
     
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+    <script>
+        $(function () {
+            $("#slider-range").slider({
+                range: true,
+                min: 0,
+                max: 500,
+                values: [75, 300],
+                slide: function (event, ui) {
+                    $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+                }
+            });
+            $("#amount").val("$" + $("#slider-range").slider("values", 0) +
+              " - $" + $("#slider-range").slider("values", 1));
+        });
+    </script>
     <script src="~/Scripts/spoiler.js"></script>
     <script type="text/javascript">
         $().ready(function () {
@@ -196,8 +210,8 @@
         });
     </script>
     <script src="~/Scripts/form-scripts.js"></script>
-   
-    
+
+
     <script src="~/Scripts/jquery.slides.min.js"></script>
     <script>
         $(function () {
@@ -213,7 +227,7 @@
             });
         });
     </script>
-    
+
     <script>
         $(document).ready(function () {
             $("a.hide-show").click(function () {
@@ -221,6 +235,8 @@
             });
         });
     </script>
+
+
     @RenderSection("scripts", required: false)
 </body>
 </html>

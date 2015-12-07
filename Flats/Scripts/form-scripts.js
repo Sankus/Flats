@@ -58,8 +58,87 @@ $(document).ready(function () {
             $(this).find('input').attr('checked', true);
         }
     });
+    // Select_2
+    $('.slct_2').click(function () {
+        /* Заносим выпадающий список в переменную */
+        var dropBlock = $(this).parent().find('.drop_2');
 
-    // Select
+        /* Делаем проверку: Если выпадающий блок скрыт то делаем его видимым*/
+        if (dropBlock.is(':hidden')) {
+            dropBlock.slideDown();
+
+            /* Выделяем ссылку открывающую select */
+            $(this).addClass('active');
+
+            /* Работаем с событием клика по элементам выпадающего списка */
+            $('.drop_2').find('li').click(function () {
+
+                /* Заносим в переменную HTML код элемента
+                списка по которому кликнули */
+                var selectResult = $(this).html();
+
+                /* Находим наш скрытый инпут и передаем в него
+                значение из переменной selectResult */
+                $(this).parent().parent().find('input').val(selectResult);
+
+                /* Передаем значение переменной selectResult в ссылку которая
+                открывает наш выпадающий список и удаляем активность */
+                $(this).parent().parent().find('.slct_2').removeClass('active').html(selectResult);
+
+                /* Скрываем выпадающий блок */
+                dropBlock.slideUp();
+            });
+
+            /* Продолжаем проверку: Если выпадающий блок не скрыт то скрываем его */
+        } else {
+            $(this).removeClass('active');
+            dropBlock.slideUp();
+        }
+
+        /* Предотвращаем обычное поведение ссылки при клике */
+        return false;
+    });
+    // Select_3
+    $('.slct_3').click(function () {
+        /* Заносим выпадающий список в переменную */
+        var dropBlock = $(this).parent().find('.drop_3');
+
+        /* Делаем проверку: Если выпадающий блок скрыт то делаем его видимым*/
+        if (dropBlock.is(':hidden')) {
+            dropBlock.slideDown();
+
+            /* Выделяем ссылку открывающую select */
+            $(this).addClass('active');
+
+            /* Работаем с событием клика по элементам выпадающего списка */
+            $('.drop_3').find('li').click(function () {
+
+                /* Заносим в переменную HTML код элемента
+                списка по которому кликнули */
+                var selectResult = $(this).html();
+
+                /* Находим наш скрытый инпут и передаем в него
+                значение из переменной selectResult */
+                $(this).parent().parent().find('input').val(selectResult);
+
+                /* Передаем значение переменной selectResult в ссылку которая
+                открывает наш выпадающий список и удаляем активность */
+                $(this).parent().parent().find('.slct_3').removeClass('active').html(selectResult);
+
+                /* Скрываем выпадающий блок */
+                dropBlock.slideUp();
+            });
+
+            /* Продолжаем проверку: Если выпадающий блок не скрыт то скрываем его */
+        } else {
+            $(this).removeClass('active');
+            dropBlock.slideUp();
+        }
+
+        /* Предотвращаем обычное поведение ссылки при клике */
+        return false;
+    });
+    // Select_1
     $('.slct').click(function () {
         /* Заносим выпадающий список в переменную */
         var dropBlock = $(this).parent().find('.drop');
