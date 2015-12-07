@@ -128,6 +128,7 @@ p.phone_1,p.phone_2 {
     background: #F4F4F4;
    display: none;
    padding:10px;
+       border: 1px solid #E4E4E4;
 }
 .searchbox:before {
     content: '';
@@ -137,6 +138,7 @@ p.phone_1,p.phone_2 {
     border: 20px solid transparent;
     border-bottom: 20px solid #F4F4F4;
     border-top: -19px solid green;
+        border: 1px solid #E4E4E4;
 }
 ul.nav.navbar-nav>li {
     margin-right: 46px;
@@ -403,6 +405,9 @@ footer {
 
 img#large_foto1_pic {
     width: 238px;
+}
+img#foto1_pic {
+    width: 117px;
 }
 .img_prew {
     width: 250px;
@@ -750,4 +755,34 @@ button.search_btn {
     width: 115px;
     height: 83px;
     border: none;
+}
+
+.lightbox {
+	/** Default lightbox to hidden */
+	display: none;
+
+	/** Position and style */
+	position: fixed;
+	z-index: 9997;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	top: 0;
+	left: 0;
+	background: rgba(0,0,0,0.8);
+}
+
+.lightbox img {
+	/** Pad the lightbox image */
+	max-width: 90%;
+	max-height: 80%;
+	margin-top: 2%;
+}
+
+.lightbox:target {
+	/** Remove default browser outline */
+	outline: none;
+
+	/** Unhide lightbox **/
+	display: block;
 }
