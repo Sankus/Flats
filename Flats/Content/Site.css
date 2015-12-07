@@ -554,6 +554,7 @@ border-bottom:1px dotted #E4E4E4;
 #obj_prew {
     width: 906px;
     height: 225px;
+    margin-top:25px;
 }
 .page_block {
     margin-top: 33px;
