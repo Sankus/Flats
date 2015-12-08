@@ -1,12 +1,21 @@
 ﻿@{
-    ViewBag.Title = "Standart";
+    ViewBag.Title = "Стандартные";
     ViewBag.ActiveMenu = "standart";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    int j = 0;
 }
 
 @foreach (var obj in ViewBag.list)
 {
-    <div id="obj_prew">
+    j++;
+    string cl = "";
+    if (j % 2 == 0)
+    {
+        cl = "grey";
+
+    }
+
+    <div id="obj_prew" class="@cl">
         <div class="img_prew">
             <div><img id="large_foto1_pic" src="/Home/GetPictureFL1?id=@obj.ID"></div>
         </div>
@@ -52,7 +61,7 @@
             </div>
         </div>
 
-        <div id="faq">
+        <div id="faq_@j" class="faq">
             <h2 name="@obj.ID" id="@obj.ID">Показать подробнее</h2>
             <div>@obj.desc_body</div>
 

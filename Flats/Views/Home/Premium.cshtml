@@ -9,8 +9,14 @@
 @foreach (var obj in ViewBag.list) 
 {
     j++;
-    
-    <div id="obj_prew"> 
+    string cl = "";
+    if (j%2==0)
+        {
+            cl = "grey";
+        
+        }
+
+    <div id="obj_prew" class="@cl"> 
     <div class="img_prew">
         <div><img id="large_foto1_pic" src="/Home/GetPictureFL1?id=@obj.ID"></div>
     </div>
