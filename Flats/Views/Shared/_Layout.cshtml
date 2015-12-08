@@ -44,7 +44,7 @@
                 <marquee behavior="scroll" direction="left">
                     Custom code this
                 </marquee>
-</div>
+            </div>
         </div>
         <div class="container">
             <div class="navbar-header">
@@ -57,17 +57,51 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-
-
                     <li><a class="hide-show" href="#">Поиск<img src="/../img/loop.png" width="25"></a></li>
-                    <li>@Html.ActionLink("Премиум", "Premium", "Home")</li>
-                    <li>@Html.ActionLink("Стандарт", "Standart", "Home")</li>
-                    <li>@Html.ActionLink("Эконом", "Econom", "Home")</li>
-                    <li>@Html.ActionLink("Отзывы", "ReViews", "Home")</li>
-                    <li>@Html.ActionLink("Контакты", "Contacts", "Home")</li>
+                    @if (ViewBag.ActiveMenu == "premium")
+                    { 
+                        <li>@Html.ActionLink("Премиум", "Premium", "Home", new { @class = "active"})</li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Премиум", "Premium", "Home")</li>
+                    }
+                    @if (ViewBag.ActiveMenu == "standart")
+                    {
+                        <li>@Html.ActionLink("Стандарт", "Standart", "Home", new { @class = "active" })</li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Стандарт", "Standart", "Home")</li>
+                    }
+                    @if (ViewBag.ActiveMenu == "econom")
+                    {
+                        <li>@Html.ActionLink("Эконом", "Econom", "Home", new { @class = "active" })</li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Эконом", "Econom", "Home")</li>
+                    }
+                    @if (ViewBag.ActiveMenu == "reviews")
+                    {
+                        <li>@Html.ActionLink("Отзывы", "ReViews", "Home", new { @class = "active" })</li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Отзывы", "ReViews", "Home")</li>
+                    }
+
+                    @if (ViewBag.ActiveMenu == "contacts")
+                    {
+                        <li>@Html.ActionLink("Контакты", "Contacts", "Home", new { @class = "active" })</li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Контакты", "Contacts", "Home")</li>
+                    }
                 </ul>
 
-                <form action="#" method="post" class="customForm">
+                <form action="/Home/Search" method="post" class="customForm">
 
                     <div class="searchbox">
                         <div class="select">
@@ -118,26 +152,27 @@
                             </ul>
                             <input type="hidden" id="select_3 " />
                         </div>
-               
+
                         <input type="date" id="zaezd" placeholder="Заезд" />
                         <input type="date" id="viezd" placeholder="Выезд" />
-                        
-                        
-                         </form>
-                <div class="my_slider">
-                <p> 
-                    <input type="text" id="amount" readonly style="border:0; color:#C32361; font-weight:bold;">
-                </p>
-       
-                <div id="slider-range"></div>
-                 </div>
+
+
+                        <div class="my_slider">
+                            <p>
+                                <input type="text" id="amount" readonly style="border:0; color:#C32361; font-weight:bold;">
+                            </p>
+
+                            <div id="slider-range"></div>
+                        </div>
                         <button class="search_btn">Найти</button>
-</div>
+                </form>
+
+                </div>
             </div>
 
 
 
-        </div>
+    </div>
         <div class="seperator"></div>
     </div>
     <div class="left-plashka">
@@ -147,8 +182,8 @@
         </div>
         <div class="seperator"></div>
         <div class="kyrsi">
-        <div class="value_usd">USD:@ViewBag.UsdRate @ViewBag.UsdDir</div>
-        <div class="value_eur">EUR:@ViewBag.EurRate @ViewBag.EurDir</div>
+        <div class="value_usd">$:@ViewBag.UsdRate @ViewBag.UsdDir</div>
+        <div class="value_eur">€:@ViewBag.EurRate @ViewBag.EurDir</div>
             </div>
         <div class="seperator"></div>
     <ul>
