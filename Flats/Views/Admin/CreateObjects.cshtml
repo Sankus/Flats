@@ -101,27 +101,42 @@
         <div class="les">
             <h2>Медиа</h2>
             <h3>Большие фото</h3>
-            <input type="file" name="large_foto1" id="large_foto1" />
-            <img id="large_foto1_pic" style="max-width:200px; max-height:100px;"/>
-            <button onclick="clear_pic('#large_foto1_pic', '#large_foto1', event);">[x]</button>
-            <input type="file" name="large_foto2" id="large_foto2" />
-            <img id="large_foto2_pic" style="max-width:200px; max-height:100px;" />
-            <button onclick="clear_pic('#large_foto2_pic', '#large_foto2', event);">[x]</button>
-
-            <h3>Маленькие фото</h3>
-            <input type="file" name="foto1" id="foto1" />
-            <img id="foto1_pic" style="max-width:200px; max-height:100px;" />
-            <button onclick="clear_pic('#foto1_pic', '#foto1', event);">[x]</button>
-            <input type="file" name="foto2" id="foto2" />
-            <img id="foto2_pic" style="max-width:200px; max-height:100px;" />
-            <button onclick="clear_pic('#foto2_pic', '#foto2', event);">[x]</button>
-            <input type="file" name="foto3" id="foto3" />
-            <img id="foto3_pic" style="max-width:200px; max-height:100px;" />
-            <button onclick="clear_pic('#foto3_pic', '#foto3', event);">[x]</button>
-            <input type="file" name="foto4" id="foto4" />
-            <img id="foto4_pic" style="max-width:200px; max-height:100px;" />
-            <button onclick="clear_pic('#foto4_pic', '#foto4', event);">[x]</button>
-        </div>
+            <div class="large_photo_admin">
+                <div class="large_admin">
+                    <input type="file" name="large_foto1" id="large_foto1" />
+                    <img id="large_foto1_pic" style="max-width:200px; max-height:100px;" />
+                    <button onclick="clear_pic('#large_foto1_pic', '#large_foto1', event);">[x]</button>
+                </div>
+                <div class="large_admin">
+                    <input type="file" name="large_foto2" id="large_foto2" />
+                    <img id="large_foto2_pic" style="max-width:200px; max-height:100px;" />
+                    <button onclick="clear_pic('#large_foto2_pic', '#large_foto2', event);">[x]</button>
+                </div>
+            </div>
+                <h3>Маленькие фото</h3>
+            <div class="small_photo_admin">
+                <div class="small_admin">
+                <input type="file" name="foto1" id="foto1" />
+                <img id="foto1_pic" style="max-width:200px; max-height:100px;" />
+                <button onclick="clear_pic('#foto1_pic', '#foto1', event);">[x]</button>
+                    </div>
+                <div class="small_admin">
+                    <input type="file" name="foto2" id="foto2" />
+                    <img id="foto2_pic" style="max-width:200px; max-height:100px;" />
+                    <button onclick="clear_pic('#foto2_pic', '#foto2', event);">[x]</button>
+                    </div>
+                <div class="small_admin">
+                    <input type="file" name="foto3" id="foto3" />
+                    <img id="foto3_pic" style="max-width:200px; max-height:100px;" />
+                    <button onclick="clear_pic('#foto3_pic', '#foto3', event);">[x]</button>
+                    </div>
+                <div class="small_admin">
+                    <input type="file" name="foto4" id="foto4" />
+                    <img id="foto4_pic" style="max-width:200px; max-height:100px;" />
+                    <button onclick="clear_pic('#foto4_pic', '#foto4', event);">[x]</button>
+                    </div>
+                </div>
+            </div>
 
         <div class="les">
             <h2>Описание</h2>
