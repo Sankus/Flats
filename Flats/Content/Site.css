@@ -37,11 +37,15 @@
     font-family: "Roboto Light";
 }
 .lang {
-    width: 126px;
+     width: 126px;
     float: left;
     height: 74px;
-    font-size: 20px;
-
+    font-size: 19px;
+    font-weight: normal!important;
+    color: #999;
+       font-family: "Roboto Light";
+    text-align: center;
+    margin-top: 10px;
 }
 .information {
     width: 100%;
@@ -88,6 +92,7 @@ p.phone_1,p.phone_2 {
     margin-left: auto;
     margin-right: auto;
     font-family: "Roboto Light";
+    padding-top:7px;
 }
 .information {
     width: 100%;
@@ -121,7 +126,7 @@ p.phone_1,p.phone_2 {
 }
 
 .searchbox {
-    width: 800px;
+    width: 766px;
     height: 100px;
     position: absolute;
        margin: 52px 0 0 -304px;
@@ -158,7 +163,9 @@ footer {
     display: none;
 }
 
-
+.kyrsi {
+    font-family: "Roboto Light";
+}
 /*SELECT*/
 
 
@@ -429,7 +436,7 @@ img#foto1_pic {
 .inneer-content_sec {
     width: 82%;
     float: right;
-    margin-top: 8%;
+    margin-top: 10%;
         height: 80%;
 }
 h2.prew_head_name {
@@ -459,6 +466,7 @@ h2.prew_head_name {
 .left_cont_prew {
     float: left;
     margin-right: 25px;
+    margin-top:-21px;
 }
 
 a.bottom_ac_prew {
@@ -467,7 +475,7 @@ a.bottom_ac_prew {
     border: 2px solid #C32361;
     color: #C32361;
     padding: 5px 25px 5px 25px;
-    font-weight: 700;
+    font-weight: 500;
     text-decoration: none;
     transition-duration: 1s;
 }
@@ -490,40 +498,40 @@ a.bottom_ac_prew:hover {
     width: 130px;
 }
 a.bottom_ac_prew._ac_prew2 {
-    padding: 5px 45px 5px 47px;
+    padding: 5px 49px 5px 49px;
 }
 
 
 /*SPOILER*/
-#faqRoot {width: 800px;margin: 0 auto;padding: 0;}
-#faqindex {float: right;width: 190px;font-family: consolas,verdana,helvetica,sans-serif;}
-#faqindex a, #faqindex a:visited {text-decoration: none;color: #666;}
-#faqindex a:active, #faqindex a:hover {color: #000;border-bottom:dotted #ccc 1px;}
-#faqindex ul {list-style-type: square;list-style-image: none;list-style-position: outside;padding-left:25px;line-height: 18px;margin-top: 5px;font-size:80%;}
-#faqindex ul li {color:#666666;white-space:nowrap;}
-#faqindex h2 {padding: 0;margin-bottom: 0;border-bottom: dotted 1px #ccc;color: #666666;}
-#faq {float:left;width: 900px;margin: 0 auto; font-family: consolas,verdana,helvetica,sans-serif;}
-#faq {margin-bottom: 25px;}
-#faq .faqcontent {margin: 0 10px 0 10px;font-size: 95%;}
-#faq h2.faqopened, #faq h2.faqclosed {
-    cursor: pointer;padding: 0 0 0 15px;border-bottom: dotted 1px #ccc;margin-bottom: 0;font-size:13px;
+.faqRoot {width: 800px;margin: 0 auto;padding: 0;}
+.faqindex {float: right;width: 190px;font-family: consolas,verdana,helvetica,sans-serif;}
+.faqindex a, .faqindex a:visited {text-decoration: none;color: #666;}
+.faqindex a:active, #faqindex a:hover {color: #000;border-bottom:dotted #ccc 1px;}
+.faqindex ul {list-style-type: square;list-style-image: none;list-style-position: outside;padding-left:25px;line-height: 18px;margin-top: 5px;font-size:80%;}
+.faqindex ul li {color:#666666;white-space:nowrap;}
+.faqindex h2 {padding: 0;margin-bottom: 0;border-bottom: dotted 1px #ccc;color: #666666;}
+.faq {float:left;width: 900px;margin: 0 auto; font-family: consolas,verdana,helvetica,sans-serif;}
+.faq {margin-bottom: 25px;}
+.faq .faqcontent {margin: 0 10px 0 10px;font-size: 95%;}
+.faq h2.faqopened, .faq h2.faqclosed {
+    cursor: pointer;padding: 0 0 0 15px;margin-bottom: 0;font-size:13px;
 
 }
-#faq h2.faqclosed:hover {color: black;}
-#faq h2.faqclosed {
+.faq h2.faqclosed:hover {color: black;}
+.faq h2.faqclosed {
     color: #666666;
     background: transparent url(../img/pluss.png) no-repeat scroll 0 0px;
     background-size: contain;
 
 }
 
-#faq h2.faqopened {
+.faq h2.faqopened {
     color: black;
     background: transparent url(../img/minus.png) no-repeat scroll 0 -1px;
     background-size: contain;
 }
 
-div#faqindex {
+.faqindex {
     display: none;
 }
 /*END SPOILER*/
@@ -797,4 +805,50 @@ button.search_btn {
     height: 138px;
     position: absolute;
     margin: 0 0 0 -238px;
+}
+div#faqindex>ul {
+    display: none;
+}
+div#faqindex>h2 {
+    display: none;
+}
+
+.bottom_prew {
+    text-transform: uppercase;
+}
+
+.faq>h2 {
+    margin: -13px 0 0 325px;
+}
+
+input#amount {
+    background: none;
+}
+
+
+
+@media screen and (max-width: 1201px) {
+    .header-info_conteiner {
+        width: 78%;
+    }
+    .logo {
+    float: left;
+    width: 20%;
+}
+    .logo>a>img {
+    width: 99%;
+}
+    .site_title {
+    margin-left: 2px;
+    width: 35%;
+}
+
+    .phone-block {
+        margin-left: 2px;
+        width: 24%;
+    }
+    .lang {
+        width: 18%;
+    }
+
 }

@@ -58,7 +58,7 @@ div.panes div {
 	padding: 15px 10px;
     border: 1px solid #F7F7F7;
     border-top: 0;
-    height: 800px;
+   
     font-size: 14px;
     background-color: rgba(255, 255, 255, 0.68);
 }
@@ -147,4 +147,25 @@ ul.tabs a.w4.current { background-position: -0px -62px; }
 /* initially all panes are hidden */ 
 div.panes div.pane {
 	display:none;		
+}
+.large_admin {
+    float: left;
+}
+.large_photo_admin {
+    width: 800px;
+    height: 200px;
+}
+.small_admin {
+    float: left;
+   
+}
+.container.body-content {
+    overflow: scroll;
+}
+.container.body-content {
+    position: absolute;
+    right: 0;
+}
+input[type="text"] {
+    width: 200px;
 }
