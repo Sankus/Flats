@@ -644,9 +644,27 @@ border-bottom:1px dotted #E4E4E4;
     margin-right: 5px;
     margin-bottom: 5px;
 }
-
-
-
+.block_img_page {
+    float: left;
+    height: 284px;
+    width: 494px;
+}
+.bron_right {
+      height: 283px;
+    width: 300px;
+    float: left;
+}
+.opisanie_page {
+    width: 756px;
+}
+.bron_right_price {
+    width: 250px;
+    background: black;
+    height: 42px;
+    color: white;
+    padding-top: 10px;
+    text-align: center;
+}
 /*	=	Select */
 .slct_2 {
 	display: block;
