@@ -243,5 +243,47 @@ namespace Flats.Controllers
 
             return View(obj);
         }
+
+        public ActionResult Search(FormCollection coll)
+        {
+            InitSettings();
+            dbDataContext db = new dbDataContext();
+            var recs = db.Objects.Select(c => c);
+            
+            if (Request["region"] != String.Empty)
+                recs = recs.Where(c => c.Region.Naim == Request["region"]);
+
+            if (Request["rooms"] != String.Empty)
+            {
+                int rooms = Int32.Parse(Request["rooms"].ToString().Substring(0,1));
+                
+                recs = recs.Where(c => c.rooms_count == rooms);
+            }
+
+            if (Request["guests"] != String.Empty)
+            {
+                int guests = Int32.Parse(Request["guests"].ToString().Substring(0, 1));
+
+                recs = recs.Where(c => c.guests_count >= guests);
+            }
+
+
+            if (Request["amount"] != String.Empty)
+            {
+                string money = Request["amount"].ToString().Replace("от ", "").Replace("до ", "").Replace("грн.", "");
+                int from = Int32.Parse(money.Split(' ')[0].Trim());
+                int to = Int32.Parse(money.Split(' ')[2].Trim());
+
+                recs = recs.Where(c => c.price1 >= from);
+                recs = recs.Where(c => c.price1 <= to);
+            }
+            
+            ViewBag.list = recs.ToList<Objects>();
+
+            List<Objects_Attributes> obj_attr_list = db.Objects_Attributes.Select(c => c).Where(c => c.Objects.type == 2).ToList<Objects_Attributes>();
+            ViewBag.obj_attr_list = obj_attr_list;
+
+            return View();
+        }
     }
 }

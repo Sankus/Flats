@@ -101,7 +101,7 @@
                     }
                 </ul>
 
-                <form action="/Home/Search" method="post" class="customForm">
+                <form action="/Home/Search" method="get" class="customForm" enctype="multipart/form-data">
 
                     <div class="searchbox">
                         <div class="select">
@@ -119,7 +119,7 @@
                                 }
 
                             </ul>
-                            <input type="hidden" id="select" />
+                            <input type="hidden" id="select" name="region"/>
                         </div>
 
 
@@ -128,13 +128,13 @@
                             <ul class="drop_2">
 
                                 <li>1 комната</li>
-                                <li>2 комната</li>
-                                <li>3 комната</li>
-                                <li>4 комната</li>
-                                <li>5 комната</li>
+                                <li>2 комнаты</li>
+                                <li>3 комнаты</li>
+                                <li>4 комнаты</li>
+                                <li>5 комнат</li>
 
                             </ul>
-                            <input type="hidden" id="select_2 " />
+                            <input type="hidden" id="select_2" name="rooms" />
                         </div>
                         <div class="select">
                             <a href="#" class="slct_3">Количество гостей</a>
@@ -150,7 +150,7 @@
                                 <li>8 человек</li>
 
                             </ul>
-                            <input type="hidden" id="select_3 " />
+                            <input type="hidden" id="select_3" name="guests" />
                         </div>
 
                         <input type="date" id="zaezd" placeholder="Заезд" />
@@ -159,7 +159,7 @@
 
                         <div class="my_slider">
                             <p>
-                                <input type="text" id="amount" readonly style="border:0; color:#C32361; font-weight:bold;">
+                                <input type="text" id="amount" name="amount" readonly style="border:0; color:#C32361; font-weight:bold;">
                             </p>
 
                             <div id="slider-range"></div>
@@ -229,11 +229,11 @@
                 max: 500,
                 values: [75, 300],
                 slide: function (event, ui) {
-                    $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+                    $("#amount").val("от " + ui.values[0] + " грн. до " + ui.values[1] + " грн.");
                 }
             });
-            $("#amount").val("от $" + $("#slider-range").slider("values", 0) +
-              " до $" + $("#slider-range").slider("values", 1));
+            $("#amount").val("от " + $("#slider-range").slider("values", 0) +
+              " грн. до " + $("#slider-range").slider("values", 1) + " грн.");
         });
     </script>
     <script src="~/Scripts/spoiler.js"></script>
