@@ -61,7 +61,7 @@
 
 .rateit .rateit-selected
 {
-    background: url(star.gif) left -16px;
+    background: url(star.gif) left 32px;
 }
 
 .rateit .rateit-selected-rtl
@@ -71,7 +71,7 @@
 
 .rateit .rateit-preset
 {
-    background: url(star.gif) left -48px;
+    background: url(star.gif) left -32px;
 }
 
 .rateit .rateit-preset-rtl
@@ -90,6 +90,7 @@
     outline: none;
     border:none;
     padding: 0;
+    display:none!important;
 }
 
 .rateit button.rateit-reset:hover, .rateit button.rateit-reset:focus
