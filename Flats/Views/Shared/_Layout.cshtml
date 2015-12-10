@@ -25,18 +25,16 @@
                         <table class="rw_table_query">
                             <tr>
                                 <td>
-                                    <input type="text" name="name" value="" placeholder=" Имя" />
+                                    <input type="text" name="name" value="" placeholder=" Имя" id="rw_name"/>
                                 </td>
                                 <td class="empty_td"></td>
                                 <td>
-                                    <input type="text" name="surname" value="" placeholder=" Фамилия" />
+                                    <input type="text" name="surname" value="" placeholder=" Фамилия" id="rw_surname" />
                                 </td>
                             </tr>
                             <tr>
                                 <td colspan="3">
-                                    <textarea placeholder=" Напишите комментарий...">
-
-                                    </textarea>
+                                    <textarea placeholder=" Напишите комментарий..." id="rw_comment"></textarea>
                                 </td>
                             </tr>
                         </table>
@@ -49,8 +47,9 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="2">
-
+                                <td colspan="2" class="rw_rating_total">
+                                    <div class="rateit" data-rateit-value="0.0" data-rateit-ispreset="true" data-rateit-readonly="true" id="ratetotal"></div>
+                                    <span id="rate_total_text"></span>
                                 </td>
                             </tr>
                             <tr>
@@ -84,7 +83,20 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="2"><div class="black_add_review">Оставить отзыв</div></td>
+                                <td colspan="2">
+                                    <form action="/Home/SaveReview" method="post" id="rw_send_form">
+                                        <input type="hidden" name="name" value="" id="rw_submit_name"/>
+                                        <input type="hidden" name="surname" value="" id="rw_submit_surname" />
+                                        <input type="hidden" name="text" value="" id="rw_submit_text" />
+                                        <input type="hidden" name="total" value="" id="rw_submit_name_total" />
+                                        <input type="hidden" name="region" value="" id="rw_submit_region" />
+                                        <input type="hidden" name="comfort" value="" id="rw_submit_comfort" />
+                                        <input type="hidden" name="clean" value="" id="rw_submit_clean" />
+                                        <input type="hidden" name="price" value="" id="rw_submit_price" />
+                                        <input type="hidden" name="services" value="" id="rw_submit_services" />
+                                        <div class="black_add_review">Оставить отзыв</div>
+                                    </form>
+                                </td>
                             </tr>
                         </table>
                     </td>
@@ -352,7 +364,44 @@
             });
         });
     </script>
-    
+    <script>
+    $(document).ready(function () {
+        $('.rateit').click(function () {
+            var price = $('#rateprice').rateit('value');
+            var clean = $('#rateclean').rateit('value');
+            var services = $('#rateservices').rateit('value');
+            var comfort = $('#ratecomfort').rateit('value');
+            var region = $('#rateregion').rateit('value');
+            var total = (price + clean + services + comfort + region) / 5;
+            $('#ratetotal').rateit('value', total);
+            $('#rate_total_text').text(total);
+        });
+
+        $('.black_add_review').click(function () {
+            var price = $('#rateprice').rateit('value');
+            var clean = $('#rateclean').rateit('value');
+            var services = $('#rateservices').rateit('value');
+            var comfort = $('#ratecomfort').rateit('value');
+            var region = $('#rateregion').rateit('value');
+            var total = (price + clean + services + comfort + region) / 5;
+
+            $("#rw_submit_name").val($('#rw_name').val());
+            $("#rw_submit_surname").val($('#rw_surname').val());
+            $("#rw_submit_text").val($('#rw_comment').val());
+
+            $("#rw_submit_name_total").val(total);
+            $("#rw_submit_region").val(region);
+            $("#rw_submit_comfort").val(comfort);
+            $("#rw_submit_clean").val(clean);
+            $("#rw_submit_price").val(price);
+            $("#rw_submit_services").val(services);
+
+            $('#rw_send_form').submit();
+        });
+    });
+    </script>
+
+
    
     @RenderSection("scripts", required: false)
     </body>

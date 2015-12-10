@@ -287,5 +287,22 @@ namespace Flats.Controllers
             List<Rating> lst = db.Rating.Select(c=>c).OrderByDescending(c=>c.rating).ToList<Rating>();
             return View(lst);
         }
+
+        [HttpPost]
+        public ActionResult SaveReview()
+        {
+            String name = Request["name"];
+            String surname = Request["surname"]; 
+            String text = Request["text"]; 
+            String total = Request["total"]; 
+            String region = Request["region"]; 
+            String comfort = Request["comfort"]; 
+            String clean = Request["clean"]; 
+            String price = Request["price"]; 
+            String services = Request["services"]; 
+
+            
+            return RedirectToAction("ReViews");
+        }
     }
 }
