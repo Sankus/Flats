@@ -9,13 +9,90 @@
     @Scripts.Render("~/bundles/modernizr")
     <link href="../Content/slider.css" rel="stylesheet">
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-
+    <link rel="stylesheet" href="~/Content/rateit.css" />
 
 
 
 
 </head>
 <body>
+    <div id="black_layer">
+        <div class="black_layer_close" onclick="$('#black_layer').hide();">X</div>
+        <div id="addReviewContainer">
+            <table class="rw_table">
+                <tr>
+                    <td>
+                        <table class="rw_table_query">
+                            <tr>
+                                <td>
+                                    <input type="text" name="name" value="" placeholder=" Имя" />
+                                </td>
+                                <td class="empty_td"></td>
+                                <td>
+                                    <input type="text" name="surname" value="" placeholder=" Фамилия" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="3">
+                                    <textarea placeholder=" Напишите комментарий...">
+
+                                    </textarea>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td>
+                        <table class="rw_rating">
+                            <tr>
+                                <td colspan="2" class="rw_rating_header">
+                                    Оценка квартиры
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Цена</td>
+                                <td class="rate_val">
+                                    <div class="rateit" id="rateprice"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Чистота:</td>
+                                <td class="rate_val">
+                                    <div class="rateit" id="rateclean"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Услуги:</td>
+                                <td class="rate_val">
+                                    <div class="rateit" id="rateservices"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Комфорт:</td>
+                                <td class="rate_val">
+                                    <div class="rateit" id="ratecomfort"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Расположение:</td>
+                                <td class="rate_val">
+                                    <div class="rateit" id="rateregion"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><div class="black_add_review">Оставить отзыв</div></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
     <div class="navbar navbar-inverse navbar-fixed-top" style="background-color: #f4f4f4;border-color: #f4f4f4;">
         <div class="header-info_conteiner">
 
@@ -220,6 +297,7 @@
     
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script src="~/Scripts/jquery.rateit.js"></script>
 
     <script>
         $(function () {
@@ -274,7 +352,7 @@
             });
         });
     </script>
-
+    
    
     @RenderSection("scripts", required: false)
     </body>

@@ -853,32 +853,228 @@ a.active {
 }
 
 @media screen and (max-width: 1201px) {
-    ul.nav.navbar-nav>li {
-      margin-right: 10px;
-    font-size: 0.8em;
-    
-}
+    ul.nav.navbar-nav > li {
+        margin-right: 10px;
+        font-size: 0.8em;
+    }
+
     .header-info_conteiner {
         width: 78%;
     }
+
     .logo {
-    float: left;
-    width: 20%;
-}
-    .logo>a>img {
-    width: 99%;
-}
+        float: left;
+        width: 20%;
+    }
+
+        .logo > a > img {
+            width: 99%;
+        }
+
     .site_title {
-    margin-left: 2px;
-    width: 35%;
-}
+        margin-left: 2px;
+        width: 35%;
+    }
 
     .phone-block {
         margin-left: 2px;
         width: 24%;
     }
+
     .lang {
         width: 18%;
     }
 
+
+
 }
+
+.prew_table {
+    width: 1008px;
+}
+
+.prew_table td {
+    vertical-align:top;
+}
+
+.preview_obj {
+    margin-left:20px !important;
+}
+
+.prev_mini_pics {
+    width:202px;
+    height:179px;
+    cursor:pointer;
+}
+
+.prew_table_main_pic {
+    width:416px;
+    height:365px;
+}
+.prew_large_foto_td {
+    width:416px;
+}
+.prew_large_foto_minipics_table {
+    margin-left:10px;
+}
+.foto1_mini_pic {
+    margin-bottom:7px;
+}
+.rating_table {
+    margin-left:25px;
+    height:365px;
+    background-color:white;
+}
+.rating_table_head {
+    width:355px;
+    height:71px;
+    background-color:#323232;
+    color:white;
+    vertical-align:middle !important;
+    text-align:center;
+    font-family:Arial;
+    font-size:22px;
+}
+.prew_total {
+    height:94px;
+    vertical-align:middle !important;
+    text-align:center;
+    font-family:Arial;
+    font-size:28px;
+    background-color:white;
+}
+
+.rating_table_td_key {
+    background-color:white;
+    font-family:Arial;
+    font-size:18px;
+    padding-left:10px;
+    padding-bottom:10px;
+    width:50%;
+}
+.rating_table_td_value {
+    background-color:white;
+    vertical-align:middle !important;
+    text-align:center;
+}
+.add_review {
+    width:275px;
+    height:46px;
+    color:#c4225e;
+    border-color:#c4225e;
+    border:solid;
+    text-align:center;
+    vertical-align:middle;
+    padding-top:5px;
+    font-family:Arial;
+    font-size:22px;
+    margin-top:15px;
+    cursor:pointer;
+}
+
+#black_layer {
+    background-color: black; 
+    height: 100%; 
+    width: 100%;
+    position: absolute; 
+    opacity: 0.9;
+    display:none;
+    z-index:9999;
+        top: 0px;
+}
+.black_layer_close {
+    color:white;
+    float:right;
+    padding-right:20px;
+    padding-top:20px;
+    font-size:30px;
+    font-family:Arial;
+    cursor:pointer;
+}
+
+#addReviewContainer {
+    width:1220px;
+    height:450px;
+    position:absolute;
+    margin:150px auto;
+}
+
+.rw_table {
+    margin:0px auto;
+    background-color:transparent;
+    font-family:Arial;   
+}
+
+.rw_table td{
+ vertical-align:top !important;   
+}
+.rw_table_query {
+    width:650px;
+    border:none;
+}
+
+.rw_table_query td {
+    padding:5px 5px 5px 0px;
+}
+
+.rw_table_query textarea {
+    padding:5px 5px 5px 0px;
+    background-color:transparent;
+    border-color:white;
+    height:200px;
+}
+
+.empty_td {
+    width:200px;
+}
+.rw_table_query input{
+    background-color:transparent;
+    color:white;
+    border-left:none;
+    border-right:none;
+    border-top:none;
+    font-size:14px;
+}
+.rw_rating_header {
+    color:white;
+    font-family:Arial;
+    font-size:18px;
+    width:250px;
+    text-align:center;
+    margin-bottom:25px;
+}
+
+.rw_rating {
+    color:#d3d3d3;
+    font-family:Arial;
+    font-size:18px;
+    margin-left:25px;
+    height:249px;
+}
+.black_add_review {
+    width:275px;
+    height:46px;
+    color:white;
+    border-color:white;
+    border:solid;
+    text-align:center;
+    vertical-align:middle;
+    padding-top:5px;
+    font-family:Arial;
+    font-size:22px;
+    margin-top:15px;
+    cursor:pointer;
+}
+.rate_val {
+    text-align:center;
+}
+
+::-webkit-input-placeholder {color:white;}
+::-moz-placeholder          {color:#c0392b;}/* Firefox 19+ */
+:-moz-placeholder           {color:#c0392b;}/* Firefox 18- */
+:-ms-input-placeholder      {color:#c0392b;}
+
+::-webkit-input-placeholder {font-size:18px;}
+::-moz-placeholder          {font-size:18px;}/* Firefox 19+ */
+:-moz-placeholder           {font-size:18px;}/* Firefox 18- */
+:-ms-input-placeholder      {font-size:18px;}

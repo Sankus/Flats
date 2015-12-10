@@ -1,9 +1,133 @@
-﻿
+﻿@model IEnumerable<Flats.Views.Manage.Rating>
+
 @{
     ViewBag.Title = "ReViews";
-    ViewBag.ActiveMenu = "reviews";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<script>
+    function SetImage(obj, target_name) {
+        $('#' + target_name).attr('src', $(obj).attr('src'));
+    };
 
-<h2>ReViews</h2>
+    function AddReview(obj_num) {
+        $('#black_layer').height($(document).height() + 50);
+        $('.rw_table textarea').val('');
+        $('#black_layer').show();
+        $('html, body').animate({ scrollTop: 0 }, 'slow');
+    };
+
+</script>
+@foreach (var item in Model)
+{
+    <div class="preview_obj">
+        <div class="name_obj_prew"><h2>@Html.DisplayFor(modelItem => item.Naim)</h2></div>
+        <div class="street_prew">@Html.DisplayFor(modelItem => item.Address)</div>
+        <table class="prew_table">
+            <tr>
+                <td class="prew_large_foto_td">
+                    <img id="prew_large_foto_@item.ID" src="/Home/GetPictureFL1?id=@item.ID" class="prew_table_main_pic" />
+                </td>
+                <td>
+                    <table class="prew_large_foto_minipics_table">
+                        <tr>
+                            <td>
+                                <img src="/Home/GetPictureFL1?id=@item.ID" class="prev_mini_pics foto1_mini_pic" onclick="SetImage(this, 'prew_large_foto_@item.ID')">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <img src="/Home/GetPictureFL2?id=@item.ID" class="prev_mini_pics" onclick="SetImage(this, 'prew_large_foto_@item.ID')">
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td>
+                    <table class="rating_table">
+                        <tr>
+                            <td class="rating_table_head">
+                                Общая оценка жильцов
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="prew_total">
+                                <div class="rateit" data-rateit-value="@Math.Round(item.rating.Value, 1).ToString().Replace(',','.')" data-rateit-ispreset="true" data-rateit-readonly="true"></div>
+
+                                @Math.Round(item.rating.Value, 1).ToString().Replace(',', '.')
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <table width="100%">
+                                    <tr>
+                                        <td class="rating_table_td_key">Цена:</td>
+                                        <td class="rating_table_td_value">
+                                            <div class="rateit" data-rateit-value="@item.price.Value.ToString().Replace(',', '.')" data-rateit-ispreset="true" data-rateit-readonly="true"></div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <table width="100%">
+                                    <tr>
+                                        <td class="rating_table_td_key">Чистота:</td>
+                                        <td class="rating_table_td_value">
+                                            <div class="rateit" data-rateit-value="@item.cleaness.Value.ToString().Replace(',', '.')" data-rateit-ispreset="true" data-rateit-readonly="true"></div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <table width="100%">
+                                    <tr>
+                                        <td class="rating_table_td_key">Услуги:</td>
+                                        <td class="rating_table_td_value">
+                                            <div class="rateit" data-rateit-value="@item.services.Value.ToString().Replace(',', '.')" data-rateit-ispreset="true" data-rateit-readonly="true"></div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <table width="100%">
+                                    <tr>
+                                        <td class="rating_table_td_key">Комфорт:</td>
+                                        <td class="rating_table_td_value">
+                                            <div class="rateit" data-rateit-value="@item.comfort.Value.ToString().Replace(',', '.')" data-rateit-ispreset="true" data-rateit-readonly="true"></div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <table width="100%">
+                                    <tr>
+                                        <td class="rating_table_td_key">Расположение:</td>
+                                        <td class="rating_table_td_value">
+                                            <div class="rateit" data-rateit-value="@item.region.Value.ToString().Replace(',', '.')" data-rateit-ispreset="true" data-rateit-readonly="true"></div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                       </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+        
+        <div class="add_review" date-id="@item.ID" onclick="AddReview(@item.ID);">
+            ДОБАВИТЬ ОТЗЫВ
+        </div>
+
+
+        
+    </div>
+}
+
 

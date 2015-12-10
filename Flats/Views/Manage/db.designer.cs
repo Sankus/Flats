@@ -51,9 +51,6 @@ namespace Flats.Views.Manage
     partial void InsertPhrases_languages(Phrases_languages instance);
     partial void UpdatePhrases_languages(Phrases_languages instance);
     partial void DeletePhrases_languages(Phrases_languages instance);
-    partial void Insertreviews(reviews instance);
-    partial void Updatereviews(reviews instance);
-    partial void Deletereviews(reviews instance);
     partial void InsertAttributes(Attributes instance);
     partial void UpdateAttributes(Attributes instance);
     partial void DeleteAttributes(Attributes instance);
@@ -66,6 +63,9 @@ namespace Flats.Views.Manage
     partial void InsertObjects_LiveConditions(Objects_LiveConditions instance);
     partial void UpdateObjects_LiveConditions(Objects_LiveConditions instance);
     partial void DeleteObjects_LiveConditions(Objects_LiveConditions instance);
+    partial void Insertreviews(reviews instance);
+    partial void Updatereviews(reviews instance);
+    partial void Deletereviews(reviews instance);
     #endregion
 		
 		public dbDataContext() : 
@@ -202,14 +202,6 @@ namespace Flats.Views.Manage
 			}
 		}
 		
-		public System.Data.Linq.Table<reviews> reviews
-		{
-			get
-			{
-				return this.GetTable<reviews>();
-			}
-		}
-		
 		public System.Data.Linq.Table<Attributes> Attributes
 		{
 			get
@@ -239,6 +231,22 @@ namespace Flats.Views.Manage
 			get
 			{
 				return this.GetTable<Objects_LiveConditions>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Rating> Rating
+		{
+			get
+			{
+				return this.GetTable<Rating>();
+			}
+		}
+		
+		public System.Data.Linq.Table<reviews> reviews
+		{
+			get
+			{
+				return this.GetTable<reviews>();
 			}
 		}
 	}
@@ -1639,260 +1647,6 @@ namespace Flats.Views.Manage
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.reviews")]
-	public partial class reviews : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _id;
-		
-		private System.Nullable<int> _cleaness;
-		
-		private System.Nullable<int> _price;
-		
-		private System.Nullable<int> _services;
-		
-		private System.Nullable<int> _comfort;
-		
-		private System.Nullable<int> _region;
-		
-		private System.Nullable<int> _object_id;
-		
-		private string _header;
-		
-		private string _body;
-		
-    #region Определения метода расширяемости
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidChanging(int value);
-    partial void OnidChanged();
-    partial void OncleanessChanging(System.Nullable<int> value);
-    partial void OncleanessChanged();
-    partial void OnpriceChanging(System.Nullable<int> value);
-    partial void OnpriceChanged();
-    partial void OnservicesChanging(System.Nullable<int> value);
-    partial void OnservicesChanged();
-    partial void OncomfortChanging(System.Nullable<int> value);
-    partial void OncomfortChanged();
-    partial void OnregionChanging(System.Nullable<int> value);
-    partial void OnregionChanged();
-    partial void Onobject_idChanging(System.Nullable<int> value);
-    partial void Onobject_idChanged();
-    partial void OnheaderChanging(string value);
-    partial void OnheaderChanged();
-    partial void OnbodyChanging(string value);
-    partial void OnbodyChanged();
-    #endregion
-		
-		public reviews()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int id
-		{
-			get
-			{
-				return this._id;
-			}
-			set
-			{
-				if ((this._id != value))
-				{
-					this.OnidChanging(value);
-					this.SendPropertyChanging();
-					this._id = value;
-					this.SendPropertyChanged("id");
-					this.OnidChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cleaness", DbType="Int")]
-		public System.Nullable<int> cleaness
-		{
-			get
-			{
-				return this._cleaness;
-			}
-			set
-			{
-				if ((this._cleaness != value))
-				{
-					this.OncleanessChanging(value);
-					this.SendPropertyChanging();
-					this._cleaness = value;
-					this.SendPropertyChanged("cleaness");
-					this.OncleanessChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_price", DbType="Int")]
-		public System.Nullable<int> price
-		{
-			get
-			{
-				return this._price;
-			}
-			set
-			{
-				if ((this._price != value))
-				{
-					this.OnpriceChanging(value);
-					this.SendPropertyChanging();
-					this._price = value;
-					this.SendPropertyChanged("price");
-					this.OnpriceChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_services", DbType="Int")]
-		public System.Nullable<int> services
-		{
-			get
-			{
-				return this._services;
-			}
-			set
-			{
-				if ((this._services != value))
-				{
-					this.OnservicesChanging(value);
-					this.SendPropertyChanging();
-					this._services = value;
-					this.SendPropertyChanged("services");
-					this.OnservicesChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_comfort", DbType="Int")]
-		public System.Nullable<int> comfort
-		{
-			get
-			{
-				return this._comfort;
-			}
-			set
-			{
-				if ((this._comfort != value))
-				{
-					this.OncomfortChanging(value);
-					this.SendPropertyChanging();
-					this._comfort = value;
-					this.SendPropertyChanged("comfort");
-					this.OncomfortChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_region", DbType="Int")]
-		public System.Nullable<int> region
-		{
-			get
-			{
-				return this._region;
-			}
-			set
-			{
-				if ((this._region != value))
-				{
-					this.OnregionChanging(value);
-					this.SendPropertyChanging();
-					this._region = value;
-					this.SendPropertyChanged("region");
-					this.OnregionChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_object_id", DbType="Int")]
-		public System.Nullable<int> object_id
-		{
-			get
-			{
-				return this._object_id;
-			}
-			set
-			{
-				if ((this._object_id != value))
-				{
-					this.Onobject_idChanging(value);
-					this.SendPropertyChanging();
-					this._object_id = value;
-					this.SendPropertyChanged("object_id");
-					this.Onobject_idChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_header", DbType="NVarChar(150)")]
-		public string header
-		{
-			get
-			{
-				return this._header;
-			}
-			set
-			{
-				if ((this._header != value))
-				{
-					this.OnheaderChanging(value);
-					this.SendPropertyChanging();
-					this._header = value;
-					this.SendPropertyChanged("header");
-					this.OnheaderChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_body", DbType="NVarChar(MAX)")]
-		public string body
-		{
-			get
-			{
-				return this._body;
-			}
-			set
-			{
-				if ((this._body != value))
-				{
-					this.OnbodyChanging(value);
-					this.SendPropertyChanging();
-					this._body = value;
-					this.SendPropertyChanged("body");
-					this.OnbodyChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Attributes")]
 	public partial class Attributes : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -2927,6 +2681,503 @@ namespace Flats.Views.Manage
 						this._lc_id = default(int);
 					}
 					this.SendPropertyChanged("LiveConditions");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Rating")]
+	public partial class Rating
+	{
+		
+		private int _ID;
+		
+		private System.Nullable<decimal> _rating;
+		
+		private System.Nullable<int> _cleaness;
+		
+		private System.Nullable<int> _price;
+		
+		private System.Nullable<int> _services;
+		
+		private System.Nullable<int> _comfort;
+		
+		private System.Nullable<int> _region;
+		
+		private string _Naim;
+		
+		private string _Address;
+		
+		public Rating()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL")]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this._ID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_rating", DbType="Decimal(38,6)")]
+		public System.Nullable<decimal> rating
+		{
+			get
+			{
+				return this._rating;
+			}
+			set
+			{
+				if ((this._rating != value))
+				{
+					this._rating = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cleaness", DbType="Int")]
+		public System.Nullable<int> cleaness
+		{
+			get
+			{
+				return this._cleaness;
+			}
+			set
+			{
+				if ((this._cleaness != value))
+				{
+					this._cleaness = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_price", DbType="Int")]
+		public System.Nullable<int> price
+		{
+			get
+			{
+				return this._price;
+			}
+			set
+			{
+				if ((this._price != value))
+				{
+					this._price = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_services", DbType="Int")]
+		public System.Nullable<int> services
+		{
+			get
+			{
+				return this._services;
+			}
+			set
+			{
+				if ((this._services != value))
+				{
+					this._services = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_comfort", DbType="Int")]
+		public System.Nullable<int> comfort
+		{
+			get
+			{
+				return this._comfort;
+			}
+			set
+			{
+				if ((this._comfort != value))
+				{
+					this._comfort = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_region", DbType="Int")]
+		public System.Nullable<int> region
+		{
+			get
+			{
+				return this._region;
+			}
+			set
+			{
+				if ((this._region != value))
+				{
+					this._region = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Naim", DbType="NVarChar(150)")]
+		public string Naim
+		{
+			get
+			{
+				return this._Naim;
+			}
+			set
+			{
+				if ((this._Naim != value))
+				{
+					this._Naim = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Address", DbType="NVarChar(250)")]
+		public string Address
+		{
+			get
+			{
+				return this._Address;
+			}
+			set
+			{
+				if ((this._Address != value))
+				{
+					this._Address = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.reviews")]
+	public partial class reviews : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id;
+		
+		private System.Nullable<int> _cleaness;
+		
+		private System.Nullable<int> _price;
+		
+		private System.Nullable<int> _services;
+		
+		private System.Nullable<int> _comfort;
+		
+		private System.Nullable<int> _region;
+		
+		private System.Nullable<int> _object_id;
+		
+		private string _header;
+		
+		private string _body;
+		
+		private System.Nullable<decimal> _total;
+		
+		private string _Name;
+		
+		private string _Surname;
+		
+    #region Определения метода расширяемости
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void OncleanessChanging(System.Nullable<int> value);
+    partial void OncleanessChanged();
+    partial void OnpriceChanging(System.Nullable<int> value);
+    partial void OnpriceChanged();
+    partial void OnservicesChanging(System.Nullable<int> value);
+    partial void OnservicesChanged();
+    partial void OncomfortChanging(System.Nullable<int> value);
+    partial void OncomfortChanged();
+    partial void OnregionChanging(System.Nullable<int> value);
+    partial void OnregionChanged();
+    partial void Onobject_idChanging(System.Nullable<int> value);
+    partial void Onobject_idChanged();
+    partial void OnheaderChanging(string value);
+    partial void OnheaderChanged();
+    partial void OnbodyChanging(string value);
+    partial void OnbodyChanged();
+    partial void OntotalChanging(System.Nullable<decimal> value);
+    partial void OntotalChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
+    partial void OnSurnameChanging(string value);
+    partial void OnSurnameChanged();
+    #endregion
+		
+		public reviews()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cleaness", DbType="Int")]
+		public System.Nullable<int> cleaness
+		{
+			get
+			{
+				return this._cleaness;
+			}
+			set
+			{
+				if ((this._cleaness != value))
+				{
+					this.OncleanessChanging(value);
+					this.SendPropertyChanging();
+					this._cleaness = value;
+					this.SendPropertyChanged("cleaness");
+					this.OncleanessChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_price", DbType="Int")]
+		public System.Nullable<int> price
+		{
+			get
+			{
+				return this._price;
+			}
+			set
+			{
+				if ((this._price != value))
+				{
+					this.OnpriceChanging(value);
+					this.SendPropertyChanging();
+					this._price = value;
+					this.SendPropertyChanged("price");
+					this.OnpriceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_services", DbType="Int")]
+		public System.Nullable<int> services
+		{
+			get
+			{
+				return this._services;
+			}
+			set
+			{
+				if ((this._services != value))
+				{
+					this.OnservicesChanging(value);
+					this.SendPropertyChanging();
+					this._services = value;
+					this.SendPropertyChanged("services");
+					this.OnservicesChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_comfort", DbType="Int")]
+		public System.Nullable<int> comfort
+		{
+			get
+			{
+				return this._comfort;
+			}
+			set
+			{
+				if ((this._comfort != value))
+				{
+					this.OncomfortChanging(value);
+					this.SendPropertyChanging();
+					this._comfort = value;
+					this.SendPropertyChanged("comfort");
+					this.OncomfortChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_region", DbType="Int")]
+		public System.Nullable<int> region
+		{
+			get
+			{
+				return this._region;
+			}
+			set
+			{
+				if ((this._region != value))
+				{
+					this.OnregionChanging(value);
+					this.SendPropertyChanging();
+					this._region = value;
+					this.SendPropertyChanged("region");
+					this.OnregionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_object_id", DbType="Int")]
+		public System.Nullable<int> object_id
+		{
+			get
+			{
+				return this._object_id;
+			}
+			set
+			{
+				if ((this._object_id != value))
+				{
+					this.Onobject_idChanging(value);
+					this.SendPropertyChanging();
+					this._object_id = value;
+					this.SendPropertyChanged("object_id");
+					this.Onobject_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_header", DbType="NVarChar(150)")]
+		public string header
+		{
+			get
+			{
+				return this._header;
+			}
+			set
+			{
+				if ((this._header != value))
+				{
+					this.OnheaderChanging(value);
+					this.SendPropertyChanging();
+					this._header = value;
+					this.SendPropertyChanged("header");
+					this.OnheaderChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_body", DbType="NVarChar(MAX)")]
+		public string body
+		{
+			get
+			{
+				return this._body;
+			}
+			set
+			{
+				if ((this._body != value))
+				{
+					this.OnbodyChanging(value);
+					this.SendPropertyChanging();
+					this._body = value;
+					this.SendPropertyChanged("body");
+					this.OnbodyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_total", DbType="Decimal(18,2)")]
+		public System.Nullable<decimal> total
+		{
+			get
+			{
+				return this._total;
+			}
+			set
+			{
+				if ((this._total != value))
+				{
+					this.OntotalChanging(value);
+					this.SendPropertyChanging();
+					this._total = value;
+					this.SendPropertyChanged("total");
+					this.OntotalChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(50)")]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Surname", DbType="NVarChar(50)")]
+		public string Surname
+		{
+			get
+			{
+				return this._Surname;
+			}
+			set
+			{
+				if ((this._Surname != value))
+				{
+					this.OnSurnameChanging(value);
+					this.SendPropertyChanging();
+					this._Surname = value;
+					this.SendPropertyChanged("Surname");
+					this.OnSurnameChanged();
 				}
 			}
 		}

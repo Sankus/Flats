@@ -142,12 +142,6 @@ namespace Flats.Controllers
             return View();
         }
 
-        public ActionResult ReViews()
-        {
-            InitSettings();
-            return View();
-        }
-
         public ActionResult Contacts()
         {
             InitSettings();
@@ -284,6 +278,14 @@ namespace Flats.Controllers
             ViewBag.obj_attr_list = obj_attr_list;
 
             return View();
+        }
+
+        public ActionResult ReViews()
+        {
+            InitSettings();
+            dbDataContext db = new dbDataContext();
+            List<Rating> lst = db.Rating.Select(c=>c).OrderByDescending(c=>c.rating).ToList<Rating>();
+            return View(lst);
         }
     }
 }

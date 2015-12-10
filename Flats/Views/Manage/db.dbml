@@ -102,19 +102,6 @@
       <Column Name="phrase_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
-  <Table Name="dbo.reviews" Member="reviews">
-    <Type Name="reviews">
-      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="cleaness" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="price" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="services" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="comfort" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="region" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="object_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="header" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
-      <Column Name="body" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.Attributes" Member="Attributes">
     <Type Name="Attributes">
       <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -164,6 +151,35 @@
       <Column Name="[_value]" Member="_value" Type="System.String" DbType="NVarChar(300)" CanBeNull="true" />
       <Association Name="Objects_Objects_LiveConditions" Member="Objects" ThisKey="object_id" OtherKey="ID" Type="Objects" IsForeignKey="true" />
       <Association Name="LiveConditions_Objects_LiveConditions" Member="LiveConditions" ThisKey="lc_id" OtherKey="id" Type="LiveConditions" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Rating" Member="Rating">
+    <Type Name="Rating">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="rating" Type="System.Decimal" DbType="Decimal(38,6)" CanBeNull="true" />
+      <Column Name="cleaness" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="price" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="services" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="comfort" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="region" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Naim" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.reviews" Member="reviews">
+    <Type Name="reviews">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="cleaness" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="price" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="services" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="comfort" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="region" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="object_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="header" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="body" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="total" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Surname" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
     </Type>
   </Table>
 </Database>
