@@ -66,3 +66,7 @@
 /// <reference path="spoiler.js" />
 /// <reference path="jquery-ui-1.11.4.min.js" />
 /// <reference path="jquery.rateit.min.js" />
+/// <reference path="rangedate.js" />
+/// <reference path="datapick-plg.js" />
+/// <reference path="jquery.plugin.js" />
+/// <reference path="jquery.datepick.js" />
