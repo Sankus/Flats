@@ -243,8 +243,8 @@
                             <input type="hidden" id="select_3" name="guests" />
                         </div>
 
-                        <input type="text" id="datepicker" placeholder="Заезд" >
-                        <input type="text" id="datepicker" placeholder="Выезд" >
+                        <input type="text" class="datepicker" placeholder="Заезд" >
+                        <input type="text" class="datepicker" placeholder="Выезд">
 
                        
                         <div class="my_slider">
@@ -312,8 +312,20 @@
     <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     <script src="~/Scripts/jquery.rateit.js"></script>
     <script>
-    $(function () {
-        $("#datepicker").datepicker();
+        $(function () {
+            $.datepicker.regional['ru'] = {
+                closeText: 'x', // set a close button text
+                currentText: 'Oggi', // set today text
+                monthNames: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'], // set month names
+                monthNamesShort: ['Янв', 'Фев', 'Мар', 'Апр', 'Май', 'Июнь', 'Июль', 'Авг', 'Сен', 'Окт', 'Ноя', 'Дек'], // set short month names
+                dayNames: ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'], // set days names
+                dayNamesShort: ['Вск', 'Пон', 'Втр', 'Срд', 'Чтв', 'Пят', 'Суб'], // set short day names
+                dayNamesMin: ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'], // set more short days names
+                dateFormat: 'dd/mm/yy' // set format date
+            };
+
+            $.datepicker.setDefaults($.datepicker.regional['ru']);
+            $(".datepicker").datepicker();
         
     });
     </script>
