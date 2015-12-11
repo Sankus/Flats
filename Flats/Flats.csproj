@@ -517,6 +517,7 @@
     <Content Include="Views\Admin\EditObjects.cshtml" />
     <Content Include="Views\Home\Object.cshtml" />
     <Content Include="Views\Home\Search.cshtml" />
+    <Content Include="Views\Home\ReViewDetails.cshtml" />
     <None Include="Views\Manage\db.dbml.layout">
       <DependentUpon>db.dbml</DependentUpon>
     </None>

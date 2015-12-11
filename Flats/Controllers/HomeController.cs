@@ -299,10 +299,39 @@ namespace Flats.Controllers
             String comfort = Request["comfort"]; 
             String clean = Request["clean"]; 
             String price = Request["price"]; 
-            String services = Request["services"]; 
+            String services = Request["services"];
+            int id = Int32.Parse(Request["id"]);
 
-            
-            return RedirectToAction("ReViews");
+            dbDataContext db = new dbDataContext();
+
+            reviews rw = new reviews();
+            rw.data = DateTime.Now;
+            rw.cleaness = Decimal.Parse(clean.Replace('.',','));
+            rw.price = Decimal.Parse(price.Replace('.', ','));
+            rw.services = Decimal.Parse(services.Replace('.', ','));
+            rw.comfort = Decimal.Parse(comfort.Replace('.', ','));
+            rw.region = Decimal.Parse(region.Replace('.', ','));
+            rw.object_id = id;
+            rw.header = name + " " + surname;
+            rw.body = text;
+            rw.total = Decimal.Parse(total.Replace('.', ','));
+            rw.Name = name;
+            rw.Surname = surname;
+
+            db.reviews.InsertOnSubmit(rw);
+            db.SubmitChanges();
+
+            return RedirectToAction("ReViewDetails", new { id = rw.id });
+        }
+
+        public ActionResult ReViewDetails(int id)
+        {
+            InitSettings();
+            dbDataContext db = new dbDataContext();
+            Rating rating_obj = db.Rating.SingleOrDefault(c => c.ID==id);
+            if (rating_obj == null)
+                return RedirectToAction("ReViews");
+            return View(rating_obj);
         }
     }
 }

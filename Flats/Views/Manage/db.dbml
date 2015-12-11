@@ -157,29 +157,30 @@
     <Type Name="Rating">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="rating" Type="System.Decimal" DbType="Decimal(38,6)" CanBeNull="true" />
-      <Column Name="cleaness" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="price" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="services" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="comfort" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="region" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="cleaness" Type="System.Decimal" DbType="Decimal(38,6)" CanBeNull="true" />
+      <Column Name="price" Type="System.Decimal" DbType="Decimal(38,6)" CanBeNull="true" />
+      <Column Name="services" Type="System.Decimal" DbType="Decimal(38,6)" CanBeNull="true" />
+      <Column Name="comfort" Type="System.Decimal" DbType="Decimal(38,6)" CanBeNull="true" />
+      <Column Name="region" Type="System.Decimal" DbType="Decimal(38,6)" CanBeNull="true" />
       <Column Name="Naim" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
-      <Column Name="Address" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="address" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.reviews" Member="reviews">
     <Type Name="reviews">
       <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="cleaness" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="price" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="services" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="comfort" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="region" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="cleaness" Type="System.Decimal" DbType="Decimal(18,1)" CanBeNull="true" />
+      <Column Name="price" Type="System.Decimal" DbType="Decimal(18,1)" CanBeNull="true" />
+      <Column Name="services" Type="System.Decimal" DbType="Decimal(18,1)" CanBeNull="true" />
+      <Column Name="comfort" Type="System.Decimal" DbType="Decimal(18,1)" CanBeNull="true" />
+      <Column Name="region" Type="System.Decimal" DbType="Decimal(18,1)" CanBeNull="true" />
       <Column Name="object_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="header" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
       <Column Name="body" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="total" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="total" Type="System.Decimal" DbType="Decimal(18,1)" CanBeNull="true" />
       <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="Surname" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="data" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </Type>
   </Table>
 </Database>
