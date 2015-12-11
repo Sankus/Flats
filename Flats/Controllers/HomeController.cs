@@ -306,15 +306,15 @@ namespace Flats.Controllers
 
             reviews rw = new reviews();
             rw.data = DateTime.Now;
-            rw.cleaness = Int32.Parse(clean);
-            rw.price = Int32.Parse(price);
-            rw.services = Int32.Parse(services);
-            rw.comfort = Int32.Parse(comfort);
-            rw.region = Int32.Parse(region);
+            rw.cleaness = Decimal.Parse(clean.Replace('.',','));
+            rw.price = Decimal.Parse(price.Replace('.', ','));
+            rw.services = Decimal.Parse(services.Replace('.', ','));
+            rw.comfort = Decimal.Parse(comfort.Replace('.', ','));
+            rw.region = Decimal.Parse(region.Replace('.', ','));
             rw.object_id = id;
             rw.header = name + " " + surname;
             rw.body = text;
-            rw.total = Decimal.Parse(total);
+            rw.total = Decimal.Parse(total.Replace('.', ','));
             rw.Name = name;
             rw.Surname = surname;
 

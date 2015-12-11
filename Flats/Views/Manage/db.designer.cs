@@ -2714,19 +2714,19 @@ namespace Flats.Views.Manage
 		
 		private System.Nullable<decimal> _rating;
 		
-		private System.Nullable<int> _cleaness;
+		private System.Nullable<decimal> _cleaness;
 		
-		private System.Nullable<int> _price;
+		private System.Nullable<decimal> _price;
 		
-		private System.Nullable<int> _services;
+		private System.Nullable<decimal> _services;
 		
-		private System.Nullable<int> _comfort;
+		private System.Nullable<decimal> _comfort;
 		
-		private System.Nullable<int> _region;
+		private System.Nullable<decimal> _region;
 		
 		private string _Naim;
 		
-		private string _Address;
+		private string _address;
 		
 		public Rating()
 		{
@@ -2764,8 +2764,8 @@ namespace Flats.Views.Manage
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cleaness", DbType="Int")]
-		public System.Nullable<int> cleaness
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cleaness", DbType="Decimal(38,6)")]
+		public System.Nullable<decimal> cleaness
 		{
 			get
 			{
@@ -2780,8 +2780,8 @@ namespace Flats.Views.Manage
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_price", DbType="Int")]
-		public System.Nullable<int> price
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_price", DbType="Decimal(38,6)")]
+		public System.Nullable<decimal> price
 		{
 			get
 			{
@@ -2796,8 +2796,8 @@ namespace Flats.Views.Manage
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_services", DbType="Int")]
-		public System.Nullable<int> services
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_services", DbType="Decimal(38,6)")]
+		public System.Nullable<decimal> services
 		{
 			get
 			{
@@ -2812,8 +2812,8 @@ namespace Flats.Views.Manage
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_comfort", DbType="Int")]
-		public System.Nullable<int> comfort
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_comfort", DbType="Decimal(38,6)")]
+		public System.Nullable<decimal> comfort
 		{
 			get
 			{
@@ -2828,8 +2828,8 @@ namespace Flats.Views.Manage
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_region", DbType="Int")]
-		public System.Nullable<int> region
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_region", DbType="Decimal(38,6)")]
+		public System.Nullable<decimal> region
 		{
 			get
 			{
@@ -2860,18 +2860,18 @@ namespace Flats.Views.Manage
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Address", DbType="NVarChar(250)")]
-		public string Address
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_address", DbType="NVarChar(250)")]
+		public string address
 		{
 			get
 			{
-				return this._Address;
+				return this._address;
 			}
 			set
 			{
-				if ((this._Address != value))
+				if ((this._address != value))
 				{
-					this._Address = value;
+					this._address = value;
 				}
 			}
 		}
@@ -2885,15 +2885,15 @@ namespace Flats.Views.Manage
 		
 		private int _id;
 		
-		private System.Nullable<int> _cleaness;
+		private System.Nullable<decimal> _cleaness;
 		
-		private System.Nullable<int> _price;
+		private System.Nullable<decimal> _price;
 		
-		private System.Nullable<int> _services;
+		private System.Nullable<decimal> _services;
 		
-		private System.Nullable<int> _comfort;
+		private System.Nullable<decimal> _comfort;
 		
-		private System.Nullable<int> _region;
+		private System.Nullable<decimal> _region;
 		
 		private System.Nullable<int> _object_id;
 		
@@ -2915,15 +2915,15 @@ namespace Flats.Views.Manage
     partial void OnCreated();
     partial void OnidChanging(int value);
     partial void OnidChanged();
-    partial void OncleanessChanging(System.Nullable<int> value);
+    partial void OncleanessChanging(System.Nullable<decimal> value);
     partial void OncleanessChanged();
-    partial void OnpriceChanging(System.Nullable<int> value);
+    partial void OnpriceChanging(System.Nullable<decimal> value);
     partial void OnpriceChanged();
-    partial void OnservicesChanging(System.Nullable<int> value);
+    partial void OnservicesChanging(System.Nullable<decimal> value);
     partial void OnservicesChanged();
-    partial void OncomfortChanging(System.Nullable<int> value);
+    partial void OncomfortChanging(System.Nullable<decimal> value);
     partial void OncomfortChanged();
-    partial void OnregionChanging(System.Nullable<int> value);
+    partial void OnregionChanging(System.Nullable<decimal> value);
     partial void OnregionChanged();
     partial void Onobject_idChanging(System.Nullable<int> value);
     partial void Onobject_idChanged();
@@ -2966,8 +2966,8 @@ namespace Flats.Views.Manage
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cleaness", DbType="Int")]
-		public System.Nullable<int> cleaness
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cleaness", DbType="Decimal(18,1)")]
+		public System.Nullable<decimal> cleaness
 		{
 			get
 			{
@@ -2986,8 +2986,8 @@ namespace Flats.Views.Manage
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_price", DbType="Int")]
-		public System.Nullable<int> price
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_price", DbType="Decimal(18,1)")]
+		public System.Nullable<decimal> price
 		{
 			get
 			{
@@ -3006,8 +3006,8 @@ namespace Flats.Views.Manage
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_services", DbType="Int")]
-		public System.Nullable<int> services
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_services", DbType="Decimal(18,1)")]
+		public System.Nullable<decimal> services
 		{
 			get
 			{
@@ -3026,8 +3026,8 @@ namespace Flats.Views.Manage
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_comfort", DbType="Int")]
-		public System.Nullable<int> comfort
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_comfort", DbType="Decimal(18,1)")]
+		public System.Nullable<decimal> comfort
 		{
 			get
 			{
@@ -3046,8 +3046,8 @@ namespace Flats.Views.Manage
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_region", DbType="Int")]
-		public System.Nullable<int> region
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_region", DbType="Decimal(18,1)")]
+		public System.Nullable<decimal> region
 		{
 			get
 			{
@@ -3126,7 +3126,7 @@ namespace Flats.Views.Manage
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_total", DbType="Decimal(18,2)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_total", DbType="Decimal(18,1)")]
 		public System.Nullable<decimal> total
 		{
 			get
