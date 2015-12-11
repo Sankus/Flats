@@ -243,10 +243,10 @@
                             <input type="hidden" id="select_3" name="guests" />
                         </div>
 
-                        <input type="date" id="zaezd" placeholder="Заезд" />
-                        <input type="date" id="viezd" placeholder="Выезд" />
+                        <input type="text" id="datepicker" placeholder="Заезд" >
+                        <input type="text" id="datepicker" placeholder="Выезд" >
 
-
+                       
                         <div class="my_slider">
                             <p>
                                 <input type="text" id="amount" name="amount" readonly style="border:0; color:#C32361; font-weight:bold;">
@@ -311,7 +311,12 @@
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     <script src="~/Scripts/jquery.rateit.js"></script>
-
+    <script>
+    $(function () {
+        $("#datepicker").datepicker();
+        
+    });
+    </script>
     <script>
         $(function () {
             $("#slider-range").slider({

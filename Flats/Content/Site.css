@@ -166,9 +166,7 @@ footer {
     display: none;
 }
 
-.kyrsi {
-    font-family: "Roboto Light";
-}
+
 /*SELECT*/
 
 
@@ -1106,4 +1104,9 @@ border-bottom: 2px solid #c32361
     border: none;
     margin-top: 16px;
     background-image:url('../img/trehygolka.png')
+}
+
+
+a.hide-show {
+    border-bottom: none!important;
 }
