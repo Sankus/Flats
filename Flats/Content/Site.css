@@ -186,6 +186,9 @@ footer {
 table.ui-datepicker-calendar>tbody>tr>td>a {
     background: none!important;
 }
+table.ui-datepicker-calendar>thead {
+    color: #C32361!important;
+}
 /* Sprite */
 .radio, .drop li, .slct, .check {
 	background: url(sprite.png) 0 0 no-repeat;
@@ -1097,15 +1100,7 @@ border-bottom: 2px solid #c32361
     text-align:center;
 }
 
-::-webkit-input-placeholder {color:white;}
-::-moz-placeholder          {color:#c0392b;}/* Firefox 19+ */
-:-moz-placeholder           {color:#c0392b;}/* Firefox 18- */
-:-ms-input-placeholder      {color:#c0392b;}
 
-::-webkit-input-placeholder {font-size:18px;}
-::-moz-placeholder          {font-size:18px;}/* Firefox 19+ */
-:-moz-placeholder           {font-size:18px;}/* Firefox 18- */
-:-ms-input-placeholder      {font-size:18px;}
 
 
 
@@ -1122,4 +1117,14 @@ border-bottom: 2px solid #c32361
 
 a.hide-show {
     border-bottom: none!important;
+}
+.massage {
+      display: none;
+    height: 50px;
+    width: 100%;
+    background: #C32361;
+    color: white;
+    text-align: center;
+    line-height: 45px;
+    font-size: 24px;
 }
