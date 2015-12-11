@@ -63,6 +63,9 @@ namespace Flats.Views.Manage
     partial void InsertObjects_LiveConditions(Objects_LiveConditions instance);
     partial void UpdateObjects_LiveConditions(Objects_LiveConditions instance);
     partial void DeleteObjects_LiveConditions(Objects_LiveConditions instance);
+    partial void InsertRating(Rating instance);
+    partial void UpdateRating(Rating instance);
+    partial void DeleteRating(Rating instance);
     partial void Insertreviews(reviews instance);
     partial void Updatereviews(reviews instance);
     partial void Deletereviews(reviews instance);
@@ -1949,6 +1952,8 @@ namespace Flats.Views.Manage
 		
 		private EntityRef<Region> _Region;
 		
+		private EntityRef<Rating> _Rating;
+		
     #region Определения метода расширяемости
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -1998,6 +2003,7 @@ namespace Flats.Views.Manage
 			this._Objects_Attributes = new EntitySet<Objects_Attributes>(new Action<Objects_Attributes>(this.attach_Objects_Attributes), new Action<Objects_Attributes>(this.detach_Objects_Attributes));
 			this._Objects_LiveConditions = new EntitySet<Objects_LiveConditions>(new Action<Objects_LiveConditions>(this.attach_Objects_LiveConditions), new Action<Objects_LiveConditions>(this.detach_Objects_LiveConditions));
 			this._Region = default(EntityRef<Region>);
+			this._Rating = default(EntityRef<Rating>);
 			OnCreated();
 		}
 		
@@ -2012,6 +2018,10 @@ namespace Flats.Views.Manage
 			{
 				if ((this._ID != value))
 				{
+					if (this._Rating.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnIDChanging(value);
 					this.SendPropertyChanging();
 					this._ID = value;
@@ -2445,6 +2455,40 @@ namespace Flats.Views.Manage
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Rating_Objects", Storage="_Rating", ThisKey="ID", OtherKey="ID", IsForeignKey=true)]
+		public Rating Rating
+		{
+			get
+			{
+				return this._Rating.Entity;
+			}
+			set
+			{
+				Rating previousValue = this._Rating.Entity;
+				if (((previousValue != value) 
+							|| (this._Rating.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Rating.Entity = null;
+						previousValue.Objects.Remove(this);
+					}
+					this._Rating.Entity = value;
+					if ((value != null))
+					{
+						value.Objects.Add(this);
+						this._ID = value.ID;
+					}
+					else
+					{
+						this._ID = default(int);
+					}
+					this.SendPropertyChanged("Rating");
+				}
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -2707,8 +2751,10 @@ namespace Flats.Views.Manage
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Rating")]
-	public partial class Rating
+	public partial class Rating : INotifyPropertyChanging, INotifyPropertyChanged
 	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
 		private int _ID;
 		
@@ -2728,11 +2774,39 @@ namespace Flats.Views.Manage
 		
 		private string _address;
 		
+		private EntitySet<Objects> _Objects;
+		
+    #region Определения метода расширяемости
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnratingChanging(System.Nullable<decimal> value);
+    partial void OnratingChanged();
+    partial void OncleanessChanging(System.Nullable<decimal> value);
+    partial void OncleanessChanged();
+    partial void OnpriceChanging(System.Nullable<decimal> value);
+    partial void OnpriceChanged();
+    partial void OnservicesChanging(System.Nullable<decimal> value);
+    partial void OnservicesChanged();
+    partial void OncomfortChanging(System.Nullable<decimal> value);
+    partial void OncomfortChanged();
+    partial void OnregionChanging(System.Nullable<decimal> value);
+    partial void OnregionChanged();
+    partial void OnNaimChanging(string value);
+    partial void OnNaimChanged();
+    partial void OnaddressChanging(string value);
+    partial void OnaddressChanged();
+    #endregion
+		
 		public Rating()
 		{
+			this._Objects = new EntitySet<Objects>(new Action<Objects>(this.attach_Objects), new Action<Objects>(this.detach_Objects));
+			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL", IsPrimaryKey=true)]
 		public int ID
 		{
 			get
@@ -2743,7 +2817,11 @@ namespace Flats.Views.Manage
 			{
 				if ((this._ID != value))
 				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
 					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
 				}
 			}
 		}
@@ -2759,7 +2837,11 @@ namespace Flats.Views.Manage
 			{
 				if ((this._rating != value))
 				{
+					this.OnratingChanging(value);
+					this.SendPropertyChanging();
 					this._rating = value;
+					this.SendPropertyChanged("rating");
+					this.OnratingChanged();
 				}
 			}
 		}
@@ -2775,7 +2857,11 @@ namespace Flats.Views.Manage
 			{
 				if ((this._cleaness != value))
 				{
+					this.OncleanessChanging(value);
+					this.SendPropertyChanging();
 					this._cleaness = value;
+					this.SendPropertyChanged("cleaness");
+					this.OncleanessChanged();
 				}
 			}
 		}
@@ -2791,7 +2877,11 @@ namespace Flats.Views.Manage
 			{
 				if ((this._price != value))
 				{
+					this.OnpriceChanging(value);
+					this.SendPropertyChanging();
 					this._price = value;
+					this.SendPropertyChanged("price");
+					this.OnpriceChanged();
 				}
 			}
 		}
@@ -2807,7 +2897,11 @@ namespace Flats.Views.Manage
 			{
 				if ((this._services != value))
 				{
+					this.OnservicesChanging(value);
+					this.SendPropertyChanging();
 					this._services = value;
+					this.SendPropertyChanged("services");
+					this.OnservicesChanged();
 				}
 			}
 		}
@@ -2823,7 +2917,11 @@ namespace Flats.Views.Manage
 			{
 				if ((this._comfort != value))
 				{
+					this.OncomfortChanging(value);
+					this.SendPropertyChanging();
 					this._comfort = value;
+					this.SendPropertyChanged("comfort");
+					this.OncomfortChanged();
 				}
 			}
 		}
@@ -2839,7 +2937,11 @@ namespace Flats.Views.Manage
 			{
 				if ((this._region != value))
 				{
+					this.OnregionChanging(value);
+					this.SendPropertyChanging();
 					this._region = value;
+					this.SendPropertyChanged("region");
+					this.OnregionChanged();
 				}
 			}
 		}
@@ -2855,7 +2957,11 @@ namespace Flats.Views.Manage
 			{
 				if ((this._Naim != value))
 				{
+					this.OnNaimChanging(value);
+					this.SendPropertyChanging();
 					this._Naim = value;
+					this.SendPropertyChanged("Naim");
+					this.OnNaimChanged();
 				}
 			}
 		}
@@ -2871,9 +2977,58 @@ namespace Flats.Views.Manage
 			{
 				if ((this._address != value))
 				{
+					this.OnaddressChanging(value);
+					this.SendPropertyChanging();
 					this._address = value;
+					this.SendPropertyChanged("address");
+					this.OnaddressChanged();
 				}
 			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Rating_Objects", Storage="_Objects", ThisKey="ID", OtherKey="ID")]
+		public EntitySet<Objects> Objects
+		{
+			get
+			{
+				return this._Objects;
+			}
+			set
+			{
+				this._Objects.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Objects(Objects entity)
+		{
+			this.SendPropertyChanging();
+			entity.Rating = this;
+		}
+		
+		private void detach_Objects(Objects entity)
+		{
+			this.SendPropertyChanging();
+			entity.Rating = null;
 		}
 	}
 	

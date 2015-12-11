@@ -141,6 +141,7 @@
       <Association Name="Objects_Objects_Attributes" Member="Objects_Attributes" ThisKey="ID" OtherKey="object_id" Type="Objects_Attributes" />
       <Association Name="Objects_Objects_LiveConditions" Member="Objects_LiveConditions" ThisKey="ID" OtherKey="object_id" Type="Objects_LiveConditions" />
       <Association Name="Region_Objects" Member="Region" ThisKey="region_id" OtherKey="ID" Type="Region" IsForeignKey="true" />
+      <Association Name="Rating_Objects" Member="Rating" ThisKey="ID" OtherKey="ID" Type="Rating" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Objects_LiveConditions" Member="Objects_LiveConditions">
@@ -155,7 +156,7 @@
   </Table>
   <Table Name="dbo.Rating" Member="Rating">
     <Type Name="Rating">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="rating" Type="System.Decimal" DbType="Decimal(38,6)" CanBeNull="true" />
       <Column Name="cleaness" Type="System.Decimal" DbType="Decimal(38,6)" CanBeNull="true" />
       <Column Name="price" Type="System.Decimal" DbType="Decimal(38,6)" CanBeNull="true" />
@@ -164,6 +165,7 @@
       <Column Name="region" Type="System.Decimal" DbType="Decimal(38,6)" CanBeNull="true" />
       <Column Name="Naim" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
       <Column Name="address" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Association Name="Rating_Objects" Member="Objects" ThisKey="ID" OtherKey="ID" Type="Objects" />
     </Type>
   </Table>
   <Table Name="dbo.reviews" Member="reviews">

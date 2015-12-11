@@ -113,6 +113,7 @@ namespace Flats.Controllers
             List<Objects_Attributes> obj_attr_list = db.Objects_Attributes.Select(c => c).Where(c => c.Objects.type == 1).ToList<Objects_Attributes>();
             ViewBag.obj_attr_list = obj_attr_list;
             
+            
             return View();
         }
 

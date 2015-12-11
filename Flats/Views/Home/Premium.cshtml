@@ -31,7 +31,10 @@
         </div>
     </div>
     <div class="right_cont_prew">
-        <div class="star_prew">Тут выводим звезды</div>
+        <div class="star_prew">
+            <div class="rateit" data-rateit-value="@obj.Rating.rating.ToString().Replace(',', '.')" data-rateit-ispreset="true" data-rateit-readonly="true"></div>
+            @Math.Round((Decimal)obj.Rating.rating,1)
+        </div>
         <div class="in_flat_prew">
             <span class="obj_attr">
                 @{
