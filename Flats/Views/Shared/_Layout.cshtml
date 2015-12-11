@@ -106,18 +106,30 @@
         </div>
     </div>
     <div id="bron">
+        
+          <div class="bron_in">
+              <div class="born_plashka">Бронирование</div>
         <div class="black_layer_close" onclick="$('#bron').hide();">X</div>
         <form method="post" action="/Home/SendBron">
             <input type="hidden" name="id" value="" id="bron_id" />
-            <input type="text" name="name" value="" />
-            <input type="text" name="surname" value="" />
-            <input type="email" name="email" value="" />
-            <input type="tel" name="phone" value="" />
-            <input type="number" name="kolvo" value="" />
-            <input type="hidden" name="date1" value="" id="bron_date1" />
-            <input type="hidden" name="date2" value="" id="bron_date2"/>
-            <input type="submit"  value="Send" />
-        </form>
+            <div class="bron_p_1"> <div class="bron_p">Имя</div><input type="text" name="name" value="" /></div>
+            <div class="bron_p_1">
+                <div class="bron_p">Фамилия</div><input type="text" name="surname" value="" />
+            </div>
+            <div class="bron_p_1">
+                <div class="bron_p">E-mail</div><input type="email" name="email" value="" />
+            </div>
+            <div class="bron_p_1">
+                <div class="bron_p">Телефон</div><input type="tel" name="phone" value="" />
+            </div>
+            <div class="bron_p_1">
+                <div class="bron_p">Кол-во гостей</div><div class="chubzik"></div><input class="col-gos_input" type="number" name="kolvo" value="" />
+            </div>
+                <input type="hidden" name="date1" value="" id="bron_date1" />
+                <input type="hidden" name="date2" value="" id="bron_date2" />
+                <input class="sent_bron_btn" type="submit" value="Отправить" />
+</form>
+              </div>
     </div>
 
     <div class="navbar navbar-inverse navbar-fixed-top" style="background-color: #f4f4f4;border-color: #f4f4f4;">

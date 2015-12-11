@@ -237,6 +237,7 @@
     <Content Include="fonts\3962.ttf" />
     <None Include="Properties\PublishProfiles\odessa.pubxml" />
     <Content Include="img\btns-next-prev.png" />
+    <Content Include="img\chubzik.png" />
     <Content Include="img\loop.png" />
     <Content Include="img\minus.png" />
     <Content Include="img\pagination.png" />

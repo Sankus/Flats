@@ -507,7 +507,7 @@ a.bottom_ac_prew:hover {
     width: 250px;
     height: 180px;
     float: left;
-        margin-top: 20px;
+        margin-top: -5px;
         margin-bottom:-50px;
 }
 .bottom_prew_1 {
@@ -1127,4 +1127,99 @@ a.hide-show {
     text-align: center;
     line-height: 45px;
     font-size: 24px;
+}
+.right_cont_prew>.star_prew {
+    zoom: 1.5;
+}
+
+
+div#bron {
+    display:none;
+        background: rgba(255, 255, 255, 0.73);
+    width: 100%;
+    min-height: 800px;
+    z-index: 999999;
+    position: absolute;
+    margin-top: -80px;
+}
+
+.bron_in {
+    background: white;
+  width: 565px;
+    position: relative;
+    z-index: 999999;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 14%;
+    padding: 25px;
+}
+
+
+.bron_p_1>input {
+    width: 300px;
+    float: right;
+    
+    height: 34px;
+}
+
+.bron_in > .black_layer_close {
+    position: absolute;
+    right: 0;
+    margin-top: -88px;
+    color: white;
+}
+
+.bron_p {
+    float: left;
+    font-size: 20px;
+}
+
+.bron_p_1 {
+    width: 500px;
+    height: 50px;
+}
+
+input.col-gos_input {
+    width: 77px;
+    float: left;
+  margin-left: 72px;
+}
+
+input.sent_bron_btn {
+        width: 150px;
+    float: right;
+    margin: -50px 14px 0 0px;
+    background: none;
+    border: 2px solid #c32361;
+    text-transform: uppercase;
+    font-size: 20px;
+    color: #C32361;
+}
+
+.chubzik {
+   
+    width: 30px;
+    height: 30px;
+    background-image: url('../img/chubzik.png');
+    position: absolute;
+    margin-left: 250px;
+    margin-top: 1px;
+}
+
+.born_plashka {
+    background: #323232;
+    padding-left: 39px;
+}
+
+.born_plashka {
+    background: #323232;
+    color: white;
+    font-size: 20px;
+    width: 564px;
+    height: 46px;
+    line-height: 44px;
+    margin-left: -24px;
+    margin-right: 48px;
+    margin-top: -25px;
+    margin-bottom: 25px;
 }
