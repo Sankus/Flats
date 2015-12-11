@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Mail;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
@@ -333,6 +334,46 @@ namespace Flats.Controllers
             if (rating_obj == null)
                 return RedirectToAction("ReViews");
             return View(rating_obj);
+        }
+
+        public ActionResult SendBron()
+        {
+            int id = Int32.Parse(Request["id"]);
+            string name = Request["name"];
+            string surname = Request["surname"];
+            string email = Request["email"];
+            string phone = Request["phone"];
+            string kolvo = Request["kolvo"];
+            string bron_date1 = Request["bron_date1"];
+            string bron_date2 = Request["bron_date2"];
+
+            dbDataContext db = new dbDataContext();
+            Objects obj = db.Objects.SingleOrDefault(c=>c.ID==id);
+
+            if (obj==null)
+                return Json(new { message = "Ошибка отправки письма" });
+
+
+            MailMessage Message = new MailMessage();
+            Message.Subject = "Бронирование объекта";
+            string template = "<html><body>Адрес объекта:{0}<br/>Имя заказчика:{1}<br/>"+
+                "Фамилия заказчика:{2}<br/>E-mail заказчика:{3}<br/>" +
+                "Номер телефона заказчика:{4}<br/>Количество гостей:{5}<br/>" +
+                "Дата заезда:{6}<br/>Дата выезда:{7}<br/>" + 
+                "</body></html>";
+            String MessageBody = String.Format(template, obj.address, name, surname, email, phone, kolvo, bron_date1, bron_date2);
+
+            Message.Body = MessageBody;
+            Message.From = new System.Net.Mail.MailAddress("arenda.i@inbox.ru");
+            Message.To.Add(new MailAddress("arenda.i@inbox.ru"));
+            Message.IsBodyHtml = true;
+
+            System.Net.Mail.SmtpClient Smtp = new SmtpClient("smtp.mail.ru", 587);
+            Smtp.EnableSsl = true;
+            Smtp.Credentials = new System.Net.NetworkCredential("arenda.i@inbox.ru", "1984PassPass1984");
+
+            Smtp.Send(Message);
+            return Json(new { message = "Письмо отправлено" });
         }
     }
 }

@@ -64,13 +64,13 @@
                     @Html.DisplayFor(model => model.price1) грн/сутки
                     </div>
                 <div class="data_obertka">
-                    <div class="data_in_obj my_obertka"><p class="zaez_viezd">Заезд</p><input type="text" class="datepicker"></div>
-                <div class="data_in_obj"> <p class="zaez_viezd">Выезд</p><input type="text" class="datepicker"> </div>
+                    <div class="data_in_obj my_obertka"><p class="zaez_viezd">Заезд</p><input type="text" class="datepicker" id="zaezd"></div>
+                <div class="data_in_obj"> <p class="zaez_viezd">Выезд</p><input type="text" class="datepicker" id="viezd"> </div>
                     </div>
                 <div class="text_in_bron">Выберете даты, что бы уточнить цену и доступность </div>
                 <div class="podvinyli_knopky">    
                 <div class="bottom_prew_1">
-                        <a class="bottom_ac_prew" href="#">Забронировать</a>
+                    <a class="bottom_ac_prew" href="#" onclick="ShowBron(@Model.ID); $('#bron_date1').val($('#zaezd').val());$('#bron_date2').val($('#viezd').val());">Забронировать</a>
                     </div>
                     </div>
                 <div>

@@ -110,7 +110,7 @@
           <div class="bron_in">
               <div class="born_plashka">Бронирование</div>
         <div class="black_layer_close" onclick="$('#bron').hide();">X</div>
-        <form method="post" action="/Home/SendBron">
+        <form method="post" action="/Home/SendBron" id="BronForm">
             <input type="hidden" name="id" value="" id="bron_id" />
             <div class="bron_p_1"> <div class="bron_p">Имя</div><input type="text" name="name" value="" /></div>
             <div class="bron_p_1">
@@ -290,7 +290,7 @@
 
     </div>
         <div class="seperator"></div>
-    <div class="massage"></div>
+    <div class="massage" id="message"></div>
     </div>
     <div class="left-plashka">
         <div class="temp">
@@ -444,6 +444,23 @@
 
             $('#rw_send_form').submit();
         });
+        $('#BronForm').submit(function (e,n) {
+            e.preventDefault();
+            var formData = new FormData($(this)[0]);
+            $.ajax({
+                url: "/Home/SendBron",
+                type: "POST",
+                data: formData,
+                async: false,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function (returndata) {
+                    ShowMess("Запрос на бронирование отправлен.");
+                    $('#bron').hide();
+                }
+            });
+        });
 
     });
     function ShowBron(id)
@@ -451,6 +468,10 @@
         $('#bron_id').val(id);
         $('#bron').show();
 
+    }
+    function ShowMess(mess) {
+        $('#message').text(mess);
+        $('#message').show();
     }
     </script>
 
