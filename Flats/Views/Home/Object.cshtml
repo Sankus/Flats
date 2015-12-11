@@ -64,10 +64,14 @@
                     @Html.DisplayFor(model => model.price1) грн/сутки
                     </div>
                 <input type="date">
+                <div class="bottom_prew_1">
+                    <a class="bottom_ac_prew" href="#">Забронировать</a>
+                </div>
                 </div>
             <div>
                 <div class="rateit" data-rateit-value="@Model.Rating.rating.ToString().Replace(',', '.')" data-rateit-ispreset="true" data-rateit-readonly="true"></div>
-                @Math.Round((Decimal)Model.Rating.rating, 1)
+                
+                 @Math.Round((Decimal)Model.Rating.rating, 1)
             </div>
         </div>
         <div class="opisanie_page">
