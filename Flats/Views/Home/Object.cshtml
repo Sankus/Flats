@@ -65,6 +65,10 @@
                     </div>
                 <input type="date">
                 </div>
+            <div>
+                <div class="rateit" data-rateit-value="@Model.Rating.rating.ToString().Replace(',', '.')" data-rateit-ispreset="true" data-rateit-readonly="true"></div>
+                @Math.Round((Decimal)Model.Rating.rating, 1)
+            </div>
         </div>
         <div class="opisanie_page">
             <h2>Описание и комплектация</h2>

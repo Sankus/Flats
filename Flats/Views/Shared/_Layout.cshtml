@@ -105,6 +105,19 @@
             </table>
         </div>
     </div>
+    <div id="bron">
+        <div class="black_layer_close" onclick="$('#bron').hide();">X</div>
+        <form method="post" action="/Home/SendBron">
+            <input type="text" name="name" value="" />
+            <input type="text" name="surname" value="" />
+            <input type="email" name="email" value="" />
+            <input type="tel" name="phone" value="" />
+            <input type="number" name="kolvo" value="" />
+            <input type="hidden" name="date1" value="" id="bron_date1" />
+            <input type="hidden" name="date2" value="" id="bron_date2"/>
+            <input type="submit"  value="Send" />
+        </form>
+    </div>
 
     <div class="navbar navbar-inverse navbar-fixed-top" style="background-color: #f4f4f4;border-color: #f4f4f4;">
         <div class="header-info_conteiner">
