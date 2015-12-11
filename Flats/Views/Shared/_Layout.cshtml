@@ -108,6 +108,7 @@
     <div id="bron">
         <div class="black_layer_close" onclick="$('#bron').hide();">X</div>
         <form method="post" action="/Home/SendBron">
+            <input type="hidden" name="id" value="" id="bron_id" />
             <input type="text" name="name" value="" />
             <input type="text" name="surname" value="" />
             <input type="email" name="email" value="" />
@@ -431,7 +432,14 @@
 
             $('#rw_send_form').submit();
         });
+
     });
+    function ShowBron(id)
+    {
+        $('#bron_id').val(id);
+        $('#bron').show();
+
+    }
     </script>
 
 
