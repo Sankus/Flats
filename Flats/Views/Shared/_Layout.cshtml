@@ -55,7 +55,7 @@
                             <tr>
                                 <td>Цена</td>
                                 <td class="rate_val">
-                                    <div class="rateit" id="rateprice"></div>
+                                    <div class="rateit" id="rateprice" step="1"></div>
                                 </td>
                             </tr>
                             <tr>
@@ -85,6 +85,7 @@
                             <tr>
                                 <td colspan="2">
                                     <form action="/Home/SaveReview" method="post" id="rw_send_form">
+                                        <input type="hidden" name="id" value="" id="rw_submit_obj_id" />
                                         <input type="hidden" name="name" value="" id="rw_submit_name"/>
                                         <input type="hidden" name="surname" value="" id="rw_submit_surname" />
                                         <input type="hidden" name="text" value="" id="rw_submit_text" />
@@ -366,6 +367,7 @@
     </script>
     <script>
     $(document).ready(function () {
+        $(function () { $('.rateit').rateit({step: 1}); });
         $('.rateit').click(function () {
             var price = $('#rateprice').rateit('value');
             var clean = $('#rateclean').rateit('value');

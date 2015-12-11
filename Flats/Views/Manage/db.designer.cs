@@ -2907,6 +2907,8 @@ namespace Flats.Views.Manage
 		
 		private string _Surname;
 		
+		private System.Nullable<System.DateTime> _data;
+		
     #region Определения метода расширяемости
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -2935,6 +2937,8 @@ namespace Flats.Views.Manage
     partial void OnNameChanged();
     partial void OnSurnameChanging(string value);
     partial void OnSurnameChanged();
+    partial void OndataChanging(System.Nullable<System.DateTime> value);
+    partial void OndataChanged();
     #endregion
 		
 		public reviews()
@@ -3178,6 +3182,26 @@ namespace Flats.Views.Manage
 					this._Surname = value;
 					this.SendPropertyChanged("Surname");
 					this.OnSurnameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_data", DbType="DateTime")]
+		public System.Nullable<System.DateTime> data
+		{
+			get
+			{
+				return this._data;
+			}
+			set
+			{
+				if ((this._data != value))
+				{
+					this.OndataChanging(value);
+					this.SendPropertyChanging();
+					this._data = value;
+					this.SendPropertyChanged("data");
+					this.OndataChanged();
 				}
 			}
 		}
