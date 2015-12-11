@@ -669,15 +669,37 @@ border-bottom:1px dotted #E4E4E4;
     width: 494px;
 }
 .bron_right {
-      height: 283px;
-    width: 300px;
+       height: 221px;
+    width: 280px;
     float: left;
+    background: white;
+    padding: 0 16px;
 }
 .opisanie_page {
     width: 756px;
 }
+.text_in_bron {
+    margin-bottom: 20px;
+    /* margin-top: 44px; */
+}
+.podvinyli_knopky {
+    margin-left: 32px;
+}
+.bron_right>div>.rateit {
+    margin-top: 32px;
+    zoom: 1.5;
+    margin-left: 30px;
+}
+.opisanie_page {
+    width: 756px;
+    margin-top: 302px;
+}
+.page_margin {
+    margin-left: 20px;
+}
 .bron_right_price {
-    width: 250px;
+    width: 280px;
+    margin-left: -16px;
     background: black;
     height: 42px;
     color: white;
@@ -1195,7 +1217,19 @@ input.sent_bron_btn {
     font-size: 20px;
     color: #C32361;
 }
-
+.bron_right>.datepicker {
+    width: 123px;
+}
+.data_obertka {
+    margin-top: 10px;
+}
+.data_in_obj {
+    width: 120px;
+    float: left;
+}
+.data_in_obj.my_obertka {
+    margin-right: 8px;
+}
 .chubzik {
    
     width: 30px;
