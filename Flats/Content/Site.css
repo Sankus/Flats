@@ -169,10 +169,23 @@ footer {
 
 /*SELECT*/
 
-
-
-
-
+.ui-widget-header {
+    border-bottom: 1px solid gray!important;
+   
+    background: none!important;
+    color: #222222;
+    /* font-weight: bold; */
+}
+.ui-datepicker-title {
+    color: #C32361!important;
+}
+.ui-datepicker td {
+   
+    padding: 0!important;
+}
+table.ui-datepicker-calendar>tbody>tr>td>a {
+    background: none!important;
+}
 /* Sprite */
 .radio, .drop li, .slct, .check {
 	background: url(sprite.png) 0 0 no-repeat;
