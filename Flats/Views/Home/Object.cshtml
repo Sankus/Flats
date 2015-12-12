@@ -10,6 +10,7 @@
 <div>
     <div class="page_block">
     <div class="titel_page">
+
       <h2>  @Html.DisplayFor(model => model.header) </h2>
     </div>
         <div class="page_adress">
@@ -217,13 +218,40 @@
         <div id="datepicker"></div>
 
     <div class="down_bron">
-        <label for="from">From</label>
-        <input type="text" id="from" name="from">
-        <label for="to">to</label>
-        <input type="text" id="to" name="to">    
+                    123123
+                    <div id="rangeInlinePicker"></div>
+                </div>
+                <div class="bron_right">
+                    <div class="bron_right_price">
+                        Детали заказа
+                    </div>
+                    <div class="data_obertka">
+                        <div class="data_in_obj my_obertka"><p class="zaez_viezd">Заезд</p><input type="text" class="datepicker" id="zaezd"></div>
+                        <div class="data_in_obj"> <p class="zaez_viezd">Выезд</p><input type="text" class="datepicker" id="viezd"> </div>
+                    </div>
+                    <div class="text_in_bron">Выберете даты, что бы уточнить цену и доступность </div>
+                    <div class="podvinyli_knopky">
+                        <div class="bottom_prew_1">
+                            <a class="bottom_ac_prew" href="#" onclick="ShowBron(@Model.ID); $('#bron_date1').val($('#zaezd').val());$('#bron_date2').val($('#viezd').val());">Забронировать</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="down_otziw">
+                <div id="binder">
+                    <div class="prev"></div>
+                    <ul class="list">
+                        <li>Text отзыва 1 Text отзыва 1 Text отзыва 1 Text отзыва 1 </li>
+                        <li>2 2 2 2 2 22 2 22 2 22 2 22 2 22 2 22 2 22 2 22 2 22 2 2</li>
+                        
+                    </ul>
+                    <div class="next"></div>
+                </div>
     </div>
 </div>
 <p>
     <a href="" onclick="history.back()">Вернуться в список</a>
 </p>
+</div>
 </div>

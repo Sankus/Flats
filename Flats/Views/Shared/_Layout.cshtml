@@ -16,6 +16,7 @@
 
 </head>
 <body>
+
     <div id="black_layer">
         <div class="black_layer_close" onclick="$('#black_layer').hide();">X</div>
         <div id="addReviewContainer">
@@ -337,32 +338,16 @@
     
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script src="~/Scripts/jquery.datepick.js"></script>
+    <script src="~/Scripts/jquery.plugin.js"></script>
     <script src="~/Scripts/jquery.rateit.js"></script>
-    <script>
-    $(function () {
-        $("#datepicker").datepicker();
-    });
-    </script>
+    <script src="~/Scripts/text-sliding.js"></script>
     <script>
         $(function () {
-            $("#from").datepicker({
-                defaultDate: "+1w",
-                changeMonth: true,
-                numberOfMonths: 2,
-                onClose: function (selectedDate) {
-                    $("#to").datepicker("option", "minDate", selectedDate);
-                }
-            });
-            $("#to").datepicker({
-                defaultDate: "+1w",
-                changeMonth: true,
-                numberOfMonths: 2,
-                onClose: function (selectedDate) {
-                    $("#from").datepicker("option", "maxDate", selectedDate);
-                }
-            });
-        });
-    </script>
+            $('#rangeInlinePicker').datepick({ 
+                rangeSelect: true, monthsToShow: [2, 3]  });
+        }</script>
+   
     <script>
         $(function () {
             $.datepicker.regional['ru'] = {
