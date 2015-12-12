@@ -125,8 +125,22 @@
             ДОБАВИТЬ ОТЗЫВ
         </div>
 
+        <h3>Отзывы</h3>
 
-
+        @foreach (var rw in ViewBag.rw_list)
+        { 
+            <ul>
+                <li>Дата: @rw.data</li>
+                <li>ФИО: @rw.Name @rw.Surname</li>
+                <li>Текст: @rw.header @rw.body</li>
+                <li>Общий: @rw.total</li>
+                <li>Цена: @rw.price</li>
+                <li>Чистота: @rw.cleaness</li>
+                <li>Услуги: @rw.services</li>
+                <li>Комфорт: @rw.comfort</li>
+                <li>Расположение: @rw.region</li>
+            </ul>
+        }
     </div>
 }
 
