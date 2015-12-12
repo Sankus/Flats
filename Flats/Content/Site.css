@@ -527,7 +527,7 @@ a.bottom_ac_prew._ac_prew2 {
 .faqindex ul {list-style-type: square;list-style-image: none;list-style-position: outside;padding-left:25px;line-height: 18px;margin-top: 5px;font-size:80%;}
 .faqindex ul li {color:#666666;white-space:nowrap;}
 .faqindex h2 {padding: 0;margin-bottom: 0;border-bottom: dotted 1px #ccc;color: #666666;}
-.faq {float:left;width: 900px;margin: 0 auto; font-family: consolas,verdana,helvetica,sans-serif;}
+.faq {float:left;width: 100%;;margin: 0 auto; font-family: consolas,verdana,helvetica,sans-serif;}
 .faq {margin-bottom: 25px;}
 .faq .faqcontent {margin: 0 10px 0 10px;font-size: 95%;}
 .faq h2.faqopened, .faq h2.faqclosed {
