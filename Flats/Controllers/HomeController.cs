@@ -290,6 +290,9 @@ namespace Flats.Controllers
             InitSettings();
             dbDataContext db = new dbDataContext();
             List<Rating> lst = db.Rating.Select(c=>c).OrderByDescending(c=>c.rating).ToList<Rating>();
+
+            List<reviews> rw_list = db.reviews.Select(c => c).OrderBy(c => c.object_id).ToList<reviews>();
+            ViewBag.rw_list = rw_list;
             return View(lst);
         }
 
