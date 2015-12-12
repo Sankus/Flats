@@ -6,7 +6,7 @@
     itemReverse = item.get().reverse();
     itemSize = item.size();
     itemDisplayed = 1;
-    itemToSlide = itemDisplayed * 9;
+    itemToSlide = itemDisplayed * 50;
     currentSlide = 1;
     page = Math.round(itemSize / itemDisplayed);
 
