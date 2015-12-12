@@ -1696,3 +1696,6 @@ a.redotherb:hover {
     height: 200px;
     float: left;
 }
+div#datepicker {
+    float: left;
+}
