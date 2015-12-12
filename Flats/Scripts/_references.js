@@ -73,3 +73,5 @@
 /// <reference path="text-sliding.js" />
 /// <reference path="internal-functions.js" />
 /// <reference path="mouse.js" />
+/// <reference path="../views/fansi-thumb.js" />
+/// <reference path="fan-thumb.js" />

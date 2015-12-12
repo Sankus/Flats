@@ -236,8 +236,14 @@
     <Content Include="fonts\Nautilus.otf" />
     <Content Include="fonts\3962.ttf" />
     <None Include="Properties\PublishProfiles\odessa.pubxml" />
+    <Content Include="img\blank.gif" />
     <Content Include="img\btns-next-prev.png" />
     <Content Include="img\chubzik.png" />
+    <Content Include="img\fancybox_loading%402x.gif" />
+    <Content Include="img\fancybox_loading.gif" />
+    <Content Include="img\fancybox_overlay.png" />
+    <Content Include="img\fancybox_sprite%402x.png" />
+    <Content Include="img\fancybox_sprite.png" />
     <Content Include="img\loop.png" />
     <Content Include="img\minus.png" />
     <Content Include="img\next.png" />
@@ -248,6 +254,7 @@
     <Content Include="img\slider-img_2.jpg" />
     <Content Include="img\trehygolka.png" />
     <Content Include="Scripts\datapick-plg.js" />
+    <Content Include="Scripts\fan-thumb.js" />
     <Content Include="Scripts\form-scripts.js" />
     <Content Include="Scripts\internal-functions.js" />
     <Content Include="Scripts\jquery-1.4.1.min.js" />
@@ -439,6 +446,7 @@
     <Content Include="Scripts\tinymce\tinymce.js" />
     <Content Include="Scripts\tinymce\tinymce.min.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Views\fansi-thumb.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
