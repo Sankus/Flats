@@ -70,3 +70,4 @@
 /// <reference path="datapick-plg.js" />
 /// <reference path="jquery.plugin.js" />
 /// <reference path="jquery.datepick.js" />
+/// <reference path="text-sliding.js" />

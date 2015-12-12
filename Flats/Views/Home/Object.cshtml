@@ -7,223 +7,251 @@
 
 
 <div class="page_margin">
-<div>
-    <div class="page_block">
-    <div class="titel_page">
+    <div>
+        <div class="page_block">
+            <div class="titel_page">
 
-      <h2>  @Html.DisplayFor(model => model.header) </h2>
-    </div>
-        <div class="page_adress">
-            @Html.DisplayFor(model => model.address)
-        </div>
-        <div class="section_page">
-            <div class="block_img_page">
-                <div class="top_sec_img">
-                    <div class="firs_img_page">
-                        <a href="#img1"> <img id="large_foto1_pic" src="/Home/GetPictureFL1?id=@Model.ID"></a>
-                        <a href="#_" class="lightbox" id="img1">
-                            <img src="/Home/GetPictureFL1?id=@Model.ID">
-                        
-                        </a>
-</div>
-
-                    <div class="firs_img_page">
-                        <a href="#img2">  <img id="large_foto1_pic" src="/Home/GetPictureFL2?id=@Model.ID"></a>
-                        <a href="#_" class="lightbox" id="img2">
-                            <img src="/Home/GetPictureFL2?id=@Model.ID">
-
-                        </a>
-</div>
-                </div>
-                <div class="down_sec_img">
-                    <div class="second_img_page">
-                        <a href="#img3"> <img id="foto1_pic" src="/Home/GetPictureF1?id=@Model.ID"></a>
-                        <a href="#_" class="lightbox" id="img3">
-                            <img src="/Home/GetPictureF1?id=@Model.ID">
-
-                        </a>
-                        <a href="#img4"> <img id="foto1_pic" src="/Home/GetPictureF2?id=@Model.ID"></a>
-                        <a href="#_" class="lightbox" id="img4">
-                            <img src="/Home/GetPictureF2?id=@Model.ID">
-
-                        </a>
-                        <a href="#img5">  <img id="foto1_pic" src="/Home/GetPictureF3?id=@Model.ID"></a>
-                        <a href="#_" class="lightbox" id="img5">
-                            <img src="/Home/GetPictureF3?id=@Model.ID">
-
-                        </a>
-                        <a href="#img6">  <img id="foto1_pic" src="/Home/GetPictureF4?id=@Model.ID"></a>
-                        <a href="#_" class="lightbox" id="img6">
-                            <img src="/Home/GetPictureF4?id=@Model.ID">
-
-                        </a>
-</div>
-                    </div>
+                <h2>  @Html.DisplayFor(model => model.header) </h2>
             </div>
-            <div class="bron_right">
-                <div class="bron_right_price">
-                    @Html.DisplayFor(model => model.price1) грн/сутки
-                    </div>
-                <div class="data_obertka">
-                    <div class="data_in_obj my_obertka"><p class="zaez_viezd">Заезд</p><input type="text" class="datepicker" id="zaezd"></div>
-                <div class="data_in_obj"> <p class="zaez_viezd">Выезд</p><input type="text" class="datepicker" id="viezd"> </div>
-                    </div>
-                <div class="text_in_bron">Выберете даты, что бы уточнить цену и доступность </div>
-                <div class="podvinyli_knopky">    
-                <div class="bottom_prew_1">
-                    <a class="bottom_ac_prew" href="#" onclick="ShowBron(@Model.ID); $('#bron_date1').val($('#zaezd').val());$('#bron_date2').val($('#viezd').val());">Забронировать</a>
-                    </div>
-                    </div>
-                <div>
-                    <div class="rateit" data-rateit-value="@Model.Rating.rating.ToString().Replace(',', '.')" data-rateit-ispreset="true" data-rateit-readonly="true"></div>
-
-                    @Math.Round((Decimal)Model.Rating.rating, 1)
-                </div>
-                </div>
-            
-           
-        </div>
-        <div class="opisanie_page">
-            <h2>Описание и комплектация</h2>
-            @Html.DisplayFor(model => model.desc_body)
-            </div>
-
-
-
-        <div class="jile_page">
-            <h2>Жилье</h2>
-            @foreach (var olc in ViewBag.obj_lc_list)
-            {
-                <div class="detail_page_0">
-                    <div class="detail_page_1"><span>@olc.LiveConditions.lc_value</span></div>
-
-                    <div class="detail_page_2">
-                        <span>@olc._value</span>
-                    </div>
-                </div>
-            }
-
-    </div>
-
-        <div class="atribute_page">
-            <h2>Атрибуты</h2>
-            @foreach (var oa in ViewBag.obj_attr_list)
-            {
-                <img src="/Home/GetAttrPic?id=@oa.attribute_id" />
-            }
-        </div>
-
-
-        
-    <hr />
-        <dl class="dl-horizontal" style='display:none'>
-            <dt>
-                @Html.DisplayNameFor(model => model.type)
-            </dt>
-
-            <dd>
-                @if (Model.type == 1)
-                {
-                    <span>Премиум</span>
-                }
-                @if (Model.type == 2)
-                {
-                    <span>Стандарт</span>
-                }
-                @if (Model.type == 3)
-                {
-                    <span>Эконом</span>
-                }
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.region_id)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Region.Naim)
-            </dd>
-
-
-
-            <dd>
-                @Html.DisplayFor(model => model.header)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.address)
-            </dt>
-
-            <dd>
+            <div class="page_adress">
                 @Html.DisplayFor(model => model.address)
-            </dd>
+            </div>
+            <div class="section_page">
+                <div class="block_img_page">
+                    <div class="top_sec_img">
+                        <div class="firs_img_page">
+                            <a href="#img1"> <img id="large_foto1_pic" src="/Home/GetPictureFL1?id=@Model.ID"></a>
+                            <a href="#_" class="lightbox" id="img1">
+                                <img src="/Home/GetPictureFL1?id=@Model.ID">
 
-            <dt>
-                @Html.DisplayNameFor(model => model.rooms_count)
-            </dt>
+                            </a>
+                        </div>
 
-            <dd>
-                @Html.DisplayFor(model => model.rooms_count)
-            </dd>
+                        <div class="firs_img_page">
+                            <a href="#img2">  <img id="large_foto1_pic" src="/Home/GetPictureFL2?id=@Model.ID"></a>
+                            <a href="#_" class="lightbox" id="img2">
+                                <img src="/Home/GetPictureFL2?id=@Model.ID">
 
-            <dt>
-                @Html.DisplayNameFor(model => model.guests_count)
-            </dt>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="down_sec_img">
+                        <div class="second_img_page">
+                            <a href="#img3"> <img id="foto1_pic" src="/Home/GetPictureF1?id=@Model.ID"></a>
+                            <a href="#_" class="lightbox" id="img3">
+                                <img src="/Home/GetPictureF1?id=@Model.ID">
 
-            <dd>
-                @Html.DisplayFor(model => model.guests_count)
-            </dd>
+                            </a>
+                            <a href="#img4"> <img id="foto1_pic" src="/Home/GetPictureF2?id=@Model.ID"></a>
+                            <a href="#_" class="lightbox" id="img4">
+                                <img src="/Home/GetPictureF2?id=@Model.ID">
 
-            <dt>
-                @Html.DisplayNameFor(model => model.price1)
-            </dt>
+                            </a>
+                            <a href="#img5">  <img id="foto1_pic" src="/Home/GetPictureF3?id=@Model.ID"></a>
+                            <a href="#_" class="lightbox" id="img5">
+                                <img src="/Home/GetPictureF3?id=@Model.ID">
 
-            <dd>
-                @Html.DisplayFor(model => model.price1)
-            </dd>
+                            </a>
+                            <a href="#img6">  <img id="foto1_pic" src="/Home/GetPictureF4?id=@Model.ID"></a>
+                            <a href="#_" class="lightbox" id="img6">
+                                <img src="/Home/GetPictureF4?id=@Model.ID">
 
-            <dt>
-                @Html.DisplayNameFor(model => model.price2)
-            </dt>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="bron_right">
+                    <div class="bron_right_price">
+                        @Html.DisplayFor(model => model.price1) грн/сутки
+                    </div>
+                    <div class="data_obertka">
+                        <div class="data_in_obj my_obertka"><p class="zaez_viezd">Заезд</p><input type="text" class="datepicker" id="zaezd"></div>
+                        <div class="data_in_obj"> <p class="zaez_viezd">Выезд</p><input type="text" class="datepicker" id="viezd"> </div>
+                    </div>
+                    <div class="text_in_bron">Выберете даты, что бы уточнить цену и доступность </div>
+                    <div class="podvinyli_knopky">
+                        <div class="bottom_prew_1">
+                            <a class="bottom_ac_prew" href="#" onclick="ShowBron(@Model.ID); $('#bron_date1').val($('#zaezd').val());$('#bron_date2').val($('#viezd').val());">Забронировать</a>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="rateit" data-rateit-value="@Model.Rating.rating.ToString().Replace(',', '.')" data-rateit-ispreset="true" data-rateit-readonly="true"></div>
 
-            <dd>
-                @Html.DisplayFor(model => model.price2)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.price5)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.price5)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.price14)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.price14)
-            </dd>
+                        @Math.Round((Decimal)Model.Rating.rating, 1)
+                    </div>
+                </div>
 
 
-            <dt>
-                @Html.DisplayNameFor(model => model.desc_body)
-            </dt>
-
-            <dd>
+            </div>
+            <div class="opisanie_page">
+                <h2>Описание и комплектация</h2>
                 @Html.DisplayFor(model => model.desc_body)
-            </dd>
-        </dl>
-       
-        
-    <div class="down_bron">
-        123123
-        <div id="rangeInlinePicker"></div>
-    </div>
+            </div>
 
-</div>
-<p>
-    <a href="" onclick="history.back()">Вернуться в список</a>
-</p>
+
+
+            <div class="jile_page">
+                <h2>Жилье</h2>
+                @foreach (var olc in ViewBag.obj_lc_list)
+                {
+                    <div class="detail_page_0">
+                        <div class="detail_page_1"><span>@olc.LiveConditions.lc_value</span></div>
+
+                        <div class="detail_page_2">
+                            <span>@olc._value</span>
+                        </div>
+                    </div>
+                }
+
+            </div>
+
+            <div class="atribute_page">
+                <h2>Атрибуты</h2>
+                @foreach (var oa in ViewBag.obj_attr_list)
+                {
+                    <img src="/Home/GetAttrPic?id=@oa.attribute_id" />
+                }
+            </div>
+
+
+
+            <hr />
+            <dl class="dl-horizontal" style='display:none'>
+                <dt>
+                    @Html.DisplayNameFor(model => model.type)
+                </dt>
+
+                <dd>
+                    @if (Model.type == 1)
+                    {
+                        <span>Премиум</span>
+                    }
+                    @if (Model.type == 2)
+                    {
+                        <span>Стандарт</span>
+                    }
+                    @if (Model.type == 3)
+                    {
+                        <span>Эконом</span>
+                    }
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.region_id)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Region.Naim)
+                </dd>
+
+
+
+                <dd>
+                    @Html.DisplayFor(model => model.header)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.address)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.address)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.rooms_count)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.rooms_count)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.guests_count)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.guests_count)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.price1)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.price1)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.price2)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.price2)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.price5)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.price5)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.price14)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.price14)
+                </dd>
+
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.desc_body)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.desc_body)
+                </dd>
+            </dl>
+
+            <div class="down_block_bron">
+                <div class="down_bron">
+                    123123
+                    <div id="rangeInlinePicker"></div>
+                </div>
+                <div class="bron_right">
+                    <div class="bron_right_price">
+                        Детали заказа
+                    </div>
+                    <div class="data_obertka">
+                        <div class="data_in_obj my_obertka"><p class="zaez_viezd">Заезд</p><input type="text" class="datepicker" id="zaezd"></div>
+                        <div class="data_in_obj"> <p class="zaez_viezd">Выезд</p><input type="text" class="datepicker" id="viezd"> </div>
+                    </div>
+                    <div class="text_in_bron">Выберете даты, что бы уточнить цену и доступность </div>
+                    <div class="podvinyli_knopky">
+                        <div class="bottom_prew_1">
+                            <a class="bottom_ac_prew" href="#" onclick="ShowBron(@Model.ID); $('#bron_date1').val($('#zaezd').val());$('#bron_date2').val($('#viezd').val());">Забронировать</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="down_otziw">
+                <div id="binder">
+                    <div class="prev"></div>
+                    <ul class="list">
+                        <li>Text отзыва 1 Text отзыва 1 Text отзыва 1 Text отзыва 1 </li>
+                        <li>2 2 2 2 2 22 2 22 2 22 2 22 2 22 2 22 2 22 2 22 2 22 2 2</li>
+                        
+                    </ul>
+                    <div class="next"></div>
+                </div>
+            </div>
+            </div>
+        <p>
+            <a href="" onclick="history.back()">Вернуться в список</a>
+        </p>
+    </div>
 </div>
