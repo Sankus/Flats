@@ -807,6 +807,7 @@ border-bottom:1px dotted #E4E4E4;
 .my_slider {
     width: 200px;
     float: left;
+   
 }
 
 div#slider-range {
@@ -814,7 +815,7 @@ div#slider-range {
 }
 
 .ui-slider-range.ui-widget-header.ui-corner-all {
-    background: #C32361;
+    background: #C32361!important;
 }
 span.ui-slider-handle.ui-state-default.ui-corner-all.ui-state-hover,span.ui-slider-handle.ui-state-default.ui-corner-all {
     border-radius: 8px;
