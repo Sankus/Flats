@@ -21,7 +21,11 @@
                 <div class="top_sec_img">
                    
                         <div class="firs_img_page">
+<<<<<<< HEAD
                             <a href="asdasd.jpg" rel="prettyPhoto[gallery1]"> <img src="/Home/GetPictureFL1?id=@Model.ID"></a>
+=======
+                            <a class="fancybox-thumb" data-fancybox-group="thumb" href="/Home/GetPictureFL1/@Model.ID-.jpg"> <img src="/Home/GetPictureFL1?id=@Model.ID"></a>
+>>>>>>> 7c58eeea472d52f7a5d923174321de0a1d91c7e4
 
                         </div>
 
@@ -223,25 +227,26 @@
                 </div>
                
             </div>
-            <div class="down_otziw">
-                <h1 class="otzivi">Отзывы</h1>
-                <div id="binder">
-                    <div class="prev"></div>
-                    <ul class="list">
-                        @foreach(var review_item in ViewBag.rw_list)
-                        {
-                            <li>
-                                <span>@review_item.Name @review_item.Surname</span>
-                                <span>@review_item.body</span>
-                                <span><a href="/Home/ReViewDetails/@Model.ID">Все комментарии</a></span>
-                                <span>рейтинг: @review_item.total</span>
-                                
-                            </li>
-                        }
-                    </ul>
-                    <div class="next"></div>
-                </div>
+    <div class="down_otziw">
+        <h1 class="otzivi">Отзывы</h1>
+        <div id="binder">
+            <div class="prev"></div>
+            <ul class="list">
+                @foreach (var review_item in ViewBag.rw_list)
+                {
+                    <li>
+                        <span>@review_item.Name @review_item.Surname</span>
+                        <span>@review_item.body</span>
+                        <span><a href="/Home/ReViewDetails/@Model.ID">Все комментарии</a></span>
+                        <span>рейтинг: @review_item.total</span>
+
+                    </li>
+                }
+            </ul>
+            <div class="next"></div>
+        </div>
     </div>
+
 </div>
 <p>
     <a href="" onclick="history.back()">Вернуться в список</a>

@@ -4,6 +4,7 @@
     ViewBag.Title = "ReViews";
     ViewBag.ActiveMenu = "reviews";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    int j = 0;
 }
 <script>
     function SetImage(obj, target_name) {
@@ -17,11 +18,17 @@
         $('html, body').animate({ scrollTop: 0 }, 'slow');
         $('#rw_submit_obj_id').val(obj_num);
     };
-
 </script>
 @foreach (var item in Model)
 {
-    <div class="preview_obj">
+    j++;
+    string cl = "";
+    if (j % 2 == 0)
+    {
+        cl = "grey";
+
+    }
+    <div class="preview_obj @cl">
         <div class="name_obj_prew"><h2>@Html.DisplayFor(modelItem => item.Naim)</h2></div>
         <div class="street_prew">@Html.DisplayFor(modelItem => item.address)</div>
         <table class="prew_table">
@@ -117,18 +124,42 @@
                                     </tr>
                                 </table>
                             </td>
-                       </tr>
+                        </tr>
                     </table>
                 </td>
             </tr>
         </table>
-        
+
         <div class="add_review" date-id="@item.ID" onclick="AddReview(@item.ID);">
             ДОБАВИТЬ ОТЗЫВ
         </div>
+
+        <div class="down_otziw">
+            <h1 class="otzivi">Отзывы</h1>
+            <div id="binder">
+                <div class="prev"></div>
+                <ul class="list">
+                    @foreach (var review_item in ViewBag.rw_list)
+                    {
+                        if (review_item.object_id == item.ID)
+                        {
+                            <li>
+                                <span>@review_item.Name @review_item.Surname</span>
+                                <span>@review_item.body</span>
+                                <span><a href="/Home/ReViewDetails/@item.ID">Все комментарии</a></span>
+                                <span>рейтинг: @review_item.total</span>
+
+                            </li>
+                        }
+                    }
+                </ul>
+                <div class="next"></div>
+            </div>
+        </div>
+
         <div><a href="/Home/ReViewDetails?id=@item.ID"> подробнее...</a></div>
 
-        
+
     </div>
 }
 
