@@ -339,6 +339,11 @@ namespace Flats.Controllers
             Rating rating_obj = db.Rating.SingleOrDefault(c => c.ID==id);
             if (rating_obj == null)
                 return RedirectToAction("ReViews");
+
+            List<reviews> rw_list = db.reviews.Select(c => c).Where(c=>c.object_id==id).OrderByDescending(c => c.data).ToList<reviews>();
+            ViewBag.rw_list = rw_list;
+
+
             return View(rating_obj);
         }
 
