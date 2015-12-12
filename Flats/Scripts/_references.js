@@ -71,3 +71,4 @@
 /// <reference path="jquery.plugin.js" />
 /// <reference path="jquery.datepick.js" />
 /// <reference path="text-sliding.js" />
+/// <reference path="internal-functions.js" />

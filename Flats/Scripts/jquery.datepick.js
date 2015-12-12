@@ -24,7 +24,7 @@
 
         /** The name of the plugin. */
         name: pluginName,
-
+        
         /** Default template for generating a datepicker.
 			Insert anywhere: '{l10n:name}' to insert localised value for name,
 			'{link:name}' to insert a link trigger for command name,

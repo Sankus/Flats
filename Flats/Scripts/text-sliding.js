@@ -5,7 +5,7 @@
     item = $('.list li');
     itemReverse = item.get().reverse();
     itemSize = item.size();
-    itemDisplayed = 6;
+    itemDisplayed = 1;
     itemToSlide = itemDisplayed * 9;
     currentSlide = 1;
     page = Math.round(itemSize / itemDisplayed);

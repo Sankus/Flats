@@ -240,13 +240,16 @@
     <Content Include="img\chubzik.png" />
     <Content Include="img\loop.png" />
     <Content Include="img\minus.png" />
+    <Content Include="img\next.png" />
     <Content Include="img\pagination.png" />
     <Content Include="img\pluss.png" />
+    <Content Include="img\prev.png" />
     <Content Include="img\slider-img_1.jpg" />
     <Content Include="img\slider-img_2.jpg" />
     <Content Include="img\trehygolka.png" />
     <Content Include="Scripts\datapick-plg.js" />
     <Content Include="Scripts\form-scripts.js" />
+    <Content Include="Scripts\internal-functions.js" />
     <Content Include="Scripts\jquery-1.4.1.min.js" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="img\admin-back.jpg" />

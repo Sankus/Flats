@@ -1642,7 +1642,7 @@ a.redotherb:hover {
 		
 		.list li {
 			display: inline-block;
-			width: 78px;
+			width: 500px;
 			margin: 2.2em 1.4em;
 			position: relative;
 			vertical-align: bottom;
@@ -1651,33 +1651,37 @@ a.redotherb:hover {
 	.next, .prev {
 		display: block;
 		position: absolute;
-		width: 35px;
+		width: 80px;
 		height: 35px;
 		cursor: pointer;
 		border-radius: 5px;
+        
 	}
 	
 	.next {
 		margin-top: -7.2em;
-		right: 5%;
-		background: url('images/next.png') center center no-repeat;
+		right: 1%;
+		background: url('../img/next.png') center center no-repeat;
 	}
 	
 		.next:hover {
-			background: rgba(255,255,255,0.3) url('images/next.png') center center no-repeat;
+			background: rgba(255,255,255,0.3) url('../img/next.png') center center no-repeat;
 		}
 	
 	.prev {
 		margin-top: 3em;
-		left: 5%;
-		background: url('images/prev.png') center center no-repeat;
+		left: 1%;
+		background: url('../img/prev.png') center center no-repeat;
 	}
 	
 		.prev:hover {
-			background: rgba(255,255,255,0.3) url('images/prev.png') center center no-repeat;
+			background: rgba(255,255,255,0.3) url('../img/prev.png') center center no-repeat;
 		}
 	
 /*END SLIDING TEXT*/
+.down_otziw {
+    width: 800px;
+}
 
 .down_block_bron {
     width: 600px;
