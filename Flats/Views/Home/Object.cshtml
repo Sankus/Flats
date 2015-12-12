@@ -20,19 +20,13 @@
             <div class="block_img_page">
                 <div class="top_sec_img">
                     <div class="firs_img_page">
-                        <a href="#img1"> <img id="large_foto1_pic" src="/Home/GetPictureFL1?id=@Model.ID"></a>
-                        <a href="#_" class="lightbox" id="img1">
-                            <img src="/Home/GetPictureFL1?id=@Model.ID">
+                        <a class="fancybox-thumb" data-fancybox-group="thumb" href="/Home/GetPictureFL1?id=@Model.ID"> <img src="/Home/GetPictureFL1?id=@Model.ID"></a>
                         
-                        </a>
 </div>
 
                     <div class="firs_img_page">
-                        <a href="#img2">  <img id="large_foto1_pic" src="/Home/GetPictureFL2?id=@Model.ID"></a>
-                        <a href="#_" class="lightbox" id="img2">
-                            <img src="/Home/GetPictureFL2?id=@Model.ID">
-
-                        </a>
+                        <a class="fancybox-thumb" data-fancybox-group="thumb" href="/Home/GetPictureFL2?id=@Model.ID">  <img src="/Home/GetPictureFL2?id=@Model.ID"></a>
+                       
 </div>
                 </div>
                 <div class="down_sec_img">
@@ -220,23 +214,24 @@
     <div class="down_bron">
         <div id="datepicker_1" ></div>
         <div id="datepicker_2" ></div>
+        <div class="bron_right">
+            <div class="bron_right_price">
+                Детали заказа
+            </div>
+            <div class="data_obertka">
+                <div class="data_in_obj my_obertka"><p class="zaez_viezd">Заезд</p><input type="text" class="datepicker" id="zaezd_footer"></div>
+                <div class="data_in_obj"> <p class="zaez_viezd">Выезд</p><input type="text" class="datepicker" id="viezd_footer"> </div>
+            </div>
+            <div class="text_in_bron">Выберете даты, что бы уточнить цену и доступность </div>
+            <div class="podvinyli_knopky">
+                <div class="bottom_prew_1">
+                    <a class="bottom_ac_prew" href="#" onclick="ShowBron(@Model.ID); $('#bron_date1').val($('#zaezd_footer').val());$('#bron_date2').val($('#viezd_footer').val());">Забронировать</a>
                 </div>
-                <div class="bron_right">
-                    <div class="bron_right_price">
-                        Детали заказа
-                    </div>
-                    <div class="data_obertka">
-                        <div class="data_in_obj my_obertka"><p class="zaez_viezd">Заезд</p><input type="text" class="datepicker" id="zaezd_footer"></div>
-                        <div class="data_in_obj"> <p class="zaez_viezd">Выезд</p><input type="text" class="datepicker" id="viezd_footer"> </div>
-                    </div>
-                    <div class="text_in_bron">Выберете даты, что бы уточнить цену и доступность </div>
-                    <div class="podvinyli_knopky">
-                        <div class="bottom_prew_1">
-                            <a class="bottom_ac_prew" href="#" onclick="ShowBron(@Model.ID); $('#bron_date1').val($('#zaezd_footer').val());$('#bron_date2').val($('#viezd_footer').val());">Забронировать</a>
-                        </div>
-                    </div>
+            </div>
 
+        </div>
                 </div>
+               
             </div>
             <div class="down_otziw">
                 <h1 class="otzivi">Отзывы</h1>
