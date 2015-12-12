@@ -344,6 +344,7 @@
     <script>
     $(function () {
         $("#datepicker").datepicker();
+        $("#datepicker_1").datepicker();
         $("#datepicker_2").datepicker();
     });
     </script>
@@ -362,7 +363,13 @@
             };
 
             $.datepicker.setDefaults($.datepicker.regional['ru']);
+
             $(".datepicker").datepicker();
+            $("#datepicker_1").datepicker();
+            $('#datepicker_1').datepicker('option', 'onSelect', function (dateText, inst) { $('#zaezd_footer').val(dateText); });
+            $("#datepicker_2").datepicker();
+            $('#datepicker_2').datepicker('option', 'onSelect', function (dateText, inst) { $('#viezd_footer').val(dateText); });
+
         
     });
     </script>

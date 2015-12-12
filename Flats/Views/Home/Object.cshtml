@@ -215,23 +215,24 @@
                 @Html.DisplayFor(model => model.desc_body)
             </dd>
         </dl>
-        <div id="datepicker"></div>
+        
 
     <div class="down_bron">
-        <div id="datepicker"></div><div id="datepicker_2"></div>
+        <div id="datepicker_1" ></div>
+        <div id="datepicker_2" ></div>
                 </div>
                 <div class="bron_right">
                     <div class="bron_right_price">
                         Детали заказа
                     </div>
                     <div class="data_obertka">
-                        <div class="data_in_obj my_obertka"><p class="zaez_viezd">Заезд</p><input type="text" class="datepicker" id="zaezd"></div>
-                        <div class="data_in_obj"> <p class="zaez_viezd">Выезд</p><input type="text" class="datepicker" id="viezd"> </div>
+                        <div class="data_in_obj my_obertka"><p class="zaez_viezd">Заезд</p><input type="text" class="datepicker" id="zaezd_footer"></div>
+                        <div class="data_in_obj"> <p class="zaez_viezd">Выезд</p><input type="text" class="datepicker" id="viezd_footer"> </div>
                     </div>
                     <div class="text_in_bron">Выберете даты, что бы уточнить цену и доступность </div>
                     <div class="podvinyli_knopky">
                         <div class="bottom_prew_1">
-                            <a class="bottom_ac_prew" href="#" onclick="ShowBron(@Model.ID); $('#bron_date1').val($('#zaezd').val());$('#bron_date2').val($('#viezd').val());">Забронировать</a>
+                            <a class="bottom_ac_prew" href="#" onclick="ShowBron(@Model.ID); $('#bron_date1').val($('#zaezd_footer').val());$('#bron_date2').val($('#viezd_footer').val());">Забронировать</a>
                         </div>
                     </div>
 
@@ -242,9 +243,15 @@
                 <div id="binder">
                     <div class="prev"></div>
                     <ul class="list">
-                        <li>Text отзыва 1 Text отзыва 1 Text отзыва 1 Text отзыва 1 </li>
-                        <li>2 2 2 2 2 22 2 22 2 22 2 22 2 22 2 22 2 22 2 22 2 22 2 2</li>
-                        
+                        @foreach(var review_item in ViewBag.rw_list)
+                        {
+                            <li>
+                                <span>@review_item.Name @review_item.Surname</span>
+                                <span>@review_item.body</span>
+                                <span><a href="/Home/ReViewDetails/@Model.ID">Все комментарии</a></span>
+                                
+                            </li>
+                        }
                     </ul>
                     <div class="next"></div>
                 </div>

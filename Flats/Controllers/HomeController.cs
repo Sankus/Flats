@@ -237,6 +237,9 @@ namespace Flats.Controllers
             List<Objects_LiveConditions> obj_lc_list = db.Objects_LiveConditions.Select(c => c).Where(c => c.object_id == id).ToList<Objects_LiveConditions>();
             ViewBag.obj_lc_list = obj_lc_list;
 
+            List<reviews> rw_list = db.reviews.Select(c => c).Where(c => c.object_id == id).ToList<reviews>();
+            ViewBag.rw_list = rw_list;
+
             return View(obj);
         }
 
