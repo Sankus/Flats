@@ -517,7 +517,9 @@ a.bottom_ac_prew:hover {
 a.bottom_ac_prew._ac_prew2 {
     padding: 5px 49px 5px 49px;
 }
-
+a.ui-state-default.ui-state-active {
+    background: #C32361!important;
+}
 
 /*SPOILER*/
 .faqRoot {width: 800px;margin: 0 auto;padding: 0;}
