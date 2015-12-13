@@ -1786,3 +1786,53 @@ a#next-car {
   display: table;
   width: 100%;
 }
+
+.left_rew_detail_ubs {
+    width: 500px;
+    float: left;
+        margin-bottom: 10px;
+}
+p.name_detail {
+    float: left;
+    /* height: 30px; */
+}
+p.date_detail {
+    float: right;
+}
+.body_rew_detail {
+    width: 500px;
+}
+.left_rew_header {
+    float: left;
+}
+.right_rew_header {
+    float: right;
+}
+.rew_detail_ubs {
+    float: left;
+    margin-right: 44px;
+    margin-bottom:25px;
+}
+.right_rew_detail_ubs {
+    float: left;
+    margin-left: 25px;
+    width:250px;
+    background:white;
+}
+.header_line_rew-det {
+    background: #323232;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+}
+.star_det_right {
+    float: right;
+}
+.starr_rew_inline {
+    float: left;
+}
+.block_rew {
+    width: 100%;
+    height: 30px;
+    margin-top: 5px;
+}
