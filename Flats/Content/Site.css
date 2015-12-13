@@ -1801,6 +1801,7 @@ p.date_detail {
 }
 .body_rew_detail {
     width: 500px;
+    margin-top:44px;
 }
 .left_rew_header {
     float: left;
