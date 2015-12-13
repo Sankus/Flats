@@ -1676,7 +1676,7 @@ a.redotherb:hover {
 #carousel-slide {
   position: relative;
   width: 60%;
-  margin: 0 auto;
+ margin: 0 0 0 86px;
 }
 
 #slides-car {
@@ -1750,8 +1750,7 @@ a#next:hover {
 }
 a#prev-car {
     float: left;
-    margin: 2px 0 0 0;
-    left: -185px;
+   margin: -252px 0 0 -610px;
     position: absolute;
     color: grey;
 }
