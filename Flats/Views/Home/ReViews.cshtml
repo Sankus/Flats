@@ -136,28 +136,47 @@
 
         <div class="down_otziw">
             <h1 class="otzivi">Отзывы</h1>
-            <div id="binder">
-                <div class="prev"></div>
-                <ul class="list">
-                    @foreach (var review_item in ViewBag.rw_list)
-                    {
-                        if (review_item.object_id == item.ID)
+
+
+
+            <div id="carousel-slide">
+                <div class="btn-bar">
+                    <div id="buttons"><a id="prev-car" href="#"><</a> </div>
+                </div>
+                <div id="slides-car">
+
+                    <ul>
+
+                        @foreach (var review_item in ViewBag.rw_list)
                         {
-                            <li>
-                                <span>@review_item.Name @review_item.Surname</span>
-                                <span>@review_item.body</span>
+                            <li class="slide-car">
+                                <div class="quoteContainer">
+                                    <p class="quote-phrase"><span class="quote-marks">"</span> @review_item.body<span class="quote-marks">"</span> </p>
+                                </div>
+                                <div class="authorContainer">
+                                    <p class="quote-author">@review_item.Name @review_item.Surname</p>
+                                </div>
                                 <span><a href="/Home/ReViewDetails/@item.ID">Все комментарии</a></span>
                                 <span>рейтинг: @review_item.total</span>
 
                             </li>
                         }
-                    }
-                </ul>
-                <div class="next"></div>
+
+                    </ul>
+                </div>
+                <div class="btn-bar">
+                    <div id="buttons"><a id="next-car" href="#">></a> </div>
+                </div>
+                Вот тут
             </div>
+
+
+
+
+
         </div>
 
-        <div><a href="/Home/ReViewDetails?id=@item.ID"> подробнее...</a></div>
+        
 
 
     </div>

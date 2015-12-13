@@ -21,11 +21,11 @@
                 <div class="top_sec_img">
                    
                         <div class="firs_img_page">
-<<<<<<< HEAD
+
                             <a href="asdasd.jpg" rel="prettyPhoto[gallery1]"> <img src="/Home/GetPictureFL1?id=@Model.ID"></a>
-=======
+
                             <a class="fancybox-thumb" data-fancybox-group="thumb" href="/Home/GetPictureFL1/@Model.ID-.jpg"> <img src="/Home/GetPictureFL1?id=@Model.ID"></a>
->>>>>>> 7c58eeea472d52f7a5d923174321de0a1d91c7e4
+
 
                         </div>
 
@@ -229,22 +229,42 @@
             </div>
     <div class="down_otziw">
         <h1 class="otzivi">Отзывы</h1>
-        <div id="binder">
-            <div class="prev"></div>
-            <ul class="list">
-                @foreach (var review_item in ViewBag.rw_list)
-                {
-                    <li>
-                        <span>@review_item.Name @review_item.Surname</span>
-                        <span>@review_item.body</span>
-                        <span><a href="/Home/ReViewDetails/@Model.ID">Все комментарии</a></span>
-                        <span>рейтинг: @review_item.total</span>
 
-                    </li>
-                }
-            </ul>
-            <div class="next"></div>
+
+
+        <div id="carousel-slide">
+            <div class="btn-bar">
+                <div id="buttons"><a id="prev-car" href="#"><</a> </div>
+            </div>
+            <div id="slides-car">
+                
+                <ul>
+                    
+                    @foreach (var review_item in ViewBag.rw_list)
+                    {
+                        <li class="slide-car">
+                            <div class="quoteContainer">
+                                <p class="quote-phrase"><span class="quote-marks">"</span> @review_item.body<span class="quote-marks">"</span> </p>
+                            </div>
+                            <div class="authorContainer">
+                                <p class="quote-author">@review_item.Name @review_item.Surname</p>
+                            </div>
+                            <a href="/Home/ReViewDetails/@Model.ID">Все комментарии</a>
+                            рейтинг: @review_item.total
+
+                        </li>
+                    }
+
+                </ul>
+            </div>
+            <div class="btn-bar">
+                <div id="buttons"><a id="next-car" href="#">></a> </div>
+            </div>
         </div>
+
+
+
+       
     </div>
 
 </div>

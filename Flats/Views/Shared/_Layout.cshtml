@@ -339,27 +339,81 @@
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
    
-    <script src="~/Scripts/fan-thumb.js"></script>
-    <script type="text/javascript" charset="utf-8">
-    $(document).ready(function () {
-        $("area[rel^='prettyPhoto']").prettyPhoto();
-
-        $(".gallery:first a[rel^='prettyPhoto']").prettyPhoto({ animation_speed: 'normal', theme: 'light_square', slideshow: 3000, autoplay_slideshow: true });
-        $(".gallery:gt(0) a[rel^='prettyPhoto']").prettyPhoto({ animation_speed: 'fast', slideshow: 10000, hideflash: true });
-
-        $("#custom_content a[rel^='prettyPhoto']:first").prettyPhoto({
-            custom_markup: '<div id="map_canvas" style="width:260px; height:265px"></div>',
-            changepicturecallback: function () { initialize(); }
-        });
-
-        $("#custom_content a[rel^='prettyPhoto']:last").prettyPhoto({
-            custom_markup: '<div id="bsap_1259344" class="bsarocks bsap_d49a0984d0f377271ccbf01a33f2b6d6"></div><div id="bsap_1237859" class="bsarocks bsap_d49a0984d0f377271ccbf01a33f2b6d6" style="height:260px"></div><div id="bsap_1251710" class="bsarocks bsap_d49a0984d0f377271ccbf01a33f2b6d6"></div>',
-            changepicturecallback: function () { _bsap.exec(); }
-        });
-    });
-    </script>
+    
     <script src="~/Scripts/jquery.rateit.js"></script>
-    <script src="~/Scripts/text-sliding.js"></script>
+    <script>
+    $(document).ready(function () {
+        //rotation speed and timer
+        var speed = 5000;
+
+        var run = setInterval(rotate, speed);
+        var slides = $('.slide-car');
+        var container = $('#slides-car ul');
+        var elm = container.find(':first-child').prop("tagName");
+        var item_width = container.width();
+        var previous = 'prev-car'; //id of previous button
+        var next = 'next-car'; //id of next button
+        slides.width(item_width); //set the slides to the correct pixel width
+        container.parent().width(item_width);
+        container.width(slides.length * item_width); //set the slides container to the correct total width
+        container.find(elm + ':first').before(container.find(elm + ':last'));
+        resetSlides();
+
+
+        //if user clicked on prev button
+
+        $('#buttons a').click(function (e) {
+            //slide the item
+
+            if (container.is(':animated')) {
+                return false;
+            }
+            if (e.target.id == previous) {
+                container.stop().animate({
+                    'left': 0
+                }, 1500, function () {
+                    container.find(elm + ':first').before(container.find(elm + ':last'));
+                    resetSlides();
+                });
+            }
+
+            if (e.target.id == next) {
+                container.stop().animate({
+                    'left': item_width * -1
+                }, 1500, function () {
+                    container.find(elm + ':last').after(container.find(elm + ':first'));
+                    resetSlides();
+                });
+            }
+
+            //cancel the link behavior
+            return false;
+
+        });
+
+        //if mouse hover, pause the auto rotation, otherwise rotate it
+        container.parent().mouseenter(function () {
+            clearInterval(run);
+        }).mouseleave(function () {
+            run = setInterval(rotate, speed);
+        });
+
+
+        function resetSlides() {
+            //and adjust the container so current is in the frame
+            container.css({
+                'left': 0
+            });
+        }
+
+    });
+    //a simple function to click next link
+    //a timer will call this function, and the rotation will begin
+
+    function rotate() {
+        $('#next-car').click();
+    }
+    </script>
     <script>
     $(function () {
         $("#datepicker").datepicker();
