@@ -128,32 +128,70 @@
         <h3>Отзывы</h3>
 
         @foreach (var rw in ViewBag.rw_list)
-        { 
+        {
             <div class="rew_detail_ubs">
                 <div class="left_rew_detail_ubs">
                     <div class="header_rew_left_ubs">
-                    <div class="left_rew_header">
-                        @rw.Name @rw.Surname>
-                    </div>
-                    <div class="right_rew_header">
-                         @rw.data
-                     </div>
+                        <div class="left_rew_header">
+                            @rw.Name @rw.Surname>
                         </div>
+                        <div class="right_rew_header">
+                            @rw.data
+                        </div>
+                    </div>
                     <div class="body_rew_detail"> @rw.body</div>
                 </div>
-                   
+
                 <div class="right_rew_detail_ubs">
-                    <div class="header_line_rew-det">@rw.total</div>
-                    <div class="block_rew"> <div class="starr_rew_inline">Цена:</div><div class="star_det_right">@rw.price</div></div>
-                    <div class="block_rew"> <div class="starr_rew_inline">Чистота:</div><div class="star_det_right">@rw.cleaness</div></div>
-                    <div class="block_rew"> <div class="starr_rew_inline">Услуги:</div><div class="star_det_right">@rw.services</div> </div>
-                    <div class="block_rew"> <div class="starr_rew_inline">Комфорт:</div><div class="star_det_right">@rw.comfort</div></div>
-                    <div class="block_rew"> <div class="starr_rew_inline">Расположение:</div><div class="star_det_right">@rw.region</div>  </div>
+                    <div class="header_line_rew-det">
+                        <div class="rateit" data-rateit-value="@rw.total.ToString().Replace(',', '.')" data-rateit-ispreset="true" data-rateit-readonly="true"></div>
+                        @rw.total
                     </div>
-               
-               
+                    <div class="block_rew">
+                        <div class="starr_rew_inline">
+                            Цена:
+                        </div>
+                        <div class="star_det_right">
+                            <div class="rateit" data-rateit-value="@rw.price.ToString().Replace(',', '.')" data-rateit-ispreset="true" data-rateit-readonly="true"></div>
+                        </div>
+                    </div>
+                    <div class="block_rew">
+                         <div class="starr_rew_inline">
+                            Чистота:
+                        </div>
+                        <div class="star_det_right">
+                            <div class="rateit" data-rateit-value="@rw.cleaness.ToString().Replace(',', '.')" data-rateit-ispreset="true" data-rateit-readonly="true"></div>
+                        </div>
+                    </div>
+                    <div class="block_rew">
+                        <div class="starr_rew_inline">
+                            Услуги:
+                        </div>
+                        <div class="star_det_right">
+                            <div class="rateit" data-rateit-value="@rw.services.ToString().Replace(',', '.')" data-rateit-ispreset="true" data-rateit-readonly="true"></div>
+                        </div>
+                    </div>
+                    <div class="block_rew"> 
+                        <div class="starr_rew_inline">
+                            Комфорт:
+                        </div>
+                        <div class="star_det_right">
+                            <div class="rateit" data-rateit-value="@rw.comfort.ToString().Replace(',', '.')" data-rateit-ispreset="true" data-rateit-readonly="true"></div>
+                        </div>
+                    </div>
+                    <div class="block_rew">
+                        <div class="starr_rew_inline">
+                            Расположение:
+                        </div>
+                        <div class="star_det_right">
+                            <div class="rateit" data-rateit-value="@rw.region.ToString().Replace(',', '.')" data-rateit-ispreset="true" data-rateit-readonly="true"></div>
+                        </div>
+                     </div>
                 </div>
-         
+
+
+            </div>
+
         }
     </div>
 }

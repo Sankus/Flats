@@ -247,8 +247,8 @@
                             <div class="authorContainer">
                                 <p class="quote-author">@review_item.Name @review_item.Surname</p>
                             </div>
-                            <a href="/Home/ReViewDetails/@Model.ID">Все комментарии</a>
-                            рейтинг: @review_item.total
+                            
+                            рейтинг: <div class="rateit" data-rateit-value="@review_item.total.ToString().Replace(',', '.')" data-rateit-ispreset="true" data-rateit-readonly="true"></div> @review_item.total
 
                         </li>
                     }
@@ -269,6 +269,9 @@
     </div>
 
 </div>
+    <p>
+        <a href="/Home/ReViewDetails/@Model.ID">Все комментарии</a>
+    </p>
 <p>
     <a href="" onclick="history.back()">Вернуться в список</a>
 </p>
