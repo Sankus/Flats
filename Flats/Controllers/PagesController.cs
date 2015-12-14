@@ -73,6 +73,30 @@ namespace Flats.Controllers
 
             xRoot = xDoc.DocumentElement;
             ViewBag.isMainPage = false;
+
+            //languages
+            if (Session.IsNewSession)
+            {
+                Session.Add("lang", "ru");
+            }
+            string lang = Session["lang"].ToString();
+
+            List<Translate> lang_list = db.Translate.Select(c => c).Where(c => c.languages.short_code.ToLower().Trim() == lang.ToLower().Trim()).ToList<Translate>();
+            Dictionary<String, String> lang_arr = new Dictionary<string, string>();
+            foreach (Translate tran in lang_list)
+            {
+                if (!lang_arr.ContainsKey(tran.Phrase.phrase_key))
+                    lang_arr.Add(tran.Phrase.phrase_key, tran.Translation);
+            }
+
+            foreach (Phrase ph in db.Phrase.Select(c => c))
+            {
+                if (!lang_arr.ContainsKey(ph.phrase_key))
+                    lang_arr.Add(ph.phrase_key, ph.phrase_key);
+            }
+
+            ViewBag.Translation = lang_arr;
+            //--languages
         }
         // GET: Pages
         public ActionResult Index(string id="")
