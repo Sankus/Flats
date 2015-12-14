@@ -5,5 +5,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Contacts</h2>
+<div class="name_obj_prew">
+    <h2>@ViewBag.Translation["our_contacts"]</h2>
+</div>
 
+<div >
+    <p class="mail">E-mail : <a href="@ViewBag.settings["email"]">@ViewBag.settings["email"]</a> </p>
+    <p class="phone_1">@ViewBag.Translation["phone"] : @ViewBag.settings["tel1"]</p>
+    <p class="phone_2">@ViewBag.Translation["phone"] : @ViewBag.settings["tel2"]</p>
+</div>

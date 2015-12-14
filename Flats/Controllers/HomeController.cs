@@ -400,7 +400,7 @@ namespace Flats.Controllers
 
             Message.Body = MessageBody;
             Message.From = new System.Net.Mail.MailAddress("arenda.i@inbox.ru");
-            Message.To.Add(new MailAddress("arenda.i@inbox.ru"));
+            Message.To.Add(new MailAddress("deribasrent@yahoo.com"));
             Message.IsBodyHtml = true;
 
             System.Net.Mail.SmtpClient Smtp = new SmtpClient("smtp.mail.ru", 587);
