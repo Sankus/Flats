@@ -1868,6 +1868,7 @@ p.date_detail {
     text-decoration:underline;
 }
 
+<<<<<<< HEAD
 .lightbox_ubs {
         position: fixed;
     width: 100%;
@@ -1920,4 +1921,8 @@ p.date_detail {
 }
    .images-small_light_ubs {
     float: left;
+=======
+.firs_img_page>a>img {
+    width: 235px;
+>>>>>>> 4fe2bc0faacff23468ac3159ed6c664c9506a5c0
 }
