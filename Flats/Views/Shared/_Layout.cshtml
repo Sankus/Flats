@@ -308,8 +308,28 @@
         </div>
         <div class="seperator"></div>
         <div class="kyrsi">
-        <div class="value_usd">$ @ViewBag.UsdRate @ViewBag.UsdDir</div>
-        <div class="value_eur">€ @ViewBag.EurRate @ViewBag.EurDir</div>
+        @{ 
+            string dollar_color_class;
+            string euro_color_class;
+            if (@ViewBag.UsdDir == "^")
+           {
+               dollar_color_class = ".down_currency";
+           }
+           else 
+           {
+               dollar_color_class = ".up_currency";
+           }
+           if (@ViewBag.EurDir == "^")
+           {
+               euro_color_class = ".down_currency";
+           }
+           else
+           {
+               euro_color_class = ".up_currency";
+           }
+         }
+        <div class="value_usd">$ @ViewBag.UsdRate <span class="@dollar_color_class">@ViewBag.UsdDir</span></div>
+        <div class="value_eur">€ @ViewBag.EurRate <span class="@euro_color_class" @ViewBag.EurDir</span></div>
             </div>
         <div class="seperator"></div>
     <ul>
