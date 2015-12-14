@@ -5,7 +5,34 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
+<div class="lightbox_ubs">
+    <div class="light_vlock_ubs">
+    <div class="close_ubs_botton"></div>
+    <div class="images-full_light_ubs">
+        <img src="/Home/GetPictureFL1?id=@Model.ID">
+    </div>
+        <div class="images-small_light_block_ubs">
+            <div class="images-small_light_ubs">
+                <img src="/Home/GetPictureFL1?id=@Model.ID">
+            </div>
+            <div class="images-small_light_ubs">
+                <img src="/Home/GetPictureFL1?id=@Model.ID">
+            </div>
+            <div class="images-small_light_ubs">
+                <img src="/Home/GetPictureFL1?id=@Model.ID">
+            </div>
+            <div class="images-small_light_ubs">
+                <img src="/Home/GetPictureFL1?id=@Model.ID">
+            </div>
+            <div class="images-small_light_ubs">
+                <img src="/Home/GetPictureFL1?id=@Model.ID">
+            </div>
+            <div class="images-small_light_ubs">
+                <img src="/Home/GetPictureFL1?id=@Model.ID">
+            </div>
+        </div>
+    </div>
+</div>
 <div class="page_margin">
 <div>
     <div class="page_block">
@@ -18,15 +45,13 @@
         </div>
         <div class="section_page">
             <div class="block_img_page">
+
                 <div class="top_sec_img">
-                    <div style="display:none;">
-                        <div id="bigpic1"><img src="/Home/GetPictureFL1?id=@Model.ID"></div>
-                    </div>
+                    
                         <div class="firs_img_page">
 
-                            <a class="fancybox-thumb" data-fancybox-group="thumb" href="#bigpic1">
-                             <img src="/Home/GetPictureFL1?id=@Model.ID"/>
-                            </a>
+
+                            <a class="fancybox-thumb" data-fancybox-group="thumb" href="/Home/GetPictureFL1/@Model.ID"> <img src="/Home/GetPictureFL1?id=@Model.ID"></a>
 
 
                         </div>
