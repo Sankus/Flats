@@ -544,6 +544,8 @@ a.ui-state-default.ui-state-active {
 }
 .faq h2.faqclosed:hover {color: black;}
 .faq h2.faqclosed {
+        display: block;
+    width: 164px;
     color: #666666;
     background: transparent url(../img/pluss.png) no-repeat scroll 0 0px;
     background-size: contain;
