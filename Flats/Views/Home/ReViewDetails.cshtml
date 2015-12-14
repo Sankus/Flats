@@ -45,7 +45,7 @@
                     <table class="rating_table">
                         <tr>
                             <td class="rating_table_head">
-                                Общая оценка жильцов
+                                @ViewBag.Translation["overall_rating_tenants"]   
                             </td>
                         </tr>
                         <tr>
@@ -59,7 +59,7 @@
                             <td>
                                 <table width="100%">
                                     <tr>
-                                        <td class="rating_table_td_key">Цена:</td>
+                                        <td class="rating_table_td_key">@ViewBag.Translation["price"]:</td>
                                         <td class="rating_table_td_value">
                                             <div class="rateit" data-rateit-value="@Model.price.Value.ToString().Replace(',', '.')" data-rateit-ispreset="true" data-rateit-readonly="true"></div>
                                         </td>
@@ -71,7 +71,7 @@
                             <td>
                                 <table width="100%">
                                     <tr>
-                                        <td class="rating_table_td_key">Чистота:</td>
+                                        <td class="rating_table_td_key">@ViewBag.Translation["cleanness"]:</td>
                                         <td class="rating_table_td_value">
                                             <div class="rateit" data-rateit-value="@Model.cleaness.Value.ToString().Replace(',', '.')" data-rateit-ispreset="true" data-rateit-readonly="true"></div>
                                         </td>
@@ -83,7 +83,7 @@
                             <td>
                                 <table width="100%">
                                     <tr>
-                                        <td class="rating_table_td_key">Услуги:</td>
+                                        <td class="rating_table_td_key">@ViewBag.Translation["services"]:</td>
                                         <td class="rating_table_td_value">
                                             <div class="rateit" data-rateit-value="@Model.services.Value.ToString().Replace(',', '.')" data-rateit-ispreset="true" data-rateit-readonly="true"></div>
                                         </td>
@@ -95,7 +95,7 @@
                             <td>
                                 <table width="100%">
                                     <tr>
-                                        <td class="rating_table_td_key">Комфорт:</td>
+                                        <td class="rating_table_td_key">@ViewBag.Translation["comfort"]:</td>
                                         <td class="rating_table_td_value">
                                             <div class="rateit" data-rateit-value="@Model.comfort.Value.ToString().Replace(',', '.')" data-rateit-ispreset="true" data-rateit-readonly="true"></div>
                                         </td>
@@ -108,7 +108,7 @@
                             <td>
                                 <table width="100%">
                                     <tr>
-                                        <td class="rating_table_td_key">Расположение:</td>
+                                        <td class="rating_table_td_key">@ViewBag.Translation["location"]:</td>
                                         <td class="rating_table_td_value">
                                             <div class="rateit" data-rateit-value="@Model.region.Value.ToString().Replace(',', '.')" data-rateit-ispreset="true" data-rateit-readonly="true"></div>
                                         </td>
@@ -122,7 +122,7 @@
         </table>
 
         <div class="add_review" date-id="@Model.ID" onclick="AddReview(@Model.ID);">
-            ДОБАВИТЬ ОТЗЫВ
+            @ViewBag.Translation["add_review"]   
         </div>
 
         <h3>Отзывы</h3>
@@ -149,7 +149,7 @@
                     </div>
                     <div class="block_rew">
                         <div class="starr_rew_inline">
-                            Цена:
+                            @ViewBag.Translation["price"]:
                         </div>
                         <div class="star_det_right">
                             <div class="rateit" data-rateit-value="@rw.price.ToString().Replace(',', '.')" data-rateit-ispreset="true" data-rateit-readonly="true"></div>
@@ -157,7 +157,7 @@
                     </div>
                     <div class="block_rew">
                          <div class="starr_rew_inline">
-                            Чистота:
+                            @ViewBag.Translation["cleanness"]:
                         </div>
                         <div class="star_det_right">
                             <div class="rateit" data-rateit-value="@rw.cleaness.ToString().Replace(',', '.')" data-rateit-ispreset="true" data-rateit-readonly="true"></div>
@@ -165,7 +165,7 @@
                     </div>
                     <div class="block_rew">
                         <div class="starr_rew_inline">
-                            Услуги:
+                            @ViewBag.Translation["services"]:
                         </div>
                         <div class="star_det_right">
                             <div class="rateit" data-rateit-value="@rw.services.ToString().Replace(',', '.')" data-rateit-ispreset="true" data-rateit-readonly="true"></div>
@@ -173,7 +173,7 @@
                     </div>
                     <div class="block_rew"> 
                         <div class="starr_rew_inline">
-                            Комфорт:
+                            @ViewBag.Translation["comfort"]:
                         </div>
                         <div class="star_det_right">
                             <div class="rateit" data-rateit-value="@rw.comfort.ToString().Replace(',', '.')" data-rateit-ispreset="true" data-rateit-readonly="true"></div>
@@ -181,7 +181,7 @@
                     </div>
                     <div class="block_rew">
                         <div class="starr_rew_inline">
-                            Расположение:
+                            @ViewBag.Translation["location"]:
                         </div>
                         <div class="star_det_right">
                             <div class="rateit" data-rateit-value="@rw.region.ToString().Replace(',', '.')" data-rateit-ispreset="true" data-rateit-readonly="true"></div>

@@ -869,5 +869,209 @@ namespace Flats.Controllers
 
             return RedirectToAction("ObjectsList");
         }
+
+        public ActionResult Languages()
+        {
+            return View();
+        }
+        public ActionResult LangugeList()
+        {
+            dbDataContext db = new dbDataContext();
+            List<languages> list = db.languages.Select(c => c).OrderBy(c => c.short_code).ToList<languages>();
+            return View(list);
+        }
+
+        public ActionResult CreateLanguage()
+        {
+            return View();        
+        }
+
+        [HttpPost]
+        public ActionResult CreateLanguage(languages model)
+        {
+            dbDataContext db = new dbDataContext();
+
+            db.languages.InsertOnSubmit(model);
+            db.SubmitChanges();
+
+            return RedirectToAction("LangugeList");
+        }
+
+        public ActionResult DeleteLanguage(int id)
+        {
+            dbDataContext db = new dbDataContext();
+            languages rec = db.languages.SingleOrDefault(c => c.id == id);
+            if (rec==null)
+                return RedirectToAction("LangugeList");
+
+            db.languages.DeleteOnSubmit(rec);
+            db.SubmitChanges();
+            return RedirectToAction("LangugeList");
+        }
+
+        public ActionResult EditLanguage(int id)
+        {
+            dbDataContext db = new dbDataContext();
+            languages rec = db.languages.SingleOrDefault(c => c.id == id);
+            if (rec == null)
+                return RedirectToAction("LangugeList");
+            return View(rec);
+        }
+
+        [HttpPost]
+        public ActionResult EditLanguage(languages model)
+        {
+            dbDataContext db = new dbDataContext();
+
+            languages lang = db.languages.SingleOrDefault(c => c.id == model.id);
+            if (lang == null)
+            {
+                return RedirectToAction("LangugeList");
+            }
+            lang.language = model.language;
+            lang.short_code = model.short_code;
+
+            db.SubmitChanges();
+
+            return RedirectToAction("LangugeList");
+        }
+
+        public ActionResult PhrasesList()
+        {
+            dbDataContext db = new dbDataContext();
+            List<Phrase> list = db.Phrase.Select(c=>c).OrderBy(c=>c.phrase_key).ToList<Phrase>();
+            return View(list);
+        }
+
+        public ActionResult CreatePhrase()
+        {
+            return View();        
+        }
+
+        [HttpPost]
+        public ActionResult CreatePhrase(Phrase model)
+        {
+            dbDataContext db = new dbDataContext();
+
+            db.Phrase.InsertOnSubmit(model);
+            db.SubmitChanges();
+
+            return RedirectToAction("PhrasesList");
+        }
+
+        public ActionResult DeletePhrase(int id)
+        {
+            dbDataContext db = new dbDataContext();
+            Phrase rec = db.Phrase.SingleOrDefault(c => c.id == id);
+            if (rec == null)
+                return RedirectToAction("PhrasesList");
+
+            db.Phrase.DeleteOnSubmit(rec);
+            db.SubmitChanges();
+            return RedirectToAction("PhrasesList");
+        }
+
+        public ActionResult EditPhrase(int id)
+        {
+            dbDataContext db = new dbDataContext();
+            Phrase rec = db.Phrase.SingleOrDefault(c => c.id == id);
+            if (rec == null)
+                return RedirectToAction("PhrasesList");
+            return View(rec);
+        }
+
+        [HttpPost]
+        public ActionResult EditPhrase(Phrase model)
+        {
+            dbDataContext db = new dbDataContext();
+
+            Phrase ph = db.Phrase.SingleOrDefault(c => c.id == model.id);
+            if (ph == null)
+            {
+                return RedirectToAction("PhrasesList");
+            }
+            ph.phrase_key = model.phrase_key;
+
+            db.SubmitChanges();
+
+            return RedirectToAction("PhrasesList");
+        }
+
+
+        public ActionResult TranslateList()
+        {
+            dbDataContext db = new dbDataContext();
+            List<Translate> list = db.Translate.Select(c => c).OrderBy(c => c.Phrase.phrase_key).ToList<Translate>();
+            return View(list);
+        }
+
+        public ActionResult DeleteTranslate(int id)
+        {
+            dbDataContext db = new dbDataContext();
+            Translate rec = db.Translate.SingleOrDefault(c => c.ID == id);
+            if (rec == null)
+                return RedirectToAction("TranslateList");
+
+            db.Translate.DeleteOnSubmit(rec);
+            db.SubmitChanges();
+            return RedirectToAction("TranslateList");
+        }
+
+        public ActionResult CreateTranslate()
+        {
+            dbDataContext db = new dbDataContext();
+            ViewBag.phrase_list = db.Phrase.Select(c => c).OrderBy(c => c.phrase_key).ToList<Phrase>();
+            ViewBag.lang_list = db.languages.Select(c => c).OrderBy(c => c.short_code).ToList<languages>();
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CreateTranslate(Translate model)
+        {
+            dbDataContext db = new dbDataContext();
+
+            Translate rec = new Translate();
+            rec.LanguageID = Int32.Parse(Request["languages"]);
+            rec.PhraseID = Int32.Parse(Request["phrases"]);
+            rec.Translation = model.Translation;
+                
+            db.Translate.InsertOnSubmit(rec);
+            db.SubmitChanges();
+
+            return RedirectToAction("TranslateList");
+        }
+
+
+        public ActionResult EditTranslate(int id)
+        {
+            dbDataContext db = new dbDataContext();
+            Translate rec = db.Translate.SingleOrDefault(c => c.ID == id);
+            if (rec == null)
+                return RedirectToAction("TranslateList");
+            ViewBag.phrase_list = db.Phrase.Select(c => c).OrderBy(c => c.phrase_key).ToList<Phrase>();
+            ViewBag.lang_list = db.languages.Select(c => c).OrderBy(c => c.short_code).ToList<languages>();
+            return View(rec);
+        }
+
+        [HttpPost]
+        public ActionResult EditTranslate(Translate model)
+        {
+            dbDataContext db = new dbDataContext();
+
+            Translate rec = db.Translate.SingleOrDefault(c => c.ID == model.ID);
+            if (rec == null)
+                return RedirectToAction("TranslateList");
+
+
+            rec.LanguageID = Int32.Parse(Request["Lang"]);
+            rec.PhraseID = Int32.Parse(Request["Phrase"]);
+            rec.Translation = model.Translation;
+
+            db.SubmitChanges();
+
+            return RedirectToAction("TranslateList");
+        }
+
     }
 }

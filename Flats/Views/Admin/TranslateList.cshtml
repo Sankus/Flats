@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Flats.Views.Manage.Translate>
+
+@{
+    ViewBag.Title = "Список перевода фраз";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>@ViewBag.Title </h2>
+
+<p>
+    @Html.ActionLink("Добавить", "CreateTranslate")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Фраза
+        </th>
+        <th>
+           Язык 
+        </th>
+        <th>
+            Перевод
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Phrase.phrase_key)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.languages.language)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Translation)
+        </td>
+        <td>
+            @Html.ActionLink("Редактировать", "EditTranslate", new { id=item.ID }) |
+            @Html.ActionLink("Удалить", "DeleteTranslate", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

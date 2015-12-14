@@ -4,14 +4,21 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title – Аренда квартир посуточно</title>
+    <title>@ViewBag.Title – @ViewBag.Translation["main_page_arenda"].ToString()</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <link href="../Content/slider.css" rel="stylesheet">
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     <link rel="stylesheet" href="~/Content/rateit.css" />
 
-
+@{
+    string _premium = ViewBag.Translation["main_page_premium"].ToString();
+    string _standart = ViewBag.Translation["main_page_standart"].ToString();
+    string _econom = ViewBag.Translation["main_page_econom"].ToString();
+    string _contacts = ViewBag.Translation["main_page_contacts"].ToString();
+    string _reviews = ViewBag.Translation["main_page_reviews"].ToString();
+    string _search = ViewBag.Translation["main_page_search"].ToString();
+}
 
 
 </head>
@@ -26,16 +33,16 @@
                         <table class="rw_table_query">
                             <tr>
                                 <td>
-                                    <input type="text" name="name" value="" placeholder=" Имя" id="rw_name"/>
+                                    <input type="text" name="name" value="" placeholder=" @ViewBag.Translation["reservation_name"]" id="rw_name"/>
                                 </td>
                                 <td class="empty_td"></td>
                                 <td>
-                                    <input type="text" name="surname" value="" placeholder=" Фамилия" id="rw_surname" />
+                                    <input type="text" name="surname" value="" placeholder=" @ViewBag.Translation["reservation_surname"]" id="rw_surname" />
                                 </td>
                             </tr>
                             <tr>
                                 <td colspan="3">
-                                    <textarea placeholder=" Напишите комментарий..." id="rw_comment"></textarea>
+                                    <textarea placeholder="  @ViewBag.Translation["reservation_comment"]" id=" rw_comment"></textarea>
                                 </td>
                             </tr>
                         </table>
@@ -44,7 +51,7 @@
                         <table class="rw_rating">
                             <tr>
                                 <td colspan="2" class="rw_rating_header">
-                                    Оценка квартиры
+                                    @ViewBag.Translation["rooms_rating"]
                                 </td>
                             </tr>
                             <tr>
@@ -54,31 +61,31 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>Цена</td>
+                                <td>@ViewBag.Translation["price"]:</td>
                                 <td class="rate_val">
                                     <div class="rateit" id="rateprice" step="1"></div>
                                 </td>
                             </tr>
                             <tr>
-                                <td>Чистота:</td>
+                                <td>@ViewBag.Translation["cleanness"]:</td>
                                 <td class="rate_val">
                                     <div class="rateit" id="rateclean"></div>
                                 </td>
                             </tr>
                             <tr>
-                                <td>Услуги:</td>
+                                <td>@ViewBag.Translation["services"]:</td>
                                 <td class="rate_val">
                                     <div class="rateit" id="rateservices"></div>
                                 </td>
                             </tr>
                             <tr>
-                                <td>Комфорт:</td>
+                                <td>@ViewBag.Translation["comfort"]:</td>
                                 <td class="rate_val">
                                     <div class="rateit" id="ratecomfort"></div>
                                 </td>
                             </tr>
                             <tr>
-                                <td>Расположение:</td>
+                                <td>@ViewBag.Translation["location"]:</td>
                                 <td class="rate_val">
                                     <div class="rateit" id="rateregion"></div>
                                 </td>
@@ -96,7 +103,7 @@
                                         <input type="hidden" name="clean" value="" id="rw_submit_clean" />
                                         <input type="hidden" name="price" value="" id="rw_submit_price" />
                                         <input type="hidden" name="services" value="" id="rw_submit_services" />
-                                        <div class="black_add_review">Оставить отзыв</div>
+                                        <div class="black_add_review">@ViewBag.Translation["send_review"]</div>
                                     </form>
                                 </td>
                             </tr>
@@ -109,26 +116,26 @@
     <div id="bron">
         
           <div class="bron_in">
-              <div class="born_plashka">Бронирование</div>
+              <div class="born_plashka">@ViewBag.Translation["reservation"]</div>
         <div class="black_layer_close" onclick="$('#bron').hide();">X</div>
         <form method="post" action="/Home/SendBron" id="BronForm">
             <input type="hidden" name="id" value="" id="bron_id" />
-            <div class="bron_p_1"> <div class="bron_p">Имя</div><input type="text" name="name" value="" /></div>
+            <div class="bron_p_1"> <div class="bron_p">@ViewBag.Translation["reservation_name"]</div><input type="text" name="name" value="" /></div>
             <div class="bron_p_1">
-                <div class="bron_p">Фамилия</div><input type="text" name="surname" value="" />
+                <div class="bron_p">@ViewBag.Translation["reservation_surname"]</div><input type="text" name="surname" value="" />
             </div>
             <div class="bron_p_1">
                 <div class="bron_p">E-mail</div><input type="email" name="email" value="" />
             </div>
             <div class="bron_p_1">
-                <div class="bron_p">Телефон</div><input type="tel" name="phone" value="" />
+                <div class="bron_p">@ViewBag.Translation["phone"]</div><input type="tel" name="phone" value="" />
             </div>
             <div class="bron_p_1">
-                <div class="bron_p">Кол-во гостей</div><div class="chubzik"></div><input class="col-gos_input" type="number" name="kolvo" value="" />
+                <div class="bron_p">@ViewBag.Translation["guests_count"]</div><div class="chubzik"></div><input class="col-gos_input" type="number" name="kolvo" value="" />
             </div>
                 <input type="hidden" name="date1" value="" id="bron_date1" />
                 <input type="hidden" name="date2" value="" id="bron_date2" />
-                <input class="sent_bron_btn" type="submit" value="Отправить" />
+            <input class="sent_bron_btn" type="submit" value="@ViewBag.Translation["send"]" />
 </form>
               </div>
     </div>
@@ -140,7 +147,7 @@
                 <a href="/"> <img src="/../img/logo.png" alt="Логотип"></a>
             </div>
             <div class="site_title">
-                <p>аренда квартир посуточно</p>
+                <p>@ViewBag.Translation["main_page_arenda"].ToString()</p>
             </div>
             <div class="phone-block">
                 <p class="phone_1">@ViewBag.settings["tel1"]</p>
@@ -148,18 +155,18 @@
                 <p class="mail">@ViewBag.settings["email"]</p>
             </div>
             <div class="lang">
-                NL
-                TU
-                DE
-                EN
-                RU
+                <span>NL</span>
+                <span>TU</span>
+                <span>DE</span>
+                <span>EN</span>
+                <span>RU</span>
             </div>
 
         </div>
         <div class="information">
             <div class="info-inner">
                 <marquee behavior="scroll" direction="left">
-                    Custom code this
+                    @ViewBag.Translation["main_page_information"].ToString()
                 </marquee>
             </div>
         </div>
@@ -174,47 +181,48 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a class="hide-show" href="#">Поиск<img src="/../img/loop.png" width="25"></a></li>
+                    <li><a class="hide-show" href="#">@_search<img src="/../img/loop.png" width="25"></a></li>
+                    
                     @if (ViewBag.ActiveMenu == "premium")
                     { 
-                        <li>@Html.ActionLink("Премиум", "Premium", "Home", new { @class = "active"})</li>
+                        <li>@Html.ActionLink(_premium, "Premium", "Home", new { @class = "active" })</li>
                     }
                     else
                     {
-                        <li>@Html.ActionLink("Премиум", "Premium", "Home")</li>
+                        <li>@Html.ActionLink(_premium, "Premium", "Home")</li>
                     }
                     @if (ViewBag.ActiveMenu == "standart")
                     {
-                        <li>@Html.ActionLink("Стандарт", "Standart", "Home", new { @class = "active" })</li>
+                        <li>@Html.ActionLink(_standart, "Standart", "Home", new { @class = "active" })</li>
                     }
                     else
                     {
-                        <li>@Html.ActionLink("Стандарт", "Standart", "Home")</li>
+                        <li>@Html.ActionLink(_standart, "Standart", "Home")</li>
                     }
                     @if (ViewBag.ActiveMenu == "econom")
                     {
-                        <li>@Html.ActionLink("Эконом", "Econom", "Home", new { @class = "active" })</li>
+                        <li>@Html.ActionLink(_econom, "Econom", "Home", new { @class = "active" })</li>
                     }
                     else
                     {
-                        <li>@Html.ActionLink("Эконом", "Econom", "Home")</li>
+                        <li>@Html.ActionLink(_econom, "Econom", "Home")</li>
                     }
                     @if (ViewBag.ActiveMenu == "reviews")
                     {
-                        <li>@Html.ActionLink("Отзывы", "ReViews", "Home", new { @class = "active" })</li>
+                        <li>@Html.ActionLink(_reviews, "ReViews", "Home", new { @class = "active" })</li>
                     }
                     else
                     {
-                        <li>@Html.ActionLink("Отзывы", "ReViews", "Home")</li>
+                        <li>@Html.ActionLink(_reviews, "ReViews", "Home")</li>
                     }
 
                     @if (ViewBag.ActiveMenu == "contacts")
                     {
-                        <li>@Html.ActionLink("Контакты", "Contacts", "Home", new { @class = "active" })</li>
+                        <li>@Html.ActionLink(_contacts, "Contacts", "Home", new { @class = "active" })</li>
                     }
                     else
                     {
-                        <li>@Html.ActionLink("Контакты", "Contacts", "Home")</li>
+                        <li>@Html.ActionLink(_contacts, "Contacts", "Home")</li>
                     }
                 </ul>
                
@@ -222,7 +230,7 @@
 
                     <div class="searchbox">
                         <div class="select">
-                            <a href="#" class="slct">Регион</a>
+                            <a href="#" class="slct">@ViewBag.Translation["location"]</a>
                             <ul class="drop">
 
 
@@ -241,47 +249,47 @@
 
 
                         <div class="select">
-                            <a href="#" class="slct_2">Количество комнат</a>
+                            <a href="#" class="slct_2">@ViewBag.Translation["rooms_count"]</a>
                             <ul class="drop_2">
 
-                                <li>1 комната</li>
-                                <li>2 комнаты</li>
-                                <li>3 комнаты</li>
-                                <li>4 комнаты</li>
-                                <li>5 комнат</li>
+                                <li>1 </li>
+                                <li>2 </li>
+                                <li>3 </li>
+                                <li>4 </li>
+                                <li>5 </li>
 
                             </ul>
                             <input type="hidden" id="select_2" name="rooms" />
                         </div>
                         <div class="select">
-                            <a href="#" class="slct_3">Количество гостей</a>
+                            <a href="#" class="slct_3">@ViewBag.Translation["guests_count"]</a>
                             <ul class="drop_3">
 
-                                <li>1 человек</li>
-                                <li>2 человека</li>
-                                <li>3 человека</li>
-                                <li>4 человека</li>
-                                <li>5 человек</li>
-                                <li>6 человек</li>
-                                <li>7 человек</li>
-                                <li>8 человек</li>
+                                <li>1 </li>
+                                <li>2 </li>
+                                <li>3 </li>
+                                <li>4 </li>
+                                <li>5 </li>
+                                <li>6 </li>
+                                <li>7 </li>
+                                <li>8 </li>
 
                             </ul>
                             <input type="hidden" id="select_3" name="guests" />
                         </div>
+                        
+                        <input type="text" class="datepicker" placeholder=" @ViewBag.Translation["arrival"] ">
+                        <input type=" text" class="datepicker" placeholder=" @ViewBag.Translation["departure"] ">
 
-                        <input type="text" class="datepicker" placeholder="Заезд" >
-                        <input type="text" class="datepicker" placeholder="Выезд">
-
-                       
-                        <div class="my_slider">
+                        
+                        <div class=" my_slider">
                             <p>
                                 <input type="text" id="amount" name="amount" readonly style="border:0; color:#C32361; font-weight:bold;">
                             </p>
 
                             <div id="slider-range"></div>
                         </div>
-                        <button class="search_btn">Найти</button>
+                        <button class="search_btn">@ViewBag.Translation["find"]</button>
                 </form>
 
                 </div>
@@ -429,7 +437,19 @@
         });
     </script>
     <script>
-    $(document).ready(function () {
+        $(document).ready(function () {
+            $('.lang>span').click(function () {
+                var lang = $(this).text();
+                $.ajax({
+                    url: "/Home/SetLang",
+                    type: "POST",
+                    data: "lang=" + lang,
+                    success: function () {
+                        location.reload();
+                    }
+                });
+            });
+
         $(function () { $('.rateit').rateit({step: 1}); });
         $('.rateit').click(function () {
             var price = $('#rateprice').rateit('value');
@@ -475,7 +495,7 @@
                 contentType: false,
                 processData: false,
                 success: function (returndata) {
-                    ShowMess("Запрос на бронирование отправлен.");
+                    ShowMess("@ViewBag.Translation["reservation_query"]");
                     $('#bron').hide();
                 }
             });

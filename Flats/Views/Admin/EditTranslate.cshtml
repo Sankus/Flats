@@ -1,0 +1,76 @@
+﻿@model Flats.Views.Manage.Translate
+
+@{
+    ViewBag.Title = "Редактировать";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.ID)
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="phrases">Фраза</label>
+            <div class="col-md-10">
+                <select id="phrases" name="Phrase">
+                    @foreach (var phrase in ViewBag.phrase_list)
+                    {
+                        if (phrase.id == Model.PhraseID)
+                        {
+                            <option value="@phrase.id" selected>@phrase.phrase_key</option>
+                        }
+                        else
+                        {
+                            <option value="@phrase.id">@phrase.phrase_key</option>
+                        }
+                    }
+                </select>
+                
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="phrase_key">Язык</label>
+            <div class="col-md-10">
+                <select id="languages" name="Lang">
+                    @foreach (var lang in ViewBag.lang_list)
+                    {
+                        if (lang.id == Model.LanguageID)
+                        {
+                            <option value="@lang.id" selected>@lang.language</option>
+                        }
+                        else
+                        {
+                            <option value="@lang.id">@lang.language</option>
+                        }
+                    }
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="Translation">Перевод</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Translation, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Translation, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Записать" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Вернуться", "Index")
+</div>

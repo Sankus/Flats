@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Flats.Views.Manage.Phrase>
+
+@{
+    ViewBag.Title = "Список фраз";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    @Html.ActionLink("Добавить", "CreatePhrase")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Фраза
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.phrase_key)
+        </td>
+        <td>
+            @Html.ActionLink("Редактировать", "EditPhrase", new { id=item.id }) |
+            @Html.ActionLink("Удалить", "DeletePhrase", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

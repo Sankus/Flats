@@ -537,6 +537,16 @@
     <Content Include="Views\Home\Object.cshtml" />
     <Content Include="Views\Home\Search.cshtml" />
     <Content Include="Views\Home\ReViewDetails.cshtml" />
+    <Content Include="Views\Admin\Languages.cshtml" />
+    <Content Include="Views\Admin\LangugeList.cshtml" />
+    <Content Include="Views\Admin\CreateLanguage.cshtml" />
+    <Content Include="Views\Admin\EditLanguage.cshtml" />
+    <Content Include="Views\Admin\PhrasesList.cshtml" />
+    <Content Include="Views\Admin\CreatePhrase.cshtml" />
+    <Content Include="Views\Admin\EditPhrase.cshtml" />
+    <Content Include="Views\Admin\TranslateList.cshtml" />
+    <Content Include="Views\Admin\CreateTranslate.cshtml" />
+    <Content Include="Views\Admin\EditTranslate.cshtml" />
     <None Include="Views\Manage\db.dbml.layout">
       <DependentUpon>db.dbml</DependentUpon>
     </None>

@@ -33,9 +33,6 @@ namespace Flats.Views.Manage
     partial void InsertSettings(Settings instance);
     partial void UpdateSettings(Settings instance);
     partial void DeleteSettings(Settings instance);
-    partial void Insertlanguages(languages instance);
-    partial void Updatelanguages(languages instance);
-    partial void Deletelanguages(languages instance);
     partial void InsertLiveConditions(LiveConditions instance);
     partial void UpdateLiveConditions(LiveConditions instance);
     partial void DeleteLiveConditions(LiveConditions instance);
@@ -48,9 +45,6 @@ namespace Flats.Views.Manage
     partial void InsertPhrase(Phrase instance);
     partial void UpdatePhrase(Phrase instance);
     partial void DeletePhrase(Phrase instance);
-    partial void InsertPhrases_languages(Phrases_languages instance);
-    partial void UpdatePhrases_languages(Phrases_languages instance);
-    partial void DeletePhrases_languages(Phrases_languages instance);
     partial void InsertAttributes(Attributes instance);
     partial void UpdateAttributes(Attributes instance);
     partial void DeleteAttributes(Attributes instance);
@@ -69,6 +63,12 @@ namespace Flats.Views.Manage
     partial void Insertreviews(reviews instance);
     partial void Updatereviews(reviews instance);
     partial void Deletereviews(reviews instance);
+    partial void Insertlanguages(languages instance);
+    partial void Updatelanguages(languages instance);
+    partial void Deletelanguages(languages instance);
+    partial void InsertTranslate(Translate instance);
+    partial void UpdateTranslate(Translate instance);
+    partial void DeleteTranslate(Translate instance);
     #endregion
 		
 		public dbDataContext() : 
@@ -157,14 +157,6 @@ namespace Flats.Views.Manage
 			}
 		}
 		
-		public System.Data.Linq.Table<languages> languages
-		{
-			get
-			{
-				return this.GetTable<languages>();
-			}
-		}
-		
 		public System.Data.Linq.Table<LiveConditions> LiveConditions
 		{
 			get
@@ -194,14 +186,6 @@ namespace Flats.Views.Manage
 			get
 			{
 				return this.GetTable<Phrase>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Phrases_languages> Phrases_languages
-		{
-			get
-			{
-				return this.GetTable<Phrases_languages>();
 			}
 		}
 		
@@ -250,6 +234,22 @@ namespace Flats.Views.Manage
 			get
 			{
 				return this.GetTable<reviews>();
+			}
+		}
+		
+		public System.Data.Linq.Table<languages> languages
+		{
+			get
+			{
+				return this.GetTable<languages>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Translate> Translate
+		{
+			get
+			{
+				return this.GetTable<Translate>();
 			}
 		}
 	}
@@ -904,92 +904,6 @@ namespace Flats.Views.Manage
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.languages")]
-	public partial class languages : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _id;
-		
-		private string _language;
-		
-    #region Определения метода расширяемости
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidChanging(int value);
-    partial void OnidChanged();
-    partial void OnlanguageChanging(string value);
-    partial void OnlanguageChanged();
-    #endregion
-		
-		public languages()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int id
-		{
-			get
-			{
-				return this._id;
-			}
-			set
-			{
-				if ((this._id != value))
-				{
-					this.OnidChanging(value);
-					this.SendPropertyChanging();
-					this._id = value;
-					this.SendPropertyChanged("id");
-					this.OnidChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_language", DbType="NVarChar(150)")]
-		public string language
-		{
-			get
-			{
-				return this._language;
-			}
-			set
-			{
-				if ((this._language != value))
-				{
-					this.OnlanguageChanging(value);
-					this.SendPropertyChanging();
-					this._language = value;
-					this.SendPropertyChanged("language");
-					this.OnlanguageChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.LiveConditions")]
 	public partial class LiveConditions : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -1464,6 +1378,8 @@ namespace Flats.Views.Manage
 		
 		private string _phrase_key;
 		
+		private EntitySet<Translate> _Translate;
+		
     #region Определения метода расширяемости
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -1476,6 +1392,7 @@ namespace Flats.Views.Manage
 		
 		public Phrase()
 		{
+			this._Translate = new EntitySet<Translate>(new Action<Translate>(this.attach_Translate), new Action<Translate>(this.detach_Translate));
 			OnCreated();
 		}
 		
@@ -1519,113 +1436,16 @@ namespace Flats.Views.Manage
 			}
 		}
 		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Phrases_languages")]
-	public partial class Phrases_languages : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _id;
-		
-		private int _lang_id;
-		
-		private int _phrase_id;
-		
-    #region Определения метода расширяемости
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidChanging(int value);
-    partial void OnidChanged();
-    partial void Onlang_idChanging(int value);
-    partial void Onlang_idChanged();
-    partial void Onphrase_idChanging(int value);
-    partial void Onphrase_idChanged();
-    #endregion
-		
-		public Phrases_languages()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int id
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Phrase_Translate", Storage="_Translate", ThisKey="id", OtherKey="PhraseID")]
+		public EntitySet<Translate> Translate
 		{
 			get
 			{
-				return this._id;
+				return this._Translate;
 			}
 			set
 			{
-				if ((this._id != value))
-				{
-					this.OnidChanging(value);
-					this.SendPropertyChanging();
-					this._id = value;
-					this.SendPropertyChanged("id");
-					this.OnidChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_lang_id", DbType="Int NOT NULL")]
-		public int lang_id
-		{
-			get
-			{
-				return this._lang_id;
-			}
-			set
-			{
-				if ((this._lang_id != value))
-				{
-					this.Onlang_idChanging(value);
-					this.SendPropertyChanging();
-					this._lang_id = value;
-					this.SendPropertyChanged("lang_id");
-					this.Onlang_idChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_phrase_id", DbType="Int NOT NULL")]
-		public int phrase_id
-		{
-			get
-			{
-				return this._phrase_id;
-			}
-			set
-			{
-				if ((this._phrase_id != value))
-				{
-					this.Onphrase_idChanging(value);
-					this.SendPropertyChanging();
-					this._phrase_id = value;
-					this.SendPropertyChanged("phrase_id");
-					this.Onphrase_idChanged();
-				}
+				this._Translate.Assign(value);
 			}
 		}
 		
@@ -1647,6 +1467,18 @@ namespace Flats.Views.Manage
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+		
+		private void attach_Translate(Translate entity)
+		{
+			this.SendPropertyChanging();
+			entity.Phrase = this;
+		}
+		
+		private void detach_Translate(Translate entity)
+		{
+			this.SendPropertyChanging();
+			entity.Phrase = null;
 		}
 	}
 	
@@ -3357,6 +3189,360 @@ namespace Flats.Views.Manage
 					this._data = value;
 					this.SendPropertyChanged("data");
 					this.OndataChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.languages")]
+	public partial class languages : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id;
+		
+		private string _language;
+		
+		private string _short_code;
+		
+		private EntitySet<Translate> _Translate;
+		
+    #region Определения метода расширяемости
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void OnlanguageChanging(string value);
+    partial void OnlanguageChanged();
+    partial void Onshort_codeChanging(string value);
+    partial void Onshort_codeChanged();
+    #endregion
+		
+		public languages()
+		{
+			this._Translate = new EntitySet<Translate>(new Action<Translate>(this.attach_Translate), new Action<Translate>(this.detach_Translate));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_language", DbType="NVarChar(150)")]
+		public string language
+		{
+			get
+			{
+				return this._language;
+			}
+			set
+			{
+				if ((this._language != value))
+				{
+					this.OnlanguageChanging(value);
+					this.SendPropertyChanging();
+					this._language = value;
+					this.SendPropertyChanged("language");
+					this.OnlanguageChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_short_code", DbType="NVarChar(3)")]
+		public string short_code
+		{
+			get
+			{
+				return this._short_code;
+			}
+			set
+			{
+				if ((this._short_code != value))
+				{
+					this.Onshort_codeChanging(value);
+					this.SendPropertyChanging();
+					this._short_code = value;
+					this.SendPropertyChanged("short_code");
+					this.Onshort_codeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="languages_Translate", Storage="_Translate", ThisKey="id", OtherKey="LanguageID")]
+		public EntitySet<Translate> Translate
+		{
+			get
+			{
+				return this._Translate;
+			}
+			set
+			{
+				this._Translate.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Translate(Translate entity)
+		{
+			this.SendPropertyChanging();
+			entity.languages = this;
+		}
+		
+		private void detach_Translate(Translate entity)
+		{
+			this.SendPropertyChanging();
+			entity.languages = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Translate")]
+	public partial class Translate : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private System.Nullable<int> _PhraseID;
+		
+		private System.Nullable<int> _LanguageID;
+		
+		private string _Translation;
+		
+		private EntityRef<Phrase> _Phrase;
+		
+		private EntityRef<languages> _languages;
+		
+    #region Определения метода расширяемости
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnPhraseIDChanging(System.Nullable<int> value);
+    partial void OnPhraseIDChanged();
+    partial void OnLanguageIDChanging(System.Nullable<int> value);
+    partial void OnLanguageIDChanged();
+    partial void OnTranslationChanging(string value);
+    partial void OnTranslationChanged();
+    #endregion
+		
+		public Translate()
+		{
+			this._Phrase = default(EntityRef<Phrase>);
+			this._languages = default(EntityRef<languages>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PhraseID", DbType="Int")]
+		public System.Nullable<int> PhraseID
+		{
+			get
+			{
+				return this._PhraseID;
+			}
+			set
+			{
+				if ((this._PhraseID != value))
+				{
+					if (this._Phrase.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnPhraseIDChanging(value);
+					this.SendPropertyChanging();
+					this._PhraseID = value;
+					this.SendPropertyChanged("PhraseID");
+					this.OnPhraseIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LanguageID", DbType="Int")]
+		public System.Nullable<int> LanguageID
+		{
+			get
+			{
+				return this._LanguageID;
+			}
+			set
+			{
+				if ((this._LanguageID != value))
+				{
+					if (this._languages.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnLanguageIDChanging(value);
+					this.SendPropertyChanging();
+					this._LanguageID = value;
+					this.SendPropertyChanged("LanguageID");
+					this.OnLanguageIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="Translate", Storage="_Translation", DbType="NVarChar(MAX)")]
+		public string Translation
+		{
+			get
+			{
+				return this._Translation;
+			}
+			set
+			{
+				if ((this._Translation != value))
+				{
+					this.OnTranslationChanging(value);
+					this.SendPropertyChanging();
+					this._Translation = value;
+					this.SendPropertyChanged("Translation");
+					this.OnTranslationChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Phrase_Translate", Storage="_Phrase", ThisKey="PhraseID", OtherKey="id", IsForeignKey=true)]
+		public Phrase Phrase
+		{
+			get
+			{
+				return this._Phrase.Entity;
+			}
+			set
+			{
+				Phrase previousValue = this._Phrase.Entity;
+				if (((previousValue != value) 
+							|| (this._Phrase.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Phrase.Entity = null;
+						previousValue.Translate.Remove(this);
+					}
+					this._Phrase.Entity = value;
+					if ((value != null))
+					{
+						value.Translate.Add(this);
+						this._PhraseID = value.id;
+					}
+					else
+					{
+						this._PhraseID = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Phrase");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="languages_Translate", Storage="_languages", ThisKey="LanguageID", OtherKey="id", IsForeignKey=true)]
+		public languages languages
+		{
+			get
+			{
+				return this._languages.Entity;
+			}
+			set
+			{
+				languages previousValue = this._languages.Entity;
+				if (((previousValue != value) 
+							|| (this._languages.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._languages.Entity = null;
+						previousValue.Translate.Remove(this);
+					}
+					this._languages.Entity = value;
+					if ((value != null))
+					{
+						value.Translate.Add(this);
+						this._LanguageID = value.id;
+					}
+					else
+					{
+						this._LanguageID = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("languages");
 				}
 			}
 		}

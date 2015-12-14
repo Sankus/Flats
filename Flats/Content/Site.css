@@ -512,7 +512,7 @@ a.bottom_ac_prew:hover {
 }
 .bottom_prew_1 {
     height: 38px;
-    width: 130px;
+    width: 130px !important;
 }
 a.bottom_ac_prew._ac_prew2 {
     padding: 5px 49px 5px 49px;
@@ -1836,4 +1836,12 @@ p.date_detail {
     width: 100%;
     height: 30px;
     margin-top: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.lang > span {
+    cursor:pointer;
+}
+.lang > span:hover {
+    text-decoration:underline;
 }

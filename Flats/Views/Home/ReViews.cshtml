@@ -54,7 +54,7 @@
                     <table class="rating_table">
                         <tr>
                             <td class="rating_table_head">
-                                Общая оценка жильцов
+                                @ViewBag.Translation["overall_rating_tenants"]                                
                             </td>
                         </tr>
                         <tr>
@@ -68,7 +68,7 @@
                             <td>
                                 <table width="100%">
                                     <tr>
-                                        <td class="rating_table_td_key">Цена:</td>
+                                        <td class="rating_table_td_key">@ViewBag.Translation["price"] :</td>
                                         <td class="rating_table_td_value">
                                             <div class="rateit" data-rateit-value="@item.price.Value.ToString().Replace(',', '.')" data-rateit-ispreset="true" data-rateit-readonly="true"></div>
                                         </td>
@@ -80,7 +80,7 @@
                             <td>
                                 <table width="100%">
                                     <tr>
-                                        <td class="rating_table_td_key">Чистота:</td>
+                                        <td class="rating_table_td_key">@ViewBag.Translation["cleanness"] :</td>
                                         <td class="rating_table_td_value">
                                             <div class="rateit" data-rateit-value="@item.cleaness.Value.ToString().Replace(',', '.')" data-rateit-ispreset="true" data-rateit-readonly="true"></div>
                                         </td>
@@ -92,7 +92,7 @@
                             <td>
                                 <table width="100%">
                                     <tr>
-                                        <td class="rating_table_td_key">Услуги:</td>
+                                        <td class="rating_table_td_key">@ViewBag.Translation["services"] :</td>
                                         <td class="rating_table_td_value">
                                             <div class="rateit" data-rateit-value="@item.services.Value.ToString().Replace(',', '.')" data-rateit-ispreset="true" data-rateit-readonly="true"></div>
                                         </td>
@@ -104,7 +104,7 @@
                             <td>
                                 <table width="100%">
                                     <tr>
-                                        <td class="rating_table_td_key">Комфорт:</td>
+                                        <td class="rating_table_td_key">@ViewBag.Translation["comfort"] :</td>
                                         <td class="rating_table_td_value">
                                             <div class="rateit" data-rateit-value="@item.comfort.Value.ToString().Replace(',', '.')" data-rateit-ispreset="true" data-rateit-readonly="true"></div>
                                         </td>
@@ -117,7 +117,7 @@
                             <td>
                                 <table width="100%">
                                     <tr>
-                                        <td class="rating_table_td_key">Расположение:</td>
+                                        <td class="rating_table_td_key">@ViewBag.Translation["location"]:</td>
                                         <td class="rating_table_td_value">
                                             <div class="rateit" data-rateit-value="@item.region.Value.ToString().Replace(',', '.')" data-rateit-ispreset="true" data-rateit-readonly="true"></div>
                                         </td>
@@ -131,11 +131,11 @@
         </table>
 
         <div class="add_review" date-id="@item.ID" onclick="AddReview(@item.ID);">
-            ДОБАВИТЬ ОТЗЫВ
+            @ViewBag.Translation["add_review"].ToUpper()
         </div>
 
         <div class="down_otziw">
-            <h1 class="otzivi">Отзывы</h1>
+            <h1 class="otzivi">@ViewBag.Translation["main_page_reviews"]</h1>
 
 
 
@@ -154,8 +154,8 @@
                                 <div class="authorContainer">
                                     <p class="quote-author">@review_item.Name @review_item.Surname</p>
                                 </div>
-                                <span><a href="/Home/ReViewDetails/@item.ID">Все комментарии</a></span>
-                                <span>рейтинг: @review_item.total</span>
+                                <span><a href="/Home/ReViewDetails/@item.ID">@ViewBag.Translation["all_comments"]</a></span>
+                                <span>@ViewBag.Translation["rating"]: @review_item.total</span>
 
                             </li>
                             
@@ -169,7 +169,7 @@
                 <div class="btn-bar">
                     <div id="buttons"><a id="next-car" href="#">></a> </div>
                 </div>
-                Вот тут
+      
             </div>
 
 

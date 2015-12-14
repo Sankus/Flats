@@ -50,16 +50,16 @@
             </div>
             <div class="bron_right">
                 <div class="bron_right_price">
-                    @Html.DisplayFor(model => model.price1) грн/сутки
+                    @Html.DisplayFor(model => model.price1) @ViewBag.Translation["currency"]/@ViewBag.Translation["day"].ToString().ToLower()
                     </div>
                 <div class="data_obertka">
-                    <div class="data_in_obj my_obertka"><p class="zaez_viezd">Заезд</p><input type="text" class="datepicker" id="zaezd"></div>
-                <div class="data_in_obj"> <p class="zaez_viezd">Выезд</p><input type="text" class="datepicker" id="viezd"> </div>
+                    <div class="data_in_obj my_obertka"><p class="zaez_viezd">@ViewBag.Translation["arrival"]</p><input type="text" class="datepicker" id="zaezd"></div>
+                <div class="data_in_obj"> <p class="zaez_viezd">@ViewBag.Translation["departure"]</p><input type="text" class="datepicker" id="viezd"> </div>
                     </div>
-                <div class="text_in_bron">Выберете даты, что бы уточнить цену и доступность </div>
+                <div class="text_in_bron">@ViewBag.Translation["select_the_dates"]</div>
                 <div class="podvinyli_knopky">    
                 <div class="bottom_prew_1">
-                    <a class="bottom_ac_prew" href="#" onclick="ShowBron(@Model.ID); $('#bron_date1').val($('#zaezd').val());$('#bron_date2').val($('#viezd').val());">Забронировать</a>
+                    <a class="bottom_ac_prew" href="#" onclick="ShowBron(@Model.ID); $('#bron_date1').val($('#zaezd').val());$('#bron_date2').val($('#viezd').val());">@ViewBag.Translation["reserv_it"]</a>
                     </div>
                     </div>
                 <div>
@@ -72,14 +72,14 @@
            
         </div>
         <div class="opisanie_page">
-            <h2>Описание и комплектация</h2>
+            <h2>@ViewBag.Translation["description_and_equipment"]</h2>
             @Html.DisplayFor(model => model.desc_body)
             </div>
 
 
 
         <div class="jile_page">
-            <h2>Жилье</h2>
+            <h2>@ViewBag.Translation["housing"]</h2>
             @foreach (var olc in ViewBag.obj_lc_list)
             {
                 <div class="detail_page_0">
@@ -94,7 +94,7 @@
     </div>
 
         <div class="atribute_page">
-            <h2>Атрибуты</h2>
+            <h2>@ViewBag.Translation["attributes"]</h2>
             @foreach (var oa in ViewBag.obj_attr_list)
             {
                 <img src="/Home/GetAttrPic?id=@oa.attribute_id" />
@@ -112,15 +112,15 @@
             <dd>
                 @if (Model.type == 1)
                 {
-                    <span>Премиум</span>
+                    <span>@ViewBag.Translation["main_page_premium"]</span>
                 }
                 @if (Model.type == 2)
                 {
-                    <span>Стандарт</span>
+                    <span>@ViewBag.Translation["main_page_standart"]</span>
                 }
                 @if (Model.type == 3)
                 {
-                    <span>Эконом</span>
+                    <span>@ViewBag.Translation["main_page_econom"]</span>
                 }
             </dd>
 
@@ -210,16 +210,16 @@
         <div id="datepicker_2" ></div>
         <div class="bron_right">
             <div class="bron_right_price">
-                Детали заказа
+                @ViewBag.Translation["order_details"]
             </div>
             <div class="data_obertka">
-                <div class="data_in_obj my_obertka"><p class="zaez_viezd">Заезд</p><input type="text" class="datepicker" id="zaezd_footer"></div>
-                <div class="data_in_obj"> <p class="zaez_viezd">Выезд</p><input type="text" class="datepicker" id="viezd_footer"> </div>
+                <div class="data_in_obj my_obertka"><p class="zaez_viezd">@ViewBag.Translation["arrival"]</p><input type="text" class="datepicker" id="zaezd_footer"></div>
+                <div class="data_in_obj"> <p class="zaez_viezd">@ViewBag.Translation["departure"]</p><input type="text" class="datepicker" id="viezd_footer"> </div>
             </div>
-            <div class="text_in_bron">Выберете даты, что бы уточнить цену и доступность </div>
+            <div class="text_in_bron">@ViewBag.Translation["select_the_dates"]</div>
             <div class="podvinyli_knopky">
                 <div class="bottom_prew_1">
-                    <a class="bottom_ac_prew" href="#" onclick="ShowBron(@Model.ID); $('#bron_date1').val($('#zaezd_footer').val());$('#bron_date2').val($('#viezd_footer').val());">Забронировать</a>
+                    <a class="bottom_ac_prew" href="#" onclick="ShowBron(@Model.ID); $('#bron_date1').val($('#zaezd_footer').val());$('#bron_date2').val($('#viezd_footer').val());">@ViewBag.Translation["reserv_it"]</a>
                 </div>
             </div>
 
@@ -228,7 +228,7 @@
                
             </div>
     <div class="down_otziw">
-        <h1 class="otzivi">Отзывы</h1>
+        <h1 class="otzivi">@ViewBag.Translation["main_page_reviews"]</h1>
 
 
 
@@ -248,7 +248,7 @@
                                 <p class="quote-author">@review_item.Name @review_item.Surname</p>
                             </div>
                             
-                            рейтинг: <div class="rateit" data-rateit-value="@review_item.total.ToString().Replace(',', '.')" data-rateit-ispreset="true" data-rateit-readonly="true"></div> @review_item.total
+                            @ViewBag.Translation["rating"]: <div class="rateit" data-rateit-value="@review_item.total.ToString().Replace(',', '.')" data-rateit-ispreset="true" data-rateit-readonly="true"></div> @review_item.total
 
                         </li>
                     }
@@ -270,10 +270,10 @@
 
 </div>
     <p>
-        <a href="/Home/ReViewDetails/@Model.ID">Все комментарии</a>
+        <a href="/Home/ReViewDetails/@Model.ID">@ViewBag.Translation["all_comments"]</a>
     </p>
 <p>
-    <a href="" onclick="history.back()">Вернуться в список</a>
+    <a href="" onclick="history.back()">@ViewBag.Translation["return_to_list"]</a>
 </p>
 </div>
 <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
