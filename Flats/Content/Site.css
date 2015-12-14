@@ -559,6 +559,13 @@ a.ui-state-default.ui-state-active {
 .faqindex {
     display: none;
 }
+
+span.up_currency {
+color:#CE2361;
+}
+span.down_currency {
+color:#CE2361;
+}
 /*END SPOILER*/
 
 
