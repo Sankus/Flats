@@ -4,6 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     int j = 0;
 }
+
 @foreach (var obj in ViewBag.list)
 {
     j++;
@@ -16,7 +17,7 @@
 
     <div id="obj_prew" class="@cl">
         <div class="img_prew">
-            <div><img id="large_foto1_pic" src="/Home/GetPictureFL1?id=@obj.ID"></div>
+            <div><a href="/Home/Object?id=@obj.ID"><img id="large_foto1_pic" src="/Home/GetPictureFL1?id=@obj.ID"></a></div>
         </div>
         <div class="left_cont_prew">
             <div class="name_obj_prew"><h2>@obj.header</h2></div>
