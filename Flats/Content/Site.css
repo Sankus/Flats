@@ -535,7 +535,8 @@ a.ui-state-default.ui-state-active {
 .faqindex ul li {color:#666666;white-space:nowrap;}
 .faqindex h2 {padding: 0;margin-bottom: 0;border-bottom: dotted 1px #ccc;color: #666666;}
 .faq {float:left;width: 100%;;margin: 0 auto; font-family: consolas,verdana,helvetica,sans-serif;}
-.faq {margin-bottom: 25px;}
+.faq {margin-bottom: 25px; margin-top: 15px;
+}
 .faq .faqcontent {margin: 0 10px 0 10px;font-size: 95%;}
 .faq h2.faqopened, .faq h2.faqclosed {
     cursor: pointer;padding: 0 0 0 15px;margin-bottom: 0;font-size:13px;
@@ -558,6 +559,13 @@ a.ui-state-default.ui-state-active {
 .faqindex {
     display: none;
 }
+
+span.up_currency {
+color:#CE2361;
+}
+span.down_currency {
+color:#CE2361;
+}
 /*END SPOILER*/
 
 
@@ -577,6 +585,7 @@ a.ui-state-default.ui-state-active {
     height: 107px;
    margin-top:20px;
     margin-left: 27px;
+    margin-bottom:-17px;
 }
 .seperator {
 height:1px;
