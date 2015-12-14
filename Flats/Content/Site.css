@@ -1867,3 +1867,7 @@ p.date_detail {
 .lang > span:hover {
     text-decoration:underline;
 }
+
+.firs_img_page>a>img {
+    width: 235px;
+}
