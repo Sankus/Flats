@@ -113,6 +113,11 @@ p.phone_1,p.phone_2 {
     right: 0;
    
 }
+
+.navbar-fixed-top, .navbar-fixed-bottom {
+  
+    z-index: 99!important;
+}
 .inneer-content {
     width: 84%;
     float: right;
@@ -637,6 +642,9 @@ border-bottom:1px dotted #E4E4E4;
 .top_sec_img {
     width: 500px;
     height: 140px;
+}
+.top_sec_img>li>a>img {
+    width: 250px;
 }
 .down_sec_img {
     width: 500px;
@@ -1868,61 +1876,226 @@ p.date_detail {
     text-decoration:underline;
 }
 
-<<<<<<< HEAD
-.lightbox_ubs {
-        position: fixed;
-    width: 100%;
+
+/*ЛАЙТБОКС*/
+
+.lb-album{
+	width: 900px;
+	margin: 0 auto;
+	font-family: 'BebasNeueRegular', 'Arial Narrow', Arial, sans-serif;
+}
+.lb-album li{
+	float: right;
+	margin: 5px;
+	position: relative;
+}
+.lb-album li > a,
+.lb-album li > a img{
+	display: block;
+}
+.lb-album li > a{
+	width: 150px;
+    height: 190px;
+    overflow: hidden;
+    position: relative;
+    /* padding: 10px; */
+    background: #FFFFFF;
+    -webkit-box-shadow: 1px 1px 2px #fff, 1px 1px 2px rgba(158,111,86,0.3) inset;
+    -moz-box-shadow: 1px 1px 2px #fff, 1px 1px 2px rgba(158,111,86,0.3) inset;
+    box-shadow: 1px 1px 2px #fff, 1px 1px 2px rgba(158,111,86,0.3) inset;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px 4px 4px 4px;
+}
+.lb-album li > a span{
+	position: absolute;
+	width: 150px;
+	height: 150px;
+	top: 10px;
+	left: 10px;
+	text-align: center;
+	line-height: 150px;
+	color: white;
+	text-shadow: 0px 1px 1px rgba(255,255,255,0.6);
+	font-size: 24px;
+	opacity: 0;
+	filter: alpha(opacity=0); /* internet explorer */
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(opacity=0)"; /*IE8*/
+	background: rgba(0, 0, 0, 0.52);
+	
+	-webkit-transition: opacity 0.3s linear;
+	-moz-transition: opacity 0.3s linear;
+	-o-transition: opacity 0.3s linear;
+	-ms-transition: opacity 0.3s linear;
+	transition: opacity 0.3s linear;
+}
+.lb-album li > a:hover span{
+	opacity: 1;
+	filter: alpha(opacity=99); /* internet explorer */
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(opacity=99)"; /*IE8*/
+}
+.lb-overlay{
+	width: 0px;
+	height: 0px;
+	position: fixed;
+	overflow: hidden;
+	left: 0px;
+	top: 0px;
+	padding: 0px;
+	z-index: 99;
+	text-align: center;
+	background: rgba(85, 85, 85, 0.64);
+	
+}
+.lb-overlay > div{
+	position: relative;
+	color: rgba(27,54,81,0.8);
+	width: 550px;
+	height: 80px;
+	margin: 40px auto 0px auto;
+	text-shadow: 0px 1px 1px rgba(255,255,255,0.6);
+}
+.lb-overlay div h3,
+.lb-overlay div p{
+	padding: 0px 20px;
+	width: 200px;
+	height: 60px;
+}
+.lb-overlay div h3{
+	font-size: 36px;
+	float: left;
+	text-align: right;
+	border-right: 1px solid rgba(27,54,81,0.4);
+}
+.lb-overlay div h3 span,
+.lb-overlay div p{
+	font-size: 16px;
+	font-family: Constantia, Palatino, "Palatino Linotype", "Palatino LT STD", Georgia, serif;
+	font-style: italic;
+}
+.lb-overlay div h3 span{
+	display: block;
+	line-height: 6px;
+}
+.lb-overlay div p{
+	font-size: 14px;
+	text-align: left;
+	float: left;
+	width: 260px;
+}
+.lb-overlay a.lb-close{
+	background: rgba(27,54,81,0.8);
+	z-index: 1001;
+	color: #fff;
+	position: absolute;
+	top: 43px;
+	left: 50%;
+	font-size: 15px;
+	line-height: 26px;
+	text-align: center;
+	width: 50px;
+	height: 23px;
+	overflow: hidden;
+	margin-left: -25px;
+	opacity: 0;
+	filter: alpha(opacity=0); /* internet explorer */
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(opacity=0)"; /*IE8*/
+	-webkit-box-shadow: 0px 1px 2px rgba(0,0,0,0.3);
+	-moz-box-shadow: 0px 1px 2px rgba(0,0,0,0.3);
+	box-shadow: 0px 1px 2px rgba(0,0,0,0.3);
+}
+.lb-overlay img{
+	/* height: 100%; For Opera max-height does not seem to work */
+	max-height: 100%;
+	position: relative;
+	opacity: 0;
+	filter: alpha(opacity=0); /* internet explorer */
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(opacity=0)"; /*IE8*/
+	-webkit-box-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+	-moz-box-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+	box-shadow: 0px 2px 7px rgba(0,0,0,0.2);
+	-webkit-transition: opacity 0.5s linear;
+	-moz-transition: opacity 0.5s linear;
+	-o-transition: opacity 0.5s linear;
+	-ms-transition: opacity 0.5s linear;
+	transition: opacity 0.5s linear;
+}
+.lb-prev, .lb-next{
+	text-indent: -9000px;
+	position: absolute;
+	top: -32px;
+	width: 24px;
+	height: 25px;
+	left: 50%;
+	opacity: 0.8;
+	filter: alpha(opacity=80); /* internet explorer */
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(opacity=80)"; /*IE8*/
+}
+.lb-prev:hover, .lb-next:hover{
+	opacity: 1;
+	filter: alpha(opacity=99); /* internet explorer */
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(opacity=99)"; /*IE8*/
+}
+.lb-prev{
+	margin-left: -30px;
+	background: transparent url(/img/arrows.png) no-repeat top left;
+}
+.lb-next{
+	margin-left: 6px;
+	background: transparent url(/img/arrows.png) no-repeat top right;
+}
+.lb-overlay:target {
+	width: auto;
+	height: auto;
+	bottom: 0px;
+	right: 0px;
+	    padding: 46px 100px 91px 66px;
+}
+.lb-overlay:target img,
+.lb-overlay:target a.lb-close{
+	opacity: 1;
+	filter: alpha(opacity=99); /* internet explorer */
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(opacity=99)"; /*IE8*/
+}
+/* 
+	100% Height for Opera as the max-height seems to be ignored, not optimal for large screens 
+	http://bricss.net/post/11230266445/css-hack-to-target-opera 
+*/
+x:-o-prefocus, .lb-overlay img {
     height: 100%;
-    margin: 0;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 9999999;
-    margin-left: -16%;
-    margin-top: -20%;
-    height: 1000px;
-    display:none;
 }
 
-.light_vlock_ubs {
-    width: 70%;
-        height: 60%;
-    margin-left: auto;
-    margin-right: auto;
+
+.top_sec_img>li>a {
+    width: 240px!important;
+}
+ul.lb-album {
+    list-style-type: none;
+        margin-left: -49px;
+}
+.down_sec_img>li>a>img {
+    width: 113px!important;
+}
+.down_sec_img>li>a {
+    padding: 0!important;
+    width: 112px;
+    height: 65px;
     overflow: hidden;
-}
-   .close_ubs_botton {
-    width: 44px;
-    height: 34px;
-    background-image: url('../img/fancybox_sprite.png');
-    margin: 10% 0 0 0;
-    float: right;
-    
-}
-   .images-full_light_ubs>img {
-    width: 100%;
+    /* margin: 0; */
 }
 
-   .images-small_light_block_ubs {
-          width: 100%;
-    height: 20%;
-    /* overflow: hidden; */
-    float: left;
+.top_sec_img>li>a>span {
+    width: 240px;
+    height: 189px;
+    top: 0;
+    left: 0;
+    line-height: 201px;
 }
-   .images-small_light_ubs {
-    float: left;
-    width: 16%;
-}
-   .images-full_light_ubs {
-        max-height: 423px;
-    overflow: hidden;
-}
-   .images-small_light_ubs>img {
-    width: 73%;
-    /* float: left; */
-}
-   .images-small_light_ubs {
-    float: left;
-=======
-.firs_img_page>a>img {
-    width: 235px;
->>>>>>> 4fe2bc0faacff23468ac3159ed6c664c9506a5c0
+.down_sec_img > li > a > span {
+    width: 113px;
+    height: 87px;
+    top: 0;
+    left: 0;
+       line-height: 64px;
+
 }

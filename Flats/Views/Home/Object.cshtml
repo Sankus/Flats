@@ -5,34 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="lightbox_ubs">
-    <div class="light_vlock_ubs">
-    <div class="close_ubs_botton"></div>
-    <div class="images-full_light_ubs">
-        <img src="/Home/GetPictureFL1?id=@Model.ID">
-    </div>
-        <div class="images-small_light_block_ubs">
-            <div class="images-small_light_ubs">
-                <img src="/Home/GetPictureFL1?id=@Model.ID">
-            </div>
-            <div class="images-small_light_ubs">
-                <img src="/Home/GetPictureFL1?id=@Model.ID">
-            </div>
-            <div class="images-small_light_ubs">
-                <img src="/Home/GetPictureFL1?id=@Model.ID">
-            </div>
-            <div class="images-small_light_ubs">
-                <img src="/Home/GetPictureFL1?id=@Model.ID">
-            </div>
-            <div class="images-small_light_ubs">
-                <img src="/Home/GetPictureFL1?id=@Model.ID">
-            </div>
-            <div class="images-small_light_ubs">
-                <img src="/Home/GetPictureFL1?id=@Model.ID">
-            </div>
-        </div>
-    </div>
-</div>
+
 <div class="page_margin">
 <div>
     <div class="page_block">
@@ -45,35 +18,145 @@
         </div>
         <div class="section_page">
             <div class="block_img_page">
+                
+                    <ul class="lb-album">
+                        <div class="top_sec_img">
 
-                <div class="top_sec_img">
-                    
-                        <div class="firs_img_page">
-
-
-                            <a class="fancybox-thumb" data-fancybox-group="thumb" href="/Home/GetPictureFL1/@Model.ID"> <img src="/Home/GetPictureFL1?id=@Model.ID"></a>
-
-
+                            <li>
+                                <a href="#image-1">
+                                    <img width="250" src="/Home/GetPictureFL1?id=@Model.ID">
+                                    <span>+</span>
+                                </a>
+                                <div class="lb-overlay" id="image-1">
+                                    <img height="650" src="/Home/GetPictureFL1?id=@Model.ID">
+                                    <div>
+                                        <a href="#image-6" class="lb-prev">Prev</a>
+                                             <a href="#image-1"><img width="50" src="/Home/GetPictureFL1?id=@Model.ID"></a>
+                                             <a href="#image-2"><img width="50" src="/Home/GetPictureFL2?id=@Model.ID"></a>
+                                             <a href="#image-3"><img width="50" src="/Home/GetPictureF1?id=@Model.ID"></a> 
+                                             <a href="#image-4"><img width="50" src="/Home/GetPictureF2?id=@Model.ID"></a> 
+                                             <a href="#image-5"><img width="50" src="/Home/GetPictureF3?id=@Model.ID"></a> 
+                                             <a href="#image-6"><img width="50" src="/Home/GetPictureF4?id=@Model.ID"></a> 
+                                        <a href="#image-2" class="lb-next">Next</a>
+                                    </div>
+                                    <a href="#page" class="lb-close">x Close</a>
+                                </div>
+                            </li>
+                            <li>
+                                <a href="#image-2">
+                                    <img src="/Home/GetPictureFL2?id=@Model.ID">
+                                    <span>+</span>
+                                </a>
+                                <div class="lb-overlay" id="image-2">
+                                    <img src="/Home/GetPictureFL2?id=@Model.ID">
+                                    <div>
+                                        <a href="#image-1" class="lb-prev">Prev</a>
+                                        <a href="#image-1"><img width="50" src="/Home/GetPictureFL1?id=@Model.ID"></a>
+                                        <a href="#image-2"><img width="50" src="/Home/GetPictureFL2?id=@Model.ID"></a>
+                                        <a href="#image-3"><img width="50" src="/Home/GetPictureF1?id=@Model.ID"></a>
+                                        <a href="#image-4"><img width="50" src="/Home/GetPictureF2?id=@Model.ID"></a>
+                                        <a href="#image-5"><img width="50" src="/Home/GetPictureF3?id=@Model.ID"></a>
+                                        <a href="#image-6"><img width="50" src="/Home/GetPictureF4?id=@Model.ID"></a> 
+                                        <a href="#image-3" class="lb-next">Next</a>
+                                    </div>
+                                    <a href="#page" class="lb-close">x Close</a>
+                                </div>
+                            </li>
                         </div>
+                        <div class="second_img_page">
 
-                        <div class="firs_img_page">
-                            <a class="fancybox-thumb" data-fancybox-group="thumb" href="/Home/GetPictureFL2?id=@Model.ID">  <img src="/Home/GetPictureFL2?id=@Model.ID"></a>
+                            <div class="down_sec_img">
 
+
+
+                                <li>
+                                    <a href="#image-3">
+                                        <img src="/Home/GetPictureF1?id=@Model.ID">
+                                        <span>+</span>
+                                    </a>
+                                    <div class="lb-overlay" id="image-3">
+                                        <img src="/Home/GetPictureF1?id=@Model.ID">
+                                        <div>
+                                            <a href="#image-2" class="lb-prev">Prev</a>
+                                            <a href="#image-1"><img width="50" src="/Home/GetPictureFL1?id=@Model.ID"></a>
+                                            <a href="#image-2"><img width="50" src="/Home/GetPictureFL2?id=@Model.ID"></a>
+                                            <a href="#image-3"><img width="50" src="/Home/GetPictureF1?id=@Model.ID"></a>
+                                            <a href="#image-4"><img width="50" src="/Home/GetPictureF2?id=@Model.ID"></a>
+                                            <a href="#image-5"><img width="50" src="/Home/GetPictureF3?id=@Model.ID"></a>
+                                            <a href="#image-6"><img width="50" src="/Home/GetPictureF4?id=@Model.ID"></a> 
+                                            <a href="#image-4" class="lb-next">Next</a>
+                                        </div>
+                                        <a href="#page" class="lb-close">x Close</a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a href="#image-4">
+                                        <img src="/Home/GetPictureF2?id=@Model.ID">
+                                        <span>+</span>
+                                    </a>
+                                    <div class="lb-overlay" id="image-4">
+                                        <img src="/Home/GetPictureF2?id=@Model.ID">
+                                        <div>
+                                            <a href="#image-3" class="lb-prev">Prev</a>
+                                            <a href="#image-1"><img width="50" src="/Home/GetPictureFL1?id=@Model.ID"></a>
+                                            <a href="#image-2"><img width="50" src="/Home/GetPictureFL2?id=@Model.ID"></a>
+                                            <a href="#image-3"><img width="50" src="/Home/GetPictureF1?id=@Model.ID"></a>
+                                            <a href="#image-4"><img width="50" src="/Home/GetPictureF2?id=@Model.ID"></a>
+                                            <a href="#image-5"><img width="50" src="/Home/GetPictureF3?id=@Model.ID"></a>
+                                            <a href="#image-6"><img width="50" src="/Home/GetPictureF4?id=@Model.ID"></a> 
+                                            <a href="#image-5" class="lb-next">Next</a>
+                                        </div>
+                                        <a href="#page" class="lb-close">x Close</a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a href="#image-5">
+                                        <img src="/Home/GetPictureF3?id=@Model.ID">
+                                        <span>+</span>
+                                    </a>
+                                    <div class="lb-overlay" id="image-5">
+                                        <img src="/Home/GetPictureF3?id=@Model.ID">
+                                        <div>
+                                            <a href="#image-4" class="lb-prev">Prev</a>
+                                            <a href="#image-1"><img width="50" src="/Home/GetPictureFL1?id=@Model.ID"></a>
+                                            <a href="#image-2"><img width="50" src="/Home/GetPictureFL2?id=@Model.ID"></a>
+                                            <a href="#image-3"><img width="50" src="/Home/GetPictureF1?id=@Model.ID"></a>
+                                            <a href="#image-4"><img width="50" src="/Home/GetPictureF2?id=@Model.ID"></a>
+                                            <a href="#image-5"><img width="50" src="/Home/GetPictureF3?id=@Model.ID"></a>
+                                            <a href="#image-6"><img width="50" src="/Home/GetPictureF4?id=@Model.ID"></a> 
+                                            <a href="#image-6" class="lb-next">Next</a>
+                                        </div>
+                                        <a href="#page" class="lb-close">x Close</a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a href="#image-6">
+                                        <img src="/Home/GetPictureF4?id=@Model.ID">
+                                        <span>+</span>
+                                    </a>
+                                    <div class="lb-overlay" id="image-6">
+                                        <img src="/Home/GetPictureF4?id=@Model.ID">
+                                        <div>
+                                            <a href="#image-5" class="lb-prev">Prev</a>
+                                            <a href="#image-1"><img width="50" src="/Home/GetPictureFL1?id=@Model.ID"></a>
+                                            <a href="#image-2"><img width="50" src="/Home/GetPictureFL2?id=@Model.ID"></a>
+                                            <a href="#image-3"><img width="50" src="/Home/GetPictureF1?id=@Model.ID"></a>
+                                            <a href="#image-4"><img width="50" src="/Home/GetPictureF2?id=@Model.ID"></a>
+                                            <a href="#image-5"><img width="50" src="/Home/GetPictureF3?id=@Model.ID"></a>
+                                            <a href="#image-6"><img width="50" src="/Home/GetPictureF4?id=@Model.ID"></a> 
+                                            <a href="#image-1" class="lb-next">Next</a>
+                                        </div>
+                                        <a href="#page" class="lb-close">x Close</a>
+                                    </div>
+                                </li>
+
+                            </div>
                         </div>
-                       
-</div>
-                <div class="down_sec_img">
-                    <div class="second_img_page">
-                        <a href="#img3"> <img id="foto1_pic" src="/Home/GetPictureF1?id=@Model.ID"></a>
-                       
-                        <a href="#img4"> <img id="foto1_pic" src="/Home/GetPictureF2?id=@Model.ID"></a>
                         
-                        <a href="#img5">  <img id="foto1_pic" src="/Home/GetPictureF3?id=@Model.ID"></a>
-                       
-                        <a href="#img6">  <img id="foto1_pic" src="/Home/GetPictureF4?id=@Model.ID"></a>
-                        
-</div>
-                    </div>
+                    </ul>
+               
+                
+                
             </div>
             <div class="bron_right">
                 <div class="bron_right_price">
