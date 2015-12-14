@@ -487,6 +487,7 @@ h2.prew_head_name {
 }
 
 a.bottom_ac_prew {
+    display:block;
     font-size: 19px;
     background: white;
     border: 2px solid #C32361;
@@ -511,11 +512,15 @@ a.bottom_ac_prew:hover {
         margin-bottom:-50px;
 }
 .bottom_prew_1 {
-    height: 38px;
-    width: 130px !important;
+        height: 38px;
+    width: 204px !important;
+    text-align: center;
+    margin-bottom: 5px;
+    z-index:9999;
 }
 a.bottom_ac_prew._ac_prew2 {
     padding: 5px 49px 5px 49px;
+        display: block;
 }
 a.ui-state-default.ui-state-active {
     background: #C32361!important;
@@ -1654,7 +1659,7 @@ a.redotherb:hover {
 /*END SLIDING TEXT*/
 .down_otziw {
     width: 100%;
-    margin-top:39px;
+    margin-top:336px;
 }
 
 .down_block_bron {
