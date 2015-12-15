@@ -2099,3 +2099,19 @@ ul.lb-album {
        line-height: 64px;
 
 }
+
+.phone-before {
+width:20px;
+height:20px;
+background-image:url('/img/before-phone.png');
+float:left;
+    background-size: cover;
+}
+
+.mail-before {
+        background-size: cover;
+width:20px;
+height:20px;
+background-image:url('/img/mail-before.png');
+float:left;
+}

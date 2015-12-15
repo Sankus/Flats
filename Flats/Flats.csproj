@@ -248,6 +248,8 @@
     <Content Include="img\loop.png" />
     <Content Include="img\minus.png" />
     <Content Include="img\next.png" />
+    <Content Include="img\odessa-mail.png" />
+    <Content Include="img\odessa-phone.png" />
     <Content Include="img\pagination.png" />
     <Content Include="img\pluss.png" />
     <Content Include="img\prev.png" />
