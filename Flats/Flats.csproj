@@ -261,6 +261,7 @@
     <Content Include="Scripts\form-scripts.js" />
     <Content Include="Scripts\internal-functions.js" />
     <Content Include="Scripts\jquery-1.4.1.min.js" />
+    <None Include="Properties\PublishProfiles\rent-apartment-odessa.com.pubxml" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="img\admin-back.jpg" />
     <Content Include="img\before-phone.png" />

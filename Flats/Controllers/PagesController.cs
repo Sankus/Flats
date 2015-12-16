@@ -43,18 +43,18 @@ namespace Flats.Controllers
             String UsdRate = (xnode.ParentNode).ChildNodes[5].InnerText.Split('.')[0];
             ViewBag.UsdRate = UsdRate.Substring(0, 2) + "," + UsdRate.Substring(2, 2);
             if ((xnode.ParentNode).ChildNodes[6].InnerText.Substring(0, 1) == "-")
-                ViewBag.UsdDir = "-";
+                ViewBag.UsdDir = "˅";
             else
-                ViewBag.UsdDir = "+";
+                ViewBag.UsdDir = "˄";
 
             //евро
             xnode = xRoot.SelectSingleNode(".//code[text()='978']");
             String EurRate = (xnode.ParentNode).ChildNodes[5].InnerText.Split('.')[0];
             ViewBag.EurRate = EurRate.Substring(0, 2) + "," + EurRate.Substring(2, 2);
             if ((xnode.ParentNode).ChildNodes[6].InnerText.Substring(0, 1) == "-")
-                ViewBag.EurDir = "-";
+                ViewBag.EurDir = "˅";
             else
-                ViewBag.EurDir = "+";
+                ViewBag.EurDir = "˄";
 
             //Подтягиваем погоду
             req = (HttpWebRequest)HttpWebRequest.Create("https://export.yandex.ru/weather-ng/forecasts/33837.xml");
