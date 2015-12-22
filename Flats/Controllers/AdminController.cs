@@ -2,11 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using System.Web.Security;
+using Flats.Models;
+using Flats.Views;
 using System.Web;
 using System.Drawing;
 using Flats.Views.Manage;
 using System.IO;
 using System.Data.Linq;
+using System.Collections;
 
 namespace Flats.Controllers
 {

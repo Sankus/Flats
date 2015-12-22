@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Globalization;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -25,7 +27,7 @@ namespace Flats.Controllers
 
         private void InitSettings()
         {
-            dbDataContext db = new dbDataContext();
+  dbDataContext db = new dbDataContext();
             List<Settings> Sett = db.Settings.Select(c => c).OrderBy(c => c.setting_key).ToList();
             Hashtable arr = new Hashtable();
 
@@ -36,7 +38,7 @@ namespace Flats.Controllers
             List<Pages> pages_list = db.Pages.Select(c => c).OrderBy(c => c.Naim).ToList<Pages>();
             ViewBag.pages_list = pages_list;
 
-            List<Region> list_region = db.Region.Select(c => c).OrderBy(c => c.Naim).ToList<Region>();
+            List<Region> list_region = db.Region.Select(c=> c).OrderBy(c=>c.Naim).ToList<Region>();
             ViewBag.regions = list_region;
 
             //Подтягиваем курсы валют
@@ -51,7 +53,7 @@ namespace Flats.Controllers
             XmlNode xnode = xRoot.SelectSingleNode(".//code[text()='840']");
             String UsdRate = (xnode.ParentNode).ChildNodes[5].InnerText.Split('.')[0];
             ViewBag.UsdRate = UsdRate.Substring(0, 2) + "," + UsdRate.Substring(2, 2);
-            if ((xnode.ParentNode).ChildNodes[6].InnerText.Substring(0, 1) == "-")
+            if ((xnode.ParentNode).ChildNodes[6].InnerText.Substring(0,1)=="-")
                 ViewBag.UsdDir = "˅";
             else
                 ViewBag.UsdDir = "˄";
@@ -73,7 +75,7 @@ namespace Flats.Controllers
             xDoc = new XmlDocument();
             xDoc.LoadXml(doc);
             xRoot = xDoc.DocumentElement;
-
+    
             ViewBag.temperature_value = xRoot.ChildNodes[0].ChildNodes[4].InnerText;
             ViewBag.temperature_color = xRoot.ChildNodes[0].ChildNodes[4].Attributes[0].Value;
 
@@ -84,31 +86,28 @@ namespace Flats.Controllers
             ViewBag.isMainPage = false;
 
             //languages
-            if (Session != null)
+            if (Session.IsNewSession)
             {
-                if (Session.IsNewSession)
-                {
-                    Session.Add("lang", "ru");
-                }
-                string lang = Session["lang"].ToString();
-
-                List<Translate> lang_list = db.Translate.Select(c => c).Where(c => c.languages.short_code.ToLower().Trim() == lang.ToLower().Trim()).ToList<Translate>();
-                Dictionary<String, String> lang_arr = new Dictionary<string, string>();
-                foreach (Translate tran in lang_list)
-                {
-                    if (!lang_arr.ContainsKey(tran.Phrase.phrase_key))
-                        lang_arr.Add(tran.Phrase.phrase_key, tran.Translation);
-                }
-
-                foreach (Phrase ph in db.Phrase.Select(c => c))
-                {
-                    if (!lang_arr.ContainsKey(ph.phrase_key))
-                        lang_arr.Add(ph.phrase_key, ph.phrase_key);
-                }
-
-                ViewBag.Translation = lang_arr;
+                Session.Add("lang", "ru");
             }
-            //--languages
+            string lang = Session["lang"].ToString();
+
+            List<Translate> lang_list = db.Translate.Select(c => c).Where(c => c.languages.short_code.ToLower().Trim() == lang.ToLower().Trim()).ToList<Translate>();
+            Dictionary<String,String> lang_arr = new Dictionary<string,string>();
+            foreach (Translate tran in lang_list)
+            {
+                if (!lang_arr.ContainsKey(tran.Phrase.phrase_key))
+                    lang_arr.Add(tran.Phrase.phrase_key, tran.Translation);
+            }
+
+            foreach(Phrase ph in db.Phrase.Select(c=>c))
+            {
+                if (!lang_arr.ContainsKey(ph.phrase_key))
+                    lang_arr.Add(ph.phrase_key, ph.phrase_key);
+            }
+
+            ViewBag.Translation = lang_arr;
+            //--languages      
         }
 
         public AccountController()

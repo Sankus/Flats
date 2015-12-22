@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Web;
 using System.Web.Mvc;
 using System.Xml;
 
@@ -74,34 +75,31 @@ namespace Flats.Controllers
             ViewBag.isMainPage = false;
 
             //languages
-            if (Session != null)
+            if (Session.IsNewSession)
             {
-                if (Session.IsNewSession)
-                {
-                    Session.Add("lang", "ru");
-                }
-                string lang = Session["lang"].ToString();
-
-                List<Translate> lang_list = db.Translate.Select(c => c).Where(c => c.languages.short_code.ToLower().Trim() == lang.ToLower().Trim()).ToList<Translate>();
-                Dictionary<String, String> lang_arr = new Dictionary<string, string>();
-                foreach (Translate tran in lang_list)
-                {
-                    if (!lang_arr.ContainsKey(tran.Phrase.phrase_key))
-                        lang_arr.Add(tran.Phrase.phrase_key, tran.Translation);
-                }
-
-                foreach (Phrase ph in db.Phrase.Select(c => c))
-                {
-                    if (!lang_arr.ContainsKey(ph.phrase_key))
-                        lang_arr.Add(ph.phrase_key, ph.phrase_key);
-                }
-
-                ViewBag.Translation = lang_arr;
+                Session.Add("lang", "ru");
             }
+            string lang = Session["lang"].ToString();
+
+            List<Translate> lang_list = db.Translate.Select(c => c).Where(c => c.languages.short_code.ToLower().Trim() == lang.ToLower().Trim()).ToList<Translate>();
+            Dictionary<String, String> lang_arr = new Dictionary<string, string>();
+            foreach (Translate tran in lang_list)
+            {
+                if (!lang_arr.ContainsKey(tran.Phrase.phrase_key))
+                    lang_arr.Add(tran.Phrase.phrase_key, tran.Translation);
+            }
+
+            foreach (Phrase ph in db.Phrase.Select(c => c))
+            {
+                if (!lang_arr.ContainsKey(ph.phrase_key))
+                    lang_arr.Add(ph.phrase_key, ph.phrase_key);
+            }
+
+            ViewBag.Translation = lang_arr;
             //--languages
         }
-
-        public ActionResult Index(string id = "")
+        // GET: Pages
+        public ActionResult Index(string id="")
         {
             InitSettings();
             if (id == "")
